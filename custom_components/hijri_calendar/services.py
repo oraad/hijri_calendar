@@ -1,0 +1,113 @@
+"""Services for Jewish Calendar."""
+
+import datetime
+import logging
+from typing import get_args
+
+import voluptuous as vol
+from hdate.translator import Language, set_language
+from homeassistant.const import CONF_LANGUAGE, SUN_EVENT_SUNSET
+from homeassistant.core import (
+    HomeAssistant,
+    ServiceCall,
+    ServiceResponse,
+    SupportsResponse,
+    callback,
+)
+from homeassistant.exceptions import HomeAssistantError
+from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers.selector import LanguageSelector, LanguageSelectorConfig
+from homeassistant.helpers.sun import get_astral_event_date
+from homeassistant.util import dt as dt_util
+
+from .const import (
+    ATTR_DATE,
+    ATTR_OFFSET,
+    DOMAIN,
+    SERVICE_CALIBRATE_DATE,
+    SERVICE_CONVERT_TO_GREGORIAN,
+    SERVICE_CONVERT_TO_HIJRI,
+)
+
+_LOGGER = logging.getLogger(__name__)
+CALIBRATE_SCHEMA = vol.Schema(
+    {
+        vol.Optional(ATTR_DATE): cv.date,
+        vol.Optional(ATTR_OFFSET, default=True): cv.Number,
+        vol.Optional(CONF_LANGUAGE, default="en"): LanguageSelector(
+            LanguageSelectorConfig(languages=list(get_args(Language)))
+        ),
+    }
+)
+
+CONVERT_SCHEMA = vol.Schema(
+    {
+        vol.Optional(ATTR_DATE): cv.date,
+        vol.Optional(CONF_LANGUAGE, default="en"): LanguageSelector(
+            LanguageSelectorConfig(languages=list(get_args(Language)))
+        ),
+    }
+)
+
+
+@callback
+def async_setup_services(hass: HomeAssistant) -> None:
+    """Set up the Jewish Calendar services."""
+
+    # def is_after_sunset(hass: HomeAssistant) -> bool:
+    #     """Determine if the current time is after sunset."""
+    #     now = dt_util.now()
+    #     today = now.date()
+    #     event_date = get_astral_event_date(hass, SUN_EVENT_SUNSET, today)
+    #     if event_date is None:
+    #         raise HomeAssistantError(
+    #             translation_domain=DOMAIN, translation_key="sunset_event"
+    #         )
+    #     sunset = dt_util.as_local(event_date)
+    #     _LOGGER.debug("Now: %s Sunset: %s", now, sunset)
+    #     return now > sunset
+
+    # async def get_omer_count(call: ServiceCall) -> ServiceResponse:
+    #     """Return the Omer blessing for a given date."""
+    #     date = call.data.get(ATTR_DATE, dt_util.now().date())
+    #     after_sunset = (
+    #         call.data[ATTR_AFTER_SUNSET]
+    #         if ATTR_DATE in call.data
+    #         else is_after_sunset(hass)
+    #     )
+    #     hebrew_date = HebrewDate.from_gdate(
+    #         date + datetime.timedelta(days=int(after_sunset))
+    #     )
+    #     nusach = Nusach[call.data[ATTR_NUSACH].upper()]
+    #     # set_language(call.data[CONF_LANGUAGE])
+    #     omer = Omer(date=hebrew_date, nusach=nusach)
+    #     return {
+    #         "message": str(omer.count_str()),
+    #         "weeks": omer.week,
+    #         "days": omer.day,
+    #         "total_days": omer.total_days,
+    #     }
+
+    # hass.services.async_register(
+    #     DOMAIN,
+    #     SERVICE_CALIBRATE_DATE,
+    #     calibrate_date,
+    #     schema=CALIBRATE_SCHEMA,
+    #     supports_response=SupportsResponse.OPTIONAL,
+    # )
+
+    # hass.services.async_register(
+    #     DOMAIN,
+    #     SERVICE_CONVERT_TO_HIJRI,
+    #     convert_to_hijri,
+    #     schema=CONVERT_SCHEMA,
+    #     supports_response=SupportsResponse.ONLY,
+    # )
+
+    # hass.services.async_register(
+    #     DOMAIN,
+    #     SERVICE_CONVERT_TO_GREGORIAN,
+    #     convert_to_gregorian,
+    #     schema=CONVERT_SCHEMA,
+    #     supports_response=SupportsResponse.ONLY,
+    # )
