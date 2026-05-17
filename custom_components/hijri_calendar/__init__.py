@@ -1,161 +1,59 @@
-"""
-Custom integration to integrate hijri_calendar with Home Assistant.
-
-For more details about this integration, please refer to
-https://github.com/oraad/hijri_calendar
-"""
+"""Hijri Calendar integration for Home Assistant."""
 
 from __future__ import annotations
 
-from datetime import timedelta
-from functools import partial
 from typing import TYPE_CHECKING
 
 from homeassistant.const import Platform
-from homeassistant.loader import async_get_loaded_integration
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers import config_validation as cv
 
-from .const import DOMAIN, LOGGER
-from .coordinator import HijriCalendarDataUpdateCoordinator
-from .data import HijriCalendarData
+from .const import DOMAIN
+from .coordinator import HijriCalendarUpdateCoordinator
+from .services import async_setup_services
 
 if TYPE_CHECKING:
-    from homeassistant.core import HomeAssistant
     from homeassistant.helpers.typing import ConfigType
 
     from .data import HijriCalendarConfigEntry
 
-from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers import config_validation as cv
-from homeassistant.helpers import entity_registry as er
+__all__ = ["DOMAIN"]
 
-from .const import (
-    DEFAULT_LANGUAGE,
-    DOMAIN,
-)
-from .services import async_setup_services
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 PLATFORMS: list[Platform] = [
     Platform.SENSOR,
     Platform.BINARY_SENSOR,
 ]
 
-async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up the Hijri Calendar service."""
-    async_setup_services(hass)
 
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    """Set up Hijri Calendar services."""
+    async_setup_services(hass)
     return True
 
-# https://developers.home-assistant.io/docs/config_entries_index/#setting-up-an-entry
+
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: HijriCalendarConfigEntry,
 ) -> bool:
-    """Set up a configuration entry for Hijri calendar."""
-    coordinator = HijriCalendarDataUpdateCoordinator(
-        hass=hass,
-        logger=LOGGER,
-        name=DOMAIN,
-        update_interval=timedelta(hours=1),
-    )
-    config_entry.runtime_data = HijriCalendarData(
-        integration=async_get_loaded_integration(hass, config_entry.domain),
-        coordinator=coordinator,
-    )
-
-    # https://developers.home-assistant.io/docs/integration_fetching_data#coordinated-single-api-poll-for-data-for-all-entities
+    """Set up Hijri Calendar from a config entry."""
+    coordinator = HijriCalendarUpdateCoordinator(hass, config_entry)
     await coordinator.async_config_entry_first_refresh()
 
+    config_entry.runtime_data = coordinator
     await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
-    config_entry.async_on_unload(config_entry.add_update_listener(async_reload_entry))
 
     return True
 
-# async def async_setup_entry(
-#     hass: HomeAssistant, config_entry: JewishCalendarConfigEntry
-# ) -> bool:
-#     """Set up a configuration entry for Jewish calendar."""
-#     language = config_entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)
-
-#     data = JewishCalendarData(
-#         language,
-#     )
-
-#     coordinator = JewishCalendarUpdateCoordinator(hass, config_entry, data)
-#     await coordinator.async_config_entry_first_refresh()
-
-#     config_entry.runtime_data = coordinator
-#     await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
-#     return True
-
 
 async def async_unload_entry(
-    hass: HomeAssistant, config_entry: HijriCalendarConfigEntry,
+    hass: HomeAssistant,
+    config_entry: HijriCalendarConfigEntry,
 ) -> bool:
-    """Handle removal of an entry."""
+    """Unload a config entry."""
     if unload_ok := await hass.config_entries.async_unload_platforms(
         config_entry, PLATFORMS
     ):
-        coordinator = config_entry.runtime_data.coordinator
-        await coordinator.async_shutdown()
+        await config_entry.runtime_data.async_shutdown()
     return unload_ok
-
-
-async def async_reload_entry(
-    hass: HomeAssistant,
-    entry: HijriCalendarConfigEntry,
-) -> None:
-    """Reload config entry."""
-    await hass.config_entries.async_reload(entry.entry_id)
-
-
-# #########################################################################
-
-# async def async_migrate_entry(
-#     hass: HomeAssistant, config_entry: JewishCalendarConfigEntry
-# ) -> bool:
-#     """Migrate old entry."""
-
-#     _LOGGER.debug("Migrating from version %s", config_entry.version)
-
-#     @callback
-#     def update_unique_id(
-#         entity_entry: er.RegistryEntry,
-#     ) -> dict[str, str] | None:
-#         """Update unique ID of entity entry."""
-#         key_translations = {
-#             "first_light": "alot_hashachar",
-#             "talit": "talit_and_tefillin",
-#             "sunrise": "netz_hachama",
-#             "gra_end_shma": "sof_zman_shema_gra",
-#             "mga_end_shma": "sof_zman_shema_mga",
-#             "gra_end_tfila": "sof_zman_tfilla_gra",
-#             "mga_end_tfila": "sof_zman_tfilla_mga",
-#             "midday": "chatzot_hayom",
-#             "big_mincha": "mincha_gedola",
-#             "small_mincha": "mincha_ketana",
-#             "plag_mincha": "plag_hamincha",
-#             "sunset": "shkia",
-#             "first_stars": "tset_hakohavim_tsom",
-#             "three_stars": "tset_hakohavim_shabbat",
-#         }
-#         old_keys = tuple(key_translations.keys())
-#         if entity_entry.unique_id.endswith(old_keys):
-#             old_key = entity_entry.unique_id.split("-")[1]
-#             new_unique_id = f"{config_entry.entry_id}-{key_translations[old_key]}"
-#             return {"new_unique_id": new_unique_id}
-#         return None
-
-#     if config_entry.version > 2:
-#         # This means the user has downgraded from a future version
-#         return False
-
-#     if config_entry.version == 1:
-#         await er.async_migrate_entries(hass, config_entry.entry_id, update_unique_id)
-#         hass.config_entries.async_update_entry(config_entry, version=2)
-
-#     if config_entry.version == 2:
-#         new_data = {**config_entry.data}
-#         new_data[CONF_LANGUAGE] = config_entry.data[CONF_LANGUAGE][:2]
-#         hass.config_entries.async_update_entry(config_entry, data=new_data, version=3)
-
-#     return True

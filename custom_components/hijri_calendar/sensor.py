@@ -2,56 +2,102 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from collections.abc import Callable
+from dataclasses import dataclass
 
-from homeassistant.components.sensor import SensorEntity, SensorEntityDescription
+from homeassistant.components.sensor import (
+    SensorEntity,
+    SensorEntityDescription,
+)
+from homeassistant.const import EntityCategory
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-from .entity import HijriCalendarEntity
+from .data import HijriCalendarConfigEntry, HijriCalendarData
+from .entity import HijriCalendarSunsetEntity
+from .holidays import get_holidays
 
-if TYPE_CHECKING:
-    from homeassistant.core import HomeAssistant
-    from homeassistant.helpers.entity_platform import AddEntitiesCallback
+PARALLEL_UPDATES = 0
 
-    from .coordinator import HijriCalendarDataUpdateCoordinator
-    from .data import HijriCalendarConfigEntry
 
-ENTITY_DESCRIPTIONS = (
-    SensorEntityDescription(
-        key="hijri_calendar",
-        name="Integration Sensor",
-        icon="mdi:format-quote-close",
+@dataclass(frozen=True, kw_only=True)
+class HijriCalendarSensorDescription(SensorEntityDescription):
+    """Description for a Hijri calendar sensor."""
+
+    value_fn: Callable[[HijriCalendarData], str | int]
+    attr_fn: Callable[[HijriCalendarData], dict[str, str | int]] | None = None
+
+
+INFO_SENSORS: tuple[HijriCalendarSensorDescription, ...] = (
+    HijriCalendarSensorDescription(
+        key="date",
+        translation_key="hijri_date",
+        icon="mdi:calendar-star",
+        value_fn=lambda data: data.hijri.isoformat(),
+        attr_fn=lambda data: {
+            "hijri_year": data.hijri.year,
+            "hijri_month": data.hijri.month,
+            "hijri_day": data.hijri.day,
+            "month_name": data.hijri.month_name(data.language),
+            "day_name": data.hijri.day_name(data.language),
+            "gregorian_date": data.gregorian_date.isoformat(),
+        },
+    ),
+    HijriCalendarSensorDescription(
+        key="holiday",
+        translation_key="holiday",
+        icon="mdi:star-crescent",
+        value_fn=lambda data: ", ".join(
+            holiday.id for holiday in get_holidays(data.hijri)
+        )
+        or "none",
+        attr_fn=lambda data: {
+            "ids": ", ".join(holiday.id for holiday in get_holidays(data.hijri)),
+            "types": ", ".join(
+                dict.fromkeys(holiday.type for holiday in get_holidays(data.hijri))
+            ),
+        },
+    ),
+    HijriCalendarSensorDescription(
+        key="days_in_month",
+        translation_key="days_in_month",
+        entity_registry_enabled_default=False,
+        value_fn=lambda data: data.hijri.month_length(),
+    ),
+    HijriCalendarSensorDescription(
+        key="days_in_year",
+        translation_key="days_in_year",
+        entity_registry_enabled_default=False,
+        value_fn=lambda data: data.hijri.year_length(),
     ),
 )
 
 
 async def async_setup_entry(
-    hass: HomeAssistant,  # noqa: ARG001 Unused function argument: `hass`
-    entry: HijriCalendarConfigEntry,
-    async_add_entities: AddEntitiesCallback,
+    hass: HomeAssistant,
+    config_entry: HijriCalendarConfigEntry,
+    async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    """Set up the sensor platform."""
+    """Set up Hijri calendar sensors."""
     async_add_entities(
-        HijriCalendarSensor(
-            coordinator=entry.runtime_data.coordinator,
-            entity_description=entity_description,
-        )
-        for entity_description in ENTITY_DESCRIPTIONS
+        HijriCalendarSensor(config_entry, description) for description in INFO_SENSORS
     )
 
 
-class HijriCalendarSensor(HijriCalendarEntity, SensorEntity):
-    """hijri_calendar Sensor class."""
+class HijriCalendarSensor(HijriCalendarSunsetEntity, SensorEntity):
+    """Representation of a Hijri calendar sensor."""
 
-    def __init__(
-        self,
-        coordinator: HijriCalendarDataUpdateCoordinator,
-        entity_description: SensorEntityDescription,
-    ) -> None:
-        """Initialize the sensor class."""
-        super().__init__(coordinator)
-        self.entity_description = entity_description
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+    entity_description: HijriCalendarSensorDescription
 
     @property
-    def native_value(self) -> str | None:
-        """Return the native value of the sensor."""
-        return self.coordinator.data.get("body")
+    def native_value(self) -> str | int:
+        """Return the state of the sensor."""
+        return self.entity_description.value_fn(self.coordinator.data)
+
+    @property
+    def extra_state_attributes(self) -> dict[str, str | int]:
+        """Return state attributes."""
+        if self.entity_description.attr_fn is None:
+            return {}
+        return self.entity_description.attr_fn(self.coordinator.data)
