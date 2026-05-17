@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.0-beta.2] - 2026-05-17
+
+### Added
+
+- Calendar entity **Hijri observances** (`calendar.hijri_events`): all-day Gregorian events for Islamic holidays with merged Ramadan and Hajj season spans.
+- Sensor device classes: `DATE` (Hijri date), `ENUM` (holiday), `MEASUREMENT` (days in month/year).
+- Holiday sensor exposes enum state (`none`, `ramadan`, …) with localized `names` attribute when multiple observances apply.
+
 ## [0.1.0-beta.1] - 2026-05-17
 
 ### Added

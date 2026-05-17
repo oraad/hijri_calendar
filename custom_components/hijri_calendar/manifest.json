@@ -10,5 +10,5 @@
   "loggers": ["hijridate"],
   "requirements": ["hijridate==2.6.0"],
   "single_config_entry": true,
-  "version": "0.1.0-beta.1"
+  "version": "0.1.0-beta.2"
 }
