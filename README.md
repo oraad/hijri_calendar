@@ -66,7 +66,7 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 | Entity | Description |
 |--------|-------------|
 | `sensor.hijri_date` | Today's Hijri date (ISO state; attributes include `formatted`, `formatted_eastern`, names) |
-| `sensor.holiday` | Active holidays (localized state and `types` attribute per config language; `ids` keeps machine keys for automations) |
+| `sensor.holiday` | Primary active holiday id (`none`, `ramadan`, …; UI label via entity translations). Use `ids`, `names`, and `types` when multiple holidays apply |
 | `binary_sensor.ramadan` | On during Ramadan |
 | `binary_sensor.eid_al_fitr` | On on 1 Shawwal |
 | `binary_sensor.eid_al_adha` | On on 10 Dhul Hijjah |

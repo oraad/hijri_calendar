@@ -2,21 +2,21 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable
-from dataclasses import dataclass
+import datetime as dt
 
 from homeassistant.components.sensor import (
+    SensorDeviceClass,
     SensorEntity,
     SensorEntityDescription,
+    SensorStateClass,
 )
-from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .const import HijriLanguage
 from .data import HijriCalendarConfigEntry, HijriCalendarData
 from .entity import HijriCalendarSunsetEntity
-from .holidays import HOLIDAY_NONE, get_holidays
+from .holidays import ALL_HOLIDAY_IDS, HOLIDAY_NONE, get_holidays
 from .locale import (
     format_hijri_display,
     holiday_display_name,
@@ -25,54 +25,93 @@ from .locale import (
 
 PARALLEL_UPDATES = 0
 
-
-@dataclass(frozen=True, kw_only=True)
-class HijriCalendarSensorDescription(SensorEntityDescription):
-    """Description for a Hijri calendar sensor."""
-
-    value_fn: Callable[[HijriCalendarData], str | int] | None = None
-    attr_fn: Callable[[HijriCalendarData], dict[str, str | int]] | None = None
+HOLIDAY_SENSOR_OPTIONS: tuple[str, ...] = tuple(sorted(ALL_HOLIDAY_IDS))
 
 
-INFO_SENSORS: tuple[HijriCalendarSensorDescription, ...] = (
-    HijriCalendarSensorDescription(
+INFO_SENSORS: tuple[SensorEntityDescription, ...] = (
+    SensorEntityDescription(
         key="date",
         translation_key="hijri_date",
         icon="mdi:calendar-star",
-        value_fn=lambda data: data.hijri.isoformat(),
-        attr_fn=lambda data: {
-            "hijri_year": data.hijri.year,
-            "hijri_month": data.hijri.month,
-            "hijri_day": data.hijri.day,
-            "month_name": data.hijri.month_name(data.language),
-            "day_name": data.hijri.day_name(data.language),
-            "gregorian_date": data.gregorian_date.isoformat(),
-            "formatted": format_hijri_display(
-                data.hijri, data.language, eastern_digits=False
-            ),
-            "formatted_eastern": format_hijri_display(
-                data.hijri, data.language, eastern_digits=True
-            ),
-        },
+        device_class=SensorDeviceClass.DATE,
     ),
-    HijriCalendarSensorDescription(
+    SensorEntityDescription(
         key="holiday",
         translation_key="holiday",
         icon="mdi:star-crescent",
+        device_class=SensorDeviceClass.ENUM,
+        options=HOLIDAY_SENSOR_OPTIONS,
     ),
-    HijriCalendarSensorDescription(
+    SensorEntityDescription(
         key="days_in_month",
         translation_key="days_in_month",
         entity_registry_enabled_default=False,
-        value_fn=lambda data: data.hijri.month_length(),
+        state_class=SensorStateClass.MEASUREMENT,
     ),
-    HijriCalendarSensorDescription(
+    SensorEntityDescription(
         key="days_in_year",
         translation_key="days_in_year",
         entity_registry_enabled_default=False,
-        value_fn=lambda data: data.hijri.year_length(),
+        state_class=SensorStateClass.MEASUREMENT,
     ),
 )
+
+
+def _native_value(data: HijriCalendarData, key: str) -> dt.date | str | int:
+    """Return native state for a sensor key."""
+    if key == "date":
+        return dt.date(data.hijri.year, data.hijri.month, data.hijri.day)
+    if key == "holiday":
+        holidays = get_holidays(data.hijri)
+        if not holidays:
+            return HOLIDAY_NONE
+        return holidays[0].id
+    if key == "days_in_month":
+        return data.hijri.month_length()
+    if key == "days_in_year":
+        return data.hijri.year_length()
+    msg = f"Unknown sensor key: {key}"
+    raise ValueError(msg)
+
+
+def _date_attributes(data: HijriCalendarData) -> dict[str, str | int]:
+    """Return extra state attributes for the Hijri date sensor."""
+    return {
+        "hijri_year": data.hijri.year,
+        "hijri_month": data.hijri.month,
+        "hijri_day": data.hijri.day,
+        "month_name": data.hijri.month_name(data.language),
+        "day_name": data.hijri.day_name(data.language),
+        "gregorian_date": data.gregorian_date.isoformat(),
+        "formatted": format_hijri_display(
+            data.hijri, data.language, eastern_digits=False
+        ),
+        "formatted_eastern": format_hijri_display(
+            data.hijri, data.language, eastern_digits=True
+        ),
+    }
+
+
+def _holiday_attributes(
+    hass: HomeAssistant, data: HijriCalendarData
+) -> dict[str, str | int]:
+    """Return extra state attributes for the holiday sensor."""
+    language: HijriLanguage = data.language  # type: ignore[assignment]
+    holidays = get_holidays(data.hijri)
+    if not holidays:
+        names = holiday_display_name(hass, HOLIDAY_NONE, language)
+    else:
+        names = ", ".join(
+            holiday_display_name(hass, holiday.id, language) for holiday in holidays
+        )
+    return {
+        "ids": ", ".join(holiday.id for holiday in holidays),
+        "names": names,
+        "types": ", ".join(
+            holiday_type_display_name(hass, holiday_type, language)
+            for holiday_type in dict.fromkeys(holiday.type for holiday in holidays)
+        ),
+    }
 
 
 async def async_setup_entry(
@@ -89,48 +128,21 @@ async def async_setup_entry(
 class HijriCalendarSensor(HijriCalendarSunsetEntity, SensorEntity):
     """Representation of a Hijri calendar sensor."""
 
-    _attr_entity_category = EntityCategory.DIAGNOSTIC
-    entity_description: HijriCalendarSensorDescription
+    _attr_entity_category = None
+    entity_description: SensorEntityDescription
 
     @property
-    def native_value(self) -> str | int:
+    def native_value(self) -> dt.date | str | int:
         """Return the state of the sensor."""
-        data = self.coordinator.data
-        language: HijriLanguage = data.language  # type: ignore[assignment]
-
-        if self.entity_description.key == "holiday":
-            holidays = get_holidays(data.hijri)
-            if not holidays:
-                return holiday_display_name(self.hass, HOLIDAY_NONE, language)
-            return ", ".join(
-                holiday_display_name(self.hass, holiday.id, language)
-                for holiday in holidays
-            )
-
-        value_fn = self.entity_description.value_fn
-        if value_fn is None:
-            msg = f"Sensor {self.entity_description.key} has no value_fn"
-            raise RuntimeError(msg)
-        return value_fn(data)
+        return _native_value(self.coordinator.data, self.entity_description.key)
 
     @property
-    def extra_state_attributes(self) -> dict[str, str | int]:
-        """Return state attributes."""
+    def extra_state_attributes(self) -> dict[str, str | int] | None:
+        """Return extra state attributes."""
+        key = self.entity_description.key
         data = self.coordinator.data
-        language: HijriLanguage = data.language  # type: ignore[assignment]
-
-        if self.entity_description.key == "holiday":
-            holidays = get_holidays(data.hijri)
-            return {
-                "ids": ", ".join(holiday.id for holiday in holidays),
-                "types": ", ".join(
-                    holiday_type_display_name(self.hass, holiday_type, language)
-                    for holiday_type in dict.fromkeys(
-                        holiday.type for holiday in holidays
-                    )
-                ),
-            }
-
-        if self.entity_description.attr_fn is None:
-            return {}
-        return self.entity_description.attr_fn(data)
+        if key == "date":
+            return _date_attributes(data)
+        if key == "holiday":
+            return _holiday_attributes(self.hass, data)
+        return None

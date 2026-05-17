@@ -1,7 +1,5 @@
 """Fixtures for hijri_calendar tests."""
 
-from unittest.mock import patch
-
 import pytest
 from homeassistant.const import CONF_LANGUAGE
 from pytest_homeassistant_custom_component.common import MockConfigEntry
@@ -39,12 +37,8 @@ def mock_config_entry() -> MockConfigEntry:
 async def setup_integration(hass, mock_config_entry):
     """Set up the hijri_calendar integration."""
     mock_config_entry.add_to_hass(hass)
-    with patch(
-        "homeassistant.config_entries.ConfigEntries.async_forward_entry_setups",
-        return_value=True,
-    ):
-        from custom_components.hijri_calendar import async_setup_entry
-
-        await async_setup_entry(hass, mock_config_entry)
+    assert await hass.config_entries.async_setup(mock_config_entry.entry_id)
     await hass.async_block_till_done()
-    return mock_config_entry
+    yield mock_config_entry
+    assert await hass.config_entries.async_unload(mock_config_entry.entry_id)
+    await hass.async_block_till_done()
