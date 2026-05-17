@@ -3,32 +3,35 @@ name: Lint
 on:
   push:
     branches:
-      - "main"
+      - main
+      - dev
   pull_request:
     branches:
-      - "main"
+      - main
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions: {}
 
 jobs:
   ruff:
-    name: "Ruff"
-    runs-on: "ubuntu-latest"
+    name: Ruff
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      - name: Install ruff
+        uses: astral-sh/ruff-action@0ce1b0bf8b818ef400413f810f8a11cdbda0034b # v4.0.0
         with:
-          python-version: "3.14"
-          cache: "pip"
+          version-file: requirements.txt
+          args: "--version"
 
-      - name: Install requirements
-        run: python3 -m pip install -r requirements.txt
+      - name: Ruff check
+        run: ruff check .
 
-      - name: Lint
-        run: python3 -m ruff check .
-
-      - name: Format
-        run: python3 -m ruff format . --check
+      - name: Ruff format
+        run: ruff format . --check
