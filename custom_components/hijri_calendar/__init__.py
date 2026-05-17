@@ -6,7 +6,8 @@ from typing import TYPE_CHECKING
 
 from homeassistant.const import CONF_LANGUAGE, Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers import config_validation as cv, translation
+from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers import translation
 
 from .const import DEFAULT_LANGUAGE, DOMAIN
 from .coordinator import HijriCalendarUpdateCoordinator

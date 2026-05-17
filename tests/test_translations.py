@@ -20,10 +20,9 @@ def test_holiday_state_and_types_in_strings_json() -> None:
 
     holiday = strings["entity"]["sensor"]["holiday"]
     state_keys = set(holiday["state"])
-    type_keys = set(holiday["types"])
 
     missing_states = ALL_HOLIDAY_IDS - state_keys
-    missing_types = ALL_HOLIDAY_TYPES - type_keys
+    missing_types = {f"type_{type_id}" for type_id in ALL_HOLIDAY_TYPES} - state_keys
 
     assert not missing_states, f"Missing state keys in strings.json: {missing_states}"
-    assert not missing_types, f"Missing types keys in strings.json: {missing_types}"
+    assert not missing_types, f"Missing type state keys in strings.json: {missing_types}"

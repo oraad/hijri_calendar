@@ -56,4 +56,4 @@ def holiday_type_display_name(
     hass: HomeAssistant, type_id: str, language: HijriLanguage
 ) -> str:
     """Return the localized display name for a holiday type."""
-    return _entity_translation(hass, language, "types", type_id)
+    return _entity_translation(hass, language, "state", f"type_{type_id}")

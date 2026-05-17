@@ -62,7 +62,7 @@ jobs:
           python -m pip install pytest-homeassistant-custom-component
 
       - name: Log Home Assistant version
-        run: python -c "import homeassistant; print('homeassistant', homeassistant.__version__)"
+        run: python -c "import importlib.metadata as m; print('homeassistant', m.version('homeassistant'))"
 
       - name: Run tests
         run: python -m pytest tests/

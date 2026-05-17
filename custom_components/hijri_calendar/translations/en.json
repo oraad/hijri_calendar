@@ -56,13 +56,11 @@
           "eid_al_adha": "Eid al-Adha",
           "hajj": "Hajj",
           "ashura": "Ashura",
-          "mawlid": "Mawlid"
-        },
-        "types": {
-          "ramadan": "Ramadan",
-          "eid": "Eid",
-          "hajj": "Hajj",
-          "other": "Other observance"
+          "mawlid": "Mawlid",
+          "type_ramadan": "Ramadan",
+          "type_eid": "Eid",
+          "type_hajj": "Hajj",
+          "type_other": "Other observance"
         }
       },
       "days_in_month": {
