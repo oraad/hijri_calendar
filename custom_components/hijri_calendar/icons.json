@@ -1,0 +1,26 @@
+{
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "default": "mdi:calendar-star"
+      },
+      "holiday": {
+        "default": "mdi:star-crescent"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "default": "mdi:moon-waning-crescent"
+      },
+      "eid_al_fitr": {
+        "default": "mdi:star-crescent"
+      },
+      "eid_al_adha": {
+        "default": "mdi:star-crescent"
+      },
+      "hajj_season": {
+        "default": "mdi:kaaba"
+      }
+    }
+  }
+}
