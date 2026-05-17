@@ -16,5 +16,6 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      # Dependabot should not update Home Assistant as that should match the homeassistant key in hacs.json
+      # Match homeassistant key in hacs.json; bump pytest-homeassistant-custom-component manually to the matching PyPI patch.
       - dependency-name: "homeassistant"
+      - dependency-name: "pytest-homeassistant-custom-component"
