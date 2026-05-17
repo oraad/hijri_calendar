@@ -31,9 +31,15 @@ async def test_user_flow(hass: HomeAssistant, language: str, day_boundary: str) 
     )
     assert result["type"] is FlowResultType.FORM
 
-    with patch(
-        "homeassistant.config_entries.ConfigEntries.async_forward_entry_setups",
-        return_value=True,
+    with (
+        patch(
+            "homeassistant.config_entries.ConfigEntries.async_forward_entry_setups",
+            return_value=True,
+        ),
+        patch(
+            "custom_components.hijri_calendar.async_setup_entry",
+            new=AsyncMock(return_value=True),
+        ),
     ):
         result = await hass.config_entries.flow.async_configure(
             result["flow_id"],
