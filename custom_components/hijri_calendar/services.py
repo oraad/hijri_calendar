@@ -1,12 +1,12 @@
-"""Services for Jewish Calendar."""
+"""Services for Hijri Calendar."""
 
-import datetime
+from __future__ import annotations
+
+import datetime as dt
 import logging
-from typing import get_args
 
 import voluptuous as vol
-from hdate.translator import Language, set_language
-from homeassistant.const import CONF_LANGUAGE, SUN_EVENT_SUNSET
+from homeassistant.const import CONF_LANGUAGE
 from homeassistant.core import (
     HomeAssistant,
     ServiceCall,
@@ -14,100 +14,155 @@ from homeassistant.core import (
     SupportsResponse,
     callback,
 )
-from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.selector import LanguageSelector, LanguageSelectorConfig
-from homeassistant.helpers.sun import get_astral_event_date
 from homeassistant.util import dt as dt_util
 
 from .const import (
     ATTR_DATE,
     ATTR_OFFSET,
+    CONF_DAY_BOUNDARY,
+    CONF_OFFSET_DAYS,
+    DEFAULT_DAY_BOUNDARY,
+    DEFAULT_LANGUAGE,
+    DEFAULT_OFFSET_DAYS,
     DOMAIN,
     SERVICE_CALIBRATE_DATE,
     SERVICE_CONVERT_TO_GREGORIAN,
     SERVICE_CONVERT_TO_HIJRI,
+    SUPPORTED_LANGUAGES,
+)
+from .helpers import (
+    format_gregorian_dict,
+    format_hijri_dict,
+    gregorian_to_hijri,
+    hijri_to_gregorian,
+    parse_hijri_date,
+    resolve_effective_gregorian_date,
 )
 
 _LOGGER = logging.getLogger(__name__)
+
+LANGUAGE_SELECTOR = LanguageSelector(
+    LanguageSelectorConfig(languages=list(SUPPORTED_LANGUAGES)),
+)
+
 CALIBRATE_SCHEMA = vol.Schema(
     {
         vol.Optional(ATTR_DATE): cv.date,
-        vol.Optional(ATTR_OFFSET, default=True): cv.Number,
-        vol.Optional(CONF_LANGUAGE, default="en"): LanguageSelector(
-            LanguageSelectorConfig(languages=list(get_args(Language)))
+        vol.Optional(ATTR_OFFSET, default=DEFAULT_OFFSET_DAYS): vol.All(
+            vol.Coerce(int),
+            vol.Range(min=-30, max=30),
         ),
+        vol.Optional(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LANGUAGE_SELECTOR,
     }
 )
 
-CONVERT_SCHEMA = vol.Schema(
+CONVERT_TO_HIJRI_SCHEMA = vol.Schema(
     {
         vol.Optional(ATTR_DATE): cv.date,
-        vol.Optional(CONF_LANGUAGE, default="en"): LanguageSelector(
-            LanguageSelectorConfig(languages=list(get_args(Language)))
-        ),
+        vol.Optional(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LANGUAGE_SELECTOR,
     }
 )
+
+CONVERT_TO_GREGORIAN_SCHEMA = vol.Schema(
+    {
+        vol.Optional(ATTR_DATE): cv.string,
+        vol.Optional(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LANGUAGE_SELECTOR,
+    }
+)
+
+
+def _get_config_defaults(hass: HomeAssistant) -> tuple[str, int, str]:
+    """Return language, offset, and day boundary from the config entry if present."""
+    entries = hass.config_entries.async_entries(DOMAIN)
+    if not entries:
+        return DEFAULT_LANGUAGE, DEFAULT_OFFSET_DAYS, "midnight"
+
+    entry = entries[0]
+
+    return (
+        entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE),
+        int(entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS)),
+        entry.data.get(CONF_DAY_BOUNDARY, DEFAULT_DAY_BOUNDARY),
+    )
 
 
 @callback
 def async_setup_services(hass: HomeAssistant) -> None:
-    """Set up the Jewish Calendar services."""
+    """Set up Hijri Calendar services."""
 
-    # def is_after_sunset(hass: HomeAssistant) -> bool:
-    #     """Determine if the current time is after sunset."""
-    #     now = dt_util.now()
-    #     today = now.date()
-    #     event_date = get_astral_event_date(hass, SUN_EVENT_SUNSET, today)
-    #     if event_date is None:
-    #         raise HomeAssistantError(
-    #             translation_domain=DOMAIN, translation_key="sunset_event"
-    #         )
-    #     sunset = dt_util.as_local(event_date)
-    #     _LOGGER.debug("Now: %s Sunset: %s", now, sunset)
-    #     return now > sunset
+    async def convert_to_hijri(call: ServiceCall) -> ServiceResponse:
+        """Convert a Gregorian date to Hijri."""
+        language, offset_days, day_boundary = _get_config_defaults(hass)
+        language = call.data.get(CONF_LANGUAGE, language)
 
-    # async def get_omer_count(call: ServiceCall) -> ServiceResponse:
-    #     """Return the Omer blessing for a given date."""
-    #     date = call.data.get(ATTR_DATE, dt_util.now().date())
-    #     after_sunset = (
-    #         call.data[ATTR_AFTER_SUNSET]
-    #         if ATTR_DATE in call.data
-    #         else is_after_sunset(hass)
-    #     )
-    #     hebrew_date = HebrewDate.from_gdate(
-    #         date + datetime.timedelta(days=int(after_sunset))
-    #     )
-    #     nusach = Nusach[call.data[ATTR_NUSACH].upper()]
-    #     # set_language(call.data[CONF_LANGUAGE])
-    #     omer = Omer(date=hebrew_date, nusach=nusach)
-    #     return {
-    #         "message": str(omer.count_str()),
-    #         "weeks": omer.week,
-    #         "days": omer.day,
-    #         "total_days": omer.total_days,
-    #     }
+        if ATTR_DATE in call.data:
+            gregorian_date = call.data[ATTR_DATE]
+        else:
+            gregorian_date = resolve_effective_gregorian_date(
+                hass, day_boundary, offset_days
+            )
 
-    # hass.services.async_register(
-    #     DOMAIN,
-    #     SERVICE_CALIBRATE_DATE,
-    #     calibrate_date,
-    #     schema=CALIBRATE_SCHEMA,
-    #     supports_response=SupportsResponse.OPTIONAL,
-    # )
+        hijri = gregorian_to_hijri(gregorian_date)
+        return format_hijri_dict(hijri, language)
 
-    # hass.services.async_register(
-    #     DOMAIN,
-    #     SERVICE_CONVERT_TO_HIJRI,
-    #     convert_to_hijri,
-    #     schema=CONVERT_SCHEMA,
-    #     supports_response=SupportsResponse.ONLY,
-    # )
+    async def convert_to_gregorian(call: ServiceCall) -> ServiceResponse:
+        """Convert a Hijri date to Gregorian."""
+        language, _, day_boundary = _get_config_defaults(hass)
+        language = call.data.get(CONF_LANGUAGE, language)
 
-    # hass.services.async_register(
-    #     DOMAIN,
-    #     SERVICE_CONVERT_TO_GREGORIAN,
-    #     convert_to_gregorian,
-    #     schema=CONVERT_SCHEMA,
-    #     supports_response=SupportsResponse.ONLY,
-    # )
+        if ATTR_DATE in call.data:
+            hijri = parse_hijri_date(call.data[ATTR_DATE])
+        else:
+            _, offset_days, _ = _get_config_defaults(hass)
+            effective = resolve_effective_gregorian_date(
+                hass, day_boundary, offset_days
+            )
+            hijri = gregorian_to_hijri(effective)
+
+        gregorian = hijri_to_gregorian(hijri)
+        return format_gregorian_dict(gregorian, language)
+
+    async def calibrate_date(call: ServiceCall) -> ServiceResponse:
+        """Return Hijri date for a Gregorian date with an optional offset."""
+        language, _, _ = _get_config_defaults(hass)
+        language = call.data.get(CONF_LANGUAGE, language)
+
+        input_date: dt.date = call.data.get(ATTR_DATE, dt_util.now().date())
+        offset: int = call.data.get(ATTR_OFFSET, DEFAULT_OFFSET_DAYS)
+        adjusted_date = input_date + dt.timedelta(days=offset)
+        hijri = gregorian_to_hijri(adjusted_date)
+
+        result = format_hijri_dict(hijri, language)
+        result["input_gregorian"] = input_date.isoformat()
+        result["adjusted_gregorian"] = adjusted_date.isoformat()
+        result["offset"] = offset
+        return result
+
+    if not hass.services.has_service(DOMAIN, SERVICE_CONVERT_TO_HIJRI):
+        hass.services.async_register(
+            DOMAIN,
+            SERVICE_CONVERT_TO_HIJRI,
+            convert_to_hijri,
+            schema=CONVERT_TO_HIJRI_SCHEMA,
+            supports_response=SupportsResponse.ONLY,
+        )
+
+    if not hass.services.has_service(DOMAIN, SERVICE_CONVERT_TO_GREGORIAN):
+        hass.services.async_register(
+            DOMAIN,
+            SERVICE_CONVERT_TO_GREGORIAN,
+            convert_to_gregorian,
+            schema=CONVERT_TO_GREGORIAN_SCHEMA,
+            supports_response=SupportsResponse.ONLY,
+        )
+
+    if not hass.services.has_service(DOMAIN, SERVICE_CALIBRATE_DATE):
+        hass.services.async_register(
+            DOMAIN,
+            SERVICE_CALIBRATE_DATE,
+            calibrate_date,
+            schema=CALIBRATE_SCHEMA,
+            supports_response=SupportsResponse.ONLY,
+        )

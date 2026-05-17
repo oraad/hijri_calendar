@@ -1,8 +1,8 @@
-"""Config flow for Jewish calendar integration."""
+"""Config flow for Hijri calendar integration."""
 
 from __future__ import annotations
 
-import logging
+from typing import Any
 
 import voluptuous as vol
 from homeassistant.config_entries import (
@@ -10,12 +10,65 @@ from homeassistant.config_entries import (
     ConfigFlowResult,
     OptionsFlowWithReload,
 )
-from homeassistant.helpers import selector
-from slugify import slugify
+from homeassistant.const import CONF_LANGUAGE
+from homeassistant.core import callback
+from homeassistant.helpers.selector import (
+    LanguageSelector,
+    LanguageSelectorConfig,
+    NumberSelector,
+    NumberSelectorConfig,
+    NumberSelectorMode,
+    SelectSelector,
+    SelectSelectorConfig,
+    SelectSelectorMode,
+)
 
-from .const import DOMAIN, LOGGER
+from .const import (
+    CONF_DAY_BOUNDARY,
+    CONF_OFFSET_DAYS,
+    DAY_BOUNDARY_MIDNIGHT,
+    DAY_BOUNDARY_SUNSET,
+    DEFAULT_DAY_BOUNDARY,
+    DEFAULT_LANGUAGE,
+    DEFAULT_NAME,
+    DEFAULT_OFFSET_DAYS,
+    DOMAIN,
+    SUPPORTED_LANGUAGES,
+)
+from .data import HijriCalendarConfigEntry
 
-_LOGGER = logging.getLogger(__name__)
+UNIQUE_ID = DOMAIN
+
+OPTIONS_SCHEMA = vol.Schema(
+    {
+        vol.Optional(CONF_OFFSET_DAYS, default=DEFAULT_OFFSET_DAYS): NumberSelector(
+            NumberSelectorConfig(
+                min=-30,
+                max=30,
+                mode=NumberSelectorMode.BOX,
+            ),
+        ),
+    }
+)
+
+
+def _config_schema() -> vol.Schema:
+    return vol.Schema(
+        {
+            vol.Required(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LanguageSelector(
+                LanguageSelectorConfig(languages=list(SUPPORTED_LANGUAGES)),
+            ),
+            vol.Required(
+                CONF_DAY_BOUNDARY, default=DEFAULT_DAY_BOUNDARY
+            ): SelectSelector(
+                SelectSelectorConfig(
+                    options=[DAY_BOUNDARY_MIDNIGHT, DAY_BOUNDARY_SUNSET],
+                    mode=SelectSelectorMode.DROPDOWN,
+                    translation_key="day_boundary",
+                ),
+            ),
+        }
+    )
 
 
 class HijriCalendarConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -23,198 +76,61 @@ class HijriCalendarConfigFlow(ConfigFlow, domain=DOMAIN):
 
     VERSION = 1
 
-    async def async_step_user(
-        self,
-        user_input: dict | None = None,
-    ) -> ConfigFlowResult:
-        """Handle a flow initialized by the user."""
-        _errors = {}
-        if user_input is not None:
-            try:
-                pass
-            except Exception as exception:
-                LOGGER.warning(exception)
-                _errors["base"] = "auth"
-            else:
-                await self.async_set_unique_id(
-                    ## Do NOT use this in production code
-                    ## The unique_id should never be something that can change
-                    ## https://developers.home-assistant.io/docs/config_entries_config_flow_handler#unique-ids
-                    unique_id=slugify(user_input[CONF_USERNAME])
-                )
-                self._abort_if_unique_id_configured()
-                return self.async_create_entry(
-                    title=user_input[CONF_USERNAME],
-                    data=user_input,
-                )
-
-        return self.async_show_form(
-            step_id="user",
-            data_schema=vol.Schema(
-                {
-                    vol.Required(
-                        CONF_USERNAME,
-                        default=(user_input or {}).get(CONF_USERNAME, vol.UNDEFINED),
-                    ): selector.TextSelector(
-                        selector.TextSelectorConfig(
-                            type=selector.TextSelectorType.TEXT,
-                        ),
-                    ),
-                    vol.Required(CONF_PASSWORD): selector.TextSelector(
-                        selector.TextSelectorConfig(
-                            type=selector.TextSelectorType.PASSWORD,
-                        ),
-                    ),
-                },
-            ),
-            errors=_errors,
-        )
-
-
-
-#  #############################################
-
-from __future__ import annotations
-
-import logging
-from typing import Any, get_args
-import zoneinfo
-
-from hdate.translator import Language
-import voluptuous as vol
-
-from homeassistant.config_entries import (
-    ConfigFlow,
-    ConfigFlowResult,
-    OptionsFlowWithReload,
-)
-from homeassistant.const import (
-    CONF_ELEVATION,
-    CONF_LANGUAGE,
-    CONF_LATITUDE,
-    CONF_LOCATION,
-    CONF_LONGITUDE,
-    CONF_TIME_ZONE,
-)
-from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.selector import (
-    BooleanSelector,
-    LanguageSelector,
-    LanguageSelectorConfig,
-    LocationSelector,
-    SelectSelector,
-    SelectSelectorConfig,
-)
-
-from .const import (
-    CONF_CANDLE_LIGHT_MINUTES,
-    CONF_DIASPORA,
-    CONF_HAVDALAH_OFFSET_MINUTES,
-    DEFAULT_CANDLE_LIGHT,
-    DEFAULT_DIASPORA,
-    DEFAULT_HAVDALAH_OFFSET_MINUTES,
-    DEFAULT_LANGUAGE,
-    DEFAULT_NAME,
-    DOMAIN,
-)
-from .entity import JewishCalendarConfigEntry
-
-OPTIONS_SCHEMA = vol.Schema(
-    {
-        vol.Optional(CONF_CANDLE_LIGHT_MINUTES, default=DEFAULT_CANDLE_LIGHT): int,
-        vol.Optional(
-            CONF_HAVDALAH_OFFSET_MINUTES, default=DEFAULT_HAVDALAH_OFFSET_MINUTES
-        ): int,
-    }
-)
-
-
-_LOGGER = logging.getLogger(__name__)
-
-
-async def _get_data_schema(hass: HomeAssistant) -> vol.Schema:
-    default_location = {
-        CONF_LATITUDE: hass.config.latitude,
-        CONF_LONGITUDE: hass.config.longitude,
-    }
-    get_timezones: list[str] = list(
-        await hass.async_add_executor_job(zoneinfo.available_timezones)
-    )
-    return vol.Schema(
-        {
-            vol.Required(CONF_DIASPORA, default=DEFAULT_DIASPORA): BooleanSelector(),
-            vol.Required(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LanguageSelector(
-                LanguageSelectorConfig(languages=list(get_args(Language)))
-            ),
-            vol.Optional(CONF_LOCATION, default=default_location): LocationSelector(),
-            vol.Optional(CONF_ELEVATION, default=hass.config.elevation): int,
-            vol.Optional(CONF_TIME_ZONE, default=hass.config.time_zone): SelectSelector(
-                SelectSelectorConfig(options=get_timezones, sort=True)
-            ),
-        }
-    )
-
-
-class JewishCalendarConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Jewish calendar."""
-
-    VERSION = 3
-
     @staticmethod
     @callback
     def async_get_options_flow(
-        config_entry: JewishCalendarConfigEntry,
-    ) -> JewishCalendarOptionsFlowHandler:
-        """Get the options flow for this handler."""
-        return JewishCalendarOptionsFlowHandler()
+        config_entry: HijriCalendarConfigEntry,
+    ) -> HijriCalendarOptionsFlowHandler:
+        """Return the options flow handler."""
+        return HijriCalendarOptionsFlowHandler()
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
         """Handle the initial step."""
         if user_input is not None:
-            if CONF_LOCATION in user_input:
-                user_input[CONF_LATITUDE] = user_input[CONF_LOCATION][CONF_LATITUDE]
-                user_input[CONF_LONGITUDE] = user_input[CONF_LOCATION][CONF_LONGITUDE]
+            await self.async_set_unique_id(UNIQUE_ID)
+            self._abort_if_unique_id_configured()
             return self.async_create_entry(title=DEFAULT_NAME, data=user_input)
 
         return self.async_show_form(
             step_id="user",
             data_schema=self.add_suggested_values_to_schema(
-                await _get_data_schema(self.hass), user_input
+                _config_schema(), user_input
             ),
         )
 
     async def async_step_reconfigure(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
-        """Handle a reconfiguration flow initialized by the user."""
+        """Handle reconfiguration of the integration."""
         reconfigure_entry = self._get_reconfigure_entry()
         if not user_input:
             return self.async_show_form(
+                step_id="reconfigure",
                 data_schema=self.add_suggested_values_to_schema(
-                    await _get_data_schema(self.hass),
+                    _config_schema(),
                     reconfigure_entry.data,
                 ),
-                step_id="reconfigure",
             )
 
         return self.async_update_reload_and_abort(reconfigure_entry, data=user_input)
 
 
-class JewishCalendarOptionsFlowHandler(OptionsFlowWithReload):
-    """Handle Jewish Calendar options."""
+class HijriCalendarOptionsFlowHandler(OptionsFlowWithReload):
+    """Handle Hijri Calendar options."""
 
     async def async_step_init(
-        self, user_input: dict[str, str] | None = None
+        self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
-        """Manage the Jewish Calendar options."""
+        """Manage Hijri Calendar options."""
         if user_input is not None:
             return self.async_create_entry(data=user_input)
 
         return self.async_show_form(
             step_id="init",
             data_schema=self.add_suggested_values_to_schema(
-                OPTIONS_SCHEMA, self.config_entry.options
+                OPTIONS_SCHEMA,
+                self.config_entry.options,
             ),
         )

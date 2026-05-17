@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- Calendar body (dark UI) -->
+  <rect x="44" y="52" width="168" height="168" rx="20" ry="20" fill="#2D3A44" stroke="#E8EDF2" stroke-width="6"/>
+  <!-- Header -->
+  <path d="M 50 58 L 206 58 Q 212 58 212 64 L 212 88 L 44 88 L 44 64 Q 44 58 50 58 Z" fill="#0E7C86" stroke="#E8EDF2" stroke-width="6" stroke-linejoin="round"/>
+  <!-- Binding rings -->
+  <rect x="72" y="40" width="14" height="28" rx="7" fill="#E8EDF2"/>
+  <rect x="121" y="40" width="14" height="28" rx="7" fill="#E8EDF2"/>
+  <rect x="170" y="40" width="14" height="28" rx="7" fill="#E8EDF2"/>
+  <!-- Crescent -->
+  <circle cx="112" cy="148" r="34" fill="#0E7C86"/>
+  <circle cx="126" cy="148" r="28" fill="#2D3A44"/>
+  <!-- Star beside crescent -->
+  <polygon points="158,132 163,146 178,146 166,155 171,170 158,161 145,170 150,155 138,146 153,146" fill="#D4A84B"/>
+  <!-- Date dots -->
+  <circle cx="76" cy="196" r="7" fill="#0E7C86" opacity="0.55"/>
+  <circle cx="108" cy="196" r="7" fill="#0E7C86" opacity="0.55"/>
+  <circle cx="140" cy="196" r="7" fill="#0E7C86" opacity="0.55"/>
+  <circle cx="172" cy="196" r="7" fill="#0E7C86" opacity="0.55"/>
+</svg>

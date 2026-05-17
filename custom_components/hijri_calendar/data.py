@@ -1,23 +1,28 @@
-"""Custom types for hijri_calendar."""
+"""Data classes for hijri_calendar."""
 
 from __future__ import annotations
 
+import datetime as dt
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from hijridate import Hijri
+
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
-    from homeassistant.loader import Integration
 
-    from .coordinator import HijriCalendarDataUpdateCoordinator
-
-
-type HijriCalendarConfigEntry = ConfigEntry[HijriCalendarData]
+    from .coordinator import HijriCalendarUpdateCoordinator
 
 
-@dataclass
+type HijriCalendarConfigEntry = ConfigEntry[HijriCalendarUpdateCoordinator]
+
+
+@dataclass(frozen=True)
 class HijriCalendarData:
-    """Data for the Blueprint integration."""
+    """Runtime data computed by the coordinator."""
 
-    coordinator: HijriCalendarDataUpdateCoordinator
-    integration: Integration
+    language: str
+    day_boundary: str
+    offset_days: int
+    gregorian_date: dt.date
+    hijri: Hijri
