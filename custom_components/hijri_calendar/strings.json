@@ -70,6 +70,11 @@
         "name": "Days in Hijri year"
       }
     },
+    "calendar": {
+      "hijri_events": {
+        "name": "Hijri observances"
+      }
+    },
     "binary_sensor": {
       "ramadan": {
         "name": "Ramadan"

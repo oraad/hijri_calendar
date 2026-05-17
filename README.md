@@ -9,6 +9,7 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 
 - **Sensors**: current Hijri date (with attributes), active holidays, days in month/year
 - **Binary sensors**: Ramadan, Eid al-Fitr, Eid al-Adha, Hajj season
+- **Calendar**: all-day Hijri observances on the Gregorian calendar (Ramadan span, Hajj season, Eids, Ashura, Mawlid, and other holidays from the integration)
 - **Services**: convert between Hijri and Gregorian, calibrate with a day offset
 - **Options**: configurable day offset for local moon-sighting differences
 - **Day boundary**: roll the Hijri day at local midnight (default) or after sunset
@@ -66,11 +67,21 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 | Entity | Description |
 |--------|-------------|
 | `sensor.hijri_date` | Today's Hijri date (ISO state; attributes include `formatted`, `formatted_eastern`, names) |
-| `sensor.holiday` | Active holidays (localized state and `types` attribute per config language; `ids` keeps machine keys for automations) |
+| `sensor.holiday` | Primary active holiday id (`none`, `ramadan`, …; UI label via entity translations). Use `ids`, `names`, and `types` when multiple holidays apply |
 | `binary_sensor.ramadan` | On during Ramadan |
 | `binary_sensor.eid_al_fitr` | On on 1 Shawwal |
 | `binary_sensor.eid_al_adha` | On on 10 Dhul Hijjah |
 | `binary_sensor.hajj_season` | On during Hajj days 8–13 |
+| `calendar.hijri_events` | All-day observances for the requested range (Ramadan and Hajj season as merged spans; individual days for Eids and other holidays) |
+
+### Calendar
+
+The **Hijri observances** calendar appears in **Settings → Devices & services → Calendar**, the Calendar dashboard, and `calendar.get_events` automations. Events use the same Umm al-Qura rules, **day offset**, and **language** as the sensors.
+
+- **Ramadan** and **Hajj season** show as single multi-day all-day entries.
+- Other holidays (Eid al-Fitr, Eid al-Adha, Ashura, Mawlid, Day of Arafah, etc.) appear on their mapped Gregorian days.
+- **Day offset** in integration options shifts all future calendar dates the same way as the sensors (reload the integration or wait for the next coordinator refresh after changing options).
+- **Sunset boundary**: the calendar resolves each Gregorian day at **local midnight** for mapping. Evening transitions on the sunset boundary may differ slightly from binary sensors that flip at sunset; use sensors for same-day sunset behavior.
 
 ## Services
 

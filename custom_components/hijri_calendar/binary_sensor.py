@@ -9,7 +9,6 @@ from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
     BinarySensorEntityDescription,
 )
-from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
@@ -80,7 +79,7 @@ async def async_setup_entry(
 class HijriCalendarBinarySensor(HijriCalendarSunsetEntity, BinarySensorEntity):
     """Representation of a Hijri calendar binary sensor."""
 
-    _attr_entity_category = EntityCategory.DIAGNOSTIC
+    _attr_entity_category = None
     entity_description: HijriCalendarBinarySensorDescription
 
     @property

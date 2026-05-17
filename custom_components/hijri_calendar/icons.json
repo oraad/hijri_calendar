@@ -8,6 +8,11 @@
         "default": "mdi:star-crescent"
       }
     },
+    "calendar": {
+      "hijri_events": {
+        "default": "mdi:calendar-star"
+      }
+    },
     "binary_sensor": {
       "ramadan": {
         "default": "mdi:moon-waning-crescent"
