@@ -7,8 +7,8 @@
   "integration_type": "service",
   "iot_class": "calculated",
   "issue_tracker": "https://github.com/oraad/hijri_calendar/issues",
-  "logger": ["hijridate"],
+  "loggers": ["hijridate"],
   "requirements": ["hijridate==2.6.0"],
   "single_config_entry": true,
-  "version": "0.1.0"
+  "version": "0.1.0-beta.1"
 }

@@ -56,13 +56,11 @@
           "eid_al_adha": "Kurban Bayramı",
           "hajj": "Hac",
           "ashura": "Aşure",
-          "mawlid": "Mevlid"
-        },
-        "types": {
-          "ramadan": "Ramazan",
-          "eid": "Bayram",
-          "hajj": "Hac",
-          "other": "Diğer"
+          "mawlid": "Mevlid",
+          "type_ramadan": "Ramazan",
+          "type_eid": "Bayram",
+          "type_hajj": "Hac",
+          "type_other": "Diğer"
         }
       },
       "days_in_month": {

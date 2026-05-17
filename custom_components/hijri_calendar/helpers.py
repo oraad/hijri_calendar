@@ -67,9 +67,7 @@ def format_hijri_dict(hijri: Hijri, language: HijriLanguage) -> dict[str, str | 
         "day_name": hijri.day_name(language),
         "notation": Hijri.notation(language),
         "formatted": format_hijri_display(hijri, language, eastern_digits=False),
-        "formatted_eastern": format_hijri_display(
-            hijri, language, eastern_digits=True
-        ),
+        "formatted_eastern": format_hijri_display(hijri, language, eastern_digits=True),
     }
 
 
