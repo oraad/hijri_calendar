@@ -13,9 +13,15 @@ from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
+from .const import HijriLanguage
 from .data import HijriCalendarConfigEntry, HijriCalendarData
 from .entity import HijriCalendarSunsetEntity
-from .holidays import get_holidays
+from .holidays import HOLIDAY_NONE, get_holidays
+from .locale import (
+    format_hijri_display,
+    holiday_display_name,
+    holiday_type_display_name,
+)
 
 PARALLEL_UPDATES = 0
 
@@ -24,7 +30,7 @@ PARALLEL_UPDATES = 0
 class HijriCalendarSensorDescription(SensorEntityDescription):
     """Description for a Hijri calendar sensor."""
 
-    value_fn: Callable[[HijriCalendarData], str | int]
+    value_fn: Callable[[HijriCalendarData], str | int] | None = None
     attr_fn: Callable[[HijriCalendarData], dict[str, str | int]] | None = None
 
 
@@ -41,22 +47,18 @@ INFO_SENSORS: tuple[HijriCalendarSensorDescription, ...] = (
             "month_name": data.hijri.month_name(data.language),
             "day_name": data.hijri.day_name(data.language),
             "gregorian_date": data.gregorian_date.isoformat(),
+            "formatted": format_hijri_display(
+                data.hijri, data.language, eastern_digits=False
+            ),
+            "formatted_eastern": format_hijri_display(
+                data.hijri, data.language, eastern_digits=True
+            ),
         },
     ),
     HijriCalendarSensorDescription(
         key="holiday",
         translation_key="holiday",
         icon="mdi:star-crescent",
-        value_fn=lambda data: ", ".join(
-            holiday.id for holiday in get_holidays(data.hijri)
-        )
-        or "none",
-        attr_fn=lambda data: {
-            "ids": ", ".join(holiday.id for holiday in get_holidays(data.hijri)),
-            "types": ", ".join(
-                dict.fromkeys(holiday.type for holiday in get_holidays(data.hijri))
-            ),
-        },
     ),
     HijriCalendarSensorDescription(
         key="days_in_month",
@@ -93,11 +95,39 @@ class HijriCalendarSensor(HijriCalendarSunsetEntity, SensorEntity):
     @property
     def native_value(self) -> str | int:
         """Return the state of the sensor."""
-        return self.entity_description.value_fn(self.coordinator.data)
+        data = self.coordinator.data
+        language: HijriLanguage = data.language  # type: ignore[assignment]
+
+        if self.entity_description.key == "holiday":
+            holidays = get_holidays(data.hijri)
+            if not holidays:
+                return holiday_display_name(self.hass, HOLIDAY_NONE, language)
+            return ", ".join(
+                holiday_display_name(self.hass, holiday.id, language)
+                for holiday in holidays
+            )
+
+        assert self.entity_description.value_fn is not None
+        return self.entity_description.value_fn(data)
 
     @property
     def extra_state_attributes(self) -> dict[str, str | int]:
         """Return state attributes."""
+        data = self.coordinator.data
+        language: HijriLanguage = data.language  # type: ignore[assignment]
+
+        if self.entity_description.key == "holiday":
+            holidays = get_holidays(data.hijri)
+            return {
+                "ids": ", ".join(holiday.id for holiday in holidays),
+                "types": ", ".join(
+                    holiday_type_display_name(self.hass, holiday_type, language)
+                    for holiday_type in dict.fromkeys(
+                        holiday.type for holiday in holidays
+                    )
+                ),
+            }
+
         if self.entity_description.attr_fn is None:
             return {}
-        return self.entity_description.attr_fn(self.coordinator.data)
+        return self.entity_description.attr_fn(data)

@@ -44,6 +44,9 @@ def test_format_hijri_dict() -> None:
     assert result["hijri"] == "1446-01-01"
     assert result["month_name"] == hijri.month_name("en")
     assert "notation" in result
+    assert "formatted" in result
+    assert "formatted_eastern" in result
+    assert "١" in result["formatted_eastern"]
 
 
 def test_parse_invalid_hijri_date() -> None:

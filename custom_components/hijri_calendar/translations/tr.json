@@ -1,0 +1,98 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Hicri Takvim kurulumu",
+        "description": "Dil ve Hicri günün ne zaman başlayacağını seçin.",
+        "data": {
+          "language": "Dil",
+          "day_boundary": "Gün başlangıcı"
+        }
+      },
+      "reconfigure": {
+        "title": "Hicri Takvimi yeniden yapılandır",
+        "data": {
+          "language": "Dil",
+          "day_boundary": "Gün başlangıcı"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Hicri Takvim zaten yapılandırılmış."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Hicri Takvim seçenekleri",
+        "data": {
+          "offset_days": "Gün kayması"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "Yerel gece yarısı",
+        "sunset": "Gün batımından sonra"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "Hicri tarih"
+      },
+      "holiday": {
+        "name": "Bayram",
+        "state": {
+          "none": "Yok",
+          "ramadan": "Ramazan",
+          "last_day_of_ramadan": "Ramazan'ın son günü",
+          "eid_al_fitr_eve": "Ramazan Bayramı arifesi",
+          "eid_al_fitr": "Ramazan Bayramı",
+          "day_of_arafah": "Arefe Günü",
+          "eid_al_adha": "Kurban Bayramı",
+          "hajj": "Hac",
+          "ashura": "Aşure",
+          "mawlid": "Mevlid"
+        },
+        "types": {
+          "ramadan": "Ramazan",
+          "eid": "Bayram",
+          "hajj": "Hac",
+          "other": "Diğer"
+        }
+      },
+      "days_in_month": {
+        "name": "Hicri ay gün sayısı"
+      },
+      "days_in_year": {
+        "name": "Hicri yıl gün sayısı"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "Ramazan"
+      },
+      "eid_al_fitr": {
+        "name": "Ramazan Bayramı"
+      },
+      "eid_al_adha": {
+        "name": "Kurban Bayramı"
+      },
+      "hajj_season": {
+        "name": "Hac mevsimi"
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "Tarih desteklenen Ümmü'l-Kura aralığının dışında."
+    },
+    "sunset_unavailable": {
+      "message": "Gün batımı hesaplanamadı. Home Assistant konum ayarlarını kontrol edin."
+    }
+  }
+}

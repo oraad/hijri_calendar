@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from homeassistant.const import Platform
+from homeassistant.const import CONF_LANGUAGE, Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers import config_validation as cv, translation
 
-from .const import DOMAIN
+from .const import DEFAULT_LANGUAGE, DOMAIN
 from .coordinator import HijriCalendarUpdateCoordinator
 from .services import async_setup_services
 
@@ -38,6 +38,11 @@ async def async_setup_entry(
     config_entry: HijriCalendarConfigEntry,
 ) -> bool:
     """Set up Hijri Calendar from a config entry."""
+    language = config_entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)
+    await translation.async_get_translations(
+        hass, language, "entity", integrations=[DOMAIN]
+    )
+
     coordinator = HijriCalendarUpdateCoordinator(hass, config_entry)
     await coordinator.async_config_entry_first_refresh()
 
