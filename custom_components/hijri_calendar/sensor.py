@@ -107,8 +107,11 @@ class HijriCalendarSensor(HijriCalendarSunsetEntity, SensorEntity):
                 for holiday in holidays
             )
 
-        assert self.entity_description.value_fn is not None
-        return self.entity_description.value_fn(data)
+        value_fn = self.entity_description.value_fn
+        if value_fn is None:
+            msg = f"Sensor {self.entity_description.key} has no value_fn"
+            raise RuntimeError(msg)
+        return value_fn(data)
 
     @property
     def extra_state_attributes(self) -> dict[str, str | int]:

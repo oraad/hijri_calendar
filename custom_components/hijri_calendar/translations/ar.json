@@ -56,13 +56,11 @@
           "eid_al_adha": "عيد الأضحى",
           "hajj": "الحج",
           "ashura": "عاشوراء",
-          "mawlid": "المولد النبوي"
-        },
-        "types": {
-          "ramadan": "رمضان",
-          "eid": "عيد",
-          "hajj": "حج",
-          "other": "مناسبة أخرى"
+          "mawlid": "المولد النبوي",
+          "type_ramadan": "رمضان",
+          "type_eid": "عيد",
+          "type_hajj": "حج",
+          "type_other": "مناسبة أخرى"
         }
       },
       "days_in_month": {
