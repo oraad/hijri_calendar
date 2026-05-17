@@ -17,6 +17,7 @@ from .const import (
     DOMAIN,
     HijriLanguage,
 )
+from .locale import format_hijri_display
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -65,6 +66,10 @@ def format_hijri_dict(hijri: Hijri, language: HijriLanguage) -> dict[str, str | 
         "month_name": hijri.month_name(language),
         "day_name": hijri.day_name(language),
         "notation": Hijri.notation(language),
+        "formatted": format_hijri_display(hijri, language, eastern_digits=False),
+        "formatted_eastern": format_hijri_display(
+            hijri, language, eastern_digits=True
+        ),
     }
 
 

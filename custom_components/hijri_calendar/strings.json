@@ -45,7 +45,25 @@
         "name": "Hijri date"
       },
       "holiday": {
-        "name": "Holiday"
+        "name": "Holiday",
+        "state": {
+          "none": "None",
+          "ramadan": "Ramadan",
+          "last_day_of_ramadan": "Last day of Ramadan",
+          "eid_al_fitr_eve": "Eid al-Fitr eve",
+          "eid_al_fitr": "Eid al-Fitr",
+          "day_of_arafah": "Day of Arafah",
+          "eid_al_adha": "Eid al-Adha",
+          "hajj": "Hajj",
+          "ashura": "Ashura",
+          "mawlid": "Mawlid"
+        },
+        "types": {
+          "ramadan": "Ramadan",
+          "eid": "Eid",
+          "hajj": "Hajj",
+          "other": "Other observance"
+        }
       },
       "days_in_month": {
         "name": "Days in Hijri month"

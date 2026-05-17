@@ -49,8 +49,13 @@ Copy `custom_components/hijri_calendar` into your Home Assistant `custom_compone
 1. Go to **Settings → Devices & services → Add integration**.
 2. Search for **Hijri Calendar**.
 3. Choose:
-   - **Language** for month/day names (`en`, `ar`, `tr`)
+   - **Language** (`en`, `ar`, `tr`) for month/day names, holiday names, and formatted date text
    - **Day boundary**: local midnight or after sunset
+
+The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. For display, use attributes:
+
+- `formatted` — localized date with Western digits (e.g. `15 Shawwal 1446 AH` or `15 شوال 1446 هـ`)
+- `formatted_eastern` — same text with Eastern Arabic numerals (e.g. `١٥ شوال ١٤٤٦ هـ`)
 
 ### Options
 
@@ -60,8 +65,8 @@ Copy `custom_components/hijri_calendar` into your Home Assistant `custom_compone
 
 | Entity | Description |
 |--------|-------------|
-| `sensor.hijri_date` | Today's Hijri date (ISO) with year, month, day, names |
-| `sensor.holiday` | Active holidays (comma-separated ids) |
+| `sensor.hijri_date` | Today's Hijri date (ISO state; attributes include `formatted`, `formatted_eastern`, names) |
+| `sensor.holiday` | Active holidays (localized state and `types` attribute per config language; `ids` keeps machine keys for automations) |
 | `binary_sensor.ramadan` | On during Ramadan |
 | `binary_sensor.eid_al_fitr` | On on 1 Shawwal |
 | `binary_sensor.eid_al_adha` | On on 10 Dhul Hijjah |
