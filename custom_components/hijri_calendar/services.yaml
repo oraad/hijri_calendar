@@ -1,0 +1,59 @@
+calibrate_date:
+  fields:
+    date:
+      required: false
+      example: "2025-04-14"
+      selector:
+        date:
+    offset:
+      required: false
+      example: 0
+      default: 0
+      selector:
+        number:
+    language:
+      required: false
+      default: "en"
+      example: "en"
+      selector:
+        language:
+          languages:
+            - "en"
+            - "ar"
+            - "tr"
+
+convert_to_hijri:
+  fields:
+    date:
+      required: false
+      example: "2025-04-14"
+      selector:
+        date:
+    language:
+      required: false
+      default: "en"
+      example: "en"
+      selector:
+        language:
+          languages:
+            - "en"
+            - "ar"
+            - "tr"
+
+convert_to_gregorian:
+  fields:
+    date:
+      required: false
+      example: "2025-04-14"
+      selector:
+        date:
+    language:
+      required: false
+      default: "en"
+      example: "en"
+      selector:
+        language:
+          languages:
+            - "en"
+            - "ar"
+            - "tr"

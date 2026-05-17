@@ -1,0 +1,98 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "إعداد التقويم الهجري",
+        "description": "اختر اللغة ووقت بداية اليوم الهجري.",
+        "data": {
+          "language": "اللغة",
+          "day_boundary": "بداية اليوم"
+        }
+      },
+      "reconfigure": {
+        "title": "إعادة إعداد التقويم الهجري",
+        "data": {
+          "language": "اللغة",
+          "day_boundary": "بداية اليوم"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "التقويم الهجري مُعدّ مسبقاً."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "خيارات التقويم الهجري",
+        "data": {
+          "offset_days": "إزاحة الأيام"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "منتصف الليل المحلي",
+        "sunset": "بعد الغروب"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "التاريخ الهجري"
+      },
+      "holiday": {
+        "name": "العيد",
+        "state": {
+          "none": "لا يوجد",
+          "ramadan": "رمضان",
+          "last_day_of_ramadan": "آخر يوم من رمضان",
+          "eid_al_fitr_eve": "ليلة عيد الفطر",
+          "eid_al_fitr": "عيد الفطر",
+          "day_of_arafah": "يوم عرفة",
+          "eid_al_adha": "عيد الأضحى",
+          "hajj": "الحج",
+          "ashura": "عاشوراء",
+          "mawlid": "المولد النبوي"
+        },
+        "types": {
+          "ramadan": "رمضان",
+          "eid": "عيد",
+          "hajj": "حج",
+          "other": "مناسبة أخرى"
+        }
+      },
+      "days_in_month": {
+        "name": "أيام الشهر الهجري"
+      },
+      "days_in_year": {
+        "name": "أيام السنة الهجرية"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "رمضان"
+      },
+      "eid_al_fitr": {
+        "name": "عيد الفطر"
+      },
+      "eid_al_adha": {
+        "name": "عيد الأضحى"
+      },
+      "hajj_season": {
+        "name": "موسم الحج"
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "التاريخ خارج النطاق المدعوم لتقويم أم القرى."
+    },
+    "sunset_unavailable": {
+      "message": "تعذّر حساب وقت الغروب. تحقق من إعدادات الموقع في Home Assistant."
+    }
+  }
+}

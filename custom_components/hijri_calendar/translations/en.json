@@ -1,0 +1,98 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Hijri Calendar",
+        "description": "Configure language and when the Hijri day changes.",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure Hijri Calendar",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Hijri Calendar is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Hijri Calendar options",
+        "data": {
+          "offset_days": "Day offset"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "Local midnight",
+        "sunset": "After sunset"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "Hijri date"
+      },
+      "holiday": {
+        "name": "Holiday",
+        "state": {
+          "none": "None",
+          "ramadan": "Ramadan",
+          "last_day_of_ramadan": "Last day of Ramadan",
+          "eid_al_fitr_eve": "Eid al-Fitr eve",
+          "eid_al_fitr": "Eid al-Fitr",
+          "day_of_arafah": "Day of Arafah",
+          "eid_al_adha": "Eid al-Adha",
+          "hajj": "Hajj",
+          "ashura": "Ashura",
+          "mawlid": "Mawlid"
+        },
+        "types": {
+          "ramadan": "Ramadan",
+          "eid": "Eid",
+          "hajj": "Hajj",
+          "other": "Other observance"
+        }
+      },
+      "days_in_month": {
+        "name": "Days in Hijri month"
+      },
+      "days_in_year": {
+        "name": "Days in Hijri year"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "Ramadan"
+      },
+      "eid_al_fitr": {
+        "name": "Eid al-Fitr"
+      },
+      "eid_al_adha": {
+        "name": "Eid al-Adha"
+      },
+      "hajj_season": {
+        "name": "Hajj season"
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "The date is outside the supported Umm al-Qura range."
+    },
+    "sunset_unavailable": {
+      "message": "Sunset could not be calculated. Check Home Assistant location settings."
+    }
+  }
+}
