@@ -98,6 +98,13 @@ class HijriCalendarUpdateCoordinator(DataUpdateCoordinator[HijriCalendarData]):
             hijri=hijri,
         )
 
+    async def async_shutdown(self) -> None:
+        """Cancel sunset timer before base shutdown clears midnight refresh."""
+        if self._unsub_sunset:
+            self._unsub_sunset()
+            self._unsub_sunset = None
+        await super().async_shutdown()
+
     @callback
     def _handle_scheduled_update(self, _now: dt.datetime) -> None:
         """Handle scheduled refresh at midnight or sunset."""
