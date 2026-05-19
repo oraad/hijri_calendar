@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from functools import partial
 from typing import TYPE_CHECKING
 
 from hijridate import Gregorian, Hijri
@@ -82,11 +83,13 @@ async def async_resolve_effective_gregorian_date(
 ) -> dt.date:
     """Resolve effective Gregorian date without blocking the event loop."""
     return await hass.async_add_executor_job(
-        resolve_effective_gregorian_date,
-        hass,
-        day_boundary,
-        offset_days,
-        reference=reference,
+        partial(
+            resolve_effective_gregorian_date,
+            hass,
+            day_boundary,
+            offset_days,
+            reference=reference,
+        )
     )
 
 
@@ -162,11 +165,13 @@ async def async_compute_offset_for_hijri_today(
 ) -> int:
     """Compute offset for target Hijri today without blocking the event loop."""
     return await hass.async_add_executor_job(
-        compute_offset_for_hijri_today,
-        hass,
-        day_boundary,
-        target_hijri,
-        reference=reference,
+        partial(
+            compute_offset_for_hijri_today,
+            hass,
+            day_boundary,
+            target_hijri,
+            reference=reference,
+        )
     )
 
 
