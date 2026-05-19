@@ -1,0 +1,61 @@
+blueprint:
+  name: Hijri Calendar – Calibrate offset helper
+  description: >
+    Press the selected input button to run calibrate_date and notify the result.
+    Save the offset with hijri_calendar.set_day_offset or integration options.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/calibrate_offset_helper.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    run_button:
+      name: Input button that runs calibration
+      selector:
+        entity:
+          domain: input_button
+    notify_service:
+      name: Notification service
+      selector:
+        text:
+    gregorian_date:
+      name: Gregorian date to test
+      selector:
+        date:
+    offset:
+      name: Day offset to try
+      default: 0
+      selector:
+        number:
+          min: -30
+          max: 30
+          mode: box
+    language:
+      name: Language
+      default: en
+      selector:
+        language:
+          languages:
+            - en
+            - ar
+            - tr
+
+trigger:
+  - platform: state
+    entity_id: !input run_button
+
+action:
+  - service: hijri_calendar.calibrate_date
+    data:
+      date: !input gregorian_date
+      offset: !input offset
+      language: !input language
+    response_variable: calibrate_result
+  - service: "{{ notify_service }}"
+    data:
+      message: >
+        Offset {{ calibrate_result.offset }}: {{ calibrate_result.hijri }}
+        (Gregorian {{ calibrate_result.adjusted_gregorian }}).
+        Use service hijri_calendar.set_day_offset to save.
+
+mode: single

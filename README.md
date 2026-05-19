@@ -7,10 +7,10 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 
 ## Features
 
-- **Sensors**: current Hijri date (with attributes), active holidays, days in month/year
+- **Sensors**: current Hijri date (with attributes), active holidays, days in month/year, days until Ramadan/Eid (disabled by default)
 - **Binary sensors**: Ramadan, Eid al-Fitr, Eid al-Adha, Hajj season
 - **Calendar**: all-day Hijri observances on the Gregorian calendar (Ramadan span, Hajj season, Eids, Ashura, Mawlid, and other holidays from the integration)
-- **Services**: convert between Hijri and Gregorian, calibrate with a day offset
+- **Services**: convert between Hijri and Gregorian, calibrate with a day offset, apply day offset to options
 - **Options**: configurable day offset for local moon-sighting differences
 - **Day boundary**: roll the Hijri day at local midnight (default) or after sunset
 
@@ -41,6 +41,8 @@ If the buttons above do not work (for example, without [My Home Assistant](https
 2. Add repository URL `https://github.com/oraad/hijri_calendar` with category **Integration**.
 3. Install **Hijri Calendar**, restart Home Assistant, then add the integration.
 
+HACS installs from published **GitHub releases** (`hijri_calendar.zip`), not the default branch. Enable **Show beta versions** in HACS settings to see pre-releases such as `v0.1.0-beta.x`.
+
 ### Manual
 
 Copy `custom_components/hijri_calendar` into your Home Assistant `custom_components` folder and restart Home Assistant.
@@ -68,6 +70,8 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 |--------|-------------|
 | `sensor.hijri_date` | Today's Hijri date (ISO state; attributes include `formatted`, `formatted_eastern`, names) |
 | `sensor.holiday` | Primary active holiday id (`none`, `ramadan`, …; UI label via entity translations). Use `ids`, `names`, and `types` when multiple holidays apply |
+| `sensor.days_until_ramadan` | Days until 1 Ramadan (disabled by default) |
+| `sensor.days_until_eid_al_fitr` | Days until 1 Shawwal / Eid al-Fitr (disabled by default) |
 | `binary_sensor.ramadan` | On during Ramadan |
 | `binary_sensor.eid_al_fitr` | On on 1 Shawwal |
 | `binary_sensor.eid_al_adha` | On on 10 Dhul Hijjah |
@@ -81,7 +85,50 @@ The **Hijri observances** calendar appears in **Settings → Devices & services 
 - **Ramadan** and **Hajj season** show as single multi-day all-day entries.
 - Other holidays (Eid al-Fitr, Eid al-Adha, Ashura, Mawlid, Day of Arafah, etc.) appear on their mapped Gregorian days.
 - **Day offset** in integration options shifts all future calendar dates the same way as the sensors (reload the integration or wait for the next coordinator refresh after changing options).
-- **Sunset boundary**: the calendar resolves each Gregorian day at **local midnight** for mapping. Evening transitions on the sunset boundary may differ slightly from binary sensors that flip at sunset; use sensors for same-day sunset behavior.
+- **Day boundary**: the calendar uses the same **day boundary** and **day offset** as the sensors when mapping each Gregorian day to Hijri observances.
+
+## Data updates
+
+This integration does not poll. A coordinator refreshes data:
+
+- At **local midnight** every day (always).
+- At **sunset** as well when **Day boundary** is set to *After sunset*.
+
+Changing **Day offset** in options reloads the integration automatically. Entity-specific timers may also refresh state at midnight or sunset.
+
+Domain services (`convert_to_hijri`, etc.) are registered once at startup and remain available while Home Assistant is running.
+
+## Use cases
+
+- Show today’s Hijri date on a dashboard using the `formatted` attribute on the Hijri date sensor.
+- Automate lights, scenes, or notifications when `binary_sensor.ramadan` turns on or when the holiday sensor becomes an Eid.
+- Align dates with a local moon-sighting announcement using **Day offset** and the `calibrate_date` service.
+- Feed `calendar.hijri_events` into the Calendar dashboard or `calendar.get_events` automations.
+- Convert arbitrary dates in scripts via `convert_to_hijri` and `convert_to_gregorian`.
+
+## Examples
+
+Ready-made automations are in [`blueprints/automation/`](blueprints/automation/). See [`blueprints/README.md`](blueprints/README.md) for how to import them.
+
+| Blueprint | Purpose |
+|-----------|---------|
+| [ramadan_mode.yaml](blueprints/automation/hijri_calendar/ramadan_mode.yaml) | Scene or notify when Ramadan starts |
+| [eid_greeting.yaml](blueprints/automation/hijri_calendar/eid_greeting.yaml) | Notify on Eid al-Fitr or Eid al-Adha |
+| [hijri_new_year.yaml](blueprints/automation/hijri_calendar/hijri_new_year.yaml) | Notify on 1 Muharram |
+| [daily_hijri_date.yaml](blueprints/automation/hijri_calendar/daily_hijri_date.yaml) | Daily morning Hijri date notification |
+| [iftar_reminder.yaml](blueprints/automation/hijri_calendar/iftar_reminder.yaml) | Reminder before sunset during Ramadan |
+| [calibrate_offset_helper.yaml](blueprints/automation/hijri_calendar/calibrate_offset_helper.yaml) | Run `calibrate_date` and notify the result |
+
+### Template example
+
+Display the localized Hijri date in a template sensor:
+
+```yaml
+template:
+  - sensor:
+      - name: Hijri date display
+        state: "{{ state_attr('sensor.hijri_date', 'formatted') }}"
+```
 
 ## Services
 
@@ -119,11 +166,61 @@ data:
   language: "en"
 ```
 
+### `hijri_calendar.set_day_offset`
+
+Save a **day offset** (−30 to +30) to integration options (reloads the integration).
+
+```yaml
+service: hijri_calendar.set_day_offset
+data:
+  offset: 1
+```
+
+## Troubleshooting
+
+### Hijri date does not match my local announcement
+
+**Symptom:** The Hijri date sensor or calendar differs from your mosque or country’s announced date.
+
+**Resolution:**
+
+1. Use **Settings → Devices & services → Hijri Calendar → Configure → Day offset**, or call `hijri_calendar.set_day_offset`.
+2. Use `hijri_calendar.calibrate_date` with trial offsets until the returned Hijri date matches the announcement, then apply that offset.
+
+### Service or conversion fails with “outside the supported range”
+
+**Symptom:** Logs or UI show `date_out_of_range`.
+
+**Resolution:** Umm al-Qura via hijridate supports roughly 1924–2077 CE (1343–1500 AH). Pick a date inside that range.
+
+### Sunset boundary does not work / repair issue appears
+
+**Symptom:** With **Day boundary** set to *After sunset*, dates do not change at sunset, or **Settings → Repairs** shows a sunset warning.
+
+**Resolution:** Set **Settings → System → General → Location** so Home Assistant can compute sunset. In polar regions where sunset is undefined, switch **Day boundary** to *Local midnight* via reconfigure.
+
+### Calendar and sensors show different dates near sunset
+
+**Symptom:** Around maghrib, a binary sensor has already flipped but the calendar grid for “today” still shows the previous Hijri day.
+
+**Resolution:** Both use the same rules per Gregorian day; the calendar labels each calendar day at local midnight reference. For automations at the exact sunset transition, prefer binary sensors and the holiday sensor.
+
+## Removing the integration
+
+1. Go to **Settings → Devices & services**.
+2. Open **Hijri Calendar**.
+3. Select the menu (⋮) → **Delete**.
+4. If you installed manually (not via HACS), remove `custom_components/hijri_calendar` from your config folder and restart Home Assistant.
+
+## Known limitations
+
+- Uses the **Umm al-Qura** calculated calendar; local moon-sighting may differ (use **Day offset**).
+- Supported range: approximately 1924–2077 CE (1343–1500 AH). See [hijridate documentation](https://hijridate.readthedocs.io/).
+- Sunset-based day boundary requires a valid Home Assistant location.
+
 ## Disclaimer
 
 This integration uses the official **Umm al-Qura** calculated calendar. It may differ from dates announced by local authorities based on moon sighting. Use the **day offset** option to align with your community when needed.
-
-Supported date range: approximately 1924–2077 CE (1343–1500 AH). See [hijridate documentation](https://hijridate.readthedocs.io/) for details.
 
 ## Development
 
@@ -133,6 +230,20 @@ scripts/lint
 pytest tests
 scripts/develop
 ```
+
+### Brand assets
+
+Edit SVG masters in `custom_components/hijri_calendar/brand/source/`, then export PNGs for Home Assistant:
+
+```bash
+scripts/build-brand
+```
+
+Requires [resvg](https://github.com/Linebender/resvg/releases) on `PATH` (Windows: extract `resvg-win64.zip`). Commit the generated files in `brand/` (`icon.png`, `logo.png`, and dark / `@2x` variants).
+
+### Releasing
+
+Publish a **GitHub release** (not only a tag) so the [Release workflow](.github/workflows/release.yml) attaches `hijri_calendar.zip` for HACS. Bump `version` in `custom_components/hijri_calendar/manifest.json` on `dev`/`main` when preparing the release; the workflow also sets the version inside the zip from the release tag (without the leading `v`).
 
 ## License
 

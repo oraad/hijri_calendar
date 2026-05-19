@@ -29,3 +29,4 @@ HijriLanguage = Literal["en", "ar", "tr"]
 SERVICE_CALIBRATE_DATE = "calibrate_date"
 SERVICE_CONVERT_TO_HIJRI = "convert_to_hijri"
 SERVICE_CONVERT_TO_GREGORIAN = "convert_to_gregorian"
+SERVICE_SET_DAY_OFFSET = "set_day_offset"

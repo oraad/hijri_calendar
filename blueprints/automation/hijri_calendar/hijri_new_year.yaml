@@ -1,0 +1,39 @@
+blueprint:
+  name: Hijri Calendar – Islamic New Year
+  description: Notify on 1 Muharram using Hijri date sensor attributes.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/hijri_new_year.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    hijri_date_sensor:
+      name: Hijri date sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: date
+    notify_service:
+      name: Notification service
+      selector:
+        text:
+    message:
+      name: Notification message
+      default: "Happy Islamic New Year! {{ state_attr(hijri_date_sensor, 'formatted') }}"
+      selector:
+        template:
+
+trigger:
+  - platform: template
+    value_template: >
+      {% set s = states(hijri_date_sensor) %}
+      {{ s not in ['unknown', 'unavailable']
+         and state_attr(hijri_date_sensor, 'hijri_month') | int == 1
+         and state_attr(hijri_date_sensor, 'hijri_day') | int == 1 }}
+
+action:
+  - service: "{{ notify_service }}"
+    data:
+      message: !input message
+
+mode: single

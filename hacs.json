@@ -1,5 +1,9 @@
 {
     "name": "Hijri Calendar",
+    "filename": "hijri_calendar.zip",
+    "hide_default_branch": true,
     "homeassistant": "2026.3.0",
-    "hacs": "2.0.5"
+    "hacs": "2.0.5",
+    "render_readme": true,
+    "zip_release": true
 }

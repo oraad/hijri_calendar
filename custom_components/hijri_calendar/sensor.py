@@ -16,7 +16,13 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from .const import HijriLanguage
 from .data import HijriCalendarConfigEntry, HijriCalendarData
 from .entity import HijriCalendarSunsetEntity
-from .holidays import ALL_HOLIDAY_IDS, HOLIDAY_NONE, get_holidays
+from .holidays import (
+    ALL_HOLIDAY_IDS,
+    HOLIDAY_NONE,
+    days_until_eid_al_fitr,
+    days_until_ramadan,
+    get_holidays,
+)
 from .locale import (
     format_hijri_display,
     holiday_display_name,
@@ -54,6 +60,20 @@ INFO_SENSORS: tuple[SensorEntityDescription, ...] = (
         entity_registry_enabled_default=False,
         state_class=SensorStateClass.MEASUREMENT,
     ),
+    SensorEntityDescription(
+        key="days_until_ramadan",
+        translation_key="days_until_ramadan",
+        icon="mdi:calendar-clock",
+        entity_registry_enabled_default=False,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    SensorEntityDescription(
+        key="days_until_eid_al_fitr",
+        translation_key="days_until_eid_al_fitr",
+        icon="mdi:calendar-clock",
+        entity_registry_enabled_default=False,
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
 )
 
 
@@ -63,13 +83,19 @@ def _native_value(data: HijriCalendarData, key: str) -> dt.date | str | int:
         return dt.date(data.hijri.year, data.hijri.month, data.hijri.day)
     if key == "holiday":
         holidays = get_holidays(data.hijri)
-        if not holidays:
-            return HOLIDAY_NONE
-        return holidays[0].id
+        return HOLIDAY_NONE if not holidays else holidays[0].id
     if key == "days_in_month":
         return data.hijri.month_length()
     if key == "days_in_year":
         return data.hijri.year_length()
+    if key in ("days_until_ramadan", "days_until_eid_al_fitr"):
+        counter = (
+            days_until_ramadan
+            if key == "days_until_ramadan"
+            else days_until_eid_al_fitr
+        )
+        count = counter(data.hijri)
+        return count if count is not None else 0
     msg = f"Unknown sensor key: {key}"
     raise ValueError(msg)
 

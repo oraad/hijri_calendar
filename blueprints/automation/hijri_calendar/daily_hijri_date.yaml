@@ -1,0 +1,40 @@
+blueprint:
+  name: Hijri Calendar – Daily Hijri date
+  description: Send the formatted Hijri date each morning.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/daily_hijri_date.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    hijri_date_sensor:
+      name: Hijri date sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: date
+    notify_service:
+      name: Notification service
+      selector:
+        text:
+    time:
+      name: Time
+      default: "06:00:00"
+      selector:
+        time:
+    message_template:
+      name: Message template
+      default: "Today: {{ state_attr(hijri_date_sensor, 'formatted') }}"
+      selector:
+        template:
+
+trigger:
+  - platform: time
+    at: !input time
+
+action:
+  - service: "{{ notify_service }}"
+    data:
+      message: !input message_template
+
+mode: single

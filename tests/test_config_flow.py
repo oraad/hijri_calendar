@@ -72,3 +72,35 @@ async def test_options_flow(hass: HomeAssistant, mock_config_entry) -> None:
         )
     assert result["type"] is FlowResultType.CREATE_ENTRY
     assert result["data"][CONF_OFFSET_DAYS] == 1
+
+
+async def test_reconfigure_flow(hass: HomeAssistant, mock_config_entry) -> None:
+    """Test reconfigure updates language and day boundary."""
+    mock_config_entry.add_to_hass(hass)
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={
+            "source": config_entries.SOURCE_RECONFIGURE,
+            "entry_id": mock_config_entry.entry_id,
+        },
+    )
+    assert result["type"] is FlowResultType.FORM
+
+    with patch.object(
+        hass.config_entries,
+        "async_reload",
+        new=AsyncMock(return_value=True),
+    ):
+        result = await hass.config_entries.flow.async_configure(
+            result["flow_id"],
+            user_input={
+                CONF_LANGUAGE: "ar",
+                CONF_DAY_BOUNDARY: DAY_BOUNDARY_SUNSET,
+            },
+        )
+
+    assert result["type"] is FlowResultType.ABORT
+    assert result["reason"] == "reconfigure_successful"
+    assert mock_config_entry.data[CONF_LANGUAGE] == "ar"
+    assert mock_config_entry.data[CONF_DAY_BOUNDARY] == DAY_BOUNDARY_SUNSET

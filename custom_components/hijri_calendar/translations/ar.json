@@ -68,6 +68,12 @@
       },
       "days_in_year": {
         "name": "أيام السنة الهجرية"
+      },
+      "days_until_ramadan": {
+        "name": "أيام حتى رمضان"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "أيام حتى عيد الفطر"
       }
     },
     "calendar": {
@@ -88,6 +94,12 @@
       "hajj_season": {
         "name": "موسم الحج"
       }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "حدود اليوم عند الغروب غير متاحة",
+      "description": "تعذّر على Home Assistant حساب الغروب لموقعك. أعد ضبط التقويم الهجري لاستخدام منتصف الليل المحلي، أو حدّد موقعًا صالحًا من الإعدادات → النظام → عام."
     }
   },
   "exceptions": {

@@ -1,0 +1,38 @@
+blueprint:
+  name: Hijri Calendar – Eid greeting
+  description: Send a notification when the holiday sensor shows Eid al-Fitr or Eid al-Adha.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/eid_greeting.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    holiday_sensor:
+      name: Holiday sensor
+      selector:
+        entity:
+          domain: sensor
+    notify_service:
+      name: Notification service
+      selector:
+        text:
+    message_template:
+      name: Message template
+      default: "Eid Mubarak! {{ state_attr(trigger.entity_id, 'names') }}"
+      selector:
+        template:
+
+trigger:
+  - platform: state
+    entity_id: !input holiday_sensor
+
+condition:
+  - condition: template
+    value_template: "{{ trigger.to_state.state in ['eid_al_fitr', 'eid_al_adha'] }}"
+
+action:
+  - service: "{{ notify_service }}"
+    data:
+      message: !input message_template
+
+mode: single

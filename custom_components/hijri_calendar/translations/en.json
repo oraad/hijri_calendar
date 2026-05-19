@@ -68,6 +68,12 @@
       },
       "days_in_year": {
         "name": "Days in Hijri year"
+      },
+      "days_until_ramadan": {
+        "name": "Days until Ramadan"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Days until Eid al-Fitr"
       }
     },
     "calendar": {
@@ -88,6 +94,12 @@
       "hajj_season": {
         "name": "Hajj season"
       }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Sunset boundary unavailable",
+      "description": "Home Assistant could not calculate sunset for your location. Reconfigure Hijri Calendar to use local midnight, or set a valid location under Settings → System → General."
     }
   },
   "exceptions": {

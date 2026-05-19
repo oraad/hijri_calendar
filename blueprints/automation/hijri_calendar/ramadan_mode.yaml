@@ -1,0 +1,54 @@
+blueprint:
+  name: Hijri Calendar – Ramadan mode
+  description: Activate a scene and optional notification when Ramadan begins.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/ramadan_mode.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    ramadan_sensor:
+      name: Ramadan binary sensor
+      selector:
+        entity:
+          domain: binary_sensor
+    scene_entity:
+      name: Scene to activate (optional)
+      default: ""
+      selector:
+        entity:
+          domain: scene
+    notify_service:
+      name: Notification service (optional)
+      default: ""
+      selector:
+        text:
+    message:
+      name: Notification message
+      default: "Ramadan has begun. Ramadan Mubarak!"
+      selector:
+        text:
+
+trigger:
+  - platform: state
+    entity_id: !input ramadan_sensor
+    from: "off"
+    to: "on"
+
+action:
+  - if:
+      - condition: template
+        value_template: "{{ scene_entity != '' }}"
+    then:
+      - service: scene.turn_on
+        target:
+          entity_id: !input scene_entity
+  - if:
+      - condition: template
+        value_template: "{{ notify_service != '' }}"
+    then:
+      - service: "{{ notify_service }}"
+        data:
+          message: !input message
+
+mode: single

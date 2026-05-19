@@ -40,6 +40,17 @@ convert_to_hijri:
             - "ar"
             - "tr"
 
+set_day_offset:
+  fields:
+    offset:
+      required: true
+      example: 1
+      selector:
+        number:
+          min: -30
+          max: 30
+          mode: box
+
 convert_to_gregorian:
   fields:
     date:

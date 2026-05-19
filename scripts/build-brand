@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Export Home Assistant brand PNGs from SVG sources.
+#
+# Requires resvg CLI: https://github.com/Linebender/resvg/releases
+#   Windows: download resvg-win64.zip and add resvg.exe to PATH
+#   macOS/Linux: cargo install resvg-cli, or use a release binary
+#
+# Usage: scripts/build-brand
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+BRAND="custom_components/hijri_calendar/brand"
+SOURCE="${BRAND}/source"
+
+if ! command -v resvg >/dev/null 2>&1; then
+  echo "error: resvg not found on PATH" >&2
+  echo "Install from https://github.com/Linebender/resvg/releases" >&2
+  exit 1
+fi
+
+mkdir -p "${BRAND}"
+
+echo "Exporting icons..."
+resvg "${SOURCE}/icon.svg" -o "${BRAND}/icon.png" -w 256 -h 256
+resvg "${SOURCE}/icon.svg" -o "${BRAND}/icon@2x.png" -w 512 -h 512
+resvg "${SOURCE}/icon-dark.svg" -o "${BRAND}/dark_icon.png" -w 256 -h 256
+resvg "${SOURCE}/icon-dark.svg" -o "${BRAND}/dark_icon@2x.png" -w 512 -h 512
+
+echo "Exporting logos (height only, preserve aspect ratio)..."
+resvg "${SOURCE}/logo.svg" -o "${BRAND}/logo.png" -h 256
+resvg "${SOURCE}/logo.svg" -o "${BRAND}/logo@2x.png" -h 512
+resvg "${SOURCE}/logo-dark.svg" -o "${BRAND}/dark_logo.png" -h 256
+resvg "${SOURCE}/logo-dark.svg" -o "${BRAND}/dark_logo@2x.png" -h 512
+
+echo "Trimming transparent borders..."
+TRIM_SCRIPT="$(dirname "$0")/trim_brand_pngs.py"
+if command -v python3 >/dev/null 2>&1; then
+  python3 -m pip install -q Pillow
+  python3 "${TRIM_SCRIPT}"
+elif command -v py >/dev/null 2>&1; then
+  py -3.14 -m pip install -q Pillow
+  py -3.14 "${TRIM_SCRIPT}"
+else
+  echo "error: python3 or py required for ${TRIM_SCRIPT}" >&2
+  exit 1
+fi
+
+if command -v oxipng >/dev/null 2>&1; then
+  echo "Optimizing PNGs with oxipng..."
+  oxipng -o 4 -strip all "${BRAND}"/*.png
+fi
+
+echo "Done. Brand PNGs written to ${BRAND}/"

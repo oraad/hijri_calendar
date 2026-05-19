@@ -11,6 +11,7 @@ from homeassistant.helpers import translation
 
 from .const import DEFAULT_LANGUAGE, DOMAIN
 from .coordinator import HijriCalendarUpdateCoordinator
+from .repairs import async_clear_sunset_repairs
 from .services import async_setup_services
 
 if TYPE_CHECKING:
@@ -63,4 +64,5 @@ async def async_unload_entry(
         config_entry, PLATFORMS
     ):
         await config_entry.runtime_data.async_shutdown()
+        async_clear_sunset_repairs(hass, config_entry)
     return unload_ok

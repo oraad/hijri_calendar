@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import datetime as dt
 from dataclasses import dataclass
 from typing import Final
 
 from hijridate import Hijri
+
+from .helpers import gregorian_to_hijri
 
 HIJRI_MONTH_RAMADAN: Final = 9
 HIJRI_MONTH_SHAWWAL: Final = 10
@@ -110,3 +113,29 @@ def get_active_events(hijri: Hijri) -> set[str]:
             events.add(EVENT_HAJJ_SEASON)
 
     return events
+
+
+def days_until_hijri_date(
+    hijri: Hijri, target_month: int, target_day: int, *, max_days: int = 400
+) -> int | None:
+    """Return days until the next occurrence of a Hijri month/day."""
+    try:
+        gregorian = hijri.to_gregorian().to_date()
+    except (OverflowError, ValueError):
+        return None
+
+    for delta in range(max_days):
+        candidate = gregorian_to_hijri(gregorian + dt.timedelta(days=delta))
+        if candidate.month == target_month and candidate.day == target_day:
+            return delta
+    return None
+
+
+def days_until_ramadan(hijri: Hijri) -> int | None:
+    """Return days until 1 Ramadan."""
+    return days_until_hijri_date(hijri, HIJRI_MONTH_RAMADAN, 1)
+
+
+def days_until_eid_al_fitr(hijri: Hijri) -> int | None:
+    """Return days until 1 Shawwal (Eid al-Fitr)."""
+    return days_until_hijri_date(hijri, HIJRI_MONTH_SHAWWAL, 1)

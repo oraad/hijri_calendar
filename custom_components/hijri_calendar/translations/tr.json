@@ -68,6 +68,12 @@
       },
       "days_in_year": {
         "name": "Hicri yıl gün sayısı"
+      },
+      "days_until_ramadan": {
+        "name": "Ramazan'a kalan gün"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Ramazan Bayramı'na kalan gün"
       }
     },
     "calendar": {
@@ -88,6 +94,12 @@
       "hajj_season": {
         "name": "Hac mevsimi"
       }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Gün batımı sınırı kullanılamıyor",
+      "description": "Home Assistant konumunuz için gün batımını hesaplayamadı. Hicri Takvim'i yerel gece yarısına göre yeniden yapılandırın veya Ayarlar → Sistem → Genel altında geçerli bir konum belirleyin."
     }
   },
   "exceptions": {

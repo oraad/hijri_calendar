@@ -21,7 +21,12 @@ from .const import (
     DOMAIN,
 )
 from .data import HijriCalendarConfigEntry, HijriCalendarData
-from .helpers import gregorian_to_hijri, next_sunset, resolve_effective_gregorian_date
+from .helpers import (
+    async_gregorian_to_hijri,
+    async_resolve_effective_gregorian_date,
+    next_sunset,
+)
+from .repairs import async_update_sunset_repairs
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -58,12 +63,12 @@ class HijriCalendarUpdateCoordinator(DataUpdateCoordinator[HijriCalendarData]):
 
     async def _async_update_data(self) -> HijriCalendarData:
         """Compute Hijri date for the effective Gregorian day."""
-        effective_gdate = resolve_effective_gregorian_date(
+        effective_gdate = await async_resolve_effective_gregorian_date(
             self.hass,
             self.day_boundary,
             self.offset_days,
         )
-        hijri = gregorian_to_hijri(effective_gdate)
+        hijri = await async_gregorian_to_hijri(self.hass, effective_gdate)
 
         next_midnight = dt_util.start_of_local_day() + dt.timedelta(days=1)
         _LOGGER.debug(
@@ -89,6 +94,8 @@ class HijriCalendarUpdateCoordinator(DataUpdateCoordinator[HijriCalendarData]):
                 self._unsub_sunset = event.async_track_point_in_time(
                     self.hass, self._handle_scheduled_update, sunset
                 )
+
+        await async_update_sunset_repairs(self.hass, self.config_entry)
 
         return HijriCalendarData(
             language=self.language,

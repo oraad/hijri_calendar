@@ -30,15 +30,16 @@ from .const import (
     SERVICE_CALIBRATE_DATE,
     SERVICE_CONVERT_TO_GREGORIAN,
     SERVICE_CONVERT_TO_HIJRI,
+    SERVICE_SET_DAY_OFFSET,
     SUPPORTED_LANGUAGES,
 )
 from .helpers import (
+    async_gregorian_to_hijri,
+    async_hijri_to_gregorian,
+    async_parse_hijri_date,
+    async_resolve_effective_gregorian_date,
     format_gregorian_dict,
     format_hijri_dict,
-    gregorian_to_hijri,
-    hijri_to_gregorian,
-    parse_hijri_date,
-    resolve_effective_gregorian_date,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -72,6 +73,15 @@ CONVERT_TO_GREGORIAN_SCHEMA = vol.Schema(
     }
 )
 
+SET_DAY_OFFSET_SCHEMA = vol.Schema(
+    {
+        vol.Required(ATTR_OFFSET): vol.All(
+            vol.Coerce(int),
+            vol.Range(min=-30, max=30),
+        ),
+    }
+)
+
 
 def _get_config_defaults(hass: HomeAssistant) -> tuple[str, int, str]:
     """Return language, offset, and day boundary from the config entry if present."""
@@ -100,11 +110,11 @@ def async_setup_services(hass: HomeAssistant) -> None:
         if ATTR_DATE in call.data:
             gregorian_date = call.data[ATTR_DATE]
         else:
-            gregorian_date = resolve_effective_gregorian_date(
+            gregorian_date = await async_resolve_effective_gregorian_date(
                 hass, day_boundary, offset_days
             )
 
-        hijri = gregorian_to_hijri(gregorian_date)
+        hijri = await async_gregorian_to_hijri(hass, gregorian_date)
         return format_hijri_dict(hijri, language)
 
     async def convert_to_gregorian(call: ServiceCall) -> ServiceResponse:
@@ -113,15 +123,15 @@ def async_setup_services(hass: HomeAssistant) -> None:
         language = call.data.get(CONF_LANGUAGE, language)
 
         if ATTR_DATE in call.data:
-            hijri = parse_hijri_date(call.data[ATTR_DATE])
+            hijri = await async_parse_hijri_date(hass, call.data[ATTR_DATE])
         else:
             _, offset_days, _ = _get_config_defaults(hass)
-            effective = resolve_effective_gregorian_date(
+            effective = await async_resolve_effective_gregorian_date(
                 hass, day_boundary, offset_days
             )
-            hijri = gregorian_to_hijri(effective)
+            hijri = await async_gregorian_to_hijri(hass, effective)
 
-        gregorian = hijri_to_gregorian(hijri)
+        gregorian = await async_hijri_to_gregorian(hass, hijri)
         return format_gregorian_dict(gregorian, language)
 
     async def calibrate_date(call: ServiceCall) -> ServiceResponse:
@@ -132,13 +142,26 @@ def async_setup_services(hass: HomeAssistant) -> None:
         input_date: dt.date = call.data.get(ATTR_DATE, dt_util.now().date())
         offset: int = call.data.get(ATTR_OFFSET, DEFAULT_OFFSET_DAYS)
         adjusted_date = input_date + dt.timedelta(days=offset)
-        hijri = gregorian_to_hijri(adjusted_date)
+        hijri = await async_gregorian_to_hijri(hass, adjusted_date)
 
         result = format_hijri_dict(hijri, language)
         result["input_gregorian"] = input_date.isoformat()
         result["adjusted_gregorian"] = adjusted_date.isoformat()
         result["offset"] = offset
         return result
+
+    async def set_day_offset(call: ServiceCall) -> None:
+        """Persist day offset to the config entry options."""
+        entries = hass.config_entries.async_entries(DOMAIN)
+        if not entries:
+            return
+        entry = entries[0]
+        offset: int = call.data[ATTR_OFFSET]
+        hass.config_entries.async_update_entry(
+            entry,
+            options={**entry.options, CONF_OFFSET_DAYS: offset},
+        )
+        await hass.config_entries.async_reload(entry.entry_id)
 
     if not hass.services.has_service(DOMAIN, SERVICE_CONVERT_TO_HIJRI):
         hass.services.async_register(
@@ -165,4 +188,12 @@ def async_setup_services(hass: HomeAssistant) -> None:
             calibrate_date,
             schema=CALIBRATE_SCHEMA,
             supports_response=SupportsResponse.ONLY,
+        )
+
+    if not hass.services.has_service(DOMAIN, SERVICE_SET_DAY_OFFSET):
+        hass.services.async_register(
+            DOMAIN,
+            SERVICE_SET_DAY_OFFSET,
+            set_day_offset,
+            schema=SET_DAY_OFFSET_SCHEMA,
         )

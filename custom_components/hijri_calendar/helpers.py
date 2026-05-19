@@ -56,6 +56,40 @@ def parse_hijri_date(date_string: str) -> Hijri:
         ) from err
 
 
+async def async_gregorian_to_hijri(
+    hass: HomeAssistant, gregorian_date: dt.date
+) -> Hijri:
+    """Convert a Gregorian date to Hijri without blocking the event loop."""
+    return await hass.async_add_executor_job(gregorian_to_hijri, gregorian_date)
+
+
+async def async_hijri_to_gregorian(hass: HomeAssistant, hijri: Hijri) -> Gregorian:
+    """Convert a Hijri date to Gregorian without blocking the event loop."""
+    return await hass.async_add_executor_job(hijri_to_gregorian, hijri)
+
+
+async def async_parse_hijri_date(hass: HomeAssistant, date_string: str) -> Hijri:
+    """Parse an ISO Hijri date string without blocking the event loop."""
+    return await hass.async_add_executor_job(parse_hijri_date, date_string)
+
+
+async def async_resolve_effective_gregorian_date(
+    hass: HomeAssistant,
+    day_boundary: str,
+    offset_days: int,
+    *,
+    reference: dt.datetime | None = None,
+) -> dt.date:
+    """Resolve effective Gregorian date without blocking the event loop."""
+    return await hass.async_add_executor_job(
+        resolve_effective_gregorian_date,
+        hass,
+        day_boundary,
+        offset_days,
+        reference=reference,
+    )
+
+
 def format_hijri_dict(hijri: Hijri, language: HijriLanguage) -> dict[str, str | int]:
     """Return a dictionary of formatted Hijri date fields."""
     return {

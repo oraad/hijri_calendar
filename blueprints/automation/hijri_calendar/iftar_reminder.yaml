@@ -1,0 +1,45 @@
+blueprint:
+  name: Hijri Calendar – Iftar reminder
+  description: Notify before sunset during Ramadan.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/iftar_reminder.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    ramadan_sensor:
+      name: Ramadan binary sensor
+      selector:
+        entity:
+          domain: binary_sensor
+    notify_service:
+      name: Notification service
+      selector:
+        text:
+    sunset_offset:
+      name: Time before sunset (negative HH:MM:SS)
+      default: "-00:15:00"
+      selector:
+        text:
+    message:
+      name: Message
+      default: "Iftar is soon."
+      selector:
+        text:
+
+trigger:
+  - platform: sun
+    event: sunset
+    offset: !input sunset_offset
+
+condition:
+  - condition: state
+    entity_id: !input ramadan_sensor
+    state: "on"
+
+action:
+  - service: "{{ notify_service }}"
+    data:
+      message: !input message
+
+mode: single
