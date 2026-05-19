@@ -10,7 +10,7 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 - **Sensors**: current Hijri date (with attributes), active holidays, days in month/year, days until Ramadan/Eid (disabled by default)
 - **Binary sensors**: Ramadan, Eid al-Fitr, Eid al-Adha, Hajj season
 - **Calendar**: all-day Hijri observances on the Gregorian calendar (Ramadan span, Hajj season, Eids, Ashura, Mawlid, and other holidays from the integration)
-- **Services**: convert between Hijri and Gregorian, calibrate with a day offset, apply day offset to options
+- **Services**: convert between Hijri and Gregorian, calibrate day offset (relative ±2 or announced Hijri date), set day offset directly
 - **Options**: configurable day offset for local moon-sighting differences
 - **Day boundary**: roll the Hijri day at local midnight (default) or after sunset
 
@@ -62,7 +62,7 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 
 ### Options
 
-- **Day offset** (−30 to +30): shift displayed dates when your locality announces a different day than Umm al-Qura. Use the `calibrate_date` service to find the right offset without changing options.
+- **Day offset** (−2 to +2): shift displayed dates when your locality announces a different day than Umm al-Qura. Use the `calibrate_date` service to adjust by ±2 days or from the announced Hijri date for today.
 
 ## Entities
 
@@ -117,7 +117,7 @@ Ready-made automations are in [`blueprints/automation/`](blueprints/automation/)
 | [hijri_new_year.yaml](blueprints/automation/hijri_calendar/hijri_new_year.yaml) | Notify on 1 Muharram |
 | [daily_hijri_date.yaml](blueprints/automation/hijri_calendar/daily_hijri_date.yaml) | Daily morning Hijri date notification |
 | [iftar_reminder.yaml](blueprints/automation/hijri_calendar/iftar_reminder.yaml) | Reminder before sunset during Ramadan |
-| [calibrate_offset_helper.yaml](blueprints/automation/hijri_calendar/calibrate_offset_helper.yaml) | Run `calibrate_date` and notify the result |
+| [calibrate_offset_helper.yaml](blueprints/automation/hijri_calendar/calibrate_offset_helper.yaml) | Adjust offset by −2..+2 via `calibrate_date` and notify |
 
 ### Template example
 
@@ -156,19 +156,27 @@ data:
 
 ### `hijri_calendar.calibrate_date`
 
-Apply a day offset to a Gregorian date and return the resulting Hijri date (does not save the offset).
+Calibrate **today** (per your day boundary) and save the integration day offset. Provide **either**:
+
+- `offset` (−2 to +2): add to the current offset (e.g. `1` bumps the stored offset by one day).
+- `hijri`: announced Hijri date for today (ISO); the service computes and saves the required offset.
 
 ```yaml
+# Nudge offset by one day
 service: hijri_calendar.calibrate_date
 data:
-  date: "2025-04-14"
   offset: 1
+
+# Or set from the announced Hijri date
+service: hijri_calendar.calibrate_date
+data:
+  hijri: "1446-10-15"
   language: "en"
 ```
 
 ### `hijri_calendar.set_day_offset`
 
-Save a **day offset** (−30 to +30) to integration options (reloads the integration).
+Save a **day offset** (−2 to +2) to integration options (reloads the integration).
 
 ```yaml
 service: hijri_calendar.set_day_offset
@@ -184,8 +192,8 @@ data:
 
 **Resolution:**
 
-1. Use **Settings → Devices & services → Hijri Calendar → Configure → Day offset**, or call `hijri_calendar.set_day_offset`.
-2. Use `hijri_calendar.calibrate_date` with trial offsets until the returned Hijri date matches the announcement, then apply that offset.
+1. Call `hijri_calendar.calibrate_date` with the announced `hijri` date for today, or use `offset: 1` / `offset: -1` to nudge by a day or two.
+2. Alternatively use **Settings → Devices & services → Hijri Calendar → Configure → Day offset**, or `hijri_calendar.set_day_offset` for a direct absolute offset (−2 to +2).
 
 ### Service or conversion fails with “outside the supported range”
 

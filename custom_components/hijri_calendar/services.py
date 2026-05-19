@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import datetime as dt
 import logging
 
 import voluptuous as vol
@@ -14,12 +13,13 @@ from homeassistant.core import (
     SupportsResponse,
     callback,
 )
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.selector import LanguageSelector, LanguageSelectorConfig
-from homeassistant.util import dt as dt_util
 
 from .const import (
     ATTR_DATE,
+    ATTR_HIJRI,
     ATTR_OFFSET,
     CONF_DAY_BOUNDARY,
     CONF_OFFSET_DAYS,
@@ -27,13 +27,17 @@ from .const import (
     DEFAULT_LANGUAGE,
     DEFAULT_OFFSET_DAYS,
     DOMAIN,
+    OFFSET_DAYS_MAX,
+    OFFSET_DAYS_MIN,
     SERVICE_CALIBRATE_DATE,
     SERVICE_CONVERT_TO_GREGORIAN,
     SERVICE_CONVERT_TO_HIJRI,
     SERVICE_SET_DAY_OFFSET,
     SUPPORTED_LANGUAGES,
 )
+from .data import HijriCalendarConfigEntry
 from .helpers import (
+    async_compute_offset_for_hijri_today,
     async_gregorian_to_hijri,
     async_hijri_to_gregorian,
     async_parse_hijri_date,
@@ -48,15 +52,26 @@ LANGUAGE_SELECTOR = LanguageSelector(
     LanguageSelectorConfig(languages=list(SUPPORTED_LANGUAGES)),
 )
 
-CALIBRATE_SCHEMA = vol.Schema(
-    {
-        vol.Optional(ATTR_DATE): cv.date,
-        vol.Optional(ATTR_OFFSET, default=DEFAULT_OFFSET_DAYS): vol.All(
-            vol.Coerce(int),
-            vol.Range(min=-30, max=30),
-        ),
-        vol.Optional(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LANGUAGE_SELECTOR,
-    }
+_CALIBRATE_LANGUAGE = {
+    vol.Optional(CONF_LANGUAGE, default=DEFAULT_LANGUAGE): LANGUAGE_SELECTOR,
+}
+
+CALIBRATE_SCHEMA = vol.Any(
+    vol.Schema(
+        {
+            vol.Required(ATTR_OFFSET): vol.All(
+                vol.Coerce(int),
+                vol.Range(min=OFFSET_DAYS_MIN, max=OFFSET_DAYS_MAX),
+            ),
+            **_CALIBRATE_LANGUAGE,
+        }
+    ),
+    vol.Schema(
+        {
+            vol.Required(ATTR_HIJRI): cv.string,
+            **_CALIBRATE_LANGUAGE,
+        }
+    ),
 )
 
 CONVERT_TO_HIJRI_SCHEMA = vol.Schema(
@@ -77,25 +92,53 @@ SET_DAY_OFFSET_SCHEMA = vol.Schema(
     {
         vol.Required(ATTR_OFFSET): vol.All(
             vol.Coerce(int),
-            vol.Range(min=-30, max=30),
+            vol.Range(min=OFFSET_DAYS_MIN, max=OFFSET_DAYS_MAX),
         ),
     }
 )
 
 
-def _get_config_defaults(hass: HomeAssistant) -> tuple[str, int, str]:
-    """Return language, offset, and day boundary from the config entry if present."""
+def _get_config_entry(hass: HomeAssistant) -> HijriCalendarConfigEntry | None:
+    """Return the Hijri Calendar config entry if configured."""
     entries = hass.config_entries.async_entries(DOMAIN)
     if not entries:
-        return DEFAULT_LANGUAGE, DEFAULT_OFFSET_DAYS, "midnight"
+        return None
+    return entries[0]
 
-    entry = entries[0]
+
+def _get_config_defaults(hass: HomeAssistant) -> tuple[str, int, str]:
+    """Return language, offset, and day boundary from the config entry if present."""
+    entry = _get_config_entry(hass)
+    if entry is None:
+        return DEFAULT_LANGUAGE, DEFAULT_OFFSET_DAYS, DEFAULT_DAY_BOUNDARY
 
     return (
         entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE),
         int(entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS)),
         entry.data.get(CONF_DAY_BOUNDARY, DEFAULT_DAY_BOUNDARY),
     )
+
+
+def _clamp_offset(offset: int) -> int:
+    """Clamp offset to integration options range."""
+    return max(OFFSET_DAYS_MIN, min(OFFSET_DAYS_MAX, offset))
+
+
+async def _async_set_offset(
+    hass: HomeAssistant, entry: HijriCalendarConfigEntry, new_offset: int
+) -> int:
+    """Persist day offset to the config entry options and reload if changed."""
+    new_offset = _clamp_offset(new_offset)
+    current = int(entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS))
+    if new_offset == current:
+        return new_offset
+
+    hass.config_entries.async_update_entry(
+        entry,
+        options={**entry.options, CONF_OFFSET_DAYS: new_offset},
+    )
+    await hass.config_entries.async_reload(entry.entry_id)
+    return new_offset
 
 
 @callback
@@ -135,33 +178,56 @@ def async_setup_services(hass: HomeAssistant) -> None:
         return format_gregorian_dict(gregorian, language)
 
     async def calibrate_date(call: ServiceCall) -> ServiceResponse:
-        """Return Hijri date for a Gregorian date with an optional offset."""
-        language, _, _ = _get_config_defaults(hass)
-        language = call.data.get(CONF_LANGUAGE, language)
+        """Calibrate integration day offset from a relative tweak or announced Hijri date."""
+        entry = _get_config_entry(hass)
+        if entry is None:
+            raise HomeAssistantError(
+                translation_domain=DOMAIN,
+                translation_key="calibrate_no_config_entry",
+            )
 
-        input_date: dt.date = call.data.get(ATTR_DATE, dt_util.now().date())
-        offset: int = call.data.get(ATTR_OFFSET, DEFAULT_OFFSET_DAYS)
-        adjusted_date = input_date + dt.timedelta(days=offset)
-        hijri = await async_gregorian_to_hijri(hass, adjusted_date)
+        language, current_offset, day_boundary = _get_config_defaults(hass)
+        language = call.data.get(CONF_LANGUAGE, language)
+        previous_offset = current_offset
+
+        if ATTR_OFFSET in call.data:
+            new_offset = _clamp_offset(current_offset + call.data[ATTR_OFFSET])
+        else:
+            target_hijri = await async_parse_hijri_date(hass, call.data[ATTR_HIJRI])
+            computed = await async_compute_offset_for_hijri_today(
+                hass, day_boundary, target_hijri
+            )
+            new_offset = _clamp_offset(computed)
+            if new_offset != computed:
+                raise HomeAssistantError(
+                    translation_domain=DOMAIN,
+                    translation_key="calibrate_offset_out_of_range",
+                    translation_placeholders={
+                        "offset": str(computed),
+                        "min": str(OFFSET_DAYS_MIN),
+                        "max": str(OFFSET_DAYS_MAX),
+                    },
+                )
+
+        new_offset = await _async_set_offset(hass, entry, new_offset)
+
+        effective_gregorian = await async_resolve_effective_gregorian_date(
+            hass, day_boundary, new_offset
+        )
+        hijri = await async_gregorian_to_hijri(hass, effective_gregorian)
 
         result = format_hijri_dict(hijri, language)
-        result["input_gregorian"] = input_date.isoformat()
-        result["adjusted_gregorian"] = adjusted_date.isoformat()
-        result["offset"] = offset
+        result["offset"] = new_offset
+        result["previous_offset"] = previous_offset
+        result["effective_gregorian"] = effective_gregorian.isoformat()
         return result
 
     async def set_day_offset(call: ServiceCall) -> None:
         """Persist day offset to the config entry options."""
-        entries = hass.config_entries.async_entries(DOMAIN)
-        if not entries:
+        entry = _get_config_entry(hass)
+        if entry is None:
             return
-        entry = entries[0]
-        offset: int = call.data[ATTR_OFFSET]
-        hass.config_entries.async_update_entry(
-            entry,
-            options={**entry.options, CONF_OFFSET_DAYS: offset},
-        )
-        await hass.config_entries.async_reload(entry.entry_id)
+        await _async_set_offset(hass, entry, call.data[ATTR_OFFSET])
 
     if not hass.services.has_service(DOMAIN, SERVICE_CONVERT_TO_HIJRI):
         hass.services.async_register(

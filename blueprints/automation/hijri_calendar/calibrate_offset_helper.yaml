@@ -1,8 +1,8 @@
 blueprint:
   name: Hijri Calendar – Calibrate offset helper
   description: >
-    Press the selected input button to run calibrate_date and notify the result.
-    Save the offset with hijri_calendar.set_day_offset or integration options.
+    Press the selected input button to adjust the integration offset by the chosen
+    amount (-2 to +2 days) and notify the new Hijri date.
   domain: automation
   source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/calibrate_offset_helper.yaml
   author: oraad
@@ -18,17 +18,13 @@ blueprint:
       name: Notification service
       selector:
         text:
-    gregorian_date:
-      name: Gregorian date to test
-      selector:
-        date:
-    offset:
-      name: Day offset to try
-      default: 0
+    offset_adjustment:
+      name: Adjust offset by (days)
+      default: 1
       selector:
         number:
-          min: -30
-          max: 30
+          min: -2
+          max: 2
           mode: box
     language:
       name: Language
@@ -47,15 +43,13 @@ trigger:
 action:
   - service: hijri_calendar.calibrate_date
     data:
-      date: !input gregorian_date
-      offset: !input offset
+      offset: !input offset_adjustment
       language: !input language
     response_variable: calibrate_result
   - service: "{{ notify_service }}"
     data:
       message: >
-        Offset {{ calibrate_result.offset }}: {{ calibrate_result.hijri }}
-        (Gregorian {{ calibrate_result.adjusted_gregorian }}).
-        Use service hijri_calendar.set_day_offset to save.
+        Offset {{ calibrate_result.previous_offset }} → {{ calibrate_result.offset }}:
+        {{ calibrate_result.hijri }} ({{ calibrate_result.formatted }}).
 
 mode: single

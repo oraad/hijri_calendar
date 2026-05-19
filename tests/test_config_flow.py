@@ -7,7 +7,9 @@ from homeassistant import config_entries
 from homeassistant.const import CONF_LANGUAGE
 from homeassistant.core import HomeAssistant
 from homeassistant.data_entry_flow import FlowResultType
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 
+from custom_components.hijri_calendar.config_flow import HijriCalendarConfigFlow
 from custom_components.hijri_calendar.const import (
     CONF_DAY_BOUNDARY,
     CONF_OFFSET_DAYS,
@@ -72,6 +74,39 @@ async def test_options_flow(hass: HomeAssistant, mock_config_entry) -> None:
         )
     assert result["type"] is FlowResultType.CREATE_ENTRY
     assert result["data"][CONF_OFFSET_DAYS] == 1
+
+
+async def test_options_flow_rejects_offset_out_of_range(
+    hass: HomeAssistant, mock_config_entry
+) -> None:
+    """Test the options flow rejects day offset outside ±2."""
+    mock_config_entry.add_to_hass(hass)
+
+    result = await hass.config_entries.options.async_init(mock_config_entry.entry_id)
+    assert result["type"] is FlowResultType.FORM
+
+    result = await hass.config_entries.options.async_configure(
+        result["flow_id"],
+        user_input={CONF_OFFSET_DAYS: 5},
+    )
+    assert result["type"] is FlowResultType.FORM
+    assert result["errors"]
+
+
+async def test_migrate_entry_clamps_offset(hass: HomeAssistant) -> None:
+    """Test migration clamps legacy offset values to ±2."""
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={CONF_LANGUAGE: "en", CONF_DAY_BOUNDARY: DAY_BOUNDARY_MIDNIGHT},
+        options={CONF_OFFSET_DAYS: 10},
+        version=1,
+        unique_id=DOMAIN,
+    )
+    entry.add_to_hass(hass)
+
+    assert await HijriCalendarConfigFlow.async_migrate_entry(hass, entry) is True
+    assert entry.version == 2
+    assert entry.options[CONF_OFFSET_DAYS] == 2
 
 
 async def test_reconfigure_flow(hass: HomeAssistant, mock_config_entry) -> None:
