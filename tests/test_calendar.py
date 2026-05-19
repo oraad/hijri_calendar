@@ -151,6 +151,7 @@ async def test_offset_via_config_entry(hass) -> None:
         domain=DOMAIN,
         data={CONF_LANGUAGE: "en", CONF_DAY_BOUNDARY: DAY_BOUNDARY_MIDNIGHT},
         options={CONF_OFFSET_DAYS: 1},
+        version=2,
         unique_id=f"{DOMAIN}-offset",
     )
     mock_config_entry.add_to_hass(hass)

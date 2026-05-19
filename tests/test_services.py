@@ -7,7 +7,6 @@ import pytest
 import voluptuous as vol
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
-from homeassistant.util import dt as dt_util
 
 from custom_components.hijri_calendar.const import (
     ATTR_DATE,
@@ -67,9 +66,12 @@ async def test_calibrate_date_relative_offset(
     mock_config_entry.add_to_hass(hass)
     async_setup_services(hass)
 
-    frozen = dt_util.datetime(2024, 4, 9, 12, 0, 0)
+    frozen = dt.datetime(2024, 4, 9, 12, 0, 0, tzinfo=dt.UTC)
     with (
-        patch("custom_components.hijri_calendar.helpers.dt_util.now", return_value=frozen),
+        patch(
+            "custom_components.hijri_calendar.helpers.dt_util.now",
+            return_value=frozen,
+        ),
         patch.object(
             hass.config_entries,
             "async_reload",
@@ -98,9 +100,12 @@ async def test_calibrate_date_hijri_mode(
     mock_config_entry.add_to_hass(hass)
     async_setup_services(hass)
 
-    frozen = dt_util.datetime(2024, 4, 9, 12, 0, 0)
+    frozen = dt.datetime(2024, 4, 9, 12, 0, 0, tzinfo=dt.UTC)
     with (
-        patch("custom_components.hijri_calendar.helpers.dt_util.now", return_value=frozen),
+        patch(
+            "custom_components.hijri_calendar.helpers.dt_util.now",
+            return_value=frozen,
+        ),
         patch.object(
             hass.config_entries,
             "async_reload",
@@ -153,7 +158,7 @@ def test_set_day_offset_schema_rejects_out_of_range() -> None:
 
 def test_compute_offset_for_hijri_today(hass: HomeAssistant) -> None:
     """Test offset computation for a fixed reference day."""
-    frozen = dt_util.datetime(2024, 4, 9, 12, 0, 0)
+    frozen = dt.datetime(2024, 4, 9, 12, 0, 0, tzinfo=dt.UTC)
     with patch(
         "custom_components.hijri_calendar.helpers.dt_util.now", return_value=frozen
     ):

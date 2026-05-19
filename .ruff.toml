@@ -24,6 +24,9 @@ ignore = [
     "ARG004",
     "PLR2004",
 ]
+"scripts/**" = [
+    "INP001",
+]
 "tests/**" = [
     "S101",
     "RUF001",

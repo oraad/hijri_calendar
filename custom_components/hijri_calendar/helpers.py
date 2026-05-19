@@ -133,7 +133,7 @@ def is_after_sunset(hass: HomeAssistant, on_date: dt.date | None = None) -> bool
     return dt_util.now() > sunset
 
 
-def _gregorian_to_date(gregorian: Gregorian) -> dt.date:
+def gregorian_to_date(gregorian: Gregorian) -> dt.date:
     """Return a datetime.date from a hijridate Gregorian instance."""
     return dt.date(gregorian.year, gregorian.month, gregorian.day)
 
@@ -149,7 +149,7 @@ def compute_offset_for_hijri_today(
     base = resolve_effective_gregorian_date(
         hass, day_boundary, offset_days=0, reference=reference
     )
-    target_gregorian = _gregorian_to_date(hijri_to_gregorian(target_hijri))
+    target_gregorian = gregorian_to_date(hijri_to_gregorian(target_hijri))
     return (target_gregorian - base).days
 
 

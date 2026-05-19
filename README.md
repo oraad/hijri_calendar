@@ -4,6 +4,7 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
 [![homeassistant](https://img.shields.io/badge/Home%20Assistant-2026.3.0+-blue.svg)](https://www.home-assistant.io/)
+[![quality scale](https://img.shields.io/badge/quality%20scale-platinum-99d0ff.svg)](https://www.home-assistant.io/docs/quality_scale/)
 
 ## Features
 
@@ -238,6 +239,10 @@ scripts/lint
 pytest tests
 scripts/develop
 ```
+
+### Integration quality scale
+
+This integration targets the Home Assistant [Integration Quality Scale](https://www.home-assistant.io/docs/quality_scale/) **Platinum** tier. Progress is tracked in [`quality_scale.yaml`](custom_components/hijri_calendar/quality_scale.yaml).
 
 ### Brand assets
 

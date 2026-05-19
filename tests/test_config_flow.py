@@ -6,7 +6,7 @@ import pytest
 from homeassistant import config_entries
 from homeassistant.const import CONF_LANGUAGE
 from homeassistant.core import HomeAssistant
-from homeassistant.data_entry_flow import FlowResultType
+from homeassistant.data_entry_flow import FlowResultType, InvalidData
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.hijri_calendar.config_flow import HijriCalendarConfigFlow
@@ -85,12 +85,11 @@ async def test_options_flow_rejects_offset_out_of_range(
     result = await hass.config_entries.options.async_init(mock_config_entry.entry_id)
     assert result["type"] is FlowResultType.FORM
 
-    result = await hass.config_entries.options.async_configure(
-        result["flow_id"],
-        user_input={CONF_OFFSET_DAYS: 5},
-    )
-    assert result["type"] is FlowResultType.FORM
-    assert result["errors"]
+    with pytest.raises(InvalidData):
+        await hass.config_entries.options.async_configure(
+            result["flow_id"],
+            user_input={CONF_OFFSET_DAYS: 5},
+        )
 
 
 async def test_migrate_entry_clamps_offset(hass: HomeAssistant) -> None:

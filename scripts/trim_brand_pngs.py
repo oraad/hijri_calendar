@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Trim transparent borders and normalize brand PNG dimensions for Home Assistant."""
 
 from __future__ import annotations
@@ -8,7 +7,12 @@ from pathlib import Path
 
 from PIL import Image
 
-BRAND = Path(__file__).resolve().parents[1] / "custom_components" / "hijri_calendar" / "brand"
+BRAND = (
+    Path(__file__).resolve().parents[1]
+    / "custom_components"
+    / "hijri_calendar"
+    / "brand"
+)
 
 ICON_FILES: tuple[tuple[str, int], ...] = (
     ("icon.png", 256),
@@ -58,23 +62,29 @@ def _fit_logo_height(image: Image.Image, height: int) -> Image.Image:
     return trimmed.resize((new_w, height), Image.Resampling.LANCZOS)
 
 
+def _log(message: str) -> None:
+    """Write a status line to stderr."""
+    sys.stderr.write(f"{message}\n")
+
+
 def main() -> int:
+    """Trim icon and logo PNGs under the integration brand directory."""
     for filename, size in ICON_FILES:
         path = BRAND / filename
         if not path.is_file():
-            print(f"skip missing {path}", file=sys.stderr)
+            _log(f"skip missing {path}")
             continue
         _fit_square(Image.open(path), size).save(path, optimize=True)
-        print(f"trimmed {filename} -> {size}x{size}")
+        _log(f"trimmed {filename} -> {size}x{size}")
 
     for filename, height in LOGO_FILES:
         path = BRAND / filename
         if not path.is_file():
-            print(f"skip missing {path}", file=sys.stderr)
+            _log(f"skip missing {path}")
             continue
         result = _fit_logo_height(Image.open(path), height)
         result.save(path, optimize=True)
-        print(f"trimmed {filename} -> {result.size[0]}x{height}")
+        _log(f"trimmed {filename} -> {result.size[0]}x{height}")
 
     return 0
 

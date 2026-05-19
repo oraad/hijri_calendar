@@ -80,17 +80,14 @@ class HijriCalendarConfigFlow(ConfigFlow, domain=DOMAIN):
     VERSION = 2
 
     @staticmethod
-    @callback
-    def async_migrate_entry(
+    async def async_migrate_entry(
         hass: HomeAssistant, config_entry: HijriCalendarConfigEntry
     ) -> bool:
         """Migrate config entry; clamp legacy day offset to supported range."""
         if config_entry.version >= 2:
             return True
 
-        offset = int(
-            config_entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS)
-        )
+        offset = int(config_entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS))
         clamped = max(OFFSET_DAYS_MIN, min(OFFSET_DAYS_MAX, offset))
         if clamped != offset:
             hass.config_entries.async_update_entry(

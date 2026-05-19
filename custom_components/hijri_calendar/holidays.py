@@ -8,7 +8,7 @@ from typing import Final
 
 from hijridate import Hijri
 
-from .helpers import gregorian_to_hijri
+from .helpers import gregorian_to_date, gregorian_to_hijri
 
 HIJRI_MONTH_RAMADAN: Final = 9
 HIJRI_MONTH_SHAWWAL: Final = 10
@@ -120,8 +120,8 @@ def days_until_hijri_date(
 ) -> int | None:
     """Return days until the next occurrence of a Hijri month/day."""
     try:
-        gregorian = hijri.to_gregorian().to_date()
-    except (OverflowError, ValueError):
+        gregorian = gregorian_to_date(hijri.to_gregorian())
+    except OverflowError, ValueError:
         return None
 
     for delta in range(max_days):
