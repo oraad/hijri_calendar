@@ -11,7 +11,7 @@ from homeassistant.config_entries import (
     OptionsFlowWithReload,
 )
 from homeassistant.const import CONF_LANGUAGE
-from homeassistant.core import callback
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.selector import (
     LanguageSelector,
     LanguageSelectorConfig,
@@ -33,6 +33,8 @@ from .const import (
     DEFAULT_NAME,
     DEFAULT_OFFSET_DAYS,
     DOMAIN,
+    OFFSET_DAYS_MAX,
+    OFFSET_DAYS_MIN,
     SUPPORTED_LANGUAGES,
 )
 from .data import HijriCalendarConfigEntry
@@ -43,8 +45,9 @@ OPTIONS_SCHEMA = vol.Schema(
     {
         vol.Optional(CONF_OFFSET_DAYS, default=DEFAULT_OFFSET_DAYS): NumberSelector(
             NumberSelectorConfig(
-                min=-30,
-                max=30,
+                min=OFFSET_DAYS_MIN,
+                max=OFFSET_DAYS_MAX,
+                step=1,
                 mode=NumberSelectorMode.BOX,
             ),
         ),
@@ -74,7 +77,27 @@ def _config_schema() -> vol.Schema:
 class HijriCalendarConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Hijri calendar."""
 
-    VERSION = 1
+    VERSION = 2
+
+    @staticmethod
+    async def async_migrate_entry(
+        hass: HomeAssistant, config_entry: HijriCalendarConfigEntry
+    ) -> bool:
+        """Migrate config entry; clamp legacy day offset to supported range."""
+        if config_entry.version >= 2:
+            return True
+
+        offset = int(config_entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS))
+        clamped = max(OFFSET_DAYS_MIN, min(OFFSET_DAYS_MAX, offset))
+        if clamped != offset:
+            hass.config_entries.async_update_entry(
+                config_entry,
+                options={**config_entry.options, CONF_OFFSET_DAYS: clamped},
+                version=2,
+            )
+        else:
+            hass.config_entries.async_update_entry(config_entry, version=2)
+        return True
 
     @staticmethod
     @callback

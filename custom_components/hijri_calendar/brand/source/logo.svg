@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 256" width="640" height="256">
-  <!-- Icon mark -->
-  <g transform="translate(44, 44) scale(0.65625)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 548 168" width="548" height="168">
+  <g transform="translate(0, 0) scale(0.857142857)">
     <rect x="44" y="52" width="168" height="168" rx="20" ry="20" fill="#F5F7FA" stroke="#1B2B34" stroke-width="6"/>
     <path d="M 50 58 L 206 58 Q 212 58 212 64 L 212 88 L 44 88 L 44 64 Q 44 58 50 58 Z" fill="#0E7C86" stroke="#1B2B34" stroke-width="6" stroke-linejoin="round"/>
     <rect x="72" y="40" width="14" height="28" rx="7" fill="#1B2B34"/>
@@ -15,17 +14,16 @@
     <circle cx="140" cy="196" r="7" fill="#0E7C86" opacity="0.4"/>
     <circle cx="172" cy="196" r="7" fill="#0E7C86" opacity="0.4"/>
   </g>
-  <!-- Bilingual text block, vertically centered with icon -->
-  <g id="textBlock" transform="translate(248, 128)">
-    <text x="0" y="-14"
+  <g transform="translate(167, 84)">
+    <text x="0" y="-16"
           font-family="'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif"
-          font-size="52" font-weight="600" fill="#1B2B34"
+          font-size="48" font-weight="600" fill="#1B2B34"
           text-anchor="start" dominant-baseline="middle"
           letter-spacing="-0.5">Hijri Calendar</text>
-    <text x="200" y="26"
+    <text x="0" y="20"
           font-family="'Noto Naskh Arabic', 'Noto Sans Arabic', sans-serif"
-          font-size="30" fill="#4A5568"
-          text-anchor="middle" dominant-baseline="middle"
+          font-size="28" fill="#4A5568"
+          text-anchor="start" dominant-baseline="middle"
           direction="rtl" unicode-bidi="plaintext">التقويم الهجري</text>
   </g>
 </svg>

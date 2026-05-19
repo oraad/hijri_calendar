@@ -1,0 +1,55 @@
+blueprint:
+  name: Hijri Calendar – Calibrate offset helper
+  description: >
+    Press the selected input button to adjust the integration offset by the chosen
+    amount (-2 to +2 days) and notify the new Hijri date.
+  domain: automation
+  source_url: https://github.com/oraad/hijri_calendar/blob/main/blueprints/automation/hijri_calendar/calibrate_offset_helper.yaml
+  author: oraad
+  homeassistant:
+    min_version: "2026.3.0"
+  input:
+    run_button:
+      name: Input button that runs calibration
+      selector:
+        entity:
+          domain: input_button
+    notify_service:
+      name: Notification service
+      selector:
+        text:
+    offset_adjustment:
+      name: Adjust offset by (days)
+      default: 1
+      selector:
+        number:
+          min: -2
+          max: 2
+          mode: box
+    language:
+      name: Language
+      default: en
+      selector:
+        language:
+          languages:
+            - en
+            - ar
+            - tr
+
+trigger:
+  - platform: state
+    entity_id: !input run_button
+
+action:
+  - service: hijri_calendar.calibrate_date
+    data:
+      offset: !input offset_adjustment
+      language: !input language
+    response_variable: calibrate_result
+  - service: "{{ notify_service }}"
+    data:
+      message: >
+        Offset {{ calibrate_result.previous_offset }} → {{ calibrate_result.offset }}:
+        {{ calibrate_result.hijri }} ({{ calibrate_result.formatted }}).
+
+mode: single

@@ -10,7 +10,11 @@ ATTRIBUTION: Final = "Umm al-Qura calendar via hijridate"
 DEFAULT_NAME: Final = "Hijri Calendar"
 
 ATTR_DATE = "date"
+ATTR_HIJRI = "hijri"
 ATTR_OFFSET = "offset"
+
+OFFSET_DAYS_MIN = -2
+OFFSET_DAYS_MAX = 2
 
 CONF_DAY_BOUNDARY = "day_boundary"
 CONF_OFFSET_DAYS = "offset_days"
@@ -29,3 +33,4 @@ HijriLanguage = Literal["en", "ar", "tr"]
 SERVICE_CALIBRATE_DATE = "calibrate_date"
 SERVICE_CONVERT_TO_HIJRI = "convert_to_hijri"
 SERVICE_CONVERT_TO_GREGORIAN = "convert_to_gregorian"
+SERVICE_SET_DAY_OFFSET = "set_day_offset"

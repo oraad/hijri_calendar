@@ -1,16 +1,18 @@
 calibrate_date:
   fields:
-    date:
-      required: false
-      example: "2025-04-14"
-      selector:
-        date:
     offset:
       required: false
-      example: 0
-      default: 0
+      example: 1
       selector:
         number:
+          min: -2
+          max: 2
+          mode: box
+    hijri:
+      required: false
+      example: "1446-10-15"
+      selector:
+        text:
     language:
       required: false
       default: "en"
@@ -39,6 +41,17 @@ convert_to_hijri:
             - "en"
             - "ar"
             - "tr"
+
+set_day_offset:
+  fields:
+    offset:
+      required: true
+      example: 1
+      selector:
+        number:
+          min: -2
+          max: 2
+          mode: box
 
 convert_to_gregorian:
   fields:

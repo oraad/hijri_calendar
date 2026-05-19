@@ -68,6 +68,12 @@
       },
       "days_in_year": {
         "name": "Days in Hijri year"
+      },
+      "days_until_ramadan": {
+        "name": "Days until Ramadan"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Days until Eid al-Fitr"
       }
     },
     "calendar": {
@@ -90,12 +96,44 @@
       }
     }
   },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Sunset boundary unavailable",
+      "description": "Home Assistant could not calculate sunset for your location. Reconfigure Hijri Calendar to use local midnight, or set a valid location under Settings → System → General."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "Calibrate date",
+      "description": "Adjust the integration day offset for today using a small relative change or the announced Hijri date.",
+      "fields": {
+        "offset": {
+          "name": "Offset adjustment",
+          "description": "Add this many days to the current integration offset (-2 to +2)."
+        },
+        "hijri": {
+          "name": "Hijri date",
+          "description": "Announced Hijri date for today (ISO, e.g. 1446-10-15). Computes and saves the required offset."
+        },
+        "language": {
+          "name": "Language",
+          "description": "Language for formatted fields in the response."
+        }
+      }
+    }
+  },
   "exceptions": {
     "date_out_of_range": {
       "message": "The date is outside the supported Umm al-Qura range."
     },
     "sunset_unavailable": {
       "message": "Sunset could not be calculated. Check Home Assistant location settings."
+    },
+    "calibrate_no_config_entry": {
+      "message": "Hijri Calendar must be configured before calibrating the date."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "Required offset {offset} is outside the supported range ({min} to {max})."
     }
   }
 }

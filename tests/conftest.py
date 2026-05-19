@@ -29,6 +29,7 @@ def mock_config_entry() -> MockConfigEntry:
             CONF_DAY_BOUNDARY: DAY_BOUNDARY_MIDNIGHT,
         },
         options={},
+        version=2,
         unique_id=DOMAIN,
     )
 

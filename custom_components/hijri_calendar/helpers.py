@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from functools import partial
 from typing import TYPE_CHECKING
 
 from hijridate import Gregorian, Hijri
@@ -56,6 +57,42 @@ def parse_hijri_date(date_string: str) -> Hijri:
         ) from err
 
 
+async def async_gregorian_to_hijri(
+    hass: HomeAssistant, gregorian_date: dt.date
+) -> Hijri:
+    """Convert a Gregorian date to Hijri without blocking the event loop."""
+    return await hass.async_add_executor_job(gregorian_to_hijri, gregorian_date)
+
+
+async def async_hijri_to_gregorian(hass: HomeAssistant, hijri: Hijri) -> Gregorian:
+    """Convert a Hijri date to Gregorian without blocking the event loop."""
+    return await hass.async_add_executor_job(hijri_to_gregorian, hijri)
+
+
+async def async_parse_hijri_date(hass: HomeAssistant, date_string: str) -> Hijri:
+    """Parse an ISO Hijri date string without blocking the event loop."""
+    return await hass.async_add_executor_job(parse_hijri_date, date_string)
+
+
+async def async_resolve_effective_gregorian_date(
+    hass: HomeAssistant,
+    day_boundary: str,
+    offset_days: int,
+    *,
+    reference: dt.datetime | None = None,
+) -> dt.date:
+    """Resolve effective Gregorian date without blocking the event loop."""
+    return await hass.async_add_executor_job(
+        partial(
+            resolve_effective_gregorian_date,
+            hass,
+            day_boundary,
+            offset_days,
+            reference=reference,
+        )
+    )
+
+
 def format_hijri_dict(hijri: Hijri, language: HijriLanguage) -> dict[str, str | int]:
     """Return a dictionary of formatted Hijri date fields."""
     return {
@@ -97,6 +134,45 @@ def is_after_sunset(hass: HomeAssistant, on_date: dt.date | None = None) -> bool
         )
     sunset = dt_util.as_local(event_date)
     return dt_util.now() > sunset
+
+
+def gregorian_to_date(gregorian: Gregorian) -> dt.date:
+    """Return a datetime.date from a hijridate Gregorian instance."""
+    return dt.date(gregorian.year, gregorian.month, gregorian.day)
+
+
+def compute_offset_for_hijri_today(
+    hass: HomeAssistant,
+    day_boundary: str,
+    target_hijri: Hijri,
+    *,
+    reference: dt.datetime | None = None,
+) -> int:
+    """Return the day offset so today (per boundary) shows the target Hijri date."""
+    base = resolve_effective_gregorian_date(
+        hass, day_boundary, offset_days=0, reference=reference
+    )
+    target_gregorian = gregorian_to_date(hijri_to_gregorian(target_hijri))
+    return (target_gregorian - base).days
+
+
+async def async_compute_offset_for_hijri_today(
+    hass: HomeAssistant,
+    day_boundary: str,
+    target_hijri: Hijri,
+    *,
+    reference: dt.datetime | None = None,
+) -> int:
+    """Compute offset for target Hijri today without blocking the event loop."""
+    return await hass.async_add_executor_job(
+        partial(
+            compute_offset_for_hijri_today,
+            hass,
+            day_boundary,
+            target_hijri,
+            reference=reference,
+        )
+    )
 
 
 def resolve_effective_gregorian_date(

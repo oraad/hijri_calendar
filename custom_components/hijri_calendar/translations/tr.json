@@ -68,6 +68,12 @@
       },
       "days_in_year": {
         "name": "Hicri yıl gün sayısı"
+      },
+      "days_until_ramadan": {
+        "name": "Ramazan'a kalan gün"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Ramazan Bayramı'na kalan gün"
       }
     },
     "calendar": {
@@ -90,12 +96,44 @@
       }
     }
   },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Gün batımı sınırı kullanılamıyor",
+      "description": "Home Assistant konumunuz için gün batımını hesaplayamadı. Hicri Takvim'i yerel gece yarısına göre yeniden yapılandırın veya Ayarlar → Sistem → Genel altında geçerli bir konum belirleyin."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "Tarihi kalibre et",
+      "description": "Bugün için entegrasyon gün kaymasını küçük bir göreli değişiklik veya ilan edilen Hicri tarihle ayarlar.",
+      "fields": {
+        "offset": {
+          "name": "Kayma ayarı",
+          "description": "Mevcut entegrasyon kaymasına eklenecek gün sayısı (−2 ile +2 arası)."
+        },
+        "hijri": {
+          "name": "Hicri tarih",
+          "description": "Bugün için ilan edilen Hicri tarih (ISO, örn. 1446-10-15). Gerekli kaymayı hesaplar ve kaydeder."
+        },
+        "language": {
+          "name": "Dil",
+          "description": "Yanıttaki biçimlendirilmiş alanlar için dil."
+        }
+      }
+    }
+  },
   "exceptions": {
     "date_out_of_range": {
       "message": "Tarih desteklenen Ümmü'l-Kura aralığının dışında."
     },
     "sunset_unavailable": {
       "message": "Gün batımı hesaplanamadı. Home Assistant konum ayarlarını kontrol edin."
+    },
+    "calibrate_no_config_entry": {
+      "message": "Tarihi kalibre etmeden önce Hicri Takvim yapılandırılmalıdır."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "Gerekli kayma {offset}, desteklenen aralığın ({min} – {max}) dışında."
     }
   }
 }

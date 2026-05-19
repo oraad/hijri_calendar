@@ -53,6 +53,9 @@ rules:
     status: exempt
     comment: This is a local calculation and does not require discovery.
   docs-supported-functions: done
+  docs-data-update: done
+  docs-examples: done
+  docs-use-cases: done
   docs-known-limitations: done
   docs-supported-devices:
     status: exempt
@@ -68,14 +71,13 @@ rules:
   exception-translations: done
   icon-translations: done
   reconfiguration-flow: done
-  repair-issues:
-    status: exempt
-    comment: There are no issues that can be repaired.
+  repair-issues: done
   stale-devices:
     status: exempt
     comment: This integration does not have physical devices.
 
   # Platinum
+  async-dependency: done
   inject-websession:
     status: exempt
     comment: This integration does not require a web session.
