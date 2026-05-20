@@ -2,6 +2,28 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.0] - 2026-05-19
+
+First stable release. Includes all changes from `0.1.0-beta.3` below.
+
+## [0.1.0-beta.3] - 2026-05-19
+
+### Added
+
+- HACS `zip_release`: install from published GitHub releases (`hijri_calendar.zip`); enable *Show beta versions* for pre-releases.
+- Integration Quality Scale: Platinum tier (`quality_scale.yaml`).
+- **`calibrate_date` service**: relative day offset (±2) or announced Hijri date for today (persists to integration options).
+- **`set_day_offset` service**: absolute day offset (−2 to +2).
+- Countdown sensors (disabled by default): days until Ramadan and Eid al-Fitr.
+- Automation blueprints: Ramadan mode, Eid greetings, daily Hijri date, iftar reminder, offset calibration.
+- Repairs: sunset-unavailable warning when day boundary is *After sunset*.
+- Brand assets: updated icons and logos.
+
+### Changed
+
+- Day offset limited to −2..+2; config entry migration (v2) clamps legacy values.
+- Config flow options use number selector for offset.
+
 ## [0.1.0-beta.2] - 2026-05-17
 
 ### Added
