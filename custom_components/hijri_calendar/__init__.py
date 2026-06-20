@@ -55,9 +55,10 @@ async def _preload_calendar_languages(
         )
         languages.add(resolved)
     for language in languages:
-        await translation.async_get_translations(
-            hass, language, "entity", integrations=[DOMAIN]
-        )
+        for category in ("entity", "calendar_content"):
+            await translation.async_get_translations(
+                hass, language, category, integrations=[DOMAIN]
+            )
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:

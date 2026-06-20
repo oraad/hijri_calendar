@@ -1,6 +1,6 @@
 # Calendar reference links
 
-Maintainer inventory of reference URLs used in calendar event descriptions. Each event has distinct URLs in `strings.json`, `en.json`, `ar.json`, and `tr.json` under `entity.calendar`.
+Maintainer inventory of reference URLs used in calendar event descriptions. Each event has distinct URLs in `strings.json`, `en.json`, `ar.json`, and `tr.json` under `calendar_content`.
 
 ## Observances (`calendar.hijri_events`)
 

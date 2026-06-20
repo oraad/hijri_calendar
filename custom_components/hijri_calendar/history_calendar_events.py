@@ -40,8 +40,7 @@ def build_history_calendar_events(
                     hass, milestone.id, milestone.hijri_year, language
                 ),
                 uid=(
-                    f"{DOMAIN}:history:{milestone.id}:"
-                    f"{day.gregorian_date.isoformat()}"
+                    f"{DOMAIN}:history:{milestone.id}:{day.gregorian_date.isoformat()}"
                 ),
             )
             for milestone in historical

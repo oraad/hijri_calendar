@@ -8,8 +8,9 @@ from hijridate import Hijri
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.translation import async_get_cached_translations
 
-from .calendar_common import format_calendar_event_description
 from .const import DOMAIN, HijriLanguage
+
+CALENDAR_CONTENT_CATEGORY = "calendar_content"
 
 EASTERN_ARABIC_DIGITS: Final = "٠١٢٣٤٥٦٧٨٩"
 _WESTERN_DIGITS: Final = "0123456789"
@@ -45,6 +46,16 @@ def _entity_translation(
 
 
 @callback
+def _calendar_content_translations(
+    hass: HomeAssistant, language: HijriLanguage
+) -> dict[str, str]:
+    """Return flattened calendar content translations."""
+    return async_get_cached_translations(
+        hass, language, CALENDAR_CONTENT_CATEGORY, DOMAIN
+    )
+
+
+@callback
 def _calendar_translation(
     hass: HomeAssistant,
     language: HijriLanguage,
@@ -53,20 +64,35 @@ def _calendar_translation(
     event_id: str,
 ) -> str:
     """Return a flattened calendar content translation."""
-    key = f"component.{DOMAIN}.entity.calendar.{calendar_key}.{section}.{event_id}"
-    translations = async_get_cached_translations(hass, language, "entity", DOMAIN)
-    return translations.get(key, event_id)
+    key = (
+        f"component.{DOMAIN}.{CALENDAR_CONTENT_CATEGORY}."
+        f"{calendar_key}.{section}.{event_id}"
+    )
+    return _calendar_content_translations(hass, language).get(key, event_id)
 
 
 @callback
-def _calendar_scalar(
-    hass: HomeAssistant, language: HijriLanguage, *path: str
-) -> str:
-    """Return a scalar calendar translation at the given path under entity.calendar."""
+def _calendar_scalar(hass: HomeAssistant, language: HijriLanguage, *path: str) -> str:
+    """Return a scalar calendar translation at the given path."""
     suffix = ".".join(path)
-    key = f"component.{DOMAIN}.entity.calendar.{suffix}"
-    translations = async_get_cached_translations(hass, language, "entity", DOMAIN)
-    return translations.get(key, path[-1])
+    key = f"component.{DOMAIN}.{CALENDAR_CONTENT_CATEGORY}.{suffix}"
+    return _calendar_content_translations(hass, language).get(key, path[-1])
+
+
+def format_calendar_event_description(
+    body: str,
+    reference_label: str,
+    reference_url: str,
+    *,
+    year_line: str | None = None,
+) -> str:
+    """Build a calendar event description with optional year line and reference."""
+    parts: list[str] = [body.strip()]
+    if year_line:
+        parts.append(year_line.strip())
+    if reference_url:
+        parts.append(f"{reference_label}: {reference_url}")
+    return "\n\n".join(part for part in parts if part)
 
 
 @callback

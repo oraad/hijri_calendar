@@ -550,9 +550,9 @@ def _history_sections(lang: str) -> dict[str, Any]:
         descriptions[event_id] = locales[lang]["description"]
         urls[event_id] = locales[lang]["reference_url"]
     return {
-        "name": "Islamic history" if lang == "en" else (
-            "التاريخ الإسلامي" if lang == "ar" else "İslam tarihi"
-        ),
+        "name": "Islamic history"
+        if lang == "en"
+        else ("التاريخ الإسلامي" if lang == "ar" else "İslam tarihi"),
         "event_name": names,
         "description": descriptions,
         "reference_url": urls,
@@ -567,25 +567,37 @@ def _patch_file(path: Path, lang: str) -> None:
     holiday_state.update(NEW_HOLIDAY_STATES[lang])
 
     calendar = data.setdefault("entity", {}).setdefault("calendar", {})
-    calendar["reference_label"] = REFERENCE_LABEL[lang]
+    calendar.pop("reference_label", None)
     calendar["hijri_events"] = {
         "name": calendar.get("hijri_events", {}).get("name", "Hijri observances"),
-        **_observance_sections(lang),
     }
-    calendar["islamic_history"] = _history_sections(lang)
+    history = _history_sections(lang)
+    calendar["islamic_history"] = {"name": history.pop("name")}
+    data["calendar_content"] = {
+        "reference_label": REFERENCE_LABEL[lang],
+        "hijri_events": _observance_sections(lang),
+        "islamic_history": history,
+    }
 
-    options_data = data.setdefault("options", {}).setdefault("step", {}).setdefault(
-        "init", {}
-    ).setdefault("data", {})
+    options_data = (
+        data.setdefault("options", {})
+        .setdefault("step", {})
+        .setdefault("init", {})
+        .setdefault("data", {})
+    )
     options_data["observances_calendar_language"] = (
         "Observances calendar language"
         if lang == "en"
-        else "لغة تقويم المناسبات" if lang == "ar" else "Gözlem takvimi dili"
+        else "لغة تقويم المناسبات"
+        if lang == "ar"
+        else "Gözlem takvimi dili"
     )
     options_data["islamic_history_calendar_language"] = (
         "Islamic history calendar language"
         if lang == "en"
-        else "لغة تقويم التاريخ الإسلامي" if lang == "ar" else "İslam tarihi takvimi dili"
+        else "لغة تقويم التاريخ الإسلامي"
+        if lang == "ar"
+        else "İslam tarihi takvimi dili"
     )
 
     selector = data.setdefault("selector", {})
@@ -594,7 +606,9 @@ def _patch_file(path: Path, lang: str) -> None:
             "default": (
                 "Integration language"
                 if lang == "en"
-                else "لغة التكامل" if lang == "ar" else "Entegrasyon dili"
+                else "لغة التكامل"
+                if lang == "ar"
+                else "Entegrasyon dili"
             ),
             "ar": "العربية" if lang != "tr" else "Arapça",
         }
@@ -603,7 +617,9 @@ def _patch_file(path: Path, lang: str) -> None:
         "observances_calendar_language"
     ]
 
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
 
 
 def main() -> None:

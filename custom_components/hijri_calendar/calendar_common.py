@@ -144,19 +144,3 @@ def merge_span_days(
         spans.append((span_start, span_end, span_year))
 
     return spans
-
-
-def format_calendar_event_description(
-    body: str,
-    reference_label: str,
-    reference_url: str,
-    *,
-    year_line: str | None = None,
-) -> str:
-    """Build a calendar event description with optional year line and reference."""
-    parts: list[str] = [body.strip()]
-    if year_line:
-        parts.append(year_line.strip())
-    if reference_url:
-        parts.append(f"{reference_label}: {reference_url}")
-    return "\n\n".join(part for part in parts if part)

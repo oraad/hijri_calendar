@@ -85,9 +85,7 @@ def build_calendar_events(
             CalendarEvent(
                 start=span_start,
                 end=span_end + dt.timedelta(days=1),
-                summary=_span_summary(
-                    hass, language, SPAN_HAJJ_SEASON, hijri_year
-                ),
+                summary=_span_summary(hass, language, SPAN_HAJJ_SEASON, hijri_year),
                 description=build_observance_description(
                     hass, SPAN_HAJJ_SEASON, language
                 ),

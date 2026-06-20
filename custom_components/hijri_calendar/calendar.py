@@ -91,9 +91,7 @@ class HijriObservancesCalendarEntity(_HijriCalendarBase):
         end_date: dt.datetime,
     ) -> list[CalendarEvent]:
         """Return calendar events within a datetime range."""
-        return build_calendar_events(
-            hass, self._event_config(), start_date, end_date
-        )
+        return build_calendar_events(hass, self._event_config(), start_date, end_date)
 
 
 class IslamicHistoryCalendarEntity(_HijriCalendarBase):
