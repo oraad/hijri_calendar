@@ -292,23 +292,6 @@ OBSERVANCES: dict[str, dict[str, dict[str, str]]] = {
 }
 
 HISTORY: dict[str, dict[str, dict[str, str]]] = {
-    "hijra": {
-        "en": {
-            "name": "Hijra",
-            "description": "The migration from Mecca to Medina that marks year 1 AH.",
-            "reference_url": "https://www.britannica.com/event/Hijrah",
-        },
-        "ar": {
-            "name": "الهجرة",
-            "description": "هجرة النبي من مكة إلى المدينة وبداية التقويم الهجري.",
-            "reference_url": "https://ar.wikipedia.org/wiki/الهجرة_النبوية",
-        },
-        "tr": {
-            "name": "Hicret",
-            "description": "1. Hicri yılın başlangıcı sayılan Mekke'den Medine'ye hicret.",
-            "reference_url": "https://tr.wikipedia.org/wiki/Hicret",
-        },
-    },
     "battle_of_badr": {
         "en": {
             "name": "Battle of Badr",
@@ -570,7 +553,7 @@ def _patch_file(path: Path, lang: str) -> None:
     calendar = data.setdefault("entity", {}).setdefault("calendar", {})
     calendar.pop("reference_label", None)
     calendar["hijri_events"] = {
-        "name": calendar.get("hijri_events", {}).get("name", "Hijri observances"),
+        "name": calendar.get("hijri_events", {}).get("name", "Observances"),
     }
     history = _history_sections(lang)
     calendar["islamic_history"] = {"name": history.pop("name")}

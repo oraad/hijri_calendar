@@ -30,7 +30,6 @@ Arabic and Turkish files use Wikipedia (or equivalent) articles in those languag
 
 | Event id | English source (example) |
 |----------|--------------------------|
-| `hijra` | Britannica — Hijrah |
 | `battle_of_badr` | Britannica — Battle of Badr |
 | `battle_of_uhud` | Britannica — Battle of Uhud |
 | `battle_of_khandaq` | Britannica — Battle of the Ditch |

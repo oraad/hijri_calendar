@@ -42,7 +42,6 @@
   },
   "islamic_history": {
     "event_name": {
-      "hijra": "الهجرة",
       "battle_of_badr": "غزوة بدر",
       "battle_of_uhud": "غزوة أحد",
       "battle_of_khandaq": "غزوة الخندق",
@@ -58,7 +57,6 @@
       "fall_of_constantinople": "فتح القسطنطينية"
     },
     "description": {
-      "hijra": "هجرة النبي من مكة إلى المدينة وبداية التقويم الهجري.",
       "battle_of_badr": "أول معركة فاصلة بين المسلمين وقريش في 2 هـ.",
       "battle_of_uhud": "معركة وقعت عند جبل أحد في 3 هـ.",
       "battle_of_khandaq": "حصار الأحزاب للمدينة في 5 هـ.",
@@ -74,7 +72,6 @@
       "fall_of_constantinople": "فتح القسطنطينية في 857 هـ."
     },
     "reference_url": {
-      "hijra": "https://ar.wikipedia.org/wiki/الهجرة_النبوية",
       "battle_of_badr": "https://ar.wikipedia.org/wiki/غزوة_بدر",
       "battle_of_uhud": "https://ar.wikipedia.org/wiki/غزوة_أحد",
       "battle_of_khandaq": "https://ar.wikipedia.org/wiki/غزوة_الخندق",

@@ -42,7 +42,6 @@
   },
   "islamic_history": {
     "event_name": {
-      "hijra": "Hicret",
       "battle_of_badr": "Bedir Savaşı",
       "battle_of_uhud": "Uhud Savaşı",
       "battle_of_khandaq": "Hendek Savaşı",
@@ -58,7 +57,6 @@
       "fall_of_constantinople": "İstanbul'un Fethi"
     },
     "description": {
-      "hijra": "1. Hicri yılın başlangıcı sayılan Mekke'den Medine'ye hicret.",
       "battle_of_badr": "2. yılda Müslümanlar ile Kureyş arasındaki ilk büyük savaş.",
       "battle_of_uhud": "3. yılda Uhud Dağı yakınında yapılan savaş.",
       "battle_of_khandaq": "5. yılda Medine kuşatması (Hendek).",
@@ -74,7 +72,6 @@
       "fall_of_constantinople": "857. yılda İstanbul'un fethi."
     },
     "reference_url": {
-      "hijra": "https://tr.wikipedia.org/wiki/Hicret",
       "battle_of_badr": "https://tr.wikipedia.org/wiki/Bedir_Savaşı",
       "battle_of_uhud": "https://tr.wikipedia.org/wiki/Uhud_Savaşı",
       "battle_of_khandaq": "https://tr.wikipedia.org/wiki/Hendek_Savaşı",
