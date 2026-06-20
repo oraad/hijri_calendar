@@ -10,7 +10,7 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 
 - **Sensors**: current Hijri date (with attributes), active holidays, days in month/year, days until Ramadan/Eid (disabled by default)
 - **Binary sensors**: Ramadan, Eid al-Fitr, Eid al-Adha, Hajj season
-- **Calendar**: Hijri observances and Islamic history calendars with localized descriptions and reference links
+- **Calendar**: Observances and Islamic history calendars with localized descriptions and reference links
 - **Services**: convert between Hijri and Gregorian, calibrate day offset (relative ±2 or announced Hijri date), set day offset directly
 - **Options**: configurable day offset for local moon-sighting differences
 - **Day boundary**: roll the Hijri day at local midnight (default) or after sunset
@@ -85,7 +85,7 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 
 Two calendar entities appear in **Settings → Devices & services → Calendar**, the Calendar dashboard, and `calendar.get_events` automations. Both use the same Umm al-Qura rules, **day offset**, and **day boundary** as the sensors.
 
-**Hijri observances** (`calendar.hijri_events`):
+**Observances** (`calendar.hijri_events`):
 
 - **Ramadan** and **Hajj season** show as single multi-day all-day entries.
 - Other observances (Eid al-Fitr, Eid al-Adha, Ashura, Islamic New Year, Laylat al-Qadr, multi-day Eids, etc.) appear on their mapped Gregorian days.
@@ -93,7 +93,7 @@ Two calendar entities appear in **Settings → Devices & services → Calendar**
 
 **Islamic history** (`calendar.islamic_history`):
 
-- Recurring anniversaries of curated milestones (Hijra, Badr, conquest of Mecca, fall of Constantinople, and others).
+- Recurring anniversaries of curated milestones (Badr, conquest of Mecca, fall of Constantinople, and others).
 - Descriptions include the original AH year and a reference link (language follows the Islamic history calendar language option).
 
 **Known limitations**: Observance and history Hijri dates are indicative; scholarly sources sometimes differ (for example Laylat al-Qadr or exact battle dates). The history calendar is educational, not a scholarly authority. Umm al-Qura calculation may differ from local moon-sighting announcements—use **Day offset** or `calibrate_date` to align observances when needed.

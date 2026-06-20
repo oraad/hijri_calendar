@@ -22,7 +22,6 @@ class IslamicHistoricalEvent:
 
 
 ISLAMIC_HISTORICAL_EVENTS: Final[tuple[IslamicHistoricalEvent, ...]] = (
-    IslamicHistoricalEvent("hijra", 1, 1, 1, "milestone"),
     IslamicHistoricalEvent("battle_of_badr", 9, 17, 2, "battle"),
     IslamicHistoricalEvent("battle_of_uhud", 10, 7, 3, "battle"),
     IslamicHistoricalEvent("battle_of_khandaq", 10, 5, 5, "battle"),

@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.1] - 2026-05-19
+
+### Changed
+
+- Renamed `calendar.hijri_events` display name from "Hijri observances" to "Observances" (all languages).
+
+### Removed
+
+- **Hijra** milestone removed from `calendar.islamic_history` (pending a definitive commemoration date).
+
 ## [0.2.0] - 2026-05-19
 
 ### Added
