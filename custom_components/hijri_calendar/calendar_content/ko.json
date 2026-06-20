@@ -1,0 +1,96 @@
+{
+  "reference_label": "자세히 알아보기",
+  "hijri_events": {
+    "description": {
+      "ramadan": "무슬림에게 금식, 기도, 성찰의 달인 히즈리 9월.",
+      "hajj_season": "둘히자월의 연례 순례 시즌. 하지 의식의 날들을 포함합니다.",
+      "hijri_new_year": "무하람 1일은 이슬람 히즈리 연의 시작을 나타냅니다.",
+      "first_day_of_ramadan": "금식의 달이 시작되는 라마단 첫날.",
+      "laylat_al_qadr": "운명의 밤. 라마단 27일 밤에 널리 기념됩니다.",
+      "isra_and_miraj": "라자브 27일에 기념되는 야간 여행과 승천.",
+      "last_day_of_ramadan": "이드 알피트르 전 라마단 마지막 날.",
+      "eid_al_fitr_eve": "라마단 끝의 이드 알피트르 전야.",
+      "eid_al_fitr": "샤왈 1일에 라마단의 끝을 기념하는 축제.",
+      "eid_al_fitr_day_2": "이드 알피트르 축하 둘째 날.",
+      "eid_al_fitr_day_3": "이드 알피트르 축하 셋째 날.",
+      "day_of_arafah": "하지 중 둘히자 9일 아라파트에서의 대기의 날.",
+      "eid_al_adha": "둘히자 10일의 희생제.",
+      "eid_al_adha_day_2": "이드 알아드하 둘째 날.",
+      "eid_al_adha_day_3": "이드 알아드하 셋째 날.",
+      "eid_al_adha_day_4": "이드 알아드하 넷째 날이자 하지 시즌 의식의 마지막.",
+      "ashura": "무하람 10일에 기념되며, 특히 금식과 추모에 중요합니다."
+    },
+    "reference_url": {
+      "ramadan": "https://ko.wikipedia.org/wiki/라마단",
+      "hajj_season": "https://ko.wikipedia.org/wiki/하지",
+      "hijri_new_year": "https://ko.wikipedia.org/wiki/히즈리력",
+      "first_day_of_ramadan": "https://ko.wikipedia.org/wiki/라마단",
+      "laylat_al_qadr": "https://ko.wikipedia.org/wiki/라일라투_알카드르",
+      "isra_and_miraj": "https://ko.wikipedia.org/wiki/이스라와_미라즈",
+      "last_day_of_ramadan": "https://ko.wikipedia.org/wiki/라마단",
+      "eid_al_fitr_eve": "https://ko.wikipedia.org/wiki/이드_알피트르",
+      "eid_al_fitr": "https://ko.wikipedia.org/wiki/이드_알피트르",
+      "eid_al_fitr_day_2": "https://ko.wikipedia.org/wiki/이드_알피트르",
+      "eid_al_fitr_day_3": "https://ko.wikipedia.org/wiki/이드_알피트르",
+      "day_of_arafah": "https://ko.wikipedia.org/wiki/아라파트",
+      "eid_al_adha": "https://ko.wikipedia.org/wiki/이드_알아드하",
+      "eid_al_adha_day_2": "https://ko.wikipedia.org/wiki/이드_알아드하",
+      "eid_al_adha_day_3": "https://ko.wikipedia.org/wiki/이드_알아드하",
+      "eid_al_adha_day_4": "https://ko.wikipedia.org/wiki/이드_알아드하",
+      "ashura": "https://ko.wikipedia.org/wiki/아슈라"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "바드르 전투",
+      "battle_of_uhud": "우후드 전투",
+      "battle_of_khandaq": "참호 전투",
+      "treaty_of_hudaybiyyah": "후데이비야 조약",
+      "conquest_of_khaybar": "카이바르 정복",
+      "conquest_of_mecca": "메카 정복",
+      "battle_of_hunayn": "훈나인 전투",
+      "expedition_to_tabuk": "타부크 원정",
+      "battle_of_yarmouk": "야르뫋 전투",
+      "battle_of_qadisiyyah": "알-카디시야 전투",
+      "conquest_of_jerusalem": "예루살렘 정복",
+      "conquest_of_egypt": "이집트 정복",
+      "fall_of_constantinople": "콘스타트이놀프 함락"
+    },
+    "description": {
+      "battle_of_badr": "히즈리 2년, 무슬림과 쿠라이시의 첫 대규모 전투.",
+      "battle_of_uhud": "히즈리 3년, 우후드 산 근처에서 벌어진 전투.",
+      "battle_of_khandaq": "히즈리 5년, 연합군에 의한 메디나 포위.",
+      "treaty_of_hudaybiyyah": "히즈리 6년, 무슬림과 쿠라이시의 평화 협정.",
+      "conquest_of_khaybar": "히즈리 7년, 카이바르 요새에 대한 무슬림 원정.",
+      "conquest_of_mecca": "히즈리 8년, 메카의 평화적 개성.",
+      "battle_of_hunayn": "메카 정복 후 히즈리 8년에 벌어진 전투.",
+      "expedition_to_tabuk": "히즈리 9년의 타부크 원정.",
+      "battle_of_yarmouk": "히즈리 15년, 비잔틴군과의 결정적 전투.",
+      "battle_of_qadisiyyah": "히즈리 15년, 이라크를 무슬림군에 개방한 주요 전투.",
+      "conquest_of_jerusalem": "히즈리 17년, 무슬림의 예루살렘 입성.",
+      "conquest_of_egypt": "히즈리 21년, 무슬림의 이집트 확장.",
+      "fall_of_constantinople": "히즈리 857년, 오스만의 콘스타트이놀프 정복."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://ko.wikipedia.org/wiki/바드르_전투",
+      "battle_of_uhud": "https://ko.wikipedia.org/wiki/우후드_전투",
+      "battle_of_khandaq": "https://ko.wikipedia.org/wiki/참호_전투",
+      "treaty_of_hudaybiyyah": "https://ko.wikipedia.org/wiki/후데이비야_조약",
+      "conquest_of_khaybar": "https://ko.wikipedia.org/wiki/카이바르",
+      "conquest_of_mecca": "https://ko.wikipedia.org/wiki/메카_정복",
+      "battle_of_hunayn": "https://ko.wikipedia.org/wiki/훈나인_전투",
+      "expedition_to_tabuk": "https://ko.wikipedia.org/wiki/타부크_원정",
+      "battle_of_yarmouk": "https://ko.wikipedia.org/wiki/야르뫋_전투",
+      "battle_of_qadisiyyah": "https://ko.wikipedia.org/wiki/Al-Qadisiyyah_전투",
+      "conquest_of_jerusalem": "https://ko.wikipedia.org/wiki/예루살렘",
+      "conquest_of_egypt": "https://ko.wikipedia.org/wiki/이집트",
+      "fall_of_constantinople": "https://ko.wikipedia.org/wiki/콘스타트이놀프의_함락"
+    },
+    "year_suffix": "{year} AH"
+  },
+  "hijri_month_starts": {
+    "summary_template": "{month} 시작",
+    "description_template": "히즈라력 {month}의 첫째 날.",
+    "reference_url": "https://ko.wikipedia.org/wiki/히즈리력"
+  }
+}

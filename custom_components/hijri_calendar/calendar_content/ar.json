@@ -87,5 +87,10 @@
       "fall_of_constantinople": "https://ar.wikipedia.org/wiki/فتح_القسطنطينية"
     },
     "year_suffix": "{year} هـ"
+  },
+  "hijri_month_starts": {
+    "summary_template": "بداية {month}",
+    "description_template": "أول يوم من {month} في التقويم الهجري.",
+    "reference_url": "https://ar.wikipedia.org/wiki/التقويم_الهجري"
   }
 }

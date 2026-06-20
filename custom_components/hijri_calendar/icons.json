@@ -14,6 +14,9 @@
       },
       "islamic_history": {
         "default": "mdi:book-clock"
+      },
+      "hijri_month_starts": {
+        "default": "mdi:calendar-month"
       }
     },
     "binary_sensor": {

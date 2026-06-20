@@ -1,0 +1,96 @@
+{
+  "reference_label": "আরও জানুন",
+  "hijri_events": {
+    "description": {
+      "ramadan": "মুসলমানদের জন্য হিজরি নবম মাস, রোজা, প্রার্থনা ও চিন্তা-ভাবনার মাস।",
+      "hajj_season": "জিলহজ মাসে বার্ষিক হজ মৌসুম, হজের আচার-অনুষ্ঠানের দিনগুলোসহ।",
+      "hijri_new_year": "মুহarram-এর প্রথম দিন ইসলামি হিজরি বছরের শুরু চিহ্নিত করে।",
+      "first_day_of_ramadan": "রমজানের প্রথম দিন, রোজার মাস শুরু হয়।",
+      "laylat_al_qadr": "কদরের রাত, সাধারণত রমজানের ২৭তম রাতে পালিত।",
+      "isra_and_miraj": "রজবের ২৭ তারিখে পালিত ইসরা ও মিরাজের স্মরণ।",
+      "last_day_of_ramadan": "ঈদুল ফিতরের আগে রমজানের শেষ দিন।",
+      "eid_al_fitr_eve": "রমজান শেষে ঈদুল ফিতরের আগের রাত।",
+      "eid_al_fitr": "শাওয়ালের ১ তারিখে রমজান শেষের উৎসব।",
+      "eid_al_fitr_day_2": "ঈদুল ফিতর উদযাপনের দ্বিতীয় দিন।",
+      "eid_al_fitr_day_3": "ঈদুল ফিতর উদযাপনের তৃতীয় দিন।",
+      "day_of_arafah": "হজে আরাফাহর ময়দানে অবস্থানের দিন, জিলহজ ৯।",
+      "eid_al_adha": "জিলহজ ১০ তারিখে ঈদুল আযহা উৎসব।",
+      "eid_al_adha_day_2": "ঈদুল আযহার দ্বিতীয় দিন।",
+      "eid_al_adha_day_3": "ঈদুল আযহার তৃতীয় দিন।",
+      "eid_al_adha_day_4": "ঈদুল আযহার চতুর্থ দিন এবং হজ মৌসুমের শেষ।",
+      "ashura": "মুহarram ১০ তারিখে পালিত, রোজা ও স্মরণের জন্য বিশেষ তাৎপর্যপূর্ণ।"
+    },
+    "reference_url": {
+      "ramadan": "https://bn.wikipedia.org/wiki/রমজান",
+      "hajj_season": "https://bn.wikipedia.org/wiki/হজ",
+      "hijri_new_year": "https://bn.wikipedia.org/wiki/হিজরি_বর্ষপঞ্জি",
+      "first_day_of_ramadan": "https://bn.wikipedia.org/wiki/রমজান",
+      "laylat_al_qadr": "https://bn.wikipedia.org/wiki/লাইলাতুল_কদর",
+      "isra_and_miraj": "https://bn.wikipedia.org/wiki/ইসরা_ও_মিরাজ",
+      "last_day_of_ramadan": "https://bn.wikipedia.org/wiki/রমজান",
+      "eid_al_fitr_eve": "https://bn.wikipedia.org/wiki/ঈদুল_ফিতর",
+      "eid_al_fitr": "https://bn.wikipedia.org/wiki/ঈদুল_ফিতর",
+      "eid_al_fitr_day_2": "https://bn.wikipedia.org/wiki/ঈদুল_ফিতর",
+      "eid_al_fitr_day_3": "https://bn.wikipedia.org/wiki/ঈদুল_ফিতর",
+      "day_of_arafah": "https://bn.wikipedia.org/wiki/আরাফাহ",
+      "eid_al_adha": "https://bn.wikipedia.org/wiki/ঈদুল_আযহা",
+      "eid_al_adha_day_2": "https://bn.wikipedia.org/wiki/ঈদুল_আযহা",
+      "eid_al_adha_day_3": "https://bn.wikipedia.org/wiki/ঈদুল_আযহা",
+      "eid_al_adha_day_4": "https://bn.wikipedia.org/wiki/ঈদুল_আযহা",
+      "ashura": "https://bn.wikipedia.org/wiki/আশুরা"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "বদর যুদ্ধ",
+      "battle_of_uhud": "উহুদ যুদ্ধ",
+      "battle_of_khandaq": "খন্দক যুদ্ধ",
+      "treaty_of_hudaybiyyah": "হুদাইবিয়া চুক্তি",
+      "conquest_of_khaybar": "খাইবার বিজয়",
+      "conquest_of_mecca": "মক্কা বিজয়",
+      "battle_of_hunayn": "হুনাইন যুদ্ধ",
+      "expedition_to_tabuk": "তাবুক অভিযান",
+      "battle_of_yarmouk": "ইয়ারমুক যুদ্ধ",
+      "battle_of_qadisiyyah": "কাদিসিয়া যুদ্ধ",
+      "conquest_of_jerusalem": "জেরুজালেম বিজয়",
+      "conquest_of_egypt": "মিশর বিজয়",
+      "fall_of_constantinople": "Constantinople-এর পতন"
+    },
+    "description": {
+      "battle_of_badr": "২ হি. সালে মুসলমান ও কুরাইশের মধ্যে প্রথম বড় যুদ্ধ।",
+      "battle_of_uhud": "৩ হি. সালে উহুদ পাহাড়ের কাছে লড়াই।",
+      "battle_of_khandaq": "৫ হি. সালে মদিনা অবরোধ (খন্দক)।",
+      "treaty_of_hudaybiyyah": "৬ হি. সালে মুসলমান ও কুরাইশের মধ্যে শান্তি চুক্তি।",
+      "conquest_of_khaybar": "৭ হি. সালে খাইবার দুর্গ দখল।",
+      "conquest_of_mecca": "৮ হি. সালে মক্কা বিজয়।",
+      "battle_of_hunayn": "মক্কা বিজয়ের পর ৮ হি. সালে হুনাইন যুদ্ধ।",
+      "expedition_to_tabuk": "৯ হি. সালে তাবুক অভিযান।",
+      "battle_of_yarmouk": "১৫ হি. সালে বizantin সেনাবাহিনীর বিরুদ্ধে নির্ণায়ক যুদ্ধ।",
+      "battle_of_qadisiyyah": "১৫ হি. সালে ইরাক মুসলমান বাহিনীর কাছে খুলে যায়।",
+      "conquest_of_jerusalem": "১৭ হি. সালে মুসলমানদের জেরুজালেমে প্রবেশ।",
+      "conquest_of_egypt": "২১ হি. সালে মিশরে মুসলমান সম্প্রসারণ।",
+      "fall_of_constantinople": "৮৫৭ হি. সালে Constantinople-এর পতন।"
+    },
+    "reference_url": {
+      "battle_of_badr": "https://bn.wikipedia.org/wiki/বদর_যুদ্ধ",
+      "battle_of_uhud": "https://bn.wikipedia.org/wiki/উহুদ_যুদ্ধ",
+      "battle_of_khandaq": "https://bn.wikipedia.org/wiki/খন্দক_যুদ্ধ",
+      "treaty_of_hudaybiyyah": "https://bn.wikipedia.org/wiki/হুদাইবিয়া_চুক্তি",
+      "conquest_of_khaybar": "https://bn.wikipedia.org/wiki/খাইবার",
+      "conquest_of_mecca": "https://bn.wikipedia.org/wiki/মক্কা_বিজয়",
+      "battle_of_hunayn": "https://bn.wikipedia.org/wiki/হুনাইন_যুদ্ধ",
+      "expedition_to_tabuk": "https://bn.wikipedia.org/wiki/তাবুক_অভিযান",
+      "battle_of_yarmouk": "https://bn.wikipedia.org/wiki/ইয়ারমুক_যুদ্ধ",
+      "battle_of_qadisiyyah": "https://bn.wikipedia.org/wiki/কাদিসিয়া_যুদ্ধ",
+      "conquest_of_jerusalem": "https://bn.wikipedia.org/wiki/জেরুজালেম",
+      "conquest_of_egypt": "https://bn.wikipedia.org/wiki/মিশর",
+      "fall_of_constantinople": "https://bn.wikipedia.org/wiki/ইস্তানবুল"
+    },
+    "year_suffix": "{year} হি."
+  },
+  "hijri_month_starts": {
+    "summary_template": "{month} এর শুরু",
+    "description_template": "হিজরি ক্যালেন্ডারে {month} এর প্রথম দিন।",
+    "reference_url": "https://bn.wikipedia.org/wiki/হিজরি_বর্ষপঞ্জি"
+  }
+}

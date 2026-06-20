@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "হিজরি ক্যালেন্ডার সেটআপ",
+        "description": "ভাষা এবং হিজরি দিন কখন পরিবর্তিত হয় তা কনফিগার করুন।",
+        "data": {
+          "language": "ভাষা",
+          "day_boundary": "দিনের সীমানা"
+        }
+      },
+      "reconfigure": {
+        "title": "হিজরি ক্যালেন্ডার পুনরায় কনফিগার করুন",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "হিজরি ক্যালেন্ডার ইতিমধ্যে কনফিগার করা আছে।"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "হিজরি ক্যালেন্ডার বিকল্প",
+        "data": {
+          "offset_days": "দিনের অফসেট",
+          "observances_calendar_language": "উপলক্ষ্য ক্যালেন্ডারের ভাষা",
+          "islamic_history_calendar_language": "ইসলামি ইতিহাস ক্যালেন্ডারের ভাষা",
+          "hijri_month_starts_calendar_language": "মাস শুরুর ক্যালেন্ডারের ভাষা"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "স্থানীয় মধ্যরাত",
+        "sunset": "সূর্যাস্তের পর"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "ইন্টিগ্রেশন ভাষা",
+        "ar": "আরবি"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "ইন্টিগ্রেশন ভাষা",
+        "ar": "আরবি"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "ইন্টিগ্রেশন ভাষা",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "হিজরি তারিখ"
+      },
+      "holiday": {
+        "name": "উপলক্ষ",
+        "state": {
+          "none": "কিছু নেই",
+          "ramadan": "রমজান",
+          "last_day_of_ramadan": "রমজানের শেষ দিন",
+          "eid_al_fitr_eve": "ঈদুল ফিতরের আগের রাত",
+          "eid_al_fitr": "ঈদুল ফিতর",
+          "day_of_arafah": "আরাফাহর দিন",
+          "eid_al_adha": "ঈদুল আযহা",
+          "hajj": "হজ",
+          "ashura": "আশুরা",
+          "type_ramadan": "রমজান",
+          "type_eid": "ঈদ",
+          "type_hajj": "হজ",
+          "type_other": "অন্যান্য উপলক্ষ",
+          "hijri_new_year": "ইসলামি নববর্ষ",
+          "first_day_of_ramadan": "রমজানের প্রথম দিন",
+          "laylat_al_qadr": "লাইলাতুল কদর",
+          "isra_and_miraj": "ইসরা ও মিরাজ",
+          "eid_al_fitr_day_2": "ঈদুল ফিতর (২য় দিন)",
+          "eid_al_fitr_day_3": "ঈদুল ফিতর (৩য় দিন)",
+          "eid_al_adha_day_2": "ঈদুল আযহা (২য় দিন)",
+          "eid_al_adha_day_3": "ঈদুল আযহা (৩য় দিন)",
+          "eid_al_adha_day_4": "ঈদুল আযহা (৪র্থ দিন)"
+        }
+      },
+      "days_in_month": {
+        "name": "হিজরি মাসে দিন"
+      },
+      "days_in_year": {
+        "name": "হিজরি বছরে দিন"
+      },
+      "days_until_ramadan": {
+        "name": "রমজান পর্যন্ত দিন"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "ঈদুল ফিতর পর্যন্ত দিন"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "উপলক্ষসমূহ"
+      },
+      "islamic_history": {
+        "name": "ইসলামি ইতিহাস"
+      },
+      "hijri_month_starts": {
+        "name": "মাসের শুরু"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "রমজান"
+      },
+      "eid_al_fitr": {
+        "name": "ঈদুল ফিতর"
+      },
+      "eid_al_adha": {
+        "name": "ঈদুল আযহা"
+      },
+      "hajj_season": {
+        "name": "হজ মৌসুম"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "সূর্যাস্ত সীমানা অনুপলব্ধ",
+      "description": "Home Assistant আপনার অবস্থানের জন্য সূর্যাস্ত গণনা করতে পারেনি। স্থানীয় মধ্যরাত ব্যবহার করতে হিজরি ক্যালেন্ডার পুনরায় কনফিগার করুন, অথবা Settings → System → General-এ একটি বৈধ অবস্থান সেট করুন।"
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "তারিখ ক্যালিব্রেট করুন",
+      "description": "আজকের জন্য ইন্টিগ্রেশন দিনের অফসেট ছোট আপেক্ষিক পরিবর্তন বা ঘোষিত হিজরি তারিখ দিয়ে সামঞ্জস্য করুন।",
+      "fields": {
+        "offset": {
+          "name": "অফসেট সমন্বয়",
+          "description": "বর্তমান ইন্টিগ্রেশন অফসেটে এই সংখ্যক দিন যোগ করুন (−2 থেকে +2)।"
+        },
+        "hijri": {
+          "name": "হিজরি তারিখ",
+          "description": "আজকের ঘোষিত হিজরি তারিখ (ISO, যেমন 1446-10-15)। প্রয়োজনীয় অফসেট গণনা করে সংরক্ষণ করে।"
+        },
+        "language": {
+          "name": "ভাষা",
+          "description": "প্রতিক্রিয়ায় ফরম্যাট করা ক্ষেত্রের ভাষা।"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "তারিখটি সমর্থিত উম্ম আল-কুরা পরিসরের বাইরে।"
+    },
+    "sunset_unavailable": {
+      "message": "সূর্যাস্ত গণনা করা যায়নি। Home Assistant অবস্থান সেটিংস পরীক্ষা করুন।"
+    },
+    "calibrate_no_config_entry": {
+      "message": "তারিখ ক্যালিব্রেট করার আগে হিজরি ক্যালেন্ডার কনফিগার করতে হবে।"
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "প্রয়োজনীয় অফসেট {offset} সমর্থিত পরিসরের ({min} থেকে {max}) বাইরে।"
+    }
+  }
+}

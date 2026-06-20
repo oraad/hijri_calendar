@@ -14,6 +14,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from .calendar_common import resolve_calendar_display_language
 from .const import (
     CONF_DAY_BOUNDARY,
+    CONF_HIJRI_MONTH_STARTS_CALENDAR_LANGUAGE,
     CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
     CONF_OBSERVANCES_CALENDAR_LANGUAGE,
     CONF_OFFSET_DAYS,
@@ -85,6 +86,15 @@ class HijriCalendarUpdateCoordinator(DataUpdateCoordinator[HijriCalendarData]):
         )
 
     @property
+    def hijri_month_starts_calendar_language(self) -> str:
+        """Return Hijri month-starts calendar language option."""
+        return str(
+            self.config_entry.options.get(
+                CONF_HIJRI_MONTH_STARTS_CALENDAR_LANGUAGE, DEFAULT_CALENDAR_LANGUAGE
+            )
+        )
+
+    @property
     def observances_display_language(self) -> HijriLanguage:
         """Return resolved language for observances calendar text."""
         return resolve_calendar_display_language(
@@ -98,6 +108,14 @@ class HijriCalendarUpdateCoordinator(DataUpdateCoordinator[HijriCalendarData]):
         return resolve_calendar_display_language(
             self.language,  # type: ignore[arg-type]
             self.islamic_history_calendar_language,
+        )
+
+    @property
+    def month_starts_display_language(self) -> HijriLanguage:
+        """Return resolved language for month-starts calendar text."""
+        return resolve_calendar_display_language(
+            self.language,  # type: ignore[arg-type]
+            self.hijri_month_starts_calendar_language,
         )
 
     async def _async_update_data(self) -> HijriCalendarData:

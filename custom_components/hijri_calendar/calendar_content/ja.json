@@ -1,0 +1,96 @@
+{
+  "reference_label": "詳細を見る",
+  "hijri_events": {
+    "description": {
+      "ramadan": "ムスリムにとって断食・礼拝・内省の月であるヒジュラ暦9月目。",
+      "hajj_season": "ズ・ル＝ヒッジャ月の年次巡礼の季節。ハッジの儀式の日々を含む。",
+      "hijri_new_year": "ムハッラム月1日はイスラムヒジュラ暦の年始を示す。",
+      "first_day_of_ramadan": "断食月が始まるラマダーンの初日。",
+      "laylat_al_qadr": "運命の夜。ラマダーン27日の夜に広く記される。",
+      "isra_and_miraj": "ラジャブ27日に記される夜の旅と昇天を記念する。",
+      "last_day_of_ramadan": "イード・アル＝フィトル前のラマダーン最終日。",
+      "eid_al_fitr_eve": "ラマダーン終わりのイード・アル＝フィトル前夜。",
+      "eid_al_fitr": "シャウワール1日にラマダーンの終わりを祝う祭り。",
+      "eid_al_fitr_day_2": "イード・アル＝フィトル祝賀の2日目。",
+      "eid_al_fitr_day_3": "イード・アル＝フィトル祝賀の3日目。",
+      "day_of_arafah": "ハッジ中、ズ・ル＝ヒッジャ9日のアラファでの立ち会いの日。",
+      "eid_al_adha": "ズ・ル＝ヒッジャ10日の犠牲祭。",
+      "eid_al_adha_day_2": "イード・アル＝アドハーの2日目。",
+      "eid_al_adha_day_3": "イード・アル＝アドハーの3日目。",
+      "eid_al_adha_day_4": "イード・アル＝アドハーの4日目。ハッジ季節の儀式の終わり。",
+      "ashura": "ムハッラム10日に記される。断食と追悼に特に重要。"
+    },
+    "reference_url": {
+      "ramadan": "https://ja.wikipedia.org/wiki/ラマダーン",
+      "hajj_season": "https://ja.wikipedia.org/wiki/ハッジ",
+      "hijri_new_year": "https://ja.wikipedia.org/wiki/ヒジュラ暦",
+      "first_day_of_ramadan": "https://ja.wikipedia.org/wiki/ラマダーン",
+      "laylat_al_qadr": "https://ja.wikipedia.org/wiki/ライラトゥル＝カドル",
+      "isra_and_miraj": "https://ja.wikipedia.org/wiki/イスラーとミルジャー",
+      "last_day_of_ramadan": "https://ja.wikipedia.org/wiki/ラマダーン",
+      "eid_al_fitr_eve": "https://ja.wikipedia.org/wiki/イード・アル＝フィトル",
+      "eid_al_fitr": "https://ja.wikipedia.org/wiki/イード・アル＝フィトル",
+      "eid_al_fitr_day_2": "https://ja.wikipedia.org/wiki/イード・アル＝フィトル",
+      "eid_al_fitr_day_3": "https://ja.wikipedia.org/wiki/イード・アル＝フィトル",
+      "day_of_arafah": "https://ja.wikipedia.org/wiki/アラファ",
+      "eid_al_adha": "https://ja.wikipedia.org/wiki/イード・アル＝アドハー",
+      "eid_al_adha_day_2": "https://ja.wikipedia.org/wiki/イード・アル＝アドハー",
+      "eid_al_adha_day_3": "https://ja.wikipedia.org/wiki/イード・アル＝アドハー",
+      "eid_al_adha_day_4": "https://ja.wikipedia.org/wiki/イード・アル＝アドハー",
+      "ashura": "https://ja.wikipedia.org/wiki/アーシューラー"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "バドル戦闘",
+      "battle_of_uhud": "ウフドの戦い",
+      "battle_of_khandaq": "塹壕の戦い",
+      "treaty_of_hudaybiyyah": "フダイビーヤ条約",
+      "conquest_of_khaybar": "ハイバル征服",
+      "conquest_of_mecca": "メッカ征服",
+      "battle_of_hunayn": "フナインの戦い",
+      "expedition_to_tabuk": "タブーク遠征",
+      "battle_of_yarmouk": "ヤルムークの戦い",
+      "battle_of_qadisiyyah": "カーディーシーヤの戦い",
+      "conquest_of_jerusalem": "エルサレム征服",
+      "conquest_of_egypt": "エジプト征服",
+      "fall_of_constantinople": "コンスタンティノープル陥落"
+    },
+    "description": {
+      "battle_of_badr": "ヒジュラ暦2年、ムスリムとクライシュ族の最初の大規模な戦い。",
+      "battle_of_uhud": "ヒジュラ暦3年、ウフド山付近で行われた戦い。",
+      "battle_of_khandaq": "ヒジュラ暦5年、連合軍によるメディナ包囲。",
+      "treaty_of_hudaybiyyah": "ヒジュラ暦6年、ムスリムとクライシュ族の和平協定。",
+      "conquest_of_khaybar": "ヒジュラ暦7年、ハイバル要塞に対するムスリムの遠征。",
+      "conquest_of_mecca": "ヒジュラ暦8年、メッカの平和的開城。",
+      "battle_of_hunayn": "メッカ征服後、ヒジュラ暦8年に行われた戦い。",
+      "expedition_to_tabuk": "ヒジュラ暦9年のタブーク遠征。",
+      "battle_of_yarmouk": "ヒジュラ暦15年、ビザンツ軍との決定的な戦い。",
+      "battle_of_qadisiyyah": "ヒジュラ暦15年、イラクをムスリム軍に開いた大規模な戦い。",
+      "conquest_of_jerusalem": "ヒジュラ暦17年、ムスリムによるエルサレム入城。",
+      "conquest_of_egypt": "ヒジュラ暦21年、ムスリムのエジプトへの拡大。",
+      "fall_of_constantinople": "ヒジュラ暦857年、オスマン帝国によるコンスタンティノープル征服。"
+    },
+    "reference_url": {
+      "battle_of_badr": "https://ja.wikipedia.org/wiki/バドル戦闘",
+      "battle_of_uhud": "https://ja.wikipedia.org/wiki/ウフドの戦い",
+      "battle_of_khandaq": "https://ja.wikipedia.org/wiki/塹壕の戦い",
+      "treaty_of_hudaybiyyah": "https://ja.wikipedia.org/wiki/フダイビーヤ条約",
+      "conquest_of_khaybar": "https://ja.wikipedia.org/wiki/ハイバル",
+      "conquest_of_mecca": "https://ja.wikipedia.org/wiki/メッカ征服",
+      "battle_of_hunayn": "https://ja.wikipedia.org/wiki/フナインの戦い",
+      "expedition_to_tabuk": "https://ja.wikipedia.org/wiki/タブーク遠征",
+      "battle_of_yarmouk": "https://ja.wikipedia.org/wiki/ヤルムークの戦い",
+      "battle_of_qadisiyyah": "https://ja.wikipedia.org/wiki/カーディーシーヤの戦い",
+      "conquest_of_jerusalem": "https://ja.wikipedia.org/wiki/エルサレム",
+      "conquest_of_egypt": "https://ja.wikipedia.org/wiki/エジプト",
+      "fall_of_constantinople": "https://ja.wikipedia.org/wiki/コンスタンティノープルの陥落"
+    },
+    "year_suffix": "{year} AH"
+  },
+  "hijri_month_starts": {
+    "summary_template": "{month}の始まり",
+    "description_template": "ヒジュラ暦における{month}の初日。",
+    "reference_url": "https://ja.wikipedia.org/wiki/ヒジュラ暦"
+  }
+}

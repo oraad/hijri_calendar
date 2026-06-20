@@ -87,5 +87,10 @@
       "fall_of_constantinople": "https://tr.wikipedia.org/wiki/İstanbul%27un_Fethi"
     },
     "year_suffix": "{year} H"
+  },
+  "hijri_month_starts": {
+    "summary_template": "{month} başlangıcı",
+    "description_template": "Hicri takvimde {month} ayının ilk günü.",
+    "reference_url": "https://tr.wikipedia.org/wiki/Hicri_takvim"
   }
 }

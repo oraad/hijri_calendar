@@ -18,6 +18,7 @@ from .calendar_events import build_calendar_events
 from .data import HijriCalendarConfigEntry
 from .entity import HijriCalendarEntity
 from .history_calendar_events import build_history_calendar_events
+from .month_start_calendar_events import build_month_start_calendar_events
 
 PARALLEL_UPDATES = 0
 
@@ -31,6 +32,11 @@ HISTORY_CALENDAR_DESCRIPTION = CalendarEntityDescription(
     translation_key="islamic_history",
 )
 
+MONTH_STARTS_CALENDAR_DESCRIPTION = CalendarEntityDescription(
+    key="hijri_month_starts",
+    translation_key="hijri_month_starts",
+)
+
 
 async def async_setup_entry(
     hass: HomeAssistant,
@@ -42,6 +48,7 @@ async def async_setup_entry(
         [
             HijriObservancesCalendarEntity(config_entry),
             IslamicHistoryCalendarEntity(config_entry),
+            HijriMonthStartsCalendarEntity(config_entry),
         ]
     )
 
@@ -132,5 +139,47 @@ class IslamicHistoryCalendarEntity(_HijriCalendarBase):
     ) -> list[CalendarEvent]:
         """Return history calendar events within a datetime range."""
         return build_history_calendar_events(
+            hass, self._event_config(), start_date, end_date
+        )
+
+
+class HijriMonthStartsCalendarEntity(_HijriCalendarBase):
+    """Calendar of Hijri month starts (first day of each Hijri month)."""
+
+    entity_description = MONTH_STARTS_CALENDAR_DESCRIPTION
+
+    def __init__(self, config_entry: HijriCalendarConfigEntry) -> None:
+        """Initialize the month-starts calendar entity."""
+        super().__init__(config_entry, MONTH_STARTS_CALENDAR_DESCRIPTION)
+
+    def _event_config(self) -> CalendarEventConfig:
+        coordinator = self.coordinator
+        return CalendarEventConfig(
+            display_language=coordinator.month_starts_display_language,
+            day_boundary=coordinator.day_boundary,
+            offset_days=coordinator.offset_days,
+        )
+
+    @property
+    def event(self) -> CalendarEvent | None:
+        """Return the next upcoming month-start event."""
+        now = dt_util.now()
+        end = now + dt.timedelta(days=365)
+        events = build_month_start_calendar_events(
+            self.hass, self._event_config(), now, end
+        )
+        for item in sorted(events, key=lambda event: event.start_datetime_local):
+            if item.start_datetime_local >= now:
+                return item
+        return None
+
+    async def async_get_events(
+        self,
+        hass: HomeAssistant,
+        start_date: dt.datetime,
+        end_date: dt.datetime,
+    ) -> list[CalendarEvent]:
+        """Return month-start calendar events within a datetime range."""
+        return build_month_start_calendar_events(
             hass, self._event_config(), start_date, end_date
         )

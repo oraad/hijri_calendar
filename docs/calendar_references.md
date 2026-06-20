@@ -1,6 +1,14 @@
 # Calendar reference links
 
-Maintainer inventory of reference URLs used in calendar event descriptions. Each event has distinct URLs in `calendar_content/en.json`, `ar.json`, and `tr.json`.
+Maintainer inventory of reference URLs used in calendar event descriptions. Each supported language has its own `calendar_content/{lang}.json` file with localized descriptions and reference links.
+
+Source data lives in `scripts/translation_data/{lang}.yaml` under the `calendar` section. Regenerate JSON with:
+
+```bash
+python scripts/build_calendar_translations.py
+```
+
+English (`en`) generally uses Britannica articles where no localized equivalent is listed below. Other languages use Wikipedia (or equivalent) articles in that language when available.
 
 ## Observances (`calendar.hijri_events`)
 
@@ -24,7 +32,7 @@ Maintainer inventory of reference URLs used in calendar event descriptions. Each
 | `eid_al_adha_day_4` | Britannica — Eid al-Adha |
 | `ashura` | Britannica — Ashura |
 
-Arabic and Turkish files use Wikipedia (or equivalent) articles in those languages.
+Localized files (`ar`, `tr`, `de`, `fr`, and the other supported languages) use language-appropriate Wikipedia or equivalent articles. Review URL choices when adding or editing a locale YAML file.
 
 ## Islamic history (`calendar.islamic_history`)
 
@@ -44,4 +52,4 @@ Arabic and Turkish files use Wikipedia (or equivalent) articles in those languag
 | `conquest_of_egypt` | Britannica — Egypt |
 | `fall_of_constantinople` | Britannica — Fall of Constantinople |
 
-Regenerate translation JSON from [`scripts/build_calendar_translations.py`](../scripts/build_calendar_translations.py) after editing URL or description source data in that script.
+All 20 supported languages include name, description, and reference URL entries for every observance and history event. CI tests assert key parity across `calendar_content/*.json` files.

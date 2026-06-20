@@ -1,0 +1,174 @@
+ui:
+  config_user_title: راه‌اندازی تقویم هجری
+  config_user_description: زبان و زمان آغاز روز هجری را تنظیم کنید.
+  config_user_language: زبان
+  config_user_day_boundary: مرز روز
+  config_reconfigure_title: پیکربندی مجدد تقویم هجری
+  config_abort_already_configured: تقویم هجری از قبل پیکربندی شده است.
+  options_title: گزینه‌های تقویم هجری
+  options_offset_days: جابه‌جایی روز
+  options_observances_calendar_language: زبان تقویم مناسبت‌ها
+  options_islamic_history_calendar_language: زبان تقویم تاریخ اسلام
+  selector_midnight: نیمه‌شب محلی
+  selector_sunset: پس از غروب
+  selector_integration_language: زبان یکپارچه‌سازی
+  selector_arabic_label: عربی
+  entity_hijri_date: تاریخ هجری
+  entity_holiday: تعطیل
+  entity_days_in_month: روزهای ماه هجری
+  entity_days_in_year: روزهای سال هجری
+  entity_days_until_ramadan: روز تا رمضان
+  entity_days_until_eid_al_fitr: روز تا عید فطر
+  entity_calendar_observances: مناسبت‌ها
+  entity_calendar_history: تاریخ اسلام
+  entity_ramadan: رمضان
+  entity_eid_al_fitr: عید فطر
+  entity_eid_al_adha: عید قربان
+  entity_hajj_season: فصل حج
+  issue_sunset_title: مرز غروب در دسترس نیست
+  issue_sunset_description: Home Assistant نتوانست غروب را برای موقعیت شما محاسبه کند. تقویم هجری را برای نیمه‌شب محلی پیکربندی مجدد کنید یا در تنظیمات → سیستم → عمومی یک موقعیت معتبر تنظیم کنید.
+  service_calibrate_name: کالیبره کردن تاریخ
+  service_calibrate_description: جابه‌جایی روز یکپارچه‌سازی را برای امروز با تغییر نسبی کوچک یا تاریخ هجری اعلام‌شده تنظیم می‌کند.
+  service_calibrate_offset_name: تنظیم جابه‌جایی
+  service_calibrate_offset_description: این تعداد روز را به جابه‌جایی فعلی یکپارچه‌سازی اضافه می‌کند (−۲ تا +۲).
+  service_calibrate_hijri_name: تاریخ هجری
+  service_calibrate_hijri_description: تاریخ هجری اعلام‌شده برای امروز (ISO، مثلاً ۱۴۴۶-۱۰-۱۵). جابه‌جایی لازم را محاسبه و ذخیره می‌کند.
+  service_calibrate_language_name: زبان
+  service_calibrate_language_description: زبان فیلدهای قالب‌بندی‌شده در پاسخ.
+  exception_date_out_of_range: تاریخ خارج از محدوده پشتیبانی‌شده ام‌القری است.
+  exception_sunset_unavailable: غروب محاسبه نشد. تنظیمات موقعیت Home Assistant را بررسی کنید.
+  exception_calibrate_no_config_entry: قبل از کالیبره کردن تاریخ باید تقویم هجری پیکربندی شود.
+  exception_calibrate_offset_out_of_range: جابه‌جایی مورد نیاز {offset} خارج از محدوده پشتیبانی‌شده ({min} تا {max}) است.
+  options_hijri_month_starts_calendar_language: زبان تقویم آغاز ماه‌ها
+  entity_calendar_month_starts: آغاز ماه‌ها
+holidays:
+  none: هیچ
+  ramadan: رمضان
+  last_day_of_ramadan: آخرین روز رمضان
+  eid_al_fitr_eve: شب عید فطر
+  eid_al_fitr: عید فطر
+  day_of_arafah: روز عرفه
+  eid_al_adha: عید قربان
+  hajj: حج
+  ashura: عاشورا
+  type_ramadan: رمضان
+  type_eid: عید
+  type_hajj: حج
+  type_other: مناسبت دیگر
+  hijri_new_year: سال نو هجری
+  first_day_of_ramadan: اولین روز رمضان
+  laylat_al_qadr: شب قدر
+  isra_and_miraj: معراج و اسراء
+  eid_al_fitr_day_2: عید فطر (روز ۲)
+  eid_al_fitr_day_3: عید فطر (روز ۳)
+  eid_al_adha_day_2: عید قربان (روز ۲)
+  eid_al_adha_day_3: عید قربان (روز ۳)
+  eid_al_adha_day_4: عید قربان (روز ۴)
+calendar:
+  reference_label: بیشتر بدانید
+  year_suffix: '{year} ه.ق.'
+  observances:
+    ramadan:
+      description: نهمین ماه هجری روزه، نماز و تفکر برای مسلمانان.
+      reference_url: https://fa.wikipedia.org/wiki/رمضان
+    hajj_season:
+      description: فصل سالانه حج در ذی‌الحجه، شامل روزهای مناسک حج.
+      reference_url: https://fa.wikipedia.org/wiki/حج
+    hijri_new_year:
+      description: اولین روز محرم آغاز سال هجری اسلامی را نشان می‌دهد.
+      reference_url: https://fa.wikipedia.org/wiki/گاه‌شماری_هجری_قمری
+    first_day_of_ramadan:
+      description: اولین روز رمضان که ماه روزه آغاز می‌شود.
+      reference_url: https://fa.wikipedia.org/wiki/رمضان
+    laylat_al_qadr:
+      description: شب قدر، که معمولاً در شب بیست‌وهفتم رمضان گرامی داشته می‌شود.
+      reference_url: https://fa.wikipedia.org/wiki/شب_قدر
+    isra_and_miraj:
+      description: بزرگداشت شب معراج، در بیست‌وهفتم رجب.
+      reference_url: https://fa.wikipedia.org/wiki/معراج
+    last_day_of_ramadan:
+      description: آخرین روز رمضان پیش از عید فطر.
+      reference_url: https://fa.wikipedia.org/wiki/رمضان
+    eid_al_fitr_eve:
+      description: شب عید فطر در پایان رمضان.
+      reference_url: https://fa.wikipedia.org/wiki/عید_فطر
+    eid_al_fitr:
+      description: جشن پایان رمضان در اول شوال.
+      reference_url: https://fa.wikipedia.org/wiki/عید_فطر
+    eid_al_fitr_day_2:
+      description: دومین روز جشن عید فطر.
+      reference_url: https://fa.wikipedia.org/wiki/عید_فطر
+    eid_al_fitr_day_3:
+      description: سومین روز جشن عید فطر.
+      reference_url: https://fa.wikipedia.org/wiki/عید_فطر
+    day_of_arafah:
+      description: روز وقوف در عرفه در حج، نهم ذی‌الحجه.
+      reference_url: https://fa.wikipedia.org/wiki/عرفات
+    eid_al_adha:
+      description: عید قربان در دهم ذی‌الحجه.
+      reference_url: https://fa.wikipedia.org/wiki/عید_قربان
+    eid_al_adha_day_2:
+      description: دومین روز عید قربان.
+      reference_url: https://fa.wikipedia.org/wiki/عید_قربان
+    eid_al_adha_day_3:
+      description: سومین روز عید قربان.
+      reference_url: https://fa.wikipedia.org/wiki/عید_قربان
+    eid_al_adha_day_4:
+      description: چهارمین روز عید قربان و پایان مناسک فصل حج.
+      reference_url: https://fa.wikipedia.org/wiki/عید_قربان
+    ashura:
+      description: در دهم محرم گرامی داشته می‌شود، به‌ویژه برای روزه و یادبود.
+      reference_url: https://fa.wikipedia.org/wiki/عاشورا
+  history:
+    battle_of_badr:
+      name: غزوه بدر
+      description: نخستین نبرد بزرگ میان مسلمانان و قریش در ۲ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/غزوه_بدر
+    battle_of_uhud:
+      name: غزوه احد
+      description: نبردی در نزدیکی کوه احد در ۳ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/غزوه_احد
+    battle_of_khandaq:
+      name: غزوه خندق
+      description: محاصره مدینه توسط احزاب در ۵ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/غزوه_خندق
+    treaty_of_hudaybiyyah:
+      name: صلح حدیبیه
+      description: پیمان صلح میان مسلمانان و قریش در ۶ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/صلح_حدیبیه
+    conquest_of_khaybar:
+      name: فتح خیبر
+      description: حمله مسلمانان به قلعه‌های خیبر در ۷ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/خیبر
+    conquest_of_mecca:
+      name: فتح مکه
+      description: فتح مسالمت‌آمیز مکه در ۸ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/فتح_مکه
+    battle_of_hunayn:
+      name: غزوه حنین
+      description: نبردی پس از فتح مکه در ۸ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/غزوه_حنین
+    expedition_to_tabuk:
+      name: غزوه تبوک
+      description: غزوه تبوک در ۹ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/غزوه_تبوک
+    battle_of_yarmouk:
+      name: نبرد یرموک
+      description: نبردی سرنوشت‌ساز علیه نیروهای بیزانس در ۱۵ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/نبرد_یرموک
+    battle_of_qadisiyyah:
+      name: نبرد قادسیه
+      description: نبرد مهمی که عراق را به نیروهای مسلمان گشود، در ۱۵ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/نبرد_قادسیه
+    conquest_of_jerusalem:
+      name: فتح بیت‌المقدس
+      description: ورود مسلمانان به بیت‌المقدس در ۱۷ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/بیت‌المقدس
+    conquest_of_egypt:
+      name: فتح مصر
+      description: گسترش مسلمانان به مصر در ۲۱ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/مصر
+    fall_of_constantinople:
+      name: فتح قسطنطنیه
+      description: فتح قسطنطنیه توسط عثمانیان در ۸۵۷ ه.ق.
+      reference_url: https://fa.wikipedia.org/wiki/فتح_قسطنطنیه

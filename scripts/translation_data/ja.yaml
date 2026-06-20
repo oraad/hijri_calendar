@@ -1,0 +1,174 @@
+ui:
+  config_user_title: ヒジュラ暦の設定
+  config_user_description: 言語とヒジュラ暦の日が始まる時刻を設定します。
+  config_user_language: 言語
+  config_user_day_boundary: 日の区切り
+  config_reconfigure_title: ヒジュラ暦の再設定
+  config_abort_already_configured: ヒジュラ暦はすでに設定されています。
+  options_title: ヒジュラ暦のオプション
+  options_offset_days: 日数オフセット
+  options_observances_calendar_language: 行事カレンダーの言語
+  options_islamic_history_calendar_language: イスラム史カレンダーの言語
+  selector_midnight: 現地の真夜中
+  selector_sunset: 日没後
+  selector_integration_language: インテグレーションの言語
+  selector_arabic_label: アラビア語
+  entity_hijri_date: ヒジュラ暦の日付
+  entity_holiday: 祝日
+  entity_days_in_month: ヒジュラ暦月の日数
+  entity_days_in_year: ヒジュラ暦年の日数
+  entity_days_until_ramadan: ラマダーンまでの日数
+  entity_days_until_eid_al_fitr: イード・アル＝フィトルまでの日数
+  entity_calendar_observances: 行事
+  entity_calendar_history: イスラム史
+  entity_ramadan: ラマダーン
+  entity_eid_al_fitr: イード・アル＝フィトル
+  entity_eid_al_adha: イード・アル＝アドハー
+  entity_hajj_season: ハッジの季節
+  issue_sunset_title: 日没境界が利用できません
+  issue_sunset_description: Home Assistant はお使いの場所の日没を計算できませんでした。ヒジュラ暦を現地の真夜中に再設定するか、設定 → システム → 一般で有効な場所を設定してください。
+  service_calibrate_name: 日付を校正
+  service_calibrate_description: 小さな相対変更または公表されたヒジュラ暦の日付を使って、今日のインテグレーション日数オフセットを調整します。
+  service_calibrate_offset_name: オフセット調整
+  service_calibrate_offset_description: 現在のインテグレーションオフセットにこの日数を加算します（−2 ～ +2）。
+  service_calibrate_hijri_name: ヒジュラ暦の日付
+  service_calibrate_hijri_description: 今日の公表ヒジュラ暦日付（ISO、例 1446-10-15）。必要なオフセットを計算して保存します。
+  service_calibrate_language_name: 言語
+  service_calibrate_language_description: 応答の書式付きフィールドに使用する言語。
+  exception_date_out_of_range: 日付がサポートされているウンム・アル＝クラの範囲外です。
+  exception_sunset_unavailable: 日没を計算できませんでした。Home Assistant の場所設定を確認してください。
+  exception_calibrate_no_config_entry: 日付を校正する前にヒジュラ暦を設定する必要があります。
+  exception_calibrate_offset_out_of_range: 必要なオフセット {offset} がサポート範囲（{min} ～ {max}）外です。
+  options_hijri_month_starts_calendar_language: 月初カレンダーの言語
+  entity_calendar_month_starts: 月初
+holidays:
+  none: なし
+  ramadan: ラマダーン
+  last_day_of_ramadan: ラマダーン最終日
+  eid_al_fitr_eve: イード・アル＝フィトル前夜
+  eid_al_fitr: イード・アル＝フィトル
+  day_of_arafah: アラファの日
+  eid_al_adha: イード・アル＝アドハー
+  hajj: ハッジ
+  ashura: アーシューラー
+  type_ramadan: ラマダーン
+  type_eid: イード
+  type_hajj: ハッジ
+  type_other: その他の行事
+  hijri_new_year: イスラム暦新年
+  first_day_of_ramadan: ラマダーン初日
+  laylat_al_qadr: ライラトゥル＝カドル
+  isra_and_miraj: イスラーとミルジャー
+  eid_al_fitr_day_2: イード・アル＝フィトル（2日目）
+  eid_al_fitr_day_3: イード・アル＝フィトル（3日目）
+  eid_al_adha_day_2: イード・アル＝アドハー（2日目）
+  eid_al_adha_day_3: イード・アル＝アドハー（3日目）
+  eid_al_adha_day_4: イード・アル＝アドハー（4日目）
+calendar:
+  reference_label: 詳細を見る
+  year_suffix: '{year} AH'
+  observances:
+    ramadan:
+      description: ムスリムにとって断食・礼拝・内省の月であるヒジュラ暦9月目。
+      reference_url: https://ja.wikipedia.org/wiki/ラマダーン
+    hajj_season:
+      description: ズ・ル＝ヒッジャ月の年次巡礼の季節。ハッジの儀式の日々を含む。
+      reference_url: https://ja.wikipedia.org/wiki/ハッジ
+    hijri_new_year:
+      description: ムハッラム月1日はイスラムヒジュラ暦の年始を示す。
+      reference_url: https://ja.wikipedia.org/wiki/ヒジュラ暦
+    first_day_of_ramadan:
+      description: 断食月が始まるラマダーンの初日。
+      reference_url: https://ja.wikipedia.org/wiki/ラマダーン
+    laylat_al_qadr:
+      description: 運命の夜。ラマダーン27日の夜に広く記される。
+      reference_url: https://ja.wikipedia.org/wiki/ライラトゥル＝カドル
+    isra_and_miraj:
+      description: ラジャブ27日に記される夜の旅と昇天を記念する。
+      reference_url: https://ja.wikipedia.org/wiki/イスラーとミルジャー
+    last_day_of_ramadan:
+      description: イード・アル＝フィトル前のラマダーン最終日。
+      reference_url: https://ja.wikipedia.org/wiki/ラマダーン
+    eid_al_fitr_eve:
+      description: ラマダーン終わりのイード・アル＝フィトル前夜。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝フィトル
+    eid_al_fitr:
+      description: シャウワール1日にラマダーンの終わりを祝う祭り。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝フィトル
+    eid_al_fitr_day_2:
+      description: イード・アル＝フィトル祝賀の2日目。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝フィトル
+    eid_al_fitr_day_3:
+      description: イード・アル＝フィトル祝賀の3日目。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝フィトル
+    day_of_arafah:
+      description: ハッジ中、ズ・ル＝ヒッジャ9日のアラファでの立ち会いの日。
+      reference_url: https://ja.wikipedia.org/wiki/アラファ
+    eid_al_adha:
+      description: ズ・ル＝ヒッジャ10日の犠牲祭。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝アドハー
+    eid_al_adha_day_2:
+      description: イード・アル＝アドハーの2日目。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝アドハー
+    eid_al_adha_day_3:
+      description: イード・アル＝アドハーの3日目。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝アドハー
+    eid_al_adha_day_4:
+      description: イード・アル＝アドハーの4日目。ハッジ季節の儀式の終わり。
+      reference_url: https://ja.wikipedia.org/wiki/イード・アル＝アドハー
+    ashura:
+      description: ムハッラム10日に記される。断食と追悼に特に重要。
+      reference_url: https://ja.wikipedia.org/wiki/アーシューラー
+  history:
+    battle_of_badr:
+      name: バドル戦闘
+      description: ヒジュラ暦2年、ムスリムとクライシュ族の最初の大規模な戦い。
+      reference_url: https://ja.wikipedia.org/wiki/バドル戦闘
+    battle_of_uhud:
+      name: ウフドの戦い
+      description: ヒジュラ暦3年、ウフド山付近で行われた戦い。
+      reference_url: https://ja.wikipedia.org/wiki/ウフドの戦い
+    battle_of_khandaq:
+      name: 塹壕の戦い
+      description: ヒジュラ暦5年、連合軍によるメディナ包囲。
+      reference_url: https://ja.wikipedia.org/wiki/塹壕の戦い
+    treaty_of_hudaybiyyah:
+      name: フダイビーヤ条約
+      description: ヒジュラ暦6年、ムスリムとクライシュ族の和平協定。
+      reference_url: https://ja.wikipedia.org/wiki/フダイビーヤ条約
+    conquest_of_khaybar:
+      name: ハイバル征服
+      description: ヒジュラ暦7年、ハイバル要塞に対するムスリムの遠征。
+      reference_url: https://ja.wikipedia.org/wiki/ハイバル
+    conquest_of_mecca:
+      name: メッカ征服
+      description: ヒジュラ暦8年、メッカの平和的開城。
+      reference_url: https://ja.wikipedia.org/wiki/メッカ征服
+    battle_of_hunayn:
+      name: フナインの戦い
+      description: メッカ征服後、ヒジュラ暦8年に行われた戦い。
+      reference_url: https://ja.wikipedia.org/wiki/フナインの戦い
+    expedition_to_tabuk:
+      name: タブーク遠征
+      description: ヒジュラ暦9年のタブーク遠征。
+      reference_url: https://ja.wikipedia.org/wiki/タブーク遠征
+    battle_of_yarmouk:
+      name: ヤルムークの戦い
+      description: ヒジュラ暦15年、ビザンツ軍との決定的な戦い。
+      reference_url: https://ja.wikipedia.org/wiki/ヤルムークの戦い
+    battle_of_qadisiyyah:
+      name: カーディーシーヤの戦い
+      description: ヒジュラ暦15年、イラクをムスリム軍に開いた大規模な戦い。
+      reference_url: https://ja.wikipedia.org/wiki/カーディーシーヤの戦い
+    conquest_of_jerusalem:
+      name: エルサレム征服
+      description: ヒジュラ暦17年、ムスリムによるエルサレム入城。
+      reference_url: https://ja.wikipedia.org/wiki/エルサレム
+    conquest_of_egypt:
+      name: エジプト征服
+      description: ヒジュラ暦21年、ムスリムのエジプトへの拡大。
+      reference_url: https://ja.wikipedia.org/wiki/エジプト
+    fall_of_constantinople:
+      name: コンスタンティノープル陥落
+      description: ヒジュラ暦857年、オスマン帝国によるコンスタンティノープル征服。
+      reference_url: https://ja.wikipedia.org/wiki/コンスタンティノープルの陥落

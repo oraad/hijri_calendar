@@ -182,7 +182,7 @@ def days_until_hijri_date(
     """Return days until the next occurrence of a Hijri month/day."""
     try:
         gregorian = gregorian_to_date(hijri.to_gregorian())
-    except OverflowError, ValueError:
+    except (OverflowError, ValueError):
         return None
 
     for delta in range(max_days):

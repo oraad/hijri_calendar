@@ -26,7 +26,9 @@ from homeassistant.helpers.selector import (
 from .const import (
     CALENDAR_LANGUAGE_ARABIC,
     CALENDAR_LANGUAGE_DEFAULT,
+    CALENDAR_LANGUAGE_OPTIONS,
     CONF_DAY_BOUNDARY,
+    CONF_HIJRI_MONTH_STARTS_CALENDAR_LANGUAGE,
     CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
     CONF_OBSERVANCES_CALENDAR_LANGUAGE,
     CONF_OFFSET_DAYS,
@@ -72,6 +74,16 @@ OPTIONS_SCHEMA = vol.Schema(
                 options=[CALENDAR_LANGUAGE_DEFAULT, CALENDAR_LANGUAGE_ARABIC],
                 mode=SelectSelectorMode.DROPDOWN,
                 translation_key="islamic_history_calendar_language",
+            ),
+        ),
+        vol.Optional(
+            CONF_HIJRI_MONTH_STARTS_CALENDAR_LANGUAGE,
+            default=DEFAULT_CALENDAR_LANGUAGE,
+        ): SelectSelector(
+            SelectSelectorConfig(
+                options=list(CALENDAR_LANGUAGE_OPTIONS),
+                mode=SelectSelectorMode.DROPDOWN,
+                translation_key="hijri_month_starts_calendar_language",
             ),
         ),
     }

@@ -1,0 +1,96 @@
+{
+  "reference_label": "Mehr erfahren",
+  "hijri_events": {
+    "description": {
+      "ramadan": "Der neunte Hijri-Monat des Fastens, Gebets und der Besinnung für Muslime.",
+      "hajj_season": "Die jährliche Hadsch-Saison im Dhul Hijjah mit den Tagen der Hadsch-Riten.",
+      "hijri_new_year": "Der erste Tag des Muharram markiert den Beginn des islamischen Hijri-Jahres.",
+      "first_day_of_ramadan": "Der erste Tag des Ramadan, an dem der Fastenmonat beginnt.",
+      "laylat_al_qadr": "Die Nacht der Bestimmung, weit verbreitet am 27. Ramadan begangen.",
+      "isra_and_miraj": "Gedenkt die Nachtreise und Himmelfahrt, begangen am 27. Rajab.",
+      "last_day_of_ramadan": "Der letzte Tag des Ramadan vor Eid al-Fitr.",
+      "eid_al_fitr_eve": "Der Vorabend von Eid al-Fitr am Ende des Ramadan.",
+      "eid_al_fitr": "Fest zum Ende des Ramadan am 1. Shawwal.",
+      "eid_al_fitr_day_2": "Der zweite Tag der Eid-al-Fitr-Feierlichkeiten.",
+      "eid_al_fitr_day_3": "Der dritte Tag der Eid-al-Fitr-Feierlichkeiten.",
+      "day_of_arafah": "Der Tag des Stehens in Arafat während des Hadsch am 9. Dhul Hijjah.",
+      "eid_al_adha": "Opferfest am 10. Dhul Hijjah.",
+      "eid_al_adha_day_2": "Der zweite Tag von Eid al-Adha.",
+      "eid_al_adha_day_3": "Der dritte Tag von Eid al-Adha.",
+      "eid_al_adha_day_4": "Der vierte Tag von Eid al-Adha und das Ende der Hadsch-Riten.",
+      "ashura": "Begangen am 10. Muharram, besonders bedeutsam für Fasten und Gedenken."
+    },
+    "reference_url": {
+      "ramadan": "https://de.wikipedia.org/wiki/Ramadan",
+      "hajj_season": "https://de.wikipedia.org/wiki/Hadsch",
+      "hijri_new_year": "https://de.wikipedia.org/wiki/Islamischer_Kalender",
+      "first_day_of_ramadan": "https://de.wikipedia.org/wiki/Ramadan",
+      "laylat_al_qadr": "https://de.wikipedia.org/wiki/Lailat_al-Qadr",
+      "isra_and_miraj": "https://de.wikipedia.org/wiki/Isra_und_Mi%CA%BFradsch",
+      "last_day_of_ramadan": "https://de.wikipedia.org/wiki/Ramadan",
+      "eid_al_fitr_eve": "https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens",
+      "eid_al_fitr": "https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens",
+      "eid_al_fitr_day_2": "https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens",
+      "eid_al_fitr_day_3": "https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens",
+      "day_of_arafah": "https://de.wikipedia.org/wiki/Berg_Arafat",
+      "eid_al_adha": "https://de.wikipedia.org/wiki/Opferfest",
+      "eid_al_adha_day_2": "https://de.wikipedia.org/wiki/Opferfest",
+      "eid_al_adha_day_3": "https://de.wikipedia.org/wiki/Opferfest",
+      "eid_al_adha_day_4": "https://de.wikipedia.org/wiki/Opferfest",
+      "ashura": "https://de.wikipedia.org/wiki/Aschura"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "Schlacht am Badr",
+      "battle_of_uhud": "Schlacht am Uhud",
+      "battle_of_khandaq": "Schlacht am Graben",
+      "treaty_of_hudaybiyyah": "Vertrag von Hudaibiya",
+      "conquest_of_khaybar": "Eroberung von Chaybar",
+      "conquest_of_mecca": "Eroberung Mekkas",
+      "battle_of_hunayn": "Schlacht von Hunain",
+      "expedition_to_tabuk": "Feldzug nach Tabuk",
+      "battle_of_yarmouk": "Schlacht am Jarmuk",
+      "battle_of_qadisiyyah": "Schlacht von al-Qadisiyya",
+      "conquest_of_jerusalem": "Eroberung Jerusalems",
+      "conquest_of_egypt": "Eroberung Ägyptens",
+      "fall_of_constantinople": "Eroberung Konstantinopels"
+    },
+    "description": {
+      "battle_of_badr": "Die erste große Schlacht zwischen Muslimen und Quraisch im 2. n. H.",
+      "battle_of_uhud": "Eine Schlacht nahe dem Berg Uhud im 3. n. H.",
+      "battle_of_khandaq": "Die Belagerung Medinas durch die Konföderierten im 5. n. H.",
+      "treaty_of_hudaybiyyah": "Ein Friedensabkommen zwischen Muslimen und Quraisch im 6. n. H.",
+      "conquest_of_khaybar": "Muslimischer Feldzug gegen die Festungen von Chaybar im 7. n. H.",
+      "conquest_of_mecca": "Die friedliche Öffnung Mekkas im 8. n. H.",
+      "battle_of_hunayn": "Eine Schlacht nach der Eroberung Mekkas im 8. n. H.",
+      "expedition_to_tabuk": "Der Tabuk-Feldzug im 9. n. H.",
+      "battle_of_yarmouk": "Eine entscheidende Schlacht gegen byzantinische Truppen im 15. n. H.",
+      "battle_of_qadisiyyah": "Eine bedeutende Schlacht, die Irak den muslimischen Truppen öffnete, im 15. n. H.",
+      "conquest_of_jerusalem": "Der muslimische Einzug in Jerusalem im 17. n. H.",
+      "conquest_of_egypt": "Die muslimische Expansion nach Ägypten im 21. n. H.",
+      "fall_of_constantinople": "Die osmanische Eroberung Konstantinopels im 857. n. H."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://de.wikipedia.org/wiki/Schlacht_am_Badr",
+      "battle_of_uhud": "https://de.wikipedia.org/wiki/Schlacht_am_Uhud",
+      "battle_of_khandaq": "https://de.wikipedia.org/wiki/Schlacht_am_Graben",
+      "treaty_of_hudaybiyyah": "https://de.wikipedia.org/wiki/Vertrag_von_Hudaibiya",
+      "conquest_of_khaybar": "https://de.wikipedia.org/wiki/Chaybar",
+      "conquest_of_mecca": "https://de.wikipedia.org/wiki/Eroberung_Mekkas",
+      "battle_of_hunayn": "https://de.wikipedia.org/wiki/Schlacht_von_Hunain",
+      "expedition_to_tabuk": "https://de.wikipedia.org/wiki/Feldzug_nach_Tabuk",
+      "battle_of_yarmouk": "https://de.wikipedia.org/wiki/Schlacht_am_Jarmuk",
+      "battle_of_qadisiyyah": "https://de.wikipedia.org/wiki/Schlacht_von_al-Qadisiyya",
+      "conquest_of_jerusalem": "https://de.wikipedia.org/wiki/Jerusalem",
+      "conquest_of_egypt": "https://de.wikipedia.org/wiki/%C3%84gypten",
+      "fall_of_constantinople": "https://de.wikipedia.org/wiki/Eroberung_Konstantinopels_(1453)"
+    },
+    "year_suffix": "{year} n. H."
+  },
+  "hijri_month_starts": {
+    "summary_template": "Beginn von {month}",
+    "description_template": "Der erste Tag von {month} im Hijri-Kalender.",
+    "reference_url": "https://de.wikipedia.org/wiki/Islamischer_Kalender"
+  }
+}

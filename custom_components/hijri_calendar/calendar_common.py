@@ -12,7 +12,9 @@ from homeassistant.util import dt as dt_util
 
 from .const import (
     CALENDAR_LANGUAGE_ARABIC,
+    CALENDAR_LANGUAGE_DEFAULT,
     HijriLanguage,
+    is_supported_language,
 )
 from .helpers import gregorian_to_hijri, resolve_effective_gregorian_date
 from .holidays import HijriHoliday, get_active_events, get_holidays
@@ -49,6 +51,10 @@ def resolve_calendar_display_language(
     calendar_language_option: str,
 ) -> HijriLanguage:
     """Return the language used for calendar event text."""
+    if calendar_language_option == CALENDAR_LANGUAGE_DEFAULT:
+        return integration_language
+    if is_supported_language(calendar_language_option):
+        return calendar_language_option
     if calendar_language_option == CALENDAR_LANGUAGE_ARABIC:
         return "ar"
     return integration_language

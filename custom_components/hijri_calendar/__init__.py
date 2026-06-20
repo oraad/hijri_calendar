@@ -11,6 +11,7 @@ from homeassistant.helpers import translation
 
 from .calendar_common import resolve_calendar_display_language
 from .const import (
+    CONF_HIJRI_MONTH_STARTS_CALENDAR_LANGUAGE,
     CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
     CONF_OBSERVANCES_CALENDAR_LANGUAGE,
     DEFAULT_CALENDAR_LANGUAGE,
@@ -48,6 +49,7 @@ async def _preload_calendar_languages(
     for option_key in (
         CONF_OBSERVANCES_CALENDAR_LANGUAGE,
         CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
+        CONF_HIJRI_MONTH_STARTS_CALENDAR_LANGUAGE,
     ):
         resolved = resolve_calendar_display_language(
             integration_language,

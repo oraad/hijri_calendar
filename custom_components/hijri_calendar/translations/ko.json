@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "히즈리 달력 설정",
+        "description": "언어와 히즈리 날이 시작되는 시점을 설정합니다.",
+        "data": {
+          "language": "언어",
+          "day_boundary": "하루의 경계"
+        }
+      },
+      "reconfigure": {
+        "title": "히즈리 달력 재구성",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "히즈리 달력이 이미 구성되어 있습니다."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "히즈리 달력 옵션",
+        "data": {
+          "offset_days": "일수 오프셋",
+          "observances_calendar_language": "기념일 달력 언어",
+          "islamic_history_calendar_language": "이슬람 역사 달력 언어",
+          "hijri_month_starts_calendar_language": "월 시작 달력 언어"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "현지 자정",
+        "sunset": "일몰 후"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "통합 구성요소 언어",
+        "ar": "아랍어"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "통합 구성요소 언어",
+        "ar": "아랍어"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "통합 구성요소 언어",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "히즈리 날짜"
+      },
+      "holiday": {
+        "name": "휴일",
+        "state": {
+          "none": "없음",
+          "ramadan": "라마단",
+          "last_day_of_ramadan": "라마단 마지막 날",
+          "eid_al_fitr_eve": "이드 알피트르 전야",
+          "eid_al_fitr": "이드 알피트르",
+          "day_of_arafah": "아라파트의 날",
+          "eid_al_adha": "이드 알아드하",
+          "hajj": "하지",
+          "ashura": "아슈라",
+          "type_ramadan": "라마단",
+          "type_eid": "이드",
+          "type_hajj": "하지",
+          "type_other": "기타 기념일",
+          "hijri_new_year": "이슬람 새해",
+          "first_day_of_ramadan": "라마단 첫날",
+          "laylat_al_qadr": "라일라투 알카드르",
+          "isra_and_miraj": "이스라와 미라즈",
+          "eid_al_fitr_day_2": "이드 알피트르(2일째)",
+          "eid_al_fitr_day_3": "이드 알피트르(3일째)",
+          "eid_al_adha_day_2": "이드 알아드하(2일째)",
+          "eid_al_adha_day_3": "이드 알아드하(3일째)",
+          "eid_al_adha_day_4": "이드 알아드하(4일째)"
+        }
+      },
+      "days_in_month": {
+        "name": "히즈리 월 일수"
+      },
+      "days_in_year": {
+        "name": "히즈리 연 일수"
+      },
+      "days_until_ramadan": {
+        "name": "라마단까지 남은 일수"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "이드 알피트르까지 남은 일수"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "기념일"
+      },
+      "islamic_history": {
+        "name": "이슬람 역사"
+      },
+      "hijri_month_starts": {
+        "name": "월 시작"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "라마단"
+      },
+      "eid_al_fitr": {
+        "name": "이드 알피트르"
+      },
+      "eid_al_adha": {
+        "name": "이드 알아드하"
+      },
+      "hajj_season": {
+        "name": "하지 시즌"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "일몰 경계를 사용할 수 없음",
+      "description": "Home Assistant가 해당 위치의 일몰을 계산할 수 없습니다. 히즈리 달력을 현지 자정으로 재구성하거나 설정 → 시스템 → 일반에서 유효한 위치를 설정하세요."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "날짜 보정",
+      "description": "작은 상대 변경 또는 공표된 히즈리 날짜를 사용하여 오늘의 통합 일수 오프셋을 조정합니다.",
+      "fields": {
+        "offset": {
+          "name": "오프셋 조정",
+          "description": "현재 통합 오프셋에 이 일수를 더합니다(−2~+2)."
+        },
+        "hijri": {
+          "name": "히즈리 날짜",
+          "description": "오늘 공표된 히즈리 날짜(ISO, 예 1446-10-15). 필요한 오프셋을 계산하여 저장합니다."
+        },
+        "language": {
+          "name": "언어",
+          "description": "응답의 서식 필드에 사용할 언어."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "날짜가 지원되는 움 알쿠라 범위를 벗어났습니다."
+    },
+    "sunset_unavailable": {
+      "message": "일몰을 계산할 수 없습니다. Home Assistant 위치 설정을 확인하세요."
+    },
+    "calibrate_no_config_entry": {
+      "message": "날짜를 보정하기 전에 히즈리 달력을 구성해야 합니다."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "필요한 오프셋 {offset}이(가) 지원 범위({min}~{max})를 벗어났습니다."
+    }
+  }
+}

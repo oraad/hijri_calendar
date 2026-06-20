@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [Unreleased]
+
+## [0.3.0] - 2026-06-20
+
+### Added
+
+- **`calendar.hijri_month_starts`**: third calendar entity with one event on the first day of each Hijri month; calendar language can be set to any supported integration language.
+- **17 new integration languages** with full UI, holiday, and calendar-content translations: Bengali, German, Spanish, Persian, French, Hebrew, Indonesian, Italian, Japanese, Korean, Dutch, Polish, Portuguese, Portuguese (Brazil), Russian, Ukrainian, and Chinese (Simplified).
+- `hijridate_language()` resolver so Hijri month/day formatting uses native hijridate locales for `en`, `ar`, `bn`, and `tr`, with English fallback for all other supported languages.
+- Per-language translation source in `scripts/translation_data/` and manifest drift tests to keep `SUPPORTED_LANGUAGES`, `services.yaml`, and blueprints in sync.
+
 ## [0.2.1] - 2026-05-19
 
 ### Changed

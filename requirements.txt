@@ -1,6 +1,9 @@
 # Dev/test deps. Runtime minimum HA version: hacs.json "homeassistant" (2026.3.0).
 # Tests use pytest-homeassistant-custom-component, which bundles homeassistant==2026.3.1.
+# PyYAML is required by scripts/build_calendar_translations.py and tests/test_language_manifest.py
+# (also installed transitively via homeassistant).
 colorlog==6.10.1
 pytest-homeassistant-custom-component==0.13.317
+PyYAML>=6.0.2
 ruff==0.14.14
 hijridate==2.6.0

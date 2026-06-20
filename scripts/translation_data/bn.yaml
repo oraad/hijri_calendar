@@ -1,0 +1,174 @@
+ui:
+  config_user_title: হিজরি ক্যালেন্ডার সেটআপ
+  config_user_description: ভাষা এবং হিজরি দিন কখন পরিবর্তিত হয় তা কনফিগার করুন।
+  config_user_language: ভাষা
+  config_user_day_boundary: দিনের সীমানা
+  config_reconfigure_title: হিজরি ক্যালেন্ডার পুনরায় কনফিগার করুন
+  config_abort_already_configured: হিজরি ক্যালেন্ডার ইতিমধ্যে কনফিগার করা আছে।
+  options_title: হিজরি ক্যালেন্ডার বিকল্প
+  options_offset_days: দিনের অফসেট
+  options_observances_calendar_language: উপলক্ষ্য ক্যালেন্ডারের ভাষা
+  options_islamic_history_calendar_language: ইসলামি ইতিহাস ক্যালেন্ডারের ভাষা
+  selector_midnight: স্থানীয় মধ্যরাত
+  selector_sunset: সূর্যাস্তের পর
+  selector_integration_language: ইন্টিগ্রেশন ভাষা
+  selector_arabic_label: আরবি
+  entity_hijri_date: হিজরি তারিখ
+  entity_holiday: উপলক্ষ
+  entity_days_in_month: হিজরি মাসে দিন
+  entity_days_in_year: হিজরি বছরে দিন
+  entity_days_until_ramadan: রমজান পর্যন্ত দিন
+  entity_days_until_eid_al_fitr: ঈদুল ফিতর পর্যন্ত দিন
+  entity_calendar_observances: উপলক্ষসমূহ
+  entity_calendar_history: ইসলামি ইতিহাস
+  entity_ramadan: রমজান
+  entity_eid_al_fitr: ঈদুল ফিতর
+  entity_eid_al_adha: ঈদুল আযহা
+  entity_hajj_season: হজ মৌসুম
+  issue_sunset_title: সূর্যাস্ত সীমানা অনুপলব্ধ
+  issue_sunset_description: Home Assistant আপনার অবস্থানের জন্য সূর্যাস্ত গণনা করতে পারেনি। স্থানীয় মধ্যরাত ব্যবহার করতে হিজরি ক্যালেন্ডার পুনরায় কনফিগার করুন, অথবা Settings → System → General-এ একটি বৈধ অবস্থান সেট করুন।
+  service_calibrate_name: তারিখ ক্যালিব্রেট করুন
+  service_calibrate_description: আজকের জন্য ইন্টিগ্রেশন দিনের অফসেট ছোট আপেক্ষিক পরিবর্তন বা ঘোষিত হিজরি তারিখ দিয়ে সামঞ্জস্য করুন।
+  service_calibrate_offset_name: অফসেট সমন্বয়
+  service_calibrate_offset_description: বর্তমান ইন্টিগ্রেশন অফসেটে এই সংখ্যক দিন যোগ করুন (−2 থেকে +2)।
+  service_calibrate_hijri_name: হিজরি তারিখ
+  service_calibrate_hijri_description: আজকের ঘোষিত হিজরি তারিখ (ISO, যেমন 1446-10-15)। প্রয়োজনীয় অফসেট গণনা করে সংরক্ষণ করে।
+  service_calibrate_language_name: ভাষা
+  service_calibrate_language_description: প্রতিক্রিয়ায় ফরম্যাট করা ক্ষেত্রের ভাষা।
+  exception_date_out_of_range: তারিখটি সমর্থিত উম্ম আল-কুরা পরিসরের বাইরে।
+  exception_sunset_unavailable: সূর্যাস্ত গণনা করা যায়নি। Home Assistant অবস্থান সেটিংস পরীক্ষা করুন।
+  exception_calibrate_no_config_entry: তারিখ ক্যালিব্রেট করার আগে হিজরি ক্যালেন্ডার কনফিগার করতে হবে।
+  exception_calibrate_offset_out_of_range: প্রয়োজনীয় অফসেট {offset} সমর্থিত পরিসরের ({min} থেকে {max}) বাইরে।
+  options_hijri_month_starts_calendar_language: মাস শুরুর ক্যালেন্ডারের ভাষা
+  entity_calendar_month_starts: মাসের শুরু
+holidays:
+  none: কিছু নেই
+  ramadan: রমজান
+  last_day_of_ramadan: রমজানের শেষ দিন
+  eid_al_fitr_eve: ঈদুল ফিতরের আগের রাত
+  eid_al_fitr: ঈদুল ফিতর
+  day_of_arafah: আরাফাহর দিন
+  eid_al_adha: ঈদুল আযহা
+  hajj: হজ
+  ashura: আশুরা
+  type_ramadan: রমজান
+  type_eid: ঈদ
+  type_hajj: হজ
+  type_other: অন্যান্য উপলক্ষ
+  hijri_new_year: ইসলামি নববর্ষ
+  first_day_of_ramadan: রমজানের প্রথম দিন
+  laylat_al_qadr: লাইলাতুল কদর
+  isra_and_miraj: ইসরা ও মিরাজ
+  eid_al_fitr_day_2: ঈদুল ফিতর (২য় দিন)
+  eid_al_fitr_day_3: ঈদুল ফিতর (৩য় দিন)
+  eid_al_adha_day_2: ঈদুল আযহা (২য় দিন)
+  eid_al_adha_day_3: ঈদুল আযহা (৩য় দিন)
+  eid_al_adha_day_4: ঈদুল আযহা (৪র্থ দিন)
+calendar:
+  reference_label: আরও জানুন
+  year_suffix: '{year} হি.'
+  observances:
+    ramadan:
+      description: মুসলমানদের জন্য হিজরি নবম মাস, রোজা, প্রার্থনা ও চিন্তা-ভাবনার মাস।
+      reference_url: https://bn.wikipedia.org/wiki/রমজান
+    hajj_season:
+      description: জিলহজ মাসে বার্ষিক হজ মৌসুম, হজের আচার-অনুষ্ঠানের দিনগুলোসহ।
+      reference_url: https://bn.wikipedia.org/wiki/হজ
+    hijri_new_year:
+      description: মুহarram-এর প্রথম দিন ইসলামি হিজরি বছরের শুরু চিহ্নিত করে।
+      reference_url: https://bn.wikipedia.org/wiki/হিজরি_বর্ষপঞ্জি
+    first_day_of_ramadan:
+      description: রমজানের প্রথম দিন, রোজার মাস শুরু হয়।
+      reference_url: https://bn.wikipedia.org/wiki/রমজান
+    laylat_al_qadr:
+      description: কদরের রাত, সাধারণত রমজানের ২৭তম রাতে পালিত।
+      reference_url: https://bn.wikipedia.org/wiki/লাইলাতুল_কদর
+    isra_and_miraj:
+      description: রজবের ২৭ তারিখে পালিত ইসরা ও মিরাজের স্মরণ।
+      reference_url: https://bn.wikipedia.org/wiki/ইসরা_ও_মিরাজ
+    last_day_of_ramadan:
+      description: ঈদুল ফিতরের আগে রমজানের শেষ দিন।
+      reference_url: https://bn.wikipedia.org/wiki/রমজান
+    eid_al_fitr_eve:
+      description: রমজান শেষে ঈদুল ফিতরের আগের রাত।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_ফিতর
+    eid_al_fitr:
+      description: শাওয়ালের ১ তারিখে রমজান শেষের উৎসব।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_ফিতর
+    eid_al_fitr_day_2:
+      description: ঈদুল ফিতর উদযাপনের দ্বিতীয় দিন।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_ফিতর
+    eid_al_fitr_day_3:
+      description: ঈদুল ফিতর উদযাপনের তৃতীয় দিন।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_ফিতর
+    day_of_arafah:
+      description: হজে আরাফাহর ময়দানে অবস্থানের দিন, জিলহজ ৯।
+      reference_url: https://bn.wikipedia.org/wiki/আরাফাহ
+    eid_al_adha:
+      description: জিলহজ ১০ তারিখে ঈদুল আযহা উৎসব।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_আযহা
+    eid_al_adha_day_2:
+      description: ঈদুল আযহার দ্বিতীয় দিন।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_আযহা
+    eid_al_adha_day_3:
+      description: ঈদুল আযহার তৃতীয় দিন।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_আযহা
+    eid_al_adha_day_4:
+      description: ঈদুল আযহার চতুর্থ দিন এবং হজ মৌসুমের শেষ।
+      reference_url: https://bn.wikipedia.org/wiki/ঈদুল_আযহা
+    ashura:
+      description: মুহarram ১০ তারিখে পালিত, রোজা ও স্মরণের জন্য বিশেষ তাৎপর্যপূর্ণ।
+      reference_url: https://bn.wikipedia.org/wiki/আশুরা
+  history:
+    battle_of_badr:
+      name: বদর যুদ্ধ
+      description: ২ হি. সালে মুসলমান ও কুরাইশের মধ্যে প্রথম বড় যুদ্ধ।
+      reference_url: https://bn.wikipedia.org/wiki/বদর_যুদ্ধ
+    battle_of_uhud:
+      name: উহুদ যুদ্ধ
+      description: ৩ হি. সালে উহুদ পাহাড়ের কাছে লড়াই।
+      reference_url: https://bn.wikipedia.org/wiki/উহুদ_যুদ্ধ
+    battle_of_khandaq:
+      name: খন্দক যুদ্ধ
+      description: ৫ হি. সালে মদিনা অবরোধ (খন্দক)।
+      reference_url: https://bn.wikipedia.org/wiki/খন্দক_যুদ্ধ
+    treaty_of_hudaybiyyah:
+      name: হুদাইবিয়া চুক্তি
+      description: ৬ হি. সালে মুসলমান ও কুরাইশের মধ্যে শান্তি চুক্তি।
+      reference_url: https://bn.wikipedia.org/wiki/হুদাইবিয়া_চুক্তি
+    conquest_of_khaybar:
+      name: খাইবার বিজয়
+      description: ৭ হি. সালে খাইবার দুর্গ দখল।
+      reference_url: https://bn.wikipedia.org/wiki/খাইবার
+    conquest_of_mecca:
+      name: মক্কা বিজয়
+      description: ৮ হি. সালে মক্কা বিজয়।
+      reference_url: https://bn.wikipedia.org/wiki/মক্কা_বিজয়
+    battle_of_hunayn:
+      name: হুনাইন যুদ্ধ
+      description: মক্কা বিজয়ের পর ৮ হি. সালে হুনাইন যুদ্ধ।
+      reference_url: https://bn.wikipedia.org/wiki/হুনাইন_যুদ্ধ
+    expedition_to_tabuk:
+      name: তাবুক অভিযান
+      description: ৯ হি. সালে তাবুক অভিযান।
+      reference_url: https://bn.wikipedia.org/wiki/তাবুক_অভিযান
+    battle_of_yarmouk:
+      name: ইয়ারমুক যুদ্ধ
+      description: ১৫ হি. সালে বizantin সেনাবাহিনীর বিরুদ্ধে নির্ণায়ক যুদ্ধ।
+      reference_url: https://bn.wikipedia.org/wiki/ইয়ারমুক_যুদ্ধ
+    battle_of_qadisiyyah:
+      name: কাদিসিয়া যুদ্ধ
+      description: ১৫ হি. সালে ইরাক মুসলমান বাহিনীর কাছে খুলে যায়।
+      reference_url: https://bn.wikipedia.org/wiki/কাদিসিয়া_যুদ্ধ
+    conquest_of_jerusalem:
+      name: জেরুজালেম বিজয়
+      description: ১৭ হি. সালে মুসলমানদের জেরুজালেমে প্রবেশ।
+      reference_url: https://bn.wikipedia.org/wiki/জেরুজালেম
+    conquest_of_egypt:
+      name: মিশর বিজয়
+      description: ২১ হি. সালে মিশরে মুসলমান সম্প্রসারণ।
+      reference_url: https://bn.wikipedia.org/wiki/মিশর
+    fall_of_constantinople:
+      name: Constantinople-এর পতন
+      description: ৮৫৭ হি. সালে Constantinople-এর পতন।
+      reference_url: https://bn.wikipedia.org/wiki/ইস্তানবুল

@@ -1,0 +1,96 @@
+{
+  "reference_label": "Meer informatie",
+  "hijri_events": {
+    "description": {
+      "ramadan": "De negende Hijri-maand van vasten, gebed en bezinning voor moslims.",
+      "hajj_season": "Het jaarlijkse pelgrimseizoen in Dhu al-Hijjah, inclusief de dagen van de Hadj-riten.",
+      "hijri_new_year": "De eerste dag van Muharram markeert het begin van het islamitische Hijri-jaar.",
+      "first_day_of_ramadan": "De eerste dag van Ramadan wanneer de vastenmaand begint.",
+      "laylat_al_qadr": "De Nacht van het Besluit, veelal gevierd op de 27e van Ramadan.",
+      "isra_and_miraj": "Herdenkt de nachtelijke reis en hemelvaart, gevierd op 27 Rajab.",
+      "last_day_of_ramadan": "De laatste dag van Ramadan vóór Eid al-Fitr.",
+      "eid_al_fitr_eve": "De avond vóór Eid al-Fitr aan het einde van Ramadan.",
+      "eid_al_fitr": "Feest dat het einde van Ramadan markeert op 1 Shawwal.",
+      "eid_al_fitr_day_2": "De tweede dag van de Eid al-Fitr-vieringen.",
+      "eid_al_fitr_day_3": "De derde dag van de Eid al-Fitr-vieringen.",
+      "day_of_arafah": "De dag van staan op Arafat tijdens de Hadj op 9 Dhu al-Hijjah.",
+      "eid_al_adha": "Offerfeest op 10 Dhu al-Hijjah.",
+      "eid_al_adha_day_2": "De tweede dag van Eid al-Adha.",
+      "eid_al_adha_day_3": "De derde dag van Eid al-Adha.",
+      "eid_al_adha_day_4": "De vierde dag van Eid al-Adha en het einde van de Hadj-riten.",
+      "ashura": "Gevierd op 10 Muharram, vooral belangrijk voor vasten en herdenking."
+    },
+    "reference_url": {
+      "ramadan": "https://nl.wikipedia.org/wiki/Ramadan",
+      "hajj_season": "https://nl.wikipedia.org/wiki/Hadj",
+      "hijri_new_year": "https://nl.wikipedia.org/wiki/Islamitische_kalender",
+      "first_day_of_ramadan": "https://nl.wikipedia.org/wiki/Ramadan",
+      "laylat_al_qadr": "https://nl.wikipedia.org/wiki/Laylat_al-Qadr",
+      "isra_and_miraj": "https://nl.wikipedia.org/wiki/Isra_en_Mi%27raj",
+      "last_day_of_ramadan": "https://nl.wikipedia.org/wiki/Ramadan",
+      "eid_al_fitr_eve": "https://nl.wikipedia.org/wiki/Suikerfeest",
+      "eid_al_fitr": "https://nl.wikipedia.org/wiki/Suikerfeest",
+      "eid_al_fitr_day_2": "https://nl.wikipedia.org/wiki/Suikerfeest",
+      "eid_al_fitr_day_3": "https://nl.wikipedia.org/wiki/Suikerfeest",
+      "day_of_arafah": "https://nl.wikipedia.org/wiki/Ararat_(Saoedi-Arabi%C3%AB)",
+      "eid_al_adha": "https://nl.wikipedia.org/wiki/Offerfeest",
+      "eid_al_adha_day_2": "https://nl.wikipedia.org/wiki/Offerfeest",
+      "eid_al_adha_day_3": "https://nl.wikipedia.org/wiki/Offerfeest",
+      "eid_al_adha_day_4": "https://nl.wikipedia.org/wiki/Offerfeest",
+      "ashura": "https://nl.wikipedia.org/wiki/Ashura"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "Slag bij Badr",
+      "battle_of_uhud": "Slag bij Uhud",
+      "battle_of_khandaq": "Slag bij de Gracht",
+      "treaty_of_hudaybiyyah": "Verdrag van Hudaybiyya",
+      "conquest_of_khaybar": "Verovering van Khaybar",
+      "conquest_of_mecca": "Verovering van Mekka",
+      "battle_of_hunayn": "Slag bij Hunayn",
+      "expedition_to_tabuk": "Expeditie naar Tabuk",
+      "battle_of_yarmouk": "Slag bij Yarmuk",
+      "battle_of_qadisiyyah": "Slag bij al-Qadisiyya",
+      "conquest_of_jerusalem": "Verovering van Jeruzalem",
+      "conquest_of_egypt": "Verovering van Egypte",
+      "fall_of_constantinople": "Val van Constantinopel"
+    },
+    "description": {
+      "battle_of_badr": "De eerste grote slag tussen moslims en Qoeraisj in 2 AH.",
+      "battle_of_uhud": "Een slag nabij de berg Uhud in 3 AH.",
+      "battle_of_khandaq": "Het beleg van Medina door de confederatie in 5 AH.",
+      "treaty_of_hudaybiyyah": "Een vredesovereenkomst tussen moslims en Qoeraisj in 6 AH.",
+      "conquest_of_khaybar": "Moslimveldtocht tegen de forten van Khaybar in 7 AH.",
+      "conquest_of_mecca": "De vreedzame opening van Mekka in 8 AH.",
+      "battle_of_hunayn": "Een slag na de verovering van Mekka in 8 AH.",
+      "expedition_to_tabuk": "De Tabuk-veldtocht in 9 AH.",
+      "battle_of_yarmouk": "Een beslissende slag tegen Byzantijnse troepen in 15 AH.",
+      "battle_of_qadisiyyah": "Een belangrijke slag die Irak opende voor moslimtroepen in 15 AH.",
+      "conquest_of_jerusalem": "De moslimintocht in Jeruzalem in 17 AH.",
+      "conquest_of_egypt": "De moslimuitbreiding naar Egypte in 21 AH.",
+      "fall_of_constantinople": "De Ottomaanse verovering van Constantinopel in 857 AH."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://nl.wikipedia.org/wiki/Slag_bij_Badr",
+      "battle_of_uhud": "https://nl.wikipedia.org/wiki/Slag_bij_Uhud",
+      "battle_of_khandaq": "https://nl.wikipedia.org/wiki/Slag_bij_de_Gracht",
+      "treaty_of_hudaybiyyah": "https://nl.wikipedia.org/wiki/Verdrag_van_Hudaybiyya",
+      "conquest_of_khaybar": "https://nl.wikipedia.org/wiki/Khaybar",
+      "conquest_of_mecca": "https://nl.wikipedia.org/wiki/Verovering_van_Mekka",
+      "battle_of_hunayn": "https://nl.wikipedia.org/wiki/Slag_bij_Hunayn",
+      "expedition_to_tabuk": "https://nl.wikipedia.org/wiki/Expeditie_naar_Tabuk",
+      "battle_of_yarmouk": "https://nl.wikipedia.org/wiki/Slag_bij_Yarmuk",
+      "battle_of_qadisiyyah": "https://nl.wikipedia.org/wiki/Slag_bij_al-Qadisiyya",
+      "conquest_of_jerusalem": "https://nl.wikipedia.org/wiki/Jeruzalem",
+      "conquest_of_egypt": "https://nl.wikipedia.org/wiki/Egypte",
+      "fall_of_constantinople": "https://nl.wikipedia.org/wiki/Val_van_Constantinopel"
+    },
+    "year_suffix": "{year} AH"
+  },
+  "hijri_month_starts": {
+    "summary_template": "Begin van {month}",
+    "description_template": "De eerste dag van {month} in de Hijri-kalender.",
+    "reference_url": "https://nl.wikipedia.org/wiki/Islamitische_kalender"
+  }
+}

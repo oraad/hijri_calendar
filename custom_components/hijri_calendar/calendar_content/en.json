@@ -87,5 +87,10 @@
       "fall_of_constantinople": "https://www.britannica.com/event/Fall-of-Constantinople-1453"
     },
     "year_suffix": "{year} AH"
+  },
+  "hijri_month_starts": {
+    "summary_template": "Start of {month}",
+    "description_template": "The first day of {month} in the Hijri calendar.",
+    "reference_url": "https://www.britannica.com/topic/Islamic-calendar"
   }
 }

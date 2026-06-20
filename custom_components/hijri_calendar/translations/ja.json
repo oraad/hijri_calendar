@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "ヒジュラ暦の設定",
+        "description": "言語とヒジュラ暦の日が始まる時刻を設定します。",
+        "data": {
+          "language": "言語",
+          "day_boundary": "日の区切り"
+        }
+      },
+      "reconfigure": {
+        "title": "ヒジュラ暦の再設定",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "ヒジュラ暦はすでに設定されています。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ヒジュラ暦のオプション",
+        "data": {
+          "offset_days": "日数オフセット",
+          "observances_calendar_language": "行事カレンダーの言語",
+          "islamic_history_calendar_language": "イスラム史カレンダーの言語",
+          "hijri_month_starts_calendar_language": "月初カレンダーの言語"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "現地の真夜中",
+        "sunset": "日没後"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "インテグレーションの言語",
+        "ar": "アラビア語"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "インテグレーションの言語",
+        "ar": "アラビア語"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "インテグレーションの言語",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "ヒジュラ暦の日付"
+      },
+      "holiday": {
+        "name": "祝日",
+        "state": {
+          "none": "なし",
+          "ramadan": "ラマダーン",
+          "last_day_of_ramadan": "ラマダーン最終日",
+          "eid_al_fitr_eve": "イード・アル＝フィトル前夜",
+          "eid_al_fitr": "イード・アル＝フィトル",
+          "day_of_arafah": "アラファの日",
+          "eid_al_adha": "イード・アル＝アドハー",
+          "hajj": "ハッジ",
+          "ashura": "アーシューラー",
+          "type_ramadan": "ラマダーン",
+          "type_eid": "イード",
+          "type_hajj": "ハッジ",
+          "type_other": "その他の行事",
+          "hijri_new_year": "イスラム暦新年",
+          "first_day_of_ramadan": "ラマダーン初日",
+          "laylat_al_qadr": "ライラトゥル＝カドル",
+          "isra_and_miraj": "イスラーとミルジャー",
+          "eid_al_fitr_day_2": "イード・アル＝フィトル（2日目）",
+          "eid_al_fitr_day_3": "イード・アル＝フィトル（3日目）",
+          "eid_al_adha_day_2": "イード・アル＝アドハー（2日目）",
+          "eid_al_adha_day_3": "イード・アル＝アドハー（3日目）",
+          "eid_al_adha_day_4": "イード・アル＝アドハー（4日目）"
+        }
+      },
+      "days_in_month": {
+        "name": "ヒジュラ暦月の日数"
+      },
+      "days_in_year": {
+        "name": "ヒジュラ暦年の日数"
+      },
+      "days_until_ramadan": {
+        "name": "ラマダーンまでの日数"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "イード・アル＝フィトルまでの日数"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "行事"
+      },
+      "islamic_history": {
+        "name": "イスラム史"
+      },
+      "hijri_month_starts": {
+        "name": "月初"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "ラマダーン"
+      },
+      "eid_al_fitr": {
+        "name": "イード・アル＝フィトル"
+      },
+      "eid_al_adha": {
+        "name": "イード・アル＝アドハー"
+      },
+      "hajj_season": {
+        "name": "ハッジの季節"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "日没境界が利用できません",
+      "description": "Home Assistant はお使いの場所の日没を計算できませんでした。ヒジュラ暦を現地の真夜中に再設定するか、設定 → システム → 一般で有効な場所を設定してください。"
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "日付を校正",
+      "description": "小さな相対変更または公表されたヒジュラ暦の日付を使って、今日のインテグレーション日数オフセットを調整します。",
+      "fields": {
+        "offset": {
+          "name": "オフセット調整",
+          "description": "現在のインテグレーションオフセットにこの日数を加算します（−2 ～ +2）。"
+        },
+        "hijri": {
+          "name": "ヒジュラ暦の日付",
+          "description": "今日の公表ヒジュラ暦日付（ISO、例 1446-10-15）。必要なオフセットを計算して保存します。"
+        },
+        "language": {
+          "name": "言語",
+          "description": "応答の書式付きフィールドに使用する言語。"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "日付がサポートされているウンム・アル＝クラの範囲外です。"
+    },
+    "sunset_unavailable": {
+      "message": "日没を計算できませんでした。Home Assistant の場所設定を確認してください。"
+    },
+    "calibrate_no_config_entry": {
+      "message": "日付を校正する前にヒジュラ暦を設定する必要があります。"
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "必要なオフセット {offset} がサポート範囲（{min} ～ {max}）外です。"
+    }
+  }
+}

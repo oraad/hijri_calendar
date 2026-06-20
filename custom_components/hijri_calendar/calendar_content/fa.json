@@ -1,0 +1,96 @@
+{
+  "reference_label": "بیشتر بدانید",
+  "hijri_events": {
+    "description": {
+      "ramadan": "نهمین ماه هجری روزه، نماز و تفکر برای مسلمانان.",
+      "hajj_season": "فصل سالانه حج در ذی‌الحجه، شامل روزهای مناسک حج.",
+      "hijri_new_year": "اولین روز محرم آغاز سال هجری اسلامی را نشان می‌دهد.",
+      "first_day_of_ramadan": "اولین روز رمضان که ماه روزه آغاز می‌شود.",
+      "laylat_al_qadr": "شب قدر، که معمولاً در شب بیست‌وهفتم رمضان گرامی داشته می‌شود.",
+      "isra_and_miraj": "بزرگداشت شب معراج، در بیست‌وهفتم رجب.",
+      "last_day_of_ramadan": "آخرین روز رمضان پیش از عید فطر.",
+      "eid_al_fitr_eve": "شب عید فطر در پایان رمضان.",
+      "eid_al_fitr": "جشن پایان رمضان در اول شوال.",
+      "eid_al_fitr_day_2": "دومین روز جشن عید فطر.",
+      "eid_al_fitr_day_3": "سومین روز جشن عید فطر.",
+      "day_of_arafah": "روز وقوف در عرفه در حج، نهم ذی‌الحجه.",
+      "eid_al_adha": "عید قربان در دهم ذی‌الحجه.",
+      "eid_al_adha_day_2": "دومین روز عید قربان.",
+      "eid_al_adha_day_3": "سومین روز عید قربان.",
+      "eid_al_adha_day_4": "چهارمین روز عید قربان و پایان مناسک فصل حج.",
+      "ashura": "در دهم محرم گرامی داشته می‌شود، به‌ویژه برای روزه و یادبود."
+    },
+    "reference_url": {
+      "ramadan": "https://fa.wikipedia.org/wiki/رمضان",
+      "hajj_season": "https://fa.wikipedia.org/wiki/حج",
+      "hijri_new_year": "https://fa.wikipedia.org/wiki/گاه‌شماری_هجری_قمری",
+      "first_day_of_ramadan": "https://fa.wikipedia.org/wiki/رمضان",
+      "laylat_al_qadr": "https://fa.wikipedia.org/wiki/شب_قدر",
+      "isra_and_miraj": "https://fa.wikipedia.org/wiki/معراج",
+      "last_day_of_ramadan": "https://fa.wikipedia.org/wiki/رمضان",
+      "eid_al_fitr_eve": "https://fa.wikipedia.org/wiki/عید_فطر",
+      "eid_al_fitr": "https://fa.wikipedia.org/wiki/عید_فطر",
+      "eid_al_fitr_day_2": "https://fa.wikipedia.org/wiki/عید_فطر",
+      "eid_al_fitr_day_3": "https://fa.wikipedia.org/wiki/عید_فطر",
+      "day_of_arafah": "https://fa.wikipedia.org/wiki/عرفات",
+      "eid_al_adha": "https://fa.wikipedia.org/wiki/عید_قربان",
+      "eid_al_adha_day_2": "https://fa.wikipedia.org/wiki/عید_قربان",
+      "eid_al_adha_day_3": "https://fa.wikipedia.org/wiki/عید_قربان",
+      "eid_al_adha_day_4": "https://fa.wikipedia.org/wiki/عید_قربان",
+      "ashura": "https://fa.wikipedia.org/wiki/عاشورا"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "غزوه بدر",
+      "battle_of_uhud": "غزوه احد",
+      "battle_of_khandaq": "غزوه خندق",
+      "treaty_of_hudaybiyyah": "صلح حدیبیه",
+      "conquest_of_khaybar": "فتح خیبر",
+      "conquest_of_mecca": "فتح مکه",
+      "battle_of_hunayn": "غزوه حنین",
+      "expedition_to_tabuk": "غزوه تبوک",
+      "battle_of_yarmouk": "نبرد یرموک",
+      "battle_of_qadisiyyah": "نبرد قادسیه",
+      "conquest_of_jerusalem": "فتح بیت‌المقدس",
+      "conquest_of_egypt": "فتح مصر",
+      "fall_of_constantinople": "فتح قسطنطنیه"
+    },
+    "description": {
+      "battle_of_badr": "نخستین نبرد بزرگ میان مسلمانان و قریش در ۲ ه.ق.",
+      "battle_of_uhud": "نبردی در نزدیکی کوه احد در ۳ ه.ق.",
+      "battle_of_khandaq": "محاصره مدینه توسط احزاب در ۵ ه.ق.",
+      "treaty_of_hudaybiyyah": "پیمان صلح میان مسلمانان و قریش در ۶ ه.ق.",
+      "conquest_of_khaybar": "حمله مسلمانان به قلعه‌های خیبر در ۷ ه.ق.",
+      "conquest_of_mecca": "فتح مسالمت‌آمیز مکه در ۸ ه.ق.",
+      "battle_of_hunayn": "نبردی پس از فتح مکه در ۸ ه.ق.",
+      "expedition_to_tabuk": "غزوه تبوک در ۹ ه.ق.",
+      "battle_of_yarmouk": "نبردی سرنوشت‌ساز علیه نیروهای بیزانس در ۱۵ ه.ق.",
+      "battle_of_qadisiyyah": "نبرد مهمی که عراق را به نیروهای مسلمان گشود، در ۱۵ ه.ق.",
+      "conquest_of_jerusalem": "ورود مسلمانان به بیت‌المقدس در ۱۷ ه.ق.",
+      "conquest_of_egypt": "گسترش مسلمانان به مصر در ۲۱ ه.ق.",
+      "fall_of_constantinople": "فتح قسطنطنیه توسط عثمانیان در ۸۵۷ ه.ق."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://fa.wikipedia.org/wiki/غزوه_بدر",
+      "battle_of_uhud": "https://fa.wikipedia.org/wiki/غزوه_احد",
+      "battle_of_khandaq": "https://fa.wikipedia.org/wiki/غزوه_خندق",
+      "treaty_of_hudaybiyyah": "https://fa.wikipedia.org/wiki/صلح_حدیبیه",
+      "conquest_of_khaybar": "https://fa.wikipedia.org/wiki/خیبر",
+      "conquest_of_mecca": "https://fa.wikipedia.org/wiki/فتح_مکه",
+      "battle_of_hunayn": "https://fa.wikipedia.org/wiki/غزوه_حنین",
+      "expedition_to_tabuk": "https://fa.wikipedia.org/wiki/غزوه_تبوک",
+      "battle_of_yarmouk": "https://fa.wikipedia.org/wiki/نبرد_یرموک",
+      "battle_of_qadisiyyah": "https://fa.wikipedia.org/wiki/نبرد_قادسیه",
+      "conquest_of_jerusalem": "https://fa.wikipedia.org/wiki/بیت‌المقدس",
+      "conquest_of_egypt": "https://fa.wikipedia.org/wiki/مصر",
+      "fall_of_constantinople": "https://fa.wikipedia.org/wiki/فتح_قسطنطنیه"
+    },
+    "year_suffix": "{year} ه.ق."
+  },
+  "hijri_month_starts": {
+    "summary_template": "آغاز {month}",
+    "description_template": "اولین روز {month} در تقویم هجری.",
+    "reference_url": "https://fa.wikipedia.org/wiki/گاه‌شماری_هجری_قمری"
+  }
+}

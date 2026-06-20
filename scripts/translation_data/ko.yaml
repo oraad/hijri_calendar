@@ -1,0 +1,174 @@
+ui:
+  config_user_title: 히즈리 달력 설정
+  config_user_description: 언어와 히즈리 날이 시작되는 시점을 설정합니다.
+  config_user_language: 언어
+  config_user_day_boundary: 하루의 경계
+  config_reconfigure_title: 히즈리 달력 재구성
+  config_abort_already_configured: 히즈리 달력이 이미 구성되어 있습니다.
+  options_title: 히즈리 달력 옵션
+  options_offset_days: 일수 오프셋
+  options_observances_calendar_language: 기념일 달력 언어
+  options_islamic_history_calendar_language: 이슬람 역사 달력 언어
+  selector_midnight: 현지 자정
+  selector_sunset: 일몰 후
+  selector_integration_language: 통합 구성요소 언어
+  selector_arabic_label: 아랍어
+  entity_hijri_date: 히즈리 날짜
+  entity_holiday: 휴일
+  entity_days_in_month: 히즈리 월 일수
+  entity_days_in_year: 히즈리 연 일수
+  entity_days_until_ramadan: 라마단까지 남은 일수
+  entity_days_until_eid_al_fitr: 이드 알피트르까지 남은 일수
+  entity_calendar_observances: 기념일
+  entity_calendar_history: 이슬람 역사
+  entity_ramadan: 라마단
+  entity_eid_al_fitr: 이드 알피트르
+  entity_eid_al_adha: 이드 알아드하
+  entity_hajj_season: 하지 시즌
+  issue_sunset_title: 일몰 경계를 사용할 수 없음
+  issue_sunset_description: Home Assistant가 해당 위치의 일몰을 계산할 수 없습니다. 히즈리 달력을 현지 자정으로 재구성하거나 설정 → 시스템 → 일반에서 유효한 위치를 설정하세요.
+  service_calibrate_name: 날짜 보정
+  service_calibrate_description: 작은 상대 변경 또는 공표된 히즈리 날짜를 사용하여 오늘의 통합 일수 오프셋을 조정합니다.
+  service_calibrate_offset_name: 오프셋 조정
+  service_calibrate_offset_description: 현재 통합 오프셋에 이 일수를 더합니다(−2~+2).
+  service_calibrate_hijri_name: 히즈리 날짜
+  service_calibrate_hijri_description: 오늘 공표된 히즈리 날짜(ISO, 예 1446-10-15). 필요한 오프셋을 계산하여 저장합니다.
+  service_calibrate_language_name: 언어
+  service_calibrate_language_description: 응답의 서식 필드에 사용할 언어.
+  exception_date_out_of_range: 날짜가 지원되는 움 알쿠라 범위를 벗어났습니다.
+  exception_sunset_unavailable: 일몰을 계산할 수 없습니다. Home Assistant 위치 설정을 확인하세요.
+  exception_calibrate_no_config_entry: 날짜를 보정하기 전에 히즈리 달력을 구성해야 합니다.
+  exception_calibrate_offset_out_of_range: 필요한 오프셋 {offset}이(가) 지원 범위({min}~{max})를 벗어났습니다.
+  options_hijri_month_starts_calendar_language: 월 시작 달력 언어
+  entity_calendar_month_starts: 월 시작
+holidays:
+  none: 없음
+  ramadan: 라마단
+  last_day_of_ramadan: 라마단 마지막 날
+  eid_al_fitr_eve: 이드 알피트르 전야
+  eid_al_fitr: 이드 알피트르
+  day_of_arafah: 아라파트의 날
+  eid_al_adha: 이드 알아드하
+  hajj: 하지
+  ashura: 아슈라
+  type_ramadan: 라마단
+  type_eid: 이드
+  type_hajj: 하지
+  type_other: 기타 기념일
+  hijri_new_year: 이슬람 새해
+  first_day_of_ramadan: 라마단 첫날
+  laylat_al_qadr: 라일라투 알카드르
+  isra_and_miraj: 이스라와 미라즈
+  eid_al_fitr_day_2: 이드 알피트르(2일째)
+  eid_al_fitr_day_3: 이드 알피트르(3일째)
+  eid_al_adha_day_2: 이드 알아드하(2일째)
+  eid_al_adha_day_3: 이드 알아드하(3일째)
+  eid_al_adha_day_4: 이드 알아드하(4일째)
+calendar:
+  reference_label: 자세히 알아보기
+  year_suffix: '{year} AH'
+  observances:
+    ramadan:
+      description: 무슬림에게 금식, 기도, 성찰의 달인 히즈리 9월.
+      reference_url: https://ko.wikipedia.org/wiki/라마단
+    hajj_season:
+      description: 둘히자월의 연례 순례 시즌. 하지 의식의 날들을 포함합니다.
+      reference_url: https://ko.wikipedia.org/wiki/하지
+    hijri_new_year:
+      description: 무하람 1일은 이슬람 히즈리 연의 시작을 나타냅니다.
+      reference_url: https://ko.wikipedia.org/wiki/히즈리력
+    first_day_of_ramadan:
+      description: 금식의 달이 시작되는 라마단 첫날.
+      reference_url: https://ko.wikipedia.org/wiki/라마단
+    laylat_al_qadr:
+      description: 운명의 밤. 라마단 27일 밤에 널리 기념됩니다.
+      reference_url: https://ko.wikipedia.org/wiki/라일라투_알카드르
+    isra_and_miraj:
+      description: 라자브 27일에 기념되는 야간 여행과 승천.
+      reference_url: https://ko.wikipedia.org/wiki/이스라와_미라즈
+    last_day_of_ramadan:
+      description: 이드 알피트르 전 라마단 마지막 날.
+      reference_url: https://ko.wikipedia.org/wiki/라마단
+    eid_al_fitr_eve:
+      description: 라마단 끝의 이드 알피트르 전야.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알피트르
+    eid_al_fitr:
+      description: 샤왈 1일에 라마단의 끝을 기념하는 축제.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알피트르
+    eid_al_fitr_day_2:
+      description: 이드 알피트르 축하 둘째 날.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알피트르
+    eid_al_fitr_day_3:
+      description: 이드 알피트르 축하 셋째 날.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알피트르
+    day_of_arafah:
+      description: 하지 중 둘히자 9일 아라파트에서의 대기의 날.
+      reference_url: https://ko.wikipedia.org/wiki/아라파트
+    eid_al_adha:
+      description: 둘히자 10일의 희생제.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알아드하
+    eid_al_adha_day_2:
+      description: 이드 알아드하 둘째 날.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알아드하
+    eid_al_adha_day_3:
+      description: 이드 알아드하 셋째 날.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알아드하
+    eid_al_adha_day_4:
+      description: 이드 알아드하 넷째 날이자 하지 시즌 의식의 마지막.
+      reference_url: https://ko.wikipedia.org/wiki/이드_알아드하
+    ashura:
+      description: 무하람 10일에 기념되며, 특히 금식과 추모에 중요합니다.
+      reference_url: https://ko.wikipedia.org/wiki/아슈라
+  history:
+    battle_of_badr:
+      name: 바드르 전투
+      description: 히즈리 2년, 무슬림과 쿠라이시의 첫 대규모 전투.
+      reference_url: https://ko.wikipedia.org/wiki/바드르_전투
+    battle_of_uhud:
+      name: 우후드 전투
+      description: 히즈리 3년, 우후드 산 근처에서 벌어진 전투.
+      reference_url: https://ko.wikipedia.org/wiki/우후드_전투
+    battle_of_khandaq:
+      name: 참호 전투
+      description: 히즈리 5년, 연합군에 의한 메디나 포위.
+      reference_url: https://ko.wikipedia.org/wiki/참호_전투
+    treaty_of_hudaybiyyah:
+      name: 후데이비야 조약
+      description: 히즈리 6년, 무슬림과 쿠라이시의 평화 협정.
+      reference_url: https://ko.wikipedia.org/wiki/후데이비야_조약
+    conquest_of_khaybar:
+      name: 카이바르 정복
+      description: 히즈리 7년, 카이바르 요새에 대한 무슬림 원정.
+      reference_url: https://ko.wikipedia.org/wiki/카이바르
+    conquest_of_mecca:
+      name: 메카 정복
+      description: 히즈리 8년, 메카의 평화적 개성.
+      reference_url: https://ko.wikipedia.org/wiki/메카_정복
+    battle_of_hunayn:
+      name: 훈나인 전투
+      description: 메카 정복 후 히즈리 8년에 벌어진 전투.
+      reference_url: https://ko.wikipedia.org/wiki/훈나인_전투
+    expedition_to_tabuk:
+      name: 타부크 원정
+      description: 히즈리 9년의 타부크 원정.
+      reference_url: https://ko.wikipedia.org/wiki/타부크_원정
+    battle_of_yarmouk:
+      name: 야르뫋 전투
+      description: 히즈리 15년, 비잔틴군과의 결정적 전투.
+      reference_url: https://ko.wikipedia.org/wiki/야르뫋_전투
+    battle_of_qadisiyyah:
+      name: 알-카디시야 전투
+      description: 히즈리 15년, 이라크를 무슬림군에 개방한 주요 전투.
+      reference_url: https://ko.wikipedia.org/wiki/Al-Qadisiyyah_전투
+    conquest_of_jerusalem:
+      name: 예루살렘 정복
+      description: 히즈리 17년, 무슬림의 예루살렘 입성.
+      reference_url: https://ko.wikipedia.org/wiki/예루살렘
+    conquest_of_egypt:
+      name: 이집트 정복
+      description: 히즈리 21년, 무슬림의 이집트 확장.
+      reference_url: https://ko.wikipedia.org/wiki/이집트
+    fall_of_constantinople:
+      name: 콘스타트이놀프 함락
+      description: 히즈리 857년, 오스만의 콘스타트이놀프 정복.
+      reference_url: https://ko.wikipedia.org/wiki/콘스타트이놀프의_함락

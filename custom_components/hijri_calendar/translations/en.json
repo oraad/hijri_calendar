@@ -28,7 +28,8 @@
         "data": {
           "offset_days": "Day offset",
           "observances_calendar_language": "Observances calendar language",
-          "islamic_history_calendar_language": "Islamic history calendar language"
+          "islamic_history_calendar_language": "Islamic history calendar language",
+          "hijri_month_starts_calendar_language": "Month starts calendar language"
         }
       }
     }
@@ -50,6 +51,31 @@
       "options": {
         "default": "Integration language",
         "ar": "العربية"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Integration language",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
       }
     }
   },
@@ -104,6 +130,9 @@
       },
       "islamic_history": {
         "name": "Islamic history"
+      },
+      "hijri_month_starts": {
+        "name": "Month starts"
       }
     },
     "binary_sensor": {

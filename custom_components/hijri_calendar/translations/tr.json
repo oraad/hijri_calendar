@@ -12,8 +12,8 @@
       "reconfigure": {
         "title": "Hicri Takvimi yeniden yapılandır",
         "data": {
-          "language": "Dil",
-          "day_boundary": "Gün başlangıcı"
+          "language": "Language",
+          "day_boundary": "Day boundary"
         }
       }
     },
@@ -28,7 +28,8 @@
         "data": {
           "offset_days": "Gün kayması",
           "observances_calendar_language": "Gözlem takvimi dili",
-          "islamic_history_calendar_language": "İslam tarihi takvimi dili"
+          "islamic_history_calendar_language": "İslam tarihi takvimi dili",
+          "hijri_month_starts_calendar_language": "Ay başlangıçları takvimi dili"
         }
       }
     }
@@ -50,6 +51,31 @@
       "options": {
         "default": "Entegrasyon dili",
         "ar": "Arapça"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Entegrasyon dili",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
       }
     }
   },
@@ -104,6 +130,9 @@
       },
       "islamic_history": {
         "name": "İslam tarihi"
+      },
+      "hijri_month_starts": {
+        "name": "Ay başlangıçları"
       }
     },
     "binary_sensor": {

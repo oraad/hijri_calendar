@@ -10,7 +10,7 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 
 - **Sensors**: current Hijri date (with attributes), active holidays, days in month/year, days until Ramadan/Eid (disabled by default)
 - **Binary sensors**: Ramadan, Eid al-Fitr, Eid al-Adha, Hajj season
-- **Calendar**: Observances and Islamic history calendars with localized descriptions and reference links
+- **Calendar**: Observances, Islamic history, and month-starts calendars with localized descriptions and reference links
 - **Services**: convert between Hijri and Gregorian, calibrate day offset (relative ±2 or announced Hijri date), set day offset directly
 - **Options**: configurable day offset for local moon-sighting differences
 - **Day boundary**: roll the Hijri day at local midnight (default) or after sunset
@@ -53,7 +53,7 @@ Copy `custom_components/hijri_calendar` into your Home Assistant `custom_compone
 1. Go to **Settings → Devices & services → Add integration**.
 2. Search for **Hijri Calendar**.
 3. Choose:
-   - **Language** (`en`, `ar`, `tr`) for month/day names, holiday names, and formatted date text
+   - **Language** — integration UI, holiday names, calendar descriptions, and formatted date text (see [Supported languages](#supported-languages) below)
    - **Day boundary**: local midnight or after sunset
 
 The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. For display, use attributes:
@@ -65,6 +65,38 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 
 - **Day offset** (−2 to +2): shift displayed dates when your locality announces a different day than Umm al-Qura. Use the `calibrate_date` service to adjust by ±2 days or from the announced Hijri date for today.
 - **Observances calendar language** and **Islamic history calendar language**: show each calendar's event titles and descriptions in the integration language (default) or Arabic. Reference links match the selected calendar language.
+- **Month starts calendar language**: show month-start event text in the integration language (default) or any supported integration language. Reference links match the selected calendar language.
+
+### Supported languages
+
+The integration supports **20** [Home Assistant language codes](https://developers.home-assistant.io/docs/translations/):
+
+| Code | Language | Hijri month/day names in date attributes |
+|------|----------|------------------------------------------|
+| `en` | English | English (hijridate) |
+| `ar` | Arabic | Arabic (hijridate) |
+| `bn` | Bengali | Bengali (hijridate) |
+| `tr` | Turkish | Turkish (hijridate) |
+| `de` | German | English fallback |
+| `es` | Spanish | English fallback |
+| `fr` | French | English fallback |
+| `it` | Italian | English fallback |
+| `nl` | Dutch | English fallback |
+| `pl` | Polish | English fallback |
+| `pt` | Portuguese | English fallback |
+| `pt-BR` | Portuguese (Brazil) | English fallback |
+| `ru` | Russian | English fallback |
+| `uk` | Ukrainian | English fallback |
+| `zh-Hans` | Chinese (Simplified) | English fallback |
+| `ja` | Japanese | English fallback |
+| `ko` | Korean | English fallback |
+| `he` | Hebrew | English fallback |
+| `fa` | Persian | English fallback |
+| `id` | Indonesian | English fallback |
+
+Holiday names, config flow labels, service text, and calendar event descriptions are fully localized for every language above. The [hijridate](https://hijridate.readthedocs.io/) library only provides native Hijri/Gregorian month and day names for `en`, `ar`, `bn`, and `tr`. For all other integration languages, `sensor.hijri_date` attributes such as `month_name` and `formatted` use **English** month names while the rest of the UI stays localized.
+
+Eastern Arabic numerals in `formatted_eastern` apply when the integration language is `ar` only.
 
 ## Entities
 
@@ -80,10 +112,11 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 | `binary_sensor.hajj_season` | On during Hajj days 8–13 |
 | `calendar.hijri_events` | Religious observances (Ramadan/Hajj spans, Eids, Ashura, Laylat al-Qadr, and more) |
 | `calendar.islamic_history` | Curated Islamic milestones and conquests (recurring Hijri anniversaries) |
+| `calendar.hijri_month_starts` | First day of each Hijri month (12 events per Hijri year) |
 
 ### Calendars
 
-Two calendar entities appear in **Settings → Devices & services → Calendar**, the Calendar dashboard, and `calendar.get_events` automations. Both use the same Umm al-Qura rules, **day offset**, and **day boundary** as the sensors.
+Three calendar entities appear in **Settings → Devices & services → Calendar**, the Calendar dashboard, and `calendar.get_events` automations. All use the same Umm al-Qura rules, **day offset**, and **day boundary** as the sensors.
 
 **Observances** (`calendar.hijri_events`):
 
@@ -95,6 +128,12 @@ Two calendar entities appear in **Settings → Devices & services → Calendar**
 
 - Recurring anniversaries of curated milestones (Badr, conquest of Mecca, fall of Constantinople, and others).
 - Descriptions include the original AH year and a reference link (language follows the Islamic history calendar language option).
+
+**Month starts** (`calendar.hijri_month_starts`):
+
+- One all-day event on the first day of each Hijri month (Muharram through Dhul Hijjah).
+- Summaries use localized month names where [hijridate](https://hijridate.readthedocs.io/) provides them (`en`, `ar`, `bn`, `tr`); other calendar languages use English month names with localized template text.
+- Descriptions include the AH year and a reference link (language follows the month-starts calendar language option, which supports any integration language).
 
 **Known limitations**: Observance and history Hijri dates are indicative; scholarly sources sometimes differ (for example Laylat al-Qadr or exact battle dates). The history calendar is educational, not a scholarly authority. Umm al-Qura calculation may differ from local moon-sighting announcements—use **Day offset** or `calibrate_date` to align observances when needed.
 
@@ -236,6 +275,8 @@ data:
 - Uses the **Umm al-Qura** calculated calendar; local moon-sighting may differ (use **Day offset**).
 - Supported range: approximately 1924–2077 CE (1343–1500 AH). See [hijridate documentation](https://hijridate.readthedocs.io/).
 - Sunset-based day boundary requires a valid Home Assistant location.
+- Hijri month and day names in `sensor.hijri_date` attributes follow hijridate locales (`en`, `ar`, `bn`, `tr` only). Other integration languages show English month names in those attributes while UI strings remain localized.
+- Eastern Arabic numerals (`formatted_eastern`) are used for integration language `ar` only.
 
 ## Disclaimer
 

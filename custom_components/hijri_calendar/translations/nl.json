@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Hijri-kalender instellen",
+        "description": "Stel de taal en het begin van de Hijri-dag in.",
+        "data": {
+          "language": "Taal",
+          "day_boundary": "Dagbegrenzing"
+        }
+      },
+      "reconfigure": {
+        "title": "Hijri-kalender opnieuw configureren",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "De Hijri-kalender is al geconfigureerd."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opties voor Hijri-kalender",
+        "data": {
+          "offset_days": "Dagenverschuiving",
+          "observances_calendar_language": "Taal feestdagenkalender",
+          "islamic_history_calendar_language": "Taal islamitische geschiedeniskalender",
+          "hijri_month_starts_calendar_language": "Taal maandstartkalender"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "Lokale middernacht",
+        "sunset": "Na zonsondergang"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "Integratietaal",
+        "ar": "Arabisch"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "Integratietaal",
+        "ar": "Arabisch"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Integratietaal",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "Hijri-datum"
+      },
+      "holiday": {
+        "name": "Feestdag",
+        "state": {
+          "none": "Geen",
+          "ramadan": "Ramadan",
+          "last_day_of_ramadan": "Laatste dag van Ramadan",
+          "eid_al_fitr_eve": "Avond voor Eid al-Fitr",
+          "eid_al_fitr": "Eid al-Fitr",
+          "day_of_arafah": "Dag van Arafat",
+          "eid_al_adha": "Eid al-Adha",
+          "hajj": "Hadj",
+          "ashura": "Ashura",
+          "type_ramadan": "Ramadan",
+          "type_eid": "Eid",
+          "type_hajj": "Hadj",
+          "type_other": "Andere feestdag",
+          "hijri_new_year": "Islamitisch nieuwjaar",
+          "first_day_of_ramadan": "Eerste dag van Ramadan",
+          "laylat_al_qadr": "Laylat al-Qadr",
+          "isra_and_miraj": "Isra en Mi'raj",
+          "eid_al_fitr_day_2": "Eid al-Fitr (dag 2)",
+          "eid_al_fitr_day_3": "Eid al-Fitr (dag 3)",
+          "eid_al_adha_day_2": "Eid al-Adha (dag 2)",
+          "eid_al_adha_day_3": "Eid al-Adha (dag 3)",
+          "eid_al_adha_day_4": "Eid al-Adha (dag 4)"
+        }
+      },
+      "days_in_month": {
+        "name": "Dagen in Hijri-maand"
+      },
+      "days_in_year": {
+        "name": "Dagen in Hijri-jaar"
+      },
+      "days_until_ramadan": {
+        "name": "Dagen tot Ramadan"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Dagen tot Eid al-Fitr"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "Feestdagen"
+      },
+      "islamic_history": {
+        "name": "Islamitische geschiedenis"
+      },
+      "hijri_month_starts": {
+        "name": "Maandstart"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "Ramadan"
+      },
+      "eid_al_fitr": {
+        "name": "Eid al-Fitr"
+      },
+      "eid_al_adha": {
+        "name": "Eid al-Adha"
+      },
+      "hajj_season": {
+        "name": "Hadj-seizoen"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Grens bij zonsondergang niet beschikbaar",
+      "description": "Home Assistant kon de zonsondergang voor je locatie niet berekenen. Configureer de Hijri-kalender op lokale middernacht of stel een geldige locatie in via Instellingen → Systeem → Algemeen."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "Datum kalibreren",
+      "description": "Past de dagenverschuiving van de integratie voor vandaag aan met een kleine relatieve wijziging of de aangekondigde Hijri-datum.",
+      "fields": {
+        "offset": {
+          "name": "Verschuivingsaanpassing",
+          "description": "Voegt dit aantal dagen toe aan de huidige integratieverschuiving (−2 tot +2)."
+        },
+        "hijri": {
+          "name": "Hijri-datum",
+          "description": "Aangekondigde Hijri-datum voor vandaag (ISO, bijv. 1446-10-15). Berekent en slaat de benodigde verschuiving op."
+        },
+        "language": {
+          "name": "Taal",
+          "description": "Taal voor opgemaakte velden in het antwoord."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "De datum valt buiten het ondersteunde Umm al-Qura-bereik."
+    },
+    "sunset_unavailable": {
+      "message": "Zonsondergang kon niet worden berekend. Controleer de locatie-instellingen van Home Assistant."
+    },
+    "calibrate_no_config_entry": {
+      "message": "De Hijri-kalender moet worden geconfigureerd voordat de datum kan worden gekalibreerd."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "Vereiste verschuiving {offset} valt buiten het ondersteunde bereik ({min} tot {max})."
+    }
+  }
+}

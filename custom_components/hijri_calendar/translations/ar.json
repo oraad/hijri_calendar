@@ -12,8 +12,8 @@
       "reconfigure": {
         "title": "إعادة إعداد التقويم الهجري",
         "data": {
-          "language": "اللغة",
-          "day_boundary": "بداية اليوم"
+          "language": "Language",
+          "day_boundary": "Day boundary"
         }
       }
     },
@@ -28,7 +28,8 @@
         "data": {
           "offset_days": "إزاحة الأيام",
           "observances_calendar_language": "لغة تقويم المناسبات",
-          "islamic_history_calendar_language": "لغة تقويم التاريخ الإسلامي"
+          "islamic_history_calendar_language": "لغة تقويم التاريخ الإسلامي",
+          "hijri_month_starts_calendar_language": "لغة تقويم بدايات الأشهر"
         }
       }
     }
@@ -50,6 +51,31 @@
       "options": {
         "default": "لغة التكامل",
         "ar": "العربية"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "لغة التكامل",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-BR": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-Hans": "简体中文"
       }
     }
   },
@@ -104,6 +130,9 @@
       },
       "islamic_history": {
         "name": "التاريخ الإسلامي"
+      },
+      "hijri_month_starts": {
+        "name": "بدايات الأشهر"
       }
     },
     "binary_sensor": {

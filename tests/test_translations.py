@@ -6,6 +6,7 @@ import json
 import re
 from pathlib import Path
 
+from custom_components.hijri_calendar.const import SUPPORTED_LANGUAGES
 from custom_components.hijri_calendar.historical_events import ALL_HISTORICAL_EVENT_IDS
 from custom_components.hijri_calendar.holidays import (
     ALL_HOLIDAY_IDS,
@@ -14,10 +15,8 @@ from custom_components.hijri_calendar.holidays import (
 )
 
 COMPONENT = Path(__file__).resolve().parents[1] / "custom_components" / "hijri_calendar"
-CALENDAR_CONTENT_FILES = (
-    COMPONENT / "calendar_content" / "en.json",
-    COMPONENT / "calendar_content" / "ar.json",
-    COMPONENT / "calendar_content" / "tr.json",
+CALENDAR_CONTENT_FILES = tuple(
+    COMPONENT / "calendar_content" / f"{lang}.json" for lang in SUPPORTED_LANGUAGES
 )
 HTTPS_URL = re.compile(r"^https://")
 
@@ -71,3 +70,13 @@ def test_history_calendar_translations_in_all_language_files() -> None:
         for event_id in ALL_HISTORICAL_EVENT_IDS:
             assert HTTPS_URL.match(calendar["reference_url"][event_id]), event_id
         assert "{year}" in calendar["year_suffix"]
+
+
+def test_month_start_calendar_translations_in_all_language_files() -> None:
+    """Every language file has month-start templates and a reference URL."""
+    for path in CALENDAR_CONTENT_FILES:
+        data = _load(path)
+        month_starts = data["hijri_month_starts"]
+        assert "{month}" in month_starts["summary_template"], path.name
+        assert "{month}" in month_starts["description_template"], path.name
+        assert HTTPS_URL.match(month_starts["reference_url"]), path.name
