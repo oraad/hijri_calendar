@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Final
+import json
+from functools import lru_cache
+from pathlib import Path
+from typing import Any, Final
 
 from hijridate import Hijri
 from homeassistant.core import HomeAssistant, callback
@@ -10,10 +13,9 @@ from homeassistant.helpers.translation import async_get_cached_translations
 
 from .const import DOMAIN, HijriLanguage
 
-CALENDAR_CONTENT_CATEGORY = "calendar_content"
-
 EASTERN_ARABIC_DIGITS: Final = "٠١٢٣٤٥٦٧٨٩"
 _WESTERN_DIGITS: Final = "0123456789"
+_CALENDAR_CONTENT_DIR = Path(__file__).parent / "calendar_content"
 
 
 def to_eastern_arabic_numerals(value: str | int) -> str:
@@ -35,6 +37,14 @@ def format_hijri_display(
     return display
 
 
+@lru_cache(maxsize=3)
+def _load_calendar_content(language: HijriLanguage) -> dict[str, Any]:
+    """Load calendar event text from bundled JSON files."""
+    path = _CALENDAR_CONTENT_DIR / f"{language}.json"
+    with path.open(encoding="utf-8") as file:
+        return json.load(file)
+
+
 @callback
 def _entity_translation(
     hass: HomeAssistant, language: HijriLanguage, subkey: str, value: str
@@ -46,16 +56,6 @@ def _entity_translation(
 
 
 @callback
-def _calendar_content_translations(
-    hass: HomeAssistant, language: HijriLanguage
-) -> dict[str, str]:
-    """Return flattened calendar content translations."""
-    return async_get_cached_translations(
-        hass, language, CALENDAR_CONTENT_CATEGORY, DOMAIN
-    )
-
-
-@callback
 def _calendar_translation(
     hass: HomeAssistant,
     language: HijriLanguage,
@@ -63,20 +63,18 @@ def _calendar_translation(
     section: str,
     event_id: str,
 ) -> str:
-    """Return a flattened calendar content translation."""
-    key = (
-        f"component.{DOMAIN}.{CALENDAR_CONTENT_CATEGORY}."
-        f"{calendar_key}.{section}.{event_id}"
-    )
-    return _calendar_content_translations(hass, language).get(key, event_id)
+    """Return a calendar content translation."""
+    content = _load_calendar_content(language)
+    return content[calendar_key][section].get(event_id, event_id)
 
 
 @callback
 def _calendar_scalar(hass: HomeAssistant, language: HijriLanguage, *path: str) -> str:
     """Return a scalar calendar translation at the given path."""
-    suffix = ".".join(path)
-    key = f"component.{DOMAIN}.{CALENDAR_CONTENT_CATEGORY}.{suffix}"
-    return _calendar_content_translations(hass, language).get(key, path[-1])
+    node: Any = _load_calendar_content(language)
+    for part in path:
+        node = node[part]
+    return str(node)
 
 
 def format_calendar_event_description(

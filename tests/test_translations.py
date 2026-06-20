@@ -14,11 +14,10 @@ from custom_components.hijri_calendar.holidays import (
 )
 
 COMPONENT = Path(__file__).resolve().parents[1] / "custom_components" / "hijri_calendar"
-TRANSLATION_FILES = (
-    COMPONENT / "strings.json",
-    COMPONENT / "translations" / "en.json",
-    COMPONENT / "translations" / "ar.json",
-    COMPONENT / "translations" / "tr.json",
+CALENDAR_CONTENT_FILES = (
+    COMPONENT / "calendar_content" / "en.json",
+    COMPONENT / "calendar_content" / "ar.json",
+    COMPONENT / "calendar_content" / "tr.json",
 )
 HTTPS_URL = re.compile(r"^https://")
 
@@ -46,9 +45,9 @@ def test_holiday_state_and_types_in_strings_json() -> None:
 
 def test_observance_calendar_translations_in_all_language_files() -> None:
     """Every observance calendar event has description and URL in all languages."""
-    for path in TRANSLATION_FILES:
+    for path in CALENDAR_CONTENT_FILES:
         data = _load(path)
-        calendar = data["calendar_content"]["hijri_events"]
+        calendar = data["hijri_events"]
         descriptions = set(calendar["description"])
         urls = set(calendar["reference_url"])
         missing = ALL_OBSERVANCE_CALENDAR_EVENT_IDS - descriptions
@@ -60,9 +59,9 @@ def test_observance_calendar_translations_in_all_language_files() -> None:
 
 def test_history_calendar_translations_in_all_language_files() -> None:
     """Every history event has name, description, and URL in all languages."""
-    for path in TRANSLATION_FILES:
+    for path in CALENDAR_CONTENT_FILES:
         data = _load(path)
-        calendar = data["calendar_content"]["islamic_history"]
+        calendar = data["islamic_history"]
         names = set(calendar["event_name"])
         descriptions = set(calendar["description"])
         urls = set(calendar["reference_url"])

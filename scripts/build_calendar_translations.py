@@ -8,6 +8,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPONENT = ROOT / "custom_components" / "hijri_calendar"
+CALENDAR_CONTENT = COMPONENT / "calendar_content"
 
 NEW_HOLIDAY_STATES = {
     "en": {
@@ -573,11 +574,21 @@ def _patch_file(path: Path, lang: str) -> None:
     }
     history = _history_sections(lang)
     calendar["islamic_history"] = {"name": history.pop("name")}
-    data["calendar_content"] = {
-        "reference_label": REFERENCE_LABEL[lang],
-        "hijri_events": _observance_sections(lang),
-        "islamic_history": history,
-    }
+    data.pop("calendar_content", None)
+    CALENDAR_CONTENT.mkdir(exist_ok=True)
+    (CALENDAR_CONTENT / f"{lang}.json").write_text(
+        json.dumps(
+            {
+                "reference_label": REFERENCE_LABEL[lang],
+                "hijri_events": _observance_sections(lang),
+                "islamic_history": history,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
     options_data = (
         data.setdefault("options", {})
