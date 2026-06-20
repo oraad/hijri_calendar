@@ -13,15 +13,22 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
 
-from .calendar_events import CalendarEventConfig, build_calendar_events
+from .calendar_common import CalendarEventConfig
+from .calendar_events import build_calendar_events
 from .data import HijriCalendarConfigEntry
 from .entity import HijriCalendarEntity
+from .history_calendar_events import build_history_calendar_events
 
 PARALLEL_UPDATES = 0
 
-CALENDAR_DESCRIPTION = CalendarEntityDescription(
+OBSERVANCES_CALENDAR_DESCRIPTION = CalendarEntityDescription(
     key="hijri_events",
     translation_key="hijri_events",
+)
+
+HISTORY_CALENDAR_DESCRIPTION = CalendarEntityDescription(
+    key="islamic_history",
+    translation_key="islamic_history",
 )
 
 
@@ -31,37 +38,50 @@ async def async_setup_entry(
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
     """Set up Hijri calendar events."""
-    async_add_entities([HijriCalendarCalendarEntity(config_entry)])
+    async_add_entities(
+        [
+            HijriObservancesCalendarEntity(config_entry),
+            IslamicHistoryCalendarEntity(config_entry),
+        ]
+    )
 
 
-class HijriCalendarCalendarEntity(HijriCalendarEntity, CalendarEntity):
-    """Calendar of Hijri observances mapped to Gregorian dates."""
+class _HijriCalendarBase(HijriCalendarEntity, CalendarEntity):
+    """Shared calendar behavior."""
 
     _attr_entity_category = None
-    entity_description = CALENDAR_DESCRIPTION
+
+    def _update_times(self) -> list[dt.datetime | None]:
+        """Return update times; calendar refreshes via coordinator."""
+        return []
+
+
+class HijriObservancesCalendarEntity(_HijriCalendarBase):
+    """Calendar of Hijri observances mapped to Gregorian dates."""
+
+    entity_description = OBSERVANCES_CALENDAR_DESCRIPTION
 
     def __init__(self, config_entry: HijriCalendarConfigEntry) -> None:
         """Initialize the calendar entity."""
-        super().__init__(config_entry, CALENDAR_DESCRIPTION)
+        super().__init__(config_entry, OBSERVANCES_CALENDAR_DESCRIPTION)
+
+    def _event_config(self) -> CalendarEventConfig:
+        coordinator = self.coordinator
+        return CalendarEventConfig(
+            display_language=coordinator.observances_display_language,  # type: ignore[arg-type]
+            day_boundary=coordinator.day_boundary,
+            offset_days=coordinator.offset_days,
+        )
 
     @property
     def event(self) -> CalendarEvent | None:
         """Return the next upcoming calendar event."""
         now = dt_util.now()
         end = now + dt.timedelta(days=365)
-        events = build_calendar_events(
-            self.hass,
-            CalendarEventConfig(
-                language=self.coordinator.language,  # type: ignore[arg-type]
-                day_boundary=self.coordinator.day_boundary,
-                offset_days=self.coordinator.offset_days,
-            ),
-            now,
-            end,
-        )
-        for event in sorted(events, key=lambda item: item.start_datetime_local):
-            if event.start_datetime_local >= now:
-                return event
+        events = build_calendar_events(self.hass, self._event_config(), now, end)
+        for item in sorted(events, key=lambda event: event.start_datetime_local):
+            if item.start_datetime_local >= now:
+                return item
         return None
 
     async def async_get_events(
@@ -72,16 +92,47 @@ class HijriCalendarCalendarEntity(HijriCalendarEntity, CalendarEntity):
     ) -> list[CalendarEvent]:
         """Return calendar events within a datetime range."""
         return build_calendar_events(
-            hass,
-            CalendarEventConfig(
-                language=self.coordinator.language,  # type: ignore[arg-type]
-                day_boundary=self.coordinator.day_boundary,
-                offset_days=self.coordinator.offset_days,
-            ),
-            start_date,
-            end_date,
+            hass, self._event_config(), start_date, end_date
         )
 
-    def _update_times(self) -> list[dt.datetime | None]:
-        """Return update times; calendar refreshes via coordinator."""
-        return []
+
+class IslamicHistoryCalendarEntity(_HijriCalendarBase):
+    """Calendar of Islamic historical milestones."""
+
+    entity_description = HISTORY_CALENDAR_DESCRIPTION
+
+    def __init__(self, config_entry: HijriCalendarConfigEntry) -> None:
+        """Initialize the history calendar entity."""
+        super().__init__(config_entry, HISTORY_CALENDAR_DESCRIPTION)
+
+    def _event_config(self) -> CalendarEventConfig:
+        coordinator = self.coordinator
+        return CalendarEventConfig(
+            display_language=coordinator.history_display_language,  # type: ignore[arg-type]
+            day_boundary=coordinator.day_boundary,
+            offset_days=coordinator.offset_days,
+        )
+
+    @property
+    def event(self) -> CalendarEvent | None:
+        """Return the next upcoming history event."""
+        now = dt_util.now()
+        end = now + dt.timedelta(days=365)
+        events = build_history_calendar_events(
+            self.hass, self._event_config(), now, end
+        )
+        for item in sorted(events, key=lambda event: event.start_datetime_local):
+            if item.start_datetime_local >= now:
+                return item
+        return None
+
+    async def async_get_events(
+        self,
+        hass: HomeAssistant,
+        start_date: dt.datetime,
+        end_date: dt.datetime,
+    ) -> list[CalendarEvent]:
+        """Return history calendar events within a datetime range."""
+        return build_history_calendar_events(
+            hass, self._event_config(), start_date, end_date
+        )

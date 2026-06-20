@@ -26,7 +26,9 @@
       "init": {
         "title": "Hicri Takvim seçenekleri",
         "data": {
-          "offset_days": "Gün kayması"
+          "offset_days": "Gün kayması",
+          "observances_calendar_language": "Gözlem takvimi dili",
+          "islamic_history_calendar_language": "İslam tarihi takvimi dili"
         }
       }
     }
@@ -36,6 +38,18 @@
       "options": {
         "midnight": "Yerel gece yarısı",
         "sunset": "Gün batımından sonra"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "Entegrasyon dili",
+        "ar": "Arapça"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "Entegrasyon dili",
+        "ar": "Arapça"
       }
     }
   },
@@ -56,11 +70,19 @@
           "eid_al_adha": "Kurban Bayramı",
           "hajj": "Hac",
           "ashura": "Aşure",
-          "mawlid": "Mevlid",
           "type_ramadan": "Ramazan",
           "type_eid": "Bayram",
           "type_hajj": "Hac",
-          "type_other": "Diğer"
+          "type_other": "Diğer",
+          "hijri_new_year": "Hicri yılbaşı",
+          "first_day_of_ramadan": "Ramazan'ın ilk günü",
+          "laylat_al_qadr": "Kadir Gecesi",
+          "isra_and_miraj": "İsra ve Miraç",
+          "eid_al_fitr_day_2": "Ramazan Bayramı (2. gün)",
+          "eid_al_fitr_day_3": "Ramazan Bayramı (3. gün)",
+          "eid_al_adha_day_2": "Kurban Bayramı (2. gün)",
+          "eid_al_adha_day_3": "Kurban Bayramı (3. gün)",
+          "eid_al_adha_day_4": "Kurban Bayramı (4. gün)"
         }
       },
       "days_in_month": {
@@ -78,7 +100,98 @@
     },
     "calendar": {
       "hijri_events": {
-        "name": "Hicri gözlemler"
+        "name": "Hicri gözlemler",
+        "description": {
+          "ramadan": "Müslümanlar için oruç, ibadet ve tefekkür ayı olan Hicri dokuzuncu ay.",
+          "hajj_season": "Zilhicce ayında yıllık hac ibadeti ve hac menasik günleri.",
+          "hijri_new_year": "Muharrem'in birinci günü Hicri yılın başlangıcıdır.",
+          "first_day_of_ramadan": "Ramazan orucunun başladığı ilk gün.",
+          "laylat_al_qadr": "Kadir Gecesi; genellikle Ramazan'ın 27. gecesi anılır.",
+          "isra_and_miraj": "Receb'in 27'sinde anılan İsra ve Miraç miracı.",
+          "last_day_of_ramadan": "Ramazan Bayramı'ndan önceki Ramazan'ın son günü.",
+          "eid_al_fitr_eve": "Ramazan Bayramı'nın arefesi.",
+          "eid_al_fitr": "Şevval'in birinde kutlanan Ramazan Bayramı.",
+          "eid_al_fitr_day_2": "Ramazan Bayramı'nın ikinci günü.",
+          "eid_al_fitr_day_3": "Ramazan Bayramı'nın üçüncü günü.",
+          "day_of_arafah": "Hac'da Arafat vakfesi günü (9 Zilhicce).",
+          "eid_al_adha": "10 Zilhicce'de kutlanan Kurban Bayramı.",
+          "eid_al_adha_day_2": "Kurban Bayramı'nın ikinci günü.",
+          "eid_al_adha_day_3": "Kurban Bayramı'nın üçüncü günü.",
+          "eid_al_adha_day_4": "Kurban Bayramı'nın dördüncü günü ve hac menasik sonu.",
+          "ashura": "Muharrem'in 10'unda anılan Aşure günü."
+        },
+        "reference_url": {
+          "ramadan": "https://tr.wikipedia.org/wiki/Ramazan",
+          "hajj_season": "https://tr.wikipedia.org/wiki/Hac",
+          "hijri_new_year": "https://tr.wikipedia.org/wiki/Hicri_takvim",
+          "first_day_of_ramadan": "https://tr.wikipedia.org/wiki/Ramazan",
+          "laylat_al_qadr": "https://tr.wikipedia.org/wiki/Kadir_Gecesi",
+          "isra_and_miraj": "https://tr.wikipedia.org/wiki/İsra_ve_Miraç",
+          "last_day_of_ramadan": "https://tr.wikipedia.org/wiki/Ramazan",
+          "eid_al_fitr_eve": "https://tr.wikipedia.org/wiki/Ramazan_Bayramı",
+          "eid_al_fitr": "https://tr.wikipedia.org/wiki/Ramazan_Bayramı",
+          "eid_al_fitr_day_2": "https://tr.wikipedia.org/wiki/Ramazan_Bayramı",
+          "eid_al_fitr_day_3": "https://tr.wikipedia.org/wiki/Ramazan_Bayramı",
+          "day_of_arafah": "https://tr.wikipedia.org/wiki/Arafat",
+          "eid_al_adha": "https://tr.wikipedia.org/wiki/Kurban_Bayramı",
+          "eid_al_adha_day_2": "https://tr.wikipedia.org/wiki/Kurban_Bayramı",
+          "eid_al_adha_day_3": "https://tr.wikipedia.org/wiki/Kurban_Bayramı",
+          "eid_al_adha_day_4": "https://tr.wikipedia.org/wiki/Kurban_Bayramı",
+          "ashura": "https://tr.wikipedia.org/wiki/Aşure_Günü"
+        }
+      },
+      "reference_label": "Daha fazla bilgi",
+      "islamic_history": {
+        "name": "İslam tarihi",
+        "event_name": {
+          "hijra": "Hicret",
+          "battle_of_badr": "Bedir Savaşı",
+          "battle_of_uhud": "Uhud Savaşı",
+          "battle_of_khandaq": "Hendek Savaşı",
+          "treaty_of_hudaybiyyah": "Hudeybiye Antlaşması",
+          "conquest_of_khaybar": "Hayber'in Fethi",
+          "conquest_of_mecca": "Mekke'nin Fethi",
+          "battle_of_hunayn": "Huneyn Savaşı",
+          "expedition_to_tabuk": "Tebük Seferi",
+          "battle_of_yarmouk": "Yermük Savaşı",
+          "battle_of_qadisiyyah": "Kadisiye Savaşı",
+          "conquest_of_jerusalem": "Kudüs'ün Fethi",
+          "conquest_of_egypt": "Mısır'ın Fethi",
+          "fall_of_constantinople": "İstanbul'un Fethi"
+        },
+        "description": {
+          "hijra": "1. Hicri yılın başlangıcı sayılan Mekke'den Medine'ye hicret.",
+          "battle_of_badr": "2. yılda Müslümanlar ile Kureyş arasındaki ilk büyük savaş.",
+          "battle_of_uhud": "3. yılda Uhud Dağı yakınında yapılan savaş.",
+          "battle_of_khandaq": "5. yılda Medine kuşatması (Hendek).",
+          "treaty_of_hudaybiyyah": "6. yılda Müslümanlar ile Kureyş arasındaki barış antlaşması.",
+          "conquest_of_khaybar": "7. yılda Hayber kalelerinin fethi.",
+          "conquest_of_mecca": "8. yılda Mekke'nin fethedilmesi.",
+          "battle_of_hunayn": "Mekke fethinden sonra 8. yılda Huneyn Savaşı.",
+          "expedition_to_tabuk": "9. yıldaki Tebük seferi.",
+          "battle_of_yarmouk": "15. yılda Bizans'a karşı Yermük Savaşı.",
+          "battle_of_qadisiyyah": "15. yılda Kadisiye Savaşı.",
+          "conquest_of_jerusalem": "17. yılda Kudüs'ün fethi.",
+          "conquest_of_egypt": "21. yılda Mısır'ın fethi.",
+          "fall_of_constantinople": "857. yılda İstanbul'un fethi."
+        },
+        "reference_url": {
+          "hijra": "https://tr.wikipedia.org/wiki/Hicret",
+          "battle_of_badr": "https://tr.wikipedia.org/wiki/Bedir_Savaşı",
+          "battle_of_uhud": "https://tr.wikipedia.org/wiki/Uhud_Savaşı",
+          "battle_of_khandaq": "https://tr.wikipedia.org/wiki/Hendek_Savaşı",
+          "treaty_of_hudaybiyyah": "https://tr.wikipedia.org/wiki/Hudeybiye_Antlaşması",
+          "conquest_of_khaybar": "https://tr.wikipedia.org/wiki/Hayber",
+          "conquest_of_mecca": "https://tr.wikipedia.org/wiki/Mekke%27nin_Fethi",
+          "battle_of_hunayn": "https://tr.wikipedia.org/wiki/Huneyn_Savaşı",
+          "expedition_to_tabuk": "https://tr.wikipedia.org/wiki/Tebük_Seferi",
+          "battle_of_yarmouk": "https://tr.wikipedia.org/wiki/Yermük_Savaşı",
+          "battle_of_qadisiyyah": "https://tr.wikipedia.org/wiki/Kadisiye_Savaşı",
+          "conquest_of_jerusalem": "https://tr.wikipedia.org/wiki/Kudüs",
+          "conquest_of_egypt": "https://tr.wikipedia.org/wiki/Mısır",
+          "fall_of_constantinople": "https://tr.wikipedia.org/wiki/İstanbul%27un_Fethi"
+        },
+        "year_suffix": "{year} H"
       }
     },
     "binary_sensor": {

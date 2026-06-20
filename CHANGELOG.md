@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.0] - 2026-05-19
+
+### Added
+
+- **`calendar.islamic_history`**: curated Islamic milestones and conquests with localized descriptions and per-language reference links.
+- Additional **Hijri observances** on `calendar.hijri_events`: Islamic New Year, first day of Ramadan, Laylat al-Qadr, Isra and Mi'raj, multi-day Eids.
+- **Calendar language options**: show observances or history calendar text in integration language or Arabic (reference URLs follow the same language).
+- Event **descriptions and reference links** on all calendar entries (including Ramadan and Hajj spans).
+
+### Removed
+
+- **Mawlid** observance (12 Rabi I) from the holiday sensor and observances calendar.
+
+### Changed
+
+- Calendar event builders share `calendar_common` helpers; observance descriptions replace type-only labels.
+
 ## [0.1.0] - 2026-05-19
 
 First stable release. Includes all changes from `0.1.0-beta.3` below.

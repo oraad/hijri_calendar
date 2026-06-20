@@ -29,7 +29,18 @@ HOLIDAY_DAY_OF_ARAFAH: Final = "day_of_arafah"
 HOLIDAY_EID_AL_ADHA: Final = "eid_al_adha"
 HOLIDAY_HAJJ: Final = "hajj"
 HOLIDAY_ASHURA: Final = "ashura"
-HOLIDAY_MAWLID: Final = "mawlid"
+HOLIDAY_HIJRI_NEW_YEAR: Final = "hijri_new_year"
+HOLIDAY_FIRST_DAY_OF_RAMADAN: Final = "first_day_of_ramadan"
+HOLIDAY_LAYLAT_AL_QADR: Final = "laylat_al_qadr"
+HOLIDAY_ISRA_AND_MIRAJ: Final = "isra_and_miraj"
+HOLIDAY_EID_AL_FITR_DAY_2: Final = "eid_al_fitr_day_2"
+HOLIDAY_EID_AL_FITR_DAY_3: Final = "eid_al_fitr_day_3"
+HOLIDAY_EID_AL_ADHA_DAY_2: Final = "eid_al_adha_day_2"
+HOLIDAY_EID_AL_ADHA_DAY_3: Final = "eid_al_adha_day_3"
+HOLIDAY_EID_AL_ADHA_DAY_4: Final = "eid_al_adha_day_4"
+
+SPAN_RAMADAN: Final = "ramadan"
+SPAN_HAJJ_SEASON: Final = "hajj_season"
 
 TYPE_RAMADAN: Final = "ramadan"
 TYPE_EID: Final = "eid"
@@ -42,17 +53,47 @@ ALL_HOLIDAY_IDS: Final[frozenset[str]] = frozenset(
         HOLIDAY_LAST_RAMADAN,
         HOLIDAY_EID_AL_FITR_EVE,
         HOLIDAY_EID_AL_FITR,
+        HOLIDAY_EID_AL_FITR_DAY_2,
+        HOLIDAY_EID_AL_FITR_DAY_3,
         HOLIDAY_DAY_OF_ARAFAH,
         HOLIDAY_EID_AL_ADHA,
+        HOLIDAY_EID_AL_ADHA_DAY_2,
+        HOLIDAY_EID_AL_ADHA_DAY_3,
+        HOLIDAY_EID_AL_ADHA_DAY_4,
         HOLIDAY_HAJJ,
         HOLIDAY_ASHURA,
-        HOLIDAY_MAWLID,
+        HOLIDAY_HIJRI_NEW_YEAR,
+        HOLIDAY_FIRST_DAY_OF_RAMADAN,
+        HOLIDAY_LAYLAT_AL_QADR,
+        HOLIDAY_ISRA_AND_MIRAJ,
         HOLIDAY_NONE,
     }
 )
 
 ALL_HOLIDAY_TYPES: Final[frozenset[str]] = frozenset(
     {TYPE_RAMADAN, TYPE_EID, TYPE_HAJJ, TYPE_OTHER}
+)
+
+ALL_OBSERVANCE_CALENDAR_EVENT_IDS: Final[frozenset[str]] = frozenset(
+    {
+        SPAN_RAMADAN,
+        SPAN_HAJJ_SEASON,
+        HOLIDAY_HIJRI_NEW_YEAR,
+        HOLIDAY_FIRST_DAY_OF_RAMADAN,
+        HOLIDAY_LAYLAT_AL_QADR,
+        HOLIDAY_ISRA_AND_MIRAJ,
+        HOLIDAY_LAST_RAMADAN,
+        HOLIDAY_EID_AL_FITR_EVE,
+        HOLIDAY_EID_AL_FITR,
+        HOLIDAY_EID_AL_FITR_DAY_2,
+        HOLIDAY_EID_AL_FITR_DAY_3,
+        HOLIDAY_DAY_OF_ARAFAH,
+        HOLIDAY_EID_AL_ADHA,
+        HOLIDAY_EID_AL_ADHA_DAY_2,
+        HOLIDAY_EID_AL_ADHA_DAY_3,
+        HOLIDAY_EID_AL_ADHA_DAY_4,
+        HOLIDAY_ASHURA,
+    }
 )
 
 
@@ -64,25 +105,39 @@ class HijriHoliday:
     type: str
 
 
-def get_holidays(hijri: Hijri) -> list[HijriHoliday]:
+def get_holidays(hijri: Hijri) -> list[HijriHoliday]:  # noqa: PLR0912
     """Return holidays active on the given Hijri date."""
     holidays: list[HijriHoliday] = []
     month, day = hijri.month, hijri.day
 
+    if month == 1 and day == 1:
+        holidays.append(HijriHoliday(id=HOLIDAY_HIJRI_NEW_YEAR, type=TYPE_OTHER))
+
+    if month == 1 and day == 10:
+        holidays.append(HijriHoliday(id=HOLIDAY_ASHURA, type=TYPE_OTHER))
+
+    if month == 7 and day == 27:
+        holidays.append(HijriHoliday(id=HOLIDAY_ISRA_AND_MIRAJ, type=TYPE_OTHER))
+
     if month == HIJRI_MONTH_RAMADAN:
+        if day == 1:
+            holidays.append(
+                HijriHoliday(id=HOLIDAY_FIRST_DAY_OF_RAMADAN, type=TYPE_RAMADAN)
+            )
+        if day == 27:
+            holidays.append(HijriHoliday(id=HOLIDAY_LAYLAT_AL_QADR, type=TYPE_RAMADAN))
         holidays.append(HijriHoliday(id=HOLIDAY_RAMADAN, type=TYPE_RAMADAN))
         if day == hijri.month_length():
             holidays.append(HijriHoliday(id=HOLIDAY_LAST_RAMADAN, type=TYPE_RAMADAN))
             holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_FITR_EVE, type=TYPE_EID))
 
-    if month == HIJRI_MONTH_SHAWWAL and day == 1:
-        holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_FITR, type=TYPE_EID))
-
-    if month == 1 and day == 10:
-        holidays.append(HijriHoliday(id=HOLIDAY_ASHURA, type=TYPE_OTHER))
-
-    if month == 3 and day == 12:
-        holidays.append(HijriHoliday(id=HOLIDAY_MAWLID, type=TYPE_OTHER))
+    if month == HIJRI_MONTH_SHAWWAL:
+        if day == 1:
+            holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_FITR, type=TYPE_EID))
+        if day == 2:
+            holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_FITR_DAY_2, type=TYPE_EID))
+        if day == 3:
+            holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_FITR_DAY_3, type=TYPE_EID))
 
     if month == HIJRI_MONTH_DHUL_HIJJAH:
         if day in (8, 9, 10, 11, 12, 13):
@@ -91,6 +146,12 @@ def get_holidays(hijri: Hijri) -> list[HijriHoliday]:
             holidays.append(HijriHoliday(id=HOLIDAY_DAY_OF_ARAFAH, type=TYPE_HAJJ))
         if day == 10:
             holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_ADHA, type=TYPE_EID))
+        if day == 11:
+            holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_ADHA_DAY_2, type=TYPE_EID))
+        if day == 12:
+            holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_ADHA_DAY_3, type=TYPE_EID))
+        if day == 13:
+            holidays.append(HijriHoliday(id=HOLIDAY_EID_AL_ADHA_DAY_4, type=TYPE_EID))
 
     return holidays
 

@@ -8,6 +8,7 @@ from hijridate import Hijri
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.translation import async_get_cached_translations
 
+from .calendar_common import format_calendar_event_description
 from .const import DOMAIN, HijriLanguage
 
 EASTERN_ARABIC_DIGITS: Final = "٠١٢٣٤٥٦٧٨٩"
@@ -44,6 +45,31 @@ def _entity_translation(
 
 
 @callback
+def _calendar_translation(
+    hass: HomeAssistant,
+    language: HijriLanguage,
+    calendar_key: str,
+    section: str,
+    event_id: str,
+) -> str:
+    """Return a flattened calendar content translation."""
+    key = f"component.{DOMAIN}.entity.calendar.{calendar_key}.{section}.{event_id}"
+    translations = async_get_cached_translations(hass, language, "entity", DOMAIN)
+    return translations.get(key, event_id)
+
+
+@callback
+def _calendar_scalar(
+    hass: HomeAssistant, language: HijriLanguage, *path: str
+) -> str:
+    """Return a scalar calendar translation at the given path under entity.calendar."""
+    suffix = ".".join(path)
+    key = f"component.{DOMAIN}.entity.calendar.{suffix}"
+    translations = async_get_cached_translations(hass, language, "entity", DOMAIN)
+    return translations.get(key, path[-1])
+
+
+@callback
 def holiday_display_name(
     hass: HomeAssistant, holiday_id: str, language: HijriLanguage
 ) -> str:
@@ -57,3 +83,91 @@ def holiday_type_display_name(
 ) -> str:
     """Return the localized display name for a holiday type."""
     return _entity_translation(hass, language, "state", f"type_{type_id}")
+
+
+@callback
+def calendar_reference_label(hass: HomeAssistant, language: HijriLanguage) -> str:
+    """Return the localized label for calendar reference links."""
+    return _calendar_scalar(hass, language, "reference_label")
+
+
+@callback
+def calendar_observance_detail(
+    hass: HomeAssistant, event_id: str, language: HijriLanguage
+) -> tuple[str, str]:
+    """Return localized description and reference URL for an observance."""
+    description = _calendar_translation(
+        hass, language, "hijri_events", "description", event_id
+    )
+    reference_url = _calendar_translation(
+        hass, language, "hijri_events", "reference_url", event_id
+    )
+    return description, reference_url
+
+
+@callback
+def calendar_history_name(
+    hass: HomeAssistant, event_id: str, language: HijriLanguage
+) -> str:
+    """Return localized summary for a history calendar event."""
+    return _calendar_translation(
+        hass, language, "islamic_history", "event_name", event_id
+    )
+
+
+@callback
+def calendar_history_detail(
+    hass: HomeAssistant, event_id: str, language: HijriLanguage
+) -> tuple[str, str]:
+    """Return localized description and reference URL for a history event."""
+    description = _calendar_translation(
+        hass, language, "islamic_history", "description", event_id
+    )
+    reference_url = _calendar_translation(
+        hass, language, "islamic_history", "reference_url", event_id
+    )
+    return description, reference_url
+
+
+@callback
+def format_history_year(
+    hass: HomeAssistant, hijri_year: int, language: HijriLanguage
+) -> str:
+    """Return a localized AH year line for history events."""
+    template = _calendar_scalar(hass, language, "islamic_history", "year_suffix")
+    year_text = str(hijri_year)
+    if language == "ar":
+        year_text = to_eastern_arabic_numerals(year_text)
+    return template.replace("{year}", year_text)
+
+
+@callback
+def build_observance_description(
+    hass: HomeAssistant,
+    event_id: str,
+    language: HijriLanguage,
+) -> str:
+    """Return formatted observance calendar event description."""
+    body, reference_url = calendar_observance_detail(hass, event_id, language)
+    return format_calendar_event_description(
+        body,
+        calendar_reference_label(hass, language),
+        reference_url,
+    )
+
+
+@callback
+def build_history_description(
+    hass: HomeAssistant,
+    event_id: str,
+    hijri_year: int,
+    language: HijriLanguage,
+) -> str:
+    """Return formatted history calendar event description."""
+    body, reference_url = calendar_history_detail(hass, event_id, language)
+    return format_calendar_event_description(
+        body,
+        calendar_reference_label(hass, language),
+        reference_url,
+        year_line=format_history_year(hass, hijri_year, language),
+    )

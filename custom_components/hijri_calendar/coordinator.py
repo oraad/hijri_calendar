@@ -11,14 +11,19 @@ from homeassistant.core import CALLBACK_TYPE, HomeAssistant, callback
 from homeassistant.helpers import event
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
+from .calendar_common import resolve_calendar_display_language
 from .const import (
     CONF_DAY_BOUNDARY,
+    CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
+    CONF_OBSERVANCES_CALENDAR_LANGUAGE,
     CONF_OFFSET_DAYS,
     DAY_BOUNDARY_SUNSET,
+    DEFAULT_CALENDAR_LANGUAGE,
     DEFAULT_DAY_BOUNDARY,
     DEFAULT_LANGUAGE,
     DEFAULT_OFFSET_DAYS,
     DOMAIN,
+    HijriLanguage,
 )
 from .data import HijriCalendarConfigEntry, HijriCalendarData
 from .helpers import (
@@ -60,6 +65,40 @@ class HijriCalendarUpdateCoordinator(DataUpdateCoordinator[HijriCalendarData]):
     def offset_days(self) -> int:
         """Return configured offset in days."""
         return int(self.config_entry.options.get(CONF_OFFSET_DAYS, DEFAULT_OFFSET_DAYS))
+
+    @property
+    def observances_calendar_language(self) -> str:
+        """Return observances calendar language option."""
+        return str(
+            self.config_entry.options.get(
+                CONF_OBSERVANCES_CALENDAR_LANGUAGE, DEFAULT_CALENDAR_LANGUAGE
+            )
+        )
+
+    @property
+    def islamic_history_calendar_language(self) -> str:
+        """Return Islamic history calendar language option."""
+        return str(
+            self.config_entry.options.get(
+                CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE, DEFAULT_CALENDAR_LANGUAGE
+            )
+        )
+
+    @property
+    def observances_display_language(self) -> HijriLanguage:
+        """Return resolved language for observances calendar text."""
+        return resolve_calendar_display_language(
+            self.language,  # type: ignore[arg-type]
+            self.observances_calendar_language,
+        )
+
+    @property
+    def history_display_language(self) -> HijriLanguage:
+        """Return resolved language for history calendar text."""
+        return resolve_calendar_display_language(
+            self.language,  # type: ignore[arg-type]
+            self.islamic_history_calendar_language,
+        )
 
     async def _async_update_data(self) -> HijriCalendarData:
         """Compute Hijri date for the effective Gregorian day."""
