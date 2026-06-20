@@ -9,7 +9,15 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import translation
 
-from .const import DEFAULT_LANGUAGE, DOMAIN
+from .calendar_common import resolve_calendar_display_language
+from .const import (
+    CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
+    CONF_OBSERVANCES_CALENDAR_LANGUAGE,
+    DEFAULT_CALENDAR_LANGUAGE,
+    DEFAULT_LANGUAGE,
+    DOMAIN,
+    HijriLanguage,
+)
 from .coordinator import HijriCalendarUpdateCoordinator
 from .repairs import async_clear_sunset_repairs
 from .services import async_setup_services
@@ -30,6 +38,28 @@ PLATFORMS: list[Platform] = [
 ]
 
 
+async def _preload_calendar_languages(
+    hass: HomeAssistant,
+    integration_language: HijriLanguage,
+    options: dict,
+) -> None:
+    """Preload entity translations for resolved calendar display languages."""
+    languages: set[HijriLanguage] = {integration_language}
+    for option_key in (
+        CONF_OBSERVANCES_CALENDAR_LANGUAGE,
+        CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
+    ):
+        resolved = resolve_calendar_display_language(
+            integration_language,
+            str(options.get(option_key, DEFAULT_CALENDAR_LANGUAGE)),
+        )
+        languages.add(resolved)
+    for language in languages:
+        await translation.async_get_translations(
+            hass, language, "entity", integrations=[DOMAIN]
+        )
+
+
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up Hijri Calendar services."""
     async_setup_services(hass)
@@ -41,10 +71,8 @@ async def async_setup_entry(
     config_entry: HijriCalendarConfigEntry,
 ) -> bool:
     """Set up Hijri Calendar from a config entry."""
-    language = config_entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)
-    await translation.async_get_translations(
-        hass, language, "entity", integrations=[DOMAIN]
-    )
+    language: HijriLanguage = config_entry.data.get(CONF_LANGUAGE, DEFAULT_LANGUAGE)  # type: ignore[assignment]
+    await _preload_calendar_languages(hass, language, config_entry.options)
 
     coordinator = HijriCalendarUpdateCoordinator(hass, config_entry)
     await coordinator.async_config_entry_first_refresh()

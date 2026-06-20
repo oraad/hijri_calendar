@@ -10,7 +10,7 @@ Home Assistant custom integration for the Islamic (Hijri) calendar using the [Um
 
 - **Sensors**: current Hijri date (with attributes), active holidays, days in month/year, days until Ramadan/Eid (disabled by default)
 - **Binary sensors**: Ramadan, Eid al-Fitr, Eid al-Adha, Hajj season
-- **Calendar**: all-day Hijri observances on the Gregorian calendar (Ramadan span, Hajj season, Eids, Ashura, Mawlid, and other holidays from the integration)
+- **Calendar**: Hijri observances and Islamic history calendars with localized descriptions and reference links
 - **Services**: convert between Hijri and Gregorian, calibrate day offset (relative ±2 or announced Hijri date), set day offset directly
 - **Options**: configurable day offset for local moon-sighting differences
 - **Day boundary**: roll the Hijri day at local midnight (default) or after sunset
@@ -64,6 +64,7 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 ### Options
 
 - **Day offset** (−2 to +2): shift displayed dates when your locality announces a different day than Umm al-Qura. Use the `calibrate_date` service to adjust by ±2 days or from the announced Hijri date for today.
+- **Observances calendar language** and **Islamic history calendar language**: show each calendar's event titles and descriptions in the integration language (default) or Arabic. Reference links match the selected calendar language.
 
 ## Entities
 
@@ -77,16 +78,25 @@ The Hijri date sensor state stays in ISO format (`1446-10-15`) for automations. 
 | `binary_sensor.eid_al_fitr` | On on 1 Shawwal |
 | `binary_sensor.eid_al_adha` | On on 10 Dhul Hijjah |
 | `binary_sensor.hajj_season` | On during Hajj days 8–13 |
-| `calendar.hijri_events` | All-day observances for the requested range (Ramadan and Hajj season as merged spans; individual days for Eids and other holidays) |
+| `calendar.hijri_events` | Religious observances (Ramadan/Hajj spans, Eids, Ashura, Laylat al-Qadr, and more) |
+| `calendar.islamic_history` | Curated Islamic milestones and conquests (recurring Hijri anniversaries) |
 
-### Calendar
+### Calendars
 
-The **Hijri observances** calendar appears in **Settings → Devices & services → Calendar**, the Calendar dashboard, and `calendar.get_events` automations. Events use the same Umm al-Qura rules, **day offset**, and **language** as the sensors.
+Two calendar entities appear in **Settings → Devices & services → Calendar**, the Calendar dashboard, and `calendar.get_events` automations. Both use the same Umm al-Qura rules, **day offset**, and **day boundary** as the sensors.
+
+**Hijri observances** (`calendar.hijri_events`):
 
 - **Ramadan** and **Hajj season** show as single multi-day all-day entries.
-- Other holidays (Eid al-Fitr, Eid al-Adha, Ashura, Mawlid, Day of Arafah, etc.) appear on their mapped Gregorian days.
-- **Day offset** in integration options shifts all future calendar dates the same way as the sensors (reload the integration or wait for the next coordinator refresh after changing options).
-- **Day boundary**: the calendar uses the same **day boundary** and **day offset** as the sensors when mapping each Gregorian day to Hijri observances.
+- Other observances (Eid al-Fitr, Eid al-Adha, Ashura, Islamic New Year, Laylat al-Qadr, multi-day Eids, etc.) appear on their mapped Gregorian days.
+- Event details include a short description and a reference link (language follows the observances calendar language option).
+
+**Islamic history** (`calendar.islamic_history`):
+
+- Recurring anniversaries of curated milestones (Hijra, Badr, conquest of Mecca, fall of Constantinople, and others).
+- Descriptions include the original AH year and a reference link (language follows the Islamic history calendar language option).
+
+**Known limitations**: Observance and history Hijri dates are indicative; scholarly sources sometimes differ (for example Laylat al-Qadr or exact battle dates). The history calendar is educational, not a scholarly authority. Umm al-Qura calculation may differ from local moon-sighting announcements—use **Day offset** or `calibrate_date` to align observances when needed.
 
 ## Data updates
 

@@ -24,10 +24,15 @@ from homeassistant.helpers.selector import (
 )
 
 from .const import (
+    CALENDAR_LANGUAGE_ARABIC,
+    CALENDAR_LANGUAGE_DEFAULT,
     CONF_DAY_BOUNDARY,
+    CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE,
+    CONF_OBSERVANCES_CALENDAR_LANGUAGE,
     CONF_OFFSET_DAYS,
     DAY_BOUNDARY_MIDNIGHT,
     DAY_BOUNDARY_SUNSET,
+    DEFAULT_CALENDAR_LANGUAGE,
     DEFAULT_DAY_BOUNDARY,
     DEFAULT_LANGUAGE,
     DEFAULT_NAME,
@@ -49,6 +54,24 @@ OPTIONS_SCHEMA = vol.Schema(
                 max=OFFSET_DAYS_MAX,
                 step=1,
                 mode=NumberSelectorMode.BOX,
+            ),
+        ),
+        vol.Optional(
+            CONF_OBSERVANCES_CALENDAR_LANGUAGE, default=DEFAULT_CALENDAR_LANGUAGE
+        ): SelectSelector(
+            SelectSelectorConfig(
+                options=[CALENDAR_LANGUAGE_DEFAULT, CALENDAR_LANGUAGE_ARABIC],
+                mode=SelectSelectorMode.DROPDOWN,
+                translation_key="observances_calendar_language",
+            ),
+        ),
+        vol.Optional(
+            CONF_ISLAMIC_HISTORY_CALENDAR_LANGUAGE, default=DEFAULT_CALENDAR_LANGUAGE
+        ): SelectSelector(
+            SelectSelectorConfig(
+                options=[CALENDAR_LANGUAGE_DEFAULT, CALENDAR_LANGUAGE_ARABIC],
+                mode=SelectSelectorMode.DROPDOWN,
+                translation_key="islamic_history_calendar_language",
             ),
         ),
     }

@@ -26,7 +26,9 @@
       "init": {
         "title": "خيارات التقويم الهجري",
         "data": {
-          "offset_days": "إزاحة الأيام"
+          "offset_days": "إزاحة الأيام",
+          "observances_calendar_language": "لغة تقويم المناسبات",
+          "islamic_history_calendar_language": "لغة تقويم التاريخ الإسلامي"
         }
       }
     }
@@ -36,6 +38,18 @@
       "options": {
         "midnight": "منتصف الليل المحلي",
         "sunset": "بعد الغروب"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "لغة التكامل",
+        "ar": "العربية"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "لغة التكامل",
+        "ar": "العربية"
       }
     }
   },
@@ -56,11 +70,19 @@
           "eid_al_adha": "عيد الأضحى",
           "hajj": "الحج",
           "ashura": "عاشوراء",
-          "mawlid": "المولد النبوي",
           "type_ramadan": "رمضان",
           "type_eid": "عيد",
           "type_hajj": "حج",
-          "type_other": "مناسبة أخرى"
+          "type_other": "مناسبة أخرى",
+          "hijri_new_year": "رأس السنة الهجرية",
+          "first_day_of_ramadan": "أول يوم من رمضان",
+          "laylat_al_qadr": "ليلة القدر",
+          "isra_and_miraj": "الإسراء والمعراج",
+          "eid_al_fitr_day_2": "عيد الفطر (اليوم الثاني)",
+          "eid_al_fitr_day_3": "عيد الفطر (اليوم الثالث)",
+          "eid_al_adha_day_2": "عيد الأضحى (اليوم الثاني)",
+          "eid_al_adha_day_3": "عيد الأضحى (اليوم الثالث)",
+          "eid_al_adha_day_4": "عيد الأضحى (اليوم الرابع)"
         }
       },
       "days_in_month": {
@@ -79,6 +101,9 @@
     "calendar": {
       "hijri_events": {
         "name": "المناسبات الهجرية"
+      },
+      "islamic_history": {
+        "name": "التاريخ الإسلامي"
       }
     },
     "binary_sensor": {
