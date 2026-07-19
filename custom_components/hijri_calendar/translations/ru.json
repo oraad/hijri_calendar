@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Настройка календаря Хиджры",
+        "description": "Укажите язык и момент начала дня по Хиджре.",
+        "data": {
+          "language": "Язык",
+          "day_boundary": "Граница дня"
+        }
+      },
+      "reconfigure": {
+        "title": "Перенастройка календаря Хиджры",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Календарь Хиджры уже настроен."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Параметры календаря Хиджры",
+        "data": {
+          "offset_days": "Смещение дней",
+          "observances_calendar_language": "Язык календаря праздников",
+          "islamic_history_calendar_language": "Язык календаря истории ислама",
+          "hijri_month_starts_calendar_language": "Язык календаря начала месяцев"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "Местная полночь",
+        "sunset": "После заката"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "Язык интеграции",
+        "ar": "Арабский"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "Язык интеграции",
+        "ar": "Арабский"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Язык интеграции",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "Дата по Хиджре"
+      },
+      "holiday": {
+        "name": "Праздник",
+        "state": {
+          "none": "Нет",
+          "ramadan": "Рамадан",
+          "last_day_of_ramadan": "Последний день Рамадана",
+          "eid_al_fitr_eve": "Канун Ид аль-Фитр",
+          "eid_al_fitr": "Ид аль-Фитр",
+          "day_of_arafah": "День Арафата",
+          "eid_al_adha": "Ид аль-Адха",
+          "hajj": "Хадж",
+          "ashura": "Ашура",
+          "type_ramadan": "Рамадан",
+          "type_eid": "Ид",
+          "type_hajj": "Хадж",
+          "type_other": "Другой праздник",
+          "hijri_new_year": "Исламский новый год",
+          "first_day_of_ramadan": "Первый день Рамадана",
+          "laylat_al_qadr": "Лайлат аль-Кадр",
+          "isra_and_miraj": "Исра и Мираж",
+          "eid_al_fitr_day_2": "Ид аль-Фитр (день 2)",
+          "eid_al_fitr_day_3": "Ид аль-Фитр (день 3)",
+          "eid_al_adha_day_2": "Ид аль-Адха (день 2)",
+          "eid_al_adha_day_3": "Ид аль-Адха (день 3)",
+          "eid_al_adha_day_4": "Ид аль-Адха (день 4)"
+        }
+      },
+      "days_in_month": {
+        "name": "Дней в месяце Хиджры"
+      },
+      "days_in_year": {
+        "name": "Дней в году Хиджры"
+      },
+      "days_until_ramadan": {
+        "name": "Дней до Рамадана"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Дней до Ид аль-Фитр"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "Праздники"
+      },
+      "islamic_history": {
+        "name": "История ислама"
+      },
+      "hijri_month_starts": {
+        "name": "Начало месяцев"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "Рамадан"
+      },
+      "eid_al_fitr": {
+        "name": "Ид аль-Фитр"
+      },
+      "eid_al_adha": {
+        "name": "Ид аль-Адха"
+      },
+      "hajj_season": {
+        "name": "Сезон хаджа"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Граница по закату недоступна",
+      "description": "Home Assistant не смог рассчитать закат для вашего местоположения. Перенастройте календарь Хиджры на местную полночь или укажите корректное местоположение в Настройки → Система → Общие."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "Калибровка даты",
+      "description": "Настраивает смещение дней интеграции на сегодня с помощью небольшого относительного изменения или объявленной даты по Хиджре.",
+      "fields": {
+        "offset": {
+          "name": "Корректировка смещения",
+          "description": "Добавляет указанное число дней к текущему смещению интеграции (−2…+2)."
+        },
+        "hijri": {
+          "name": "Дата по Хиджре",
+          "description": "Объявленная дата по Хиджре на сегодня (ISO, напр. 1446-10-15). Вычисляет и сохраняет необходимое смещение."
+        },
+        "language": {
+          "name": "Язык",
+          "description": "Язык форматированных полей в ответе."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "Дата выходит за пределы поддерживаемого диапазона Умм аль-Кура."
+    },
+    "sunset_unavailable": {
+      "message": "Не удалось рассчитать закат. Проверьте настройки местоположения Home Assistant."
+    },
+    "calibrate_no_config_entry": {
+      "message": "Перед калибровкой даты необходимо настроить календарь Хиджры."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "Требуемое смещение {offset} выходит за поддерживаемый диапазон ({min}…{max})."
+    }
+  }
+}

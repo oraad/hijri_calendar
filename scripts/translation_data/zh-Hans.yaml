@@ -1,0 +1,174 @@
+ui:
+  config_user_title: 设置回历日历
+  config_user_description: 配置语言以及回历日的起始时间。
+  config_user_language: 语言
+  config_user_day_boundary: 日界
+  config_reconfigure_title: 重新配置回历日历
+  config_abort_already_configured: 回历日历已配置。
+  options_title: 回历日历选项
+  options_offset_days: 日期偏移
+  options_observances_calendar_language: 节日日历语言
+  options_islamic_history_calendar_language: 伊斯兰历史日历语言
+  selector_midnight: 当地午夜
+  selector_sunset: 日落后
+  selector_integration_language: 集成语言
+  selector_arabic_label: 阿拉伯语
+  entity_hijri_date: 回历日期
+  entity_holiday: 节日
+  entity_days_in_month: 回历月天数
+  entity_days_in_year: 回历年天数
+  entity_days_until_ramadan: 距离斋月天数
+  entity_days_until_eid_al_fitr: 距离开斋节天数
+  entity_calendar_observances: 节日
+  entity_calendar_history: 伊斯兰历史
+  entity_ramadan: 斋月
+  entity_eid_al_fitr: 开斋节
+  entity_eid_al_adha: 古尔邦节
+  entity_hajj_season: 朝觐季
+  issue_sunset_title: 日落日界不可用
+  issue_sunset_description: Home Assistant 无法计算您所在位置的日落时间。请将回历日历重新配置为当地午夜，或在 设置 → 系统 → 通用 中设置有效位置。
+  service_calibrate_name: 校准日期
+  service_calibrate_description: 通过小幅相对调整或公布的回历日期，调整集成对今日的日期偏移。
+  service_calibrate_offset_name: 偏移调整
+  service_calibrate_offset_description: 将指定天数加到当前集成偏移（−2 至 +2）。
+  service_calibrate_hijri_name: 回历日期
+  service_calibrate_hijri_description: 今日公布的回历日期（ISO，如 1446-10-15）。计算并保存所需偏移。
+  service_calibrate_language_name: 语言
+  service_calibrate_language_description: 响应中格式化字段使用的语言。
+  exception_date_out_of_range: 日期超出支持的乌姆古拉范围。
+  exception_sunset_unavailable: 无法计算日落。请检查 Home Assistant 位置设置。
+  exception_calibrate_no_config_entry: 校准日期前须先配置回历日历。
+  exception_calibrate_offset_out_of_range: 所需偏移 {offset} 超出支持范围（{min} 至 {max}）。
+  options_hijri_month_starts_calendar_language: 月初日历语言
+  entity_calendar_month_starts: 月初
+holidays:
+  none: 无
+  ramadan: 斋月
+  last_day_of_ramadan: 斋月最后一天
+  eid_al_fitr_eve: 开斋节前夜
+  eid_al_fitr: 开斋节
+  day_of_arafah: 阿拉法特日
+  eid_al_adha: 古尔邦节
+  hajj: 朝觐
+  ashura: 阿舒拉日
+  type_ramadan: 斋月
+  type_eid: 节日
+  type_hajj: 朝觐
+  type_other: 其他节日
+  hijri_new_year: 伊斯兰新年
+  first_day_of_ramadan: 斋月第一天
+  laylat_al_qadr: 盖德尔夜
+  isra_and_miraj: 夜行登霄
+  eid_al_fitr_day_2: 开斋节（第 2 天）
+  eid_al_fitr_day_3: 开斋节（第 3 天）
+  eid_al_adha_day_2: 古尔邦节（第 2 天）
+  eid_al_adha_day_3: 古尔邦节（第 3 天）
+  eid_al_adha_day_4: 古尔邦节（第 4 天）
+calendar:
+  reference_label: 了解更多
+  year_suffix: '{year} 年'
+  observances:
+    ramadan:
+      description: 回历第九月，穆斯林禁食、祈祷与反省之月。
+      reference_url: https://zh.wikipedia.org/wiki/斋月
+    hajj_season:
+      description: 都尔黑哲月的年度朝觐季，包括朝觐仪式各日。
+      reference_url: https://zh.wikipedia.org/wiki/朝觐
+    hijri_new_year:
+      description: 穆哈兰姆月第一日记为伊斯兰回历新年之始。
+      reference_url: https://zh.wikipedia.org/wiki/伊斯兰历
+    first_day_of_ramadan:
+      description: 斋月第一天，禁食月开始。
+      reference_url: https://zh.wikipedia.org/wiki/斋月
+    laylat_al_qadr:
+      description: 命运之夜，通常在斋月 27 日夜纪念。
+      reference_url: https://zh.wikipedia.org/wiki/盖德尔夜
+    isra_and_miraj:
+      description: 纪念夜行与登霄，在赖哲卜月 27 日。
+      reference_url: https://zh.wikipedia.org/wiki/夜行登霄
+    last_day_of_ramadan:
+      description: 开斋节前的斋月最后一天。
+      reference_url: https://zh.wikipedia.org/wiki/斋月
+    eid_al_fitr_eve:
+      description: 斋月结束时的开斋节前夜。
+      reference_url: https://zh.wikipedia.org/wiki/开斋节
+    eid_al_fitr:
+      description: 闪瓦鲁月 1 日庆祝斋月结束的节日。
+      reference_url: https://zh.wikipedia.org/wiki/开斋节
+    eid_al_fitr_day_2:
+      description: 开斋节庆祝的第二天。
+      reference_url: https://zh.wikipedia.org/wiki/开斋节
+    eid_al_fitr_day_3:
+      description: 开斋节庆祝的第三天。
+      reference_url: https://zh.wikipedia.org/wiki/开斋节
+    day_of_arafah:
+      description: 朝觐期间都尔黑哲月 9 日在阿拉法特站立之日。
+      reference_url: https://zh.wikipedia.org/wiki/阿拉法特山
+    eid_al_adha:
+      description: 都尔黑哲月 10 日的宰牲节。
+      reference_url: https://zh.wikipedia.org/wiki/古尔邦节
+    eid_al_adha_day_2:
+      description: 古尔邦节第二天。
+      reference_url: https://zh.wikipedia.org/wiki/古尔邦节
+    eid_al_adha_day_3:
+      description: 古尔邦节第三天。
+      reference_url: https://zh.wikipedia.org/wiki/古尔邦节
+    eid_al_adha_day_4:
+      description: 古尔邦节第四天，朝觐季仪式结束。
+      reference_url: https://zh.wikipedia.org/wiki/古尔邦节
+    ashura:
+      description: 在穆哈兰姆月 10 日纪念，对禁食与追思尤为重要。
+      reference_url: https://zh.wikipedia.org/wiki/阿舒拉节
+  history:
+    battle_of_badr:
+      name: 白德尔战役
+      description: 回历 2 年穆斯林与古莱什的首次大战。
+      reference_url: https://zh.wikipedia.org/wiki/白德尔战役
+    battle_of_uhud:
+      name: 乌侯德战役
+      description: 回历 3 年在乌侯德山附近进行的战役。
+      reference_url: https://zh.wikipedia.org/wiki/乌侯德战役
+    battle_of_khandaq:
+      name: 堑壕之战
+      description: 回历 5 年联军对麦地那的围攻。
+      reference_url: https://zh.wikipedia.org/wiki/堑壕之战
+    treaty_of_hudaybiyyah:
+      name: 胡代比亚和约
+      description: 回历 6 年穆斯林与古莱什的和平协议。
+      reference_url: https://zh.wikipedia.org/wiki/胡代比亚和约
+    conquest_of_khaybar:
+      name: 攻克海巴尔
+      description: 回历 7 年穆斯林对海巴尔要塞的征讨。
+      reference_url: https://zh.wikipedia.org/wiki/海巴尔
+    conquest_of_mecca:
+      name: 麦加解放
+      description: 回历 8 年和平进入麦加。
+      reference_url: https://zh.wikipedia.org/wiki/麦加解放
+    battle_of_hunayn:
+      name: 侯奈因战役
+      description: 麦加解放后回历 8 年进行的战役。
+      reference_url: https://zh.wikipedia.org/wiki/侯奈因战役
+    expedition_to_tabuk:
+      name: 塔布克远征
+      description: 回历 9 年的塔布克远征。
+      reference_url: https://zh.wikipedia.org/wiki/塔布克远征
+    battle_of_yarmouk:
+      name: 雅尔穆克战役
+      description: 回历 15 年对拜占庭的决定性战役。
+      reference_url: https://zh.wikipedia.org/wiki/雅尔穆克战役
+    battle_of_qadisiyyah:
+      name: 卡迪西亚战役
+      description: 回历 15 年使伊拉克向穆斯林军队敞开的大战。
+      reference_url: https://zh.wikipedia.org/wiki/卡迪西亚战役
+    conquest_of_jerusalem:
+      name: 攻克耶路撒冷
+      description: 回历 17 年穆斯林进入耶路撒冷。
+      reference_url: https://zh.wikipedia.org/wiki/耶路撒冷
+    conquest_of_egypt:
+      name: 征服埃及
+      description: 回历 21 年穆斯林向埃及扩张。
+      reference_url: https://zh.wikipedia.org/wiki/埃及
+    fall_of_constantinople:
+      name: 君士坦丁堡陷落
+      description: 回历 857 年奥斯曼征服君士坦丁堡。
+      reference_url: https://zh.wikipedia.org/wiki/君士坦丁堡陷落

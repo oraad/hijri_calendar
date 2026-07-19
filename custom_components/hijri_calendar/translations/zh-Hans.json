@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "设置回历日历",
+        "description": "配置语言以及回历日的起始时间。",
+        "data": {
+          "language": "语言",
+          "day_boundary": "日界"
+        }
+      },
+      "reconfigure": {
+        "title": "重新配置回历日历",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "回历日历已配置。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "回历日历选项",
+        "data": {
+          "offset_days": "日期偏移",
+          "observances_calendar_language": "节日日历语言",
+          "islamic_history_calendar_language": "伊斯兰历史日历语言",
+          "hijri_month_starts_calendar_language": "月初日历语言"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "当地午夜",
+        "sunset": "日落后"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "集成语言",
+        "ar": "阿拉伯语"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "集成语言",
+        "ar": "阿拉伯语"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "集成语言",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "回历日期"
+      },
+      "holiday": {
+        "name": "节日",
+        "state": {
+          "none": "无",
+          "ramadan": "斋月",
+          "last_day_of_ramadan": "斋月最后一天",
+          "eid_al_fitr_eve": "开斋节前夜",
+          "eid_al_fitr": "开斋节",
+          "day_of_arafah": "阿拉法特日",
+          "eid_al_adha": "古尔邦节",
+          "hajj": "朝觐",
+          "ashura": "阿舒拉日",
+          "type_ramadan": "斋月",
+          "type_eid": "节日",
+          "type_hajj": "朝觐",
+          "type_other": "其他节日",
+          "hijri_new_year": "伊斯兰新年",
+          "first_day_of_ramadan": "斋月第一天",
+          "laylat_al_qadr": "盖德尔夜",
+          "isra_and_miraj": "夜行登霄",
+          "eid_al_fitr_day_2": "开斋节（第 2 天）",
+          "eid_al_fitr_day_3": "开斋节（第 3 天）",
+          "eid_al_adha_day_2": "古尔邦节（第 2 天）",
+          "eid_al_adha_day_3": "古尔邦节（第 3 天）",
+          "eid_al_adha_day_4": "古尔邦节（第 4 天）"
+        }
+      },
+      "days_in_month": {
+        "name": "回历月天数"
+      },
+      "days_in_year": {
+        "name": "回历年天数"
+      },
+      "days_until_ramadan": {
+        "name": "距离斋月天数"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "距离开斋节天数"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "节日"
+      },
+      "islamic_history": {
+        "name": "伊斯兰历史"
+      },
+      "hijri_month_starts": {
+        "name": "月初"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "斋月"
+      },
+      "eid_al_fitr": {
+        "name": "开斋节"
+      },
+      "eid_al_adha": {
+        "name": "古尔邦节"
+      },
+      "hajj_season": {
+        "name": "朝觐季"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "日落日界不可用",
+      "description": "Home Assistant 无法计算您所在位置的日落时间。请将回历日历重新配置为当地午夜，或在 设置 → 系统 → 通用 中设置有效位置。"
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "校准日期",
+      "description": "通过小幅相对调整或公布的回历日期，调整集成对今日的日期偏移。",
+      "fields": {
+        "offset": {
+          "name": "偏移调整",
+          "description": "将指定天数加到当前集成偏移（−2 至 +2）。"
+        },
+        "hijri": {
+          "name": "回历日期",
+          "description": "今日公布的回历日期（ISO，如 1446-10-15）。计算并保存所需偏移。"
+        },
+        "language": {
+          "name": "语言",
+          "description": "响应中格式化字段使用的语言。"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "日期超出支持的乌姆古拉范围。"
+    },
+    "sunset_unavailable": {
+      "message": "无法计算日落。请检查 Home Assistant 位置设置。"
+    },
+    "calibrate_no_config_entry": {
+      "message": "校准日期前须先配置回历日历。"
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "所需偏移 {offset} 超出支持范围（{min} 至 {max}）。"
+    }
+  }
+}

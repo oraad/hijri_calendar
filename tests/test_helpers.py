@@ -12,6 +12,7 @@ from custom_components.hijri_calendar.helpers import (
     hijri_to_gregorian,
     parse_hijri_date,
 )
+from custom_components.hijri_calendar.hijridate_locale import hijridate_language
 
 
 def test_gregorian_to_hijri_known_date() -> None:
@@ -47,6 +48,30 @@ def test_format_hijri_dict() -> None:
     assert "formatted" in result
     assert "formatted_eastern" in result
     assert "١" in result["formatted_eastern"]
+
+
+@pytest.mark.parametrize(
+    ("language", "expected"),
+    [
+        ("de", "en"),
+        ("pt-BR", "en"),
+        ("zh-Hans", "en"),
+        ("uk", "en"),
+        ("bn", "bn"),
+        ("ar", "ar"),
+        ("tr", "tr"),
+    ],
+)
+def test_hijridate_language(language: str, expected: str) -> None:
+    """Test hijridate locale resolution for integration languages."""
+    assert hijridate_language(language) == expected
+
+
+def test_format_hijri_dict_german_uses_english_month_names() -> None:
+    """German integration language still uses English hijridate month names."""
+    hijri = Hijri(1446, 10, 15)
+    result = format_hijri_dict(hijri, "de")
+    assert result["month_name"] == hijri.month_name("en")
 
 
 def test_parse_invalid_hijri_date() -> None:

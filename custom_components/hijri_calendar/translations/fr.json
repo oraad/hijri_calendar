@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configurer le calendrier Hijri",
+        "description": "Définir la langue et le début du jour Hijri.",
+        "data": {
+          "language": "Langue",
+          "day_boundary": "Début du jour"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigurer le calendrier Hijri",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Le calendrier Hijri est déjà configuré."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options du calendrier Hijri",
+        "data": {
+          "offset_days": "Décalage de jours",
+          "observances_calendar_language": "Langue du calendrier des fêtes",
+          "islamic_history_calendar_language": "Langue du calendrier de l'histoire islamique",
+          "hijri_month_starts_calendar_language": "Langue du calendrier des débuts de mois"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "Minuit local",
+        "sunset": "Après le coucher du soleil"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "Langue de l'intégration",
+        "ar": "Arabe"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "Langue de l'intégration",
+        "ar": "Arabe"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Langue de l'intégration",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "Date Hijri"
+      },
+      "holiday": {
+        "name": "Fête",
+        "state": {
+          "none": "Aucune",
+          "ramadan": "Ramadan",
+          "last_day_of_ramadan": "Dernier jour du Ramadan",
+          "eid_al_fitr_eve": "Veille de l'Aïd al-Fitr",
+          "eid_al_fitr": "Aïd al-Fitr",
+          "day_of_arafah": "Jour d'Arafat",
+          "eid_al_adha": "Aïd al-Adha",
+          "hajj": "Hajj",
+          "ashura": "Achoura",
+          "type_ramadan": "Ramadan",
+          "type_eid": "Aïd",
+          "type_hajj": "Hajj",
+          "type_other": "Autre fête",
+          "hijri_new_year": "Nouvel An islamique",
+          "first_day_of_ramadan": "Premier jour du Ramadan",
+          "laylat_al_qadr": "Laylat al-Qadr",
+          "isra_and_miraj": "Isra et Mi'raj",
+          "eid_al_fitr_day_2": "Aïd al-Fitr (jour 2)",
+          "eid_al_fitr_day_3": "Aïd al-Fitr (jour 3)",
+          "eid_al_adha_day_2": "Aïd al-Adha (jour 2)",
+          "eid_al_adha_day_3": "Aïd al-Adha (jour 3)",
+          "eid_al_adha_day_4": "Aïd al-Adha (jour 4)"
+        }
+      },
+      "days_in_month": {
+        "name": "Jours du mois Hijri"
+      },
+      "days_in_year": {
+        "name": "Jours de l'année Hijri"
+      },
+      "days_until_ramadan": {
+        "name": "Jours avant le Ramadan"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Jours avant l'Aïd al-Fitr"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "Fêtes"
+      },
+      "islamic_history": {
+        "name": "Histoire islamique"
+      },
+      "hijri_month_starts": {
+        "name": "Débuts de mois"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "Ramadan"
+      },
+      "eid_al_fitr": {
+        "name": "Aïd al-Fitr"
+      },
+      "eid_al_adha": {
+        "name": "Aïd al-Adha"
+      },
+      "hajj_season": {
+        "name": "Saison du Hajj"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Limite au coucher du soleil indisponible",
+      "description": "Home Assistant n'a pas pu calculer le coucher du soleil pour votre emplacement. Reconfigurez le calendrier Hijri pour utiliser minuit local ou définissez un emplacement valide dans Paramètres → Système → Général."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "Calibrer la date",
+      "description": "Ajuste le décalage de jours de l'intégration pour aujourd'hui via un petit changement relatif ou la date Hijri annoncée.",
+      "fields": {
+        "offset": {
+          "name": "Ajustement du décalage",
+          "description": "Ajoute ce nombre de jours au décalage actuel de l'intégration (−2 à +2)."
+        },
+        "hijri": {
+          "name": "Date Hijri",
+          "description": "Date Hijri annoncée pour aujourd'hui (ISO, p. ex. 1446-10-15). Calcule et enregistre le décalage requis."
+        },
+        "language": {
+          "name": "Langue",
+          "description": "Langue des champs formatés dans la réponse."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "La date est en dehors de la plage Umm al-Qura prise en charge."
+    },
+    "sunset_unavailable": {
+      "message": "Impossible de calculer le coucher du soleil. Vérifiez les paramètres d'emplacement de Home Assistant."
+    },
+    "calibrate_no_config_entry": {
+      "message": "Le calendrier Hijri doit être configuré avant de calibrer la date."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "Le décalage requis {offset} est en dehors de la plage prise en charge ({min} à {max})."
+    }
+  }
+}

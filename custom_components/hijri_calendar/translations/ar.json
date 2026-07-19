@@ -12,8 +12,8 @@
       "reconfigure": {
         "title": "إعادة إعداد التقويم الهجري",
         "data": {
-          "language": "اللغة",
-          "day_boundary": "بداية اليوم"
+          "language": "Language",
+          "day_boundary": "Day boundary"
         }
       }
     },
@@ -26,7 +26,10 @@
       "init": {
         "title": "خيارات التقويم الهجري",
         "data": {
-          "offset_days": "إزاحة الأيام"
+          "offset_days": "إزاحة الأيام",
+          "observances_calendar_language": "لغة تقويم المناسبات",
+          "islamic_history_calendar_language": "لغة تقويم التاريخ الإسلامي",
+          "hijri_month_starts_calendar_language": "لغة تقويم بدايات الأشهر"
         }
       }
     }
@@ -36,6 +39,43 @@
       "options": {
         "midnight": "منتصف الليل المحلي",
         "sunset": "بعد الغروب"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "لغة التكامل",
+        "ar": "العربية"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "لغة التكامل",
+        "ar": "العربية"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "لغة التكامل",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
       }
     }
   },
@@ -56,11 +96,19 @@
           "eid_al_adha": "عيد الأضحى",
           "hajj": "الحج",
           "ashura": "عاشوراء",
-          "mawlid": "المولد النبوي",
           "type_ramadan": "رمضان",
           "type_eid": "عيد",
           "type_hajj": "حج",
-          "type_other": "مناسبة أخرى"
+          "type_other": "مناسبة أخرى",
+          "hijri_new_year": "رأس السنة الهجرية",
+          "first_day_of_ramadan": "أول يوم من رمضان",
+          "laylat_al_qadr": "ليلة القدر",
+          "isra_and_miraj": "الإسراء والمعراج",
+          "eid_al_fitr_day_2": "عيد الفطر (اليوم الثاني)",
+          "eid_al_fitr_day_3": "عيد الفطر (اليوم الثالث)",
+          "eid_al_adha_day_2": "عيد الأضحى (اليوم الثاني)",
+          "eid_al_adha_day_3": "عيد الأضحى (اليوم الثالث)",
+          "eid_al_adha_day_4": "عيد الأضحى (اليوم الرابع)"
         }
       },
       "days_in_month": {
@@ -78,7 +126,13 @@
     },
     "calendar": {
       "hijri_events": {
-        "name": "المناسبات الهجرية"
+        "name": "المناسبات"
+      },
+      "islamic_history": {
+        "name": "التاريخ الإسلامي"
+      },
+      "hijri_month_starts": {
+        "name": "بدايات الأشهر"
       }
     },
     "binary_sensor": {

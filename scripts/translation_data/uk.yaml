@@ -1,0 +1,174 @@
+ui:
+  config_user_title: Налаштування календаря Хіджри
+  config_user_description: Вкажіть мову та момент початку дня за Хіджрою.
+  config_user_language: Мова
+  config_user_day_boundary: Межа дня
+  config_reconfigure_title: Переналаштування календаря Хіджри
+  config_abort_already_configured: Календар Хіджри вже налаштовано.
+  options_title: Параметри календаря Хіджри
+  options_offset_days: Зміщення днів
+  options_observances_calendar_language: Мова календаря свят
+  options_islamic_history_calendar_language: Мова календаря історії ісламу
+  selector_midnight: Місцева північ
+  selector_sunset: Після заходу сонця
+  selector_integration_language: Мова інтеграції
+  selector_arabic_label: Арабська
+  entity_hijri_date: Дата за Хіджрою
+  entity_holiday: Свято
+  entity_days_in_month: Днів у місяці Хіджри
+  entity_days_in_year: Днів у році Хіджри
+  entity_days_until_ramadan: Днів до Рамадану
+  entity_days_until_eid_al_fitr: Днів до Ід аль-Фітр
+  entity_calendar_observances: Свята
+  entity_calendar_history: Історія ісламу
+  entity_ramadan: Рамадан
+  entity_eid_al_fitr: Ід аль-Фітр
+  entity_eid_al_adha: Ід аль-Адха
+  entity_hajj_season: Сезон хаджу
+  issue_sunset_title: Межа за заходом сонця недоступна
+  issue_sunset_description: Home Assistant не зміг обчислити захід сонця для вашого місцезнаходження. Переналаштуйте календар Хіджри на місцеву північ або вкажіть коректне місцезнаходження в Налаштування → Система → Загальні.
+  service_calibrate_name: Калібрування дати
+  service_calibrate_description: Налаштовує зміщення днів інтеграції на сьогодні за допомогою невеликої відносної зміни або оголошеної дати за Хіджрою.
+  service_calibrate_offset_name: Коригування зміщення
+  service_calibrate_offset_description: Додає вказану кількість днів до поточного зміщення інтеграції (−2…+2).
+  service_calibrate_hijri_name: Дата за Хіджрою
+  service_calibrate_hijri_description: Оголошена дата за Хіджрою на сьогодні (ISO, напр. 1446-10-15). Обчислює та зберігає необхідне зміщення.
+  service_calibrate_language_name: Мова
+  service_calibrate_language_description: Мова форматованих полів у відповіді.
+  exception_date_out_of_range: Дата виходить за межі підтримуваного діапазону Умм аль-Кура.
+  exception_sunset_unavailable: Не вдалося обчислити захід сонця. Перевірте налаштування місцезнаходження Home Assistant.
+  exception_calibrate_no_config_entry: Перед калібруванням дати потрібно налаштувати календар Хіджри.
+  exception_calibrate_offset_out_of_range: Потрібне зміщення {offset} виходить за підтримуваний діапазон ({min}…{max}).
+  options_hijri_month_starts_calendar_language: Мова календаря початку місяців
+  entity_calendar_month_starts: Початок місяців
+holidays:
+  none: Немає
+  ramadan: Рамадан
+  last_day_of_ramadan: Останній день Рамадану
+  eid_al_fitr_eve: Переддень Ід аль-Фітр
+  eid_al_fitr: Ід аль-Фітр
+  day_of_arafah: День Арафат
+  eid_al_adha: Ід аль-Адха
+  hajj: Хадж
+  ashura: Ашура
+  type_ramadan: Рамадан
+  type_eid: Ід
+  type_hajj: Хадж
+  type_other: Інше свято
+  hijri_new_year: Ісламський новий рік
+  first_day_of_ramadan: Перший день Рамадану
+  laylat_al_qadr: Лайлат аль-Кадр
+  isra_and_miraj: Ісра та Міраж
+  eid_al_fitr_day_2: Ід аль-Фітр (день 2)
+  eid_al_fitr_day_3: Ід аль-Фітр (день 3)
+  eid_al_adha_day_2: Ід аль-Адха (день 2)
+  eid_al_adha_day_3: Ід аль-Адха (день 3)
+  eid_al_adha_day_4: Ід аль-Адха (день 4)
+calendar:
+  reference_label: Докладніше
+  year_suffix: '{year} р. х.'
+  observances:
+    ramadan:
+      description: Дев'ятий місяць Хіджри — місяць посту, молитви та роздумів для мусульман.
+      reference_url: https://uk.wikipedia.org/wiki/Рамадан
+    hajj_season:
+      description: Щорічний сезон паломництва в місяці зуль-хиджа, включно з днями обрядів хаджу.
+      reference_url: https://uk.wikipedia.org/wiki/Хадж
+    hijri_new_year:
+      description: Перший день мuharram позначає початок ісламського року за Хіджрою.
+      reference_url: https://uk.wikipedia.org/wiki/Хіджра_(календар)
+    first_day_of_ramadan:
+      description: Перший день Рамадану, коли починається місяць посту.
+      reference_url: https://uk.wikipedia.org/wiki/Рамадан
+    laylat_al_qadr:
+      description: Ніч приречення, широко відзначається 27-го числа Рамадану.
+      reference_url: https://uk.wikipedia.org/wiki/Лайлат_аль-Кадр
+    isra_and_miraj:
+      description: Пам'ять нічної подорожі та вознесіння, відзначається 27 раjab.
+      reference_url: https://uk.wikipedia.org/wiki/Ісра_та_Міраж
+    last_day_of_ramadan:
+      description: Останній день Рамадану перед Ід аль-Фітр.
+      reference_url: https://uk.wikipedia.org/wiki/Рамадан
+    eid_al_fitr_eve:
+      description: Переддень Ід аль-Фітр наприкінці Рамадану.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Фітр
+    eid_al_fitr:
+      description: Свято завершення Рамадану 1 шаввал.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Фітр
+    eid_al_fitr_day_2:
+      description: Другий день святкування Ід аль-Фітр.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Фітр
+    eid_al_fitr_day_3:
+      description: Третій день святкування Ід аль-Фітр.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Фітр
+    day_of_arafah:
+      description: День стояння на Арафат під час хаджу 9 зуль-хиджа.
+      reference_url: https://uk.wikipedia.org/wiki/Арафат
+    eid_al_adha:
+      description: Свято жертвопринесення 10 зуль-хиджа.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Адха
+    eid_al_adha_day_2:
+      description: Другий день Ід аль-Адха.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Адха
+    eid_al_adha_day_3:
+      description: Третій день Ід аль-Адха.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Адха
+    eid_al_adha_day_4:
+      description: Четвертий день Ід аль-Адха та завершення обрядів сезону хаджу.
+      reference_url: https://uk.wikipedia.org/wiki/Ід_аль-Адха
+    ashura:
+      description: Відзначається 10 мухаррам, особливо важливе для посту та поминання.
+      reference_url: https://uk.wikipedia.org/wiki/Ашура
+  history:
+    battle_of_badr:
+      name: Битва при Бadr
+      description: Перша велика битва між мусульманами та курайшитами у 2 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Битва_при_Бadrі
+    battle_of_uhud:
+      name: Битва при Ухуд
+      description: Битва біля гори Ухуд у 3 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Битва_при_Ухуді
+    battle_of_khandaq:
+      name: Битва при рові
+      description: Облога Медини конфедератами у 5 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Битва_при_рові
+    treaty_of_hudaybiyyah:
+      name: Худайбійська угода
+      description: Мирна угода між мусульманами та курайшитами у 6 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Худайбійський_мирний_договір
+    conquest_of_khaybar:
+      name: Завоювання Хайбар
+      description: Похід мусульман проти фортець Хайбар у 7 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Хайбар
+    conquest_of_mecca:
+      name: Завоювання Мекки
+      description: Мирне входження в Мекку у 8 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Завоювання_Мекки
+    battle_of_hunayn:
+      name: Битва при Хунейн
+      description: Битва після завоювання Мекки у 8 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Битва_при_Хунейні
+    expedition_to_tabuk:
+      name: Похід на Табук
+      description: Похід на Табук у 9 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Похід_на_Табук
+    battle_of_yarmouk:
+      name: Битва на Ярмук
+      description: Вирішальна битва з візантійськими силами у 15 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Битва_на_Ярмуці
+    battle_of_qadisiyyah:
+      name: Битва при аль-Кадисії
+      description: Велика битва, що відкрила Ірак мусульманським силам у 15 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Битва_при_аль-Кадисії
+    conquest_of_jerusalem:
+      name: Завоювання Єрусалима
+      description: Вступ мусульман до Єрусалима у 17 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Єрусалим
+    conquest_of_egypt:
+      name: Завоювання Єгипту
+      description: Розширення мусульман до Єгипту у 21 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Єгипет
+    fall_of_constantinople:
+      name: Падіння Константинополя
+      description: Османське завоювання Константинополя у 857 р. х.
+      reference_url: https://uk.wikipedia.org/wiki/Падіння_Константинополя

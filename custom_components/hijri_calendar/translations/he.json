@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "הגדרת לוח השנה ההיג'רי",
+        "description": "הגדרת השפה ומתי מתחיל היום ההיג'רי.",
+        "data": {
+          "language": "שפה",
+          "day_boundary": "תחילת יום"
+        }
+      },
+      "reconfigure": {
+        "title": "הגדרה מחדש של לוח השנה ההיג'רי",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "לוח השנה ההיג'רי כבר מוגדר."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "אפשרויות לוח השנה ההיג'רי",
+        "data": {
+          "offset_days": "היסט ימים",
+          "observances_calendar_language": "שפת לוח החגים",
+          "islamic_history_calendar_language": "שפת לוח ההיסטוריה האסלאמית",
+          "hijri_month_starts_calendar_language": "שפת לוח תחילות החודש"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "חצות מקומית",
+        "sunset": "אחרי השקיעה"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "שפת האינטגרציה",
+        "ar": "ערבית"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "שפת האינטגרציה",
+        "ar": "ערבית"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "שפת האינטגרציה",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "תאריך היג'רי"
+      },
+      "holiday": {
+        "name": "חג",
+        "state": {
+          "none": "אין",
+          "ramadan": "רמדאן",
+          "last_day_of_ramadan": "היום האחרון של רמדאן",
+          "eid_al_fitr_eve": "ערב עיד אל-פיטר",
+          "eid_al_fitr": "עיד אל-פיטר",
+          "day_of_arafah": "יום ערפה",
+          "eid_al_adha": "עיד אל-אדחא",
+          "hajj": "חג'",
+          "ashura": "עאשורא",
+          "type_ramadan": "רמדאן",
+          "type_eid": "עיד",
+          "type_hajj": "חג'",
+          "type_other": "מועד אחר",
+          "hijri_new_year": "ראש השנה האסלאמי",
+          "first_day_of_ramadan": "היום הראשון של רמדאן",
+          "laylat_al_qadr": "לילת אל-קדר",
+          "isra_and_miraj": "איסרא ומע'ראג'",
+          "eid_al_fitr_day_2": "עיד אל-פיטר (יום 2)",
+          "eid_al_fitr_day_3": "עיד אל-פיטר (יום 3)",
+          "eid_al_adha_day_2": "עיד אל-אדחא (יום 2)",
+          "eid_al_adha_day_3": "עיד אל-אדחא (יום 3)",
+          "eid_al_adha_day_4": "עיד אל-אדחא (יום 4)"
+        }
+      },
+      "days_in_month": {
+        "name": "ימים בחודש ההיג'רי"
+      },
+      "days_in_year": {
+        "name": "ימים בשנה ההיג'רית"
+      },
+      "days_until_ramadan": {
+        "name": "ימים עד רמדאן"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "ימים עד עיד אל-פיטר"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "מועדים"
+      },
+      "islamic_history": {
+        "name": "היסטוריה אסלאמית"
+      },
+      "hijri_month_starts": {
+        "name": "תחילות חודש"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "רמדאן"
+      },
+      "eid_al_fitr": {
+        "name": "עיד אל-פיטר"
+      },
+      "eid_al_adha": {
+        "name": "עיד אל-אדחא"
+      },
+      "hajj_season": {
+        "name": "עונת החג'"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "גבול השקיעה אינו זמין",
+      "description": "Home Assistant לא הצליח לחשב את השקיעה עבור המיקום שלך. הגדר מחדש את לוח השנה ההיג'רי לחצות מקומית, או הגדר מיקום תקף תחת הגדרות → מערכת → כללי."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "כיול תאריך",
+      "description": "מתאים את היסט הימים של האינטגרציה להיום באמצעות שינוי יחסי קטן או התאריך ההיג'רי המוכרז.",
+      "fields": {
+        "offset": {
+          "name": "התאמת היסט",
+          "description": "מוסיף מספר ימים זה להיסט הנוכחי של האינטגרציה (−2 עד +2)."
+        },
+        "hijri": {
+          "name": "תאריך היג'רי",
+          "description": "תאריך היג'רי מוכרז להיום (ISO, למשל 1446-10-15). מחשב ושומר את ההיסט הנדרש."
+        },
+        "language": {
+          "name": "שפה",
+          "description": "שפה לשדות המעוצבים בתגובה."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "התאריך מחוץ לטווח אום אל-קורא הנתמך."
+    },
+    "sunset_unavailable": {
+      "message": "לא ניתן לחשב את השקיעה. בדוק את הגדרות המיקום ב-Home Assistant."
+    },
+    "calibrate_no_config_entry": {
+      "message": "יש להגדיר את לוח השנה ההיג'רי לפני כיול התאריך."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "ההיסט הנדרש {offset} מחוץ לטווח הנתמך ({min} עד {max})."
+    }
+  }
+}

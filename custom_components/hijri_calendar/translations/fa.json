@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "راه‌اندازی تقویم هجری",
+        "description": "زبان و زمان آغاز روز هجری را تنظیم کنید.",
+        "data": {
+          "language": "زبان",
+          "day_boundary": "مرز روز"
+        }
+      },
+      "reconfigure": {
+        "title": "پیکربندی مجدد تقویم هجری",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "تقویم هجری از قبل پیکربندی شده است."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "گزینه‌های تقویم هجری",
+        "data": {
+          "offset_days": "جابه‌جایی روز",
+          "observances_calendar_language": "زبان تقویم مناسبت‌ها",
+          "islamic_history_calendar_language": "زبان تقویم تاریخ اسلام",
+          "hijri_month_starts_calendar_language": "زبان تقویم آغاز ماه‌ها"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "نیمه‌شب محلی",
+        "sunset": "پس از غروب"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "زبان یکپارچه‌سازی",
+        "ar": "عربی"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "زبان یکپارچه‌سازی",
+        "ar": "عربی"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "زبان یکپارچه‌سازی",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "تاریخ هجری"
+      },
+      "holiday": {
+        "name": "تعطیل",
+        "state": {
+          "none": "هیچ",
+          "ramadan": "رمضان",
+          "last_day_of_ramadan": "آخرین روز رمضان",
+          "eid_al_fitr_eve": "شب عید فطر",
+          "eid_al_fitr": "عید فطر",
+          "day_of_arafah": "روز عرفه",
+          "eid_al_adha": "عید قربان",
+          "hajj": "حج",
+          "ashura": "عاشورا",
+          "type_ramadan": "رمضان",
+          "type_eid": "عید",
+          "type_hajj": "حج",
+          "type_other": "مناسبت دیگر",
+          "hijri_new_year": "سال نو هجری",
+          "first_day_of_ramadan": "اولین روز رمضان",
+          "laylat_al_qadr": "شب قدر",
+          "isra_and_miraj": "معراج و اسراء",
+          "eid_al_fitr_day_2": "عید فطر (روز ۲)",
+          "eid_al_fitr_day_3": "عید فطر (روز ۳)",
+          "eid_al_adha_day_2": "عید قربان (روز ۲)",
+          "eid_al_adha_day_3": "عید قربان (روز ۳)",
+          "eid_al_adha_day_4": "عید قربان (روز ۴)"
+        }
+      },
+      "days_in_month": {
+        "name": "روزهای ماه هجری"
+      },
+      "days_in_year": {
+        "name": "روزهای سال هجری"
+      },
+      "days_until_ramadan": {
+        "name": "روز تا رمضان"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "روز تا عید فطر"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "مناسبت‌ها"
+      },
+      "islamic_history": {
+        "name": "تاریخ اسلام"
+      },
+      "hijri_month_starts": {
+        "name": "آغاز ماه‌ها"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "رمضان"
+      },
+      "eid_al_fitr": {
+        "name": "عید فطر"
+      },
+      "eid_al_adha": {
+        "name": "عید قربان"
+      },
+      "hajj_season": {
+        "name": "فصل حج"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "مرز غروب در دسترس نیست",
+      "description": "Home Assistant نتوانست غروب را برای موقعیت شما محاسبه کند. تقویم هجری را برای نیمه‌شب محلی پیکربندی مجدد کنید یا در تنظیمات → سیستم → عمومی یک موقعیت معتبر تنظیم کنید."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "کالیبره کردن تاریخ",
+      "description": "جابه‌جایی روز یکپارچه‌سازی را برای امروز با تغییر نسبی کوچک یا تاریخ هجری اعلام‌شده تنظیم می‌کند.",
+      "fields": {
+        "offset": {
+          "name": "تنظیم جابه‌جایی",
+          "description": "این تعداد روز را به جابه‌جایی فعلی یکپارچه‌سازی اضافه می‌کند (−۲ تا +۲)."
+        },
+        "hijri": {
+          "name": "تاریخ هجری",
+          "description": "تاریخ هجری اعلام‌شده برای امروز (ISO، مثلاً ۱۴۴۶-۱۰-۱۵). جابه‌جایی لازم را محاسبه و ذخیره می‌کند."
+        },
+        "language": {
+          "name": "زبان",
+          "description": "زبان فیلدهای قالب‌بندی‌شده در پاسخ."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "تاریخ خارج از محدوده پشتیبانی‌شده ام‌القری است."
+    },
+    "sunset_unavailable": {
+      "message": "غروب محاسبه نشد. تنظیمات موقعیت Home Assistant را بررسی کنید."
+    },
+    "calibrate_no_config_entry": {
+      "message": "قبل از کالیبره کردن تاریخ باید تقویم هجری پیکربندی شود."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "جابه‌جایی مورد نیاز {offset} خارج از محدوده پشتیبانی‌شده ({min} تا {max}) است."
+    }
+  }
+}

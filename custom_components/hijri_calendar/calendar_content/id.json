@@ -1,0 +1,96 @@
+{
+  "reference_label": "Pelajari lebih lanjut",
+  "hijri_events": {
+    "description": {
+      "ramadan": "Bulan Hijriah kesembilan puasa, shalat, dan refleksi bagi umat Muslim.",
+      "hajj_season": "Musim ibadah haji tahunan di Dzulhijjah, termasuk hari-hari manasik haji.",
+      "hijri_new_year": "Hari pertama Muharram menandai awal tahun Hijriah Islam.",
+      "first_day_of_ramadan": "Hari pertama Ramadan ketika bulan puasa dimulai.",
+      "laylat_al_qadr": "Malam Lailatul Qadar, umumnya diperingati pada tanggal 27 Ramadan.",
+      "isra_and_miraj": "Memperingati perjalanan malam dan mi'raj, diperingati pada 27 Rajab.",
+      "last_day_of_ramadan": "Hari terakhir Ramadan sebelum Idul Fitri.",
+      "eid_al_fitr_eve": "Malam Idul Fitri di akhir Ramadan.",
+      "eid_al_fitr": "Hari raya penutupan Ramadan pada 1 Syawal.",
+      "eid_al_fitr_day_2": "Hari kedua perayaan Idul Fitri.",
+      "eid_al_fitr_day_3": "Hari ketiga perayaan Idul Fitri.",
+      "day_of_arafah": "Hari wukuf di Arafah selama haji pada 9 Dzulhijjah.",
+      "eid_al_adha": "Hari raya kurban pada 10 Dzulhijjah.",
+      "eid_al_adha_day_2": "Hari kedua Idul Adha.",
+      "eid_al_adha_day_3": "Hari ketiga Idul Adha.",
+      "eid_al_adha_day_4": "Hari keempat Idul Adha dan akhir manasik musim haji.",
+      "ashura": "Diperingati pada 10 Muharram, khususnya penting untuk puasa dan peringatan."
+    },
+    "reference_url": {
+      "ramadan": "https://id.wikipedia.org/wiki/Ramadhan",
+      "hajj_season": "https://id.wikipedia.org/wiki/Haji",
+      "hijri_new_year": "https://id.wikipedia.org/wiki/Kalender_Hijriah",
+      "first_day_of_ramadan": "https://id.wikipedia.org/wiki/Ramadhan",
+      "laylat_al_qadr": "https://id.wikipedia.org/wiki/Lailatul_Qadar",
+      "isra_and_miraj": "https://id.wikipedia.org/wiki/Isra_dan_Mi%27raj",
+      "last_day_of_ramadan": "https://id.wikipedia.org/wiki/Ramadhan",
+      "eid_al_fitr_eve": "https://id.wikipedia.org/wiki/Idul_Fitri",
+      "eid_al_fitr": "https://id.wikipedia.org/wiki/Idul_Fitri",
+      "eid_al_fitr_day_2": "https://id.wikipedia.org/wiki/Idul_Fitri",
+      "eid_al_fitr_day_3": "https://id.wikipedia.org/wiki/Idul_Fitri",
+      "day_of_arafah": "https://id.wikipedia.org/wiki/Arafah",
+      "eid_al_adha": "https://id.wikipedia.org/wiki/Idul_Adha",
+      "eid_al_adha_day_2": "https://id.wikipedia.org/wiki/Idul_Adha",
+      "eid_al_adha_day_3": "https://id.wikipedia.org/wiki/Idul_Adha",
+      "eid_al_adha_day_4": "https://id.wikipedia.org/wiki/Idul_Adha",
+      "ashura": "https://id.wikipedia.org/wiki/Hari_Asyura"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "Perang Badar",
+      "battle_of_uhud": "Perang Uhud",
+      "battle_of_khandaq": "Perang Khandaq",
+      "treaty_of_hudaybiyyah": "Perjanjian Hudaibiyah",
+      "conquest_of_khaybar": "Penaklukan Khaibar",
+      "conquest_of_mecca": "Penaklukan Mekah",
+      "battle_of_hunayn": "Perang Hunain",
+      "expedition_to_tabuk": "Ekspedisi Tabuk",
+      "battle_of_yarmouk": "Pertempuran Yarmuk",
+      "battle_of_qadisiyyah": "Pertempuran al-Qadisiyyah",
+      "conquest_of_jerusalem": "Penaklukan Yerusalem",
+      "conquest_of_egypt": "Penaklukan Mesir",
+      "fall_of_constantinople": "Penaklukan Konstantinopel"
+    },
+    "description": {
+      "battle_of_badr": "Pertempuran besar pertama antara Muslim dan Quraisy pada 2 H.",
+      "battle_of_uhud": "Pertempuran di dekat Gunung Uhud pada 3 H.",
+      "battle_of_khandaq": "Pengepungan Madinah oleh konfederasi pada 5 H.",
+      "treaty_of_hudaybiyyah": "Perjanjian damai antara Muslim dan Quraisy pada 6 H.",
+      "conquest_of_khaybar": "Ekspedisi Muslim melawan benteng Khaibar pada 7 H.",
+      "conquest_of_mecca": "Pembukaan Mekah secara damai pada 8 H.",
+      "battle_of_hunayn": "Pertempuran setelah penaklukan Mekah pada 8 H.",
+      "expedition_to_tabuk": "Ekspedisi Tabuk pada 9 H.",
+      "battle_of_yarmouk": "Pertempuran penentu melawan pasukan Bizantium pada 15 H.",
+      "battle_of_qadisiyyah": "Pertempuran besar yang membuka Irak bagi pasukan Muslim pada 15 H.",
+      "conquest_of_jerusalem": "Masuknya Muslim ke Yerusalem pada 17 H.",
+      "conquest_of_egypt": "Ekspansi Muslim ke Mesir pada 21 H.",
+      "fall_of_constantinople": "Penaklukan Konstantinopel oleh Ottoman pada 857 H."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://id.wikipedia.org/wiki/Perang_Badar",
+      "battle_of_uhud": "https://id.wikipedia.org/wiki/Perang_Uhud",
+      "battle_of_khandaq": "https://id.wikipedia.org/wiki/Perang_Khandaq",
+      "treaty_of_hudaybiyyah": "https://id.wikipedia.org/wiki/Perjanjian_Hudaibiyah",
+      "conquest_of_khaybar": "https://id.wikipedia.org/wiki/Khaibar",
+      "conquest_of_mecca": "https://id.wikipedia.org/wiki/Penaklukan_Mekah",
+      "battle_of_hunayn": "https://id.wikipedia.org/wiki/Perang_Hunain",
+      "expedition_to_tabuk": "https://id.wikipedia.org/wiki/Ekspedisi_Tabuk",
+      "battle_of_yarmouk": "https://id.wikipedia.org/wiki/Pertempuran_Yarmuk",
+      "battle_of_qadisiyyah": "https://id.wikipedia.org/wiki/Pertempuran_al-Qadisiyyah",
+      "conquest_of_jerusalem": "https://id.wikipedia.org/wiki/Yerusalem",
+      "conquest_of_egypt": "https://id.wikipedia.org/wiki/Mesir",
+      "fall_of_constantinople": "https://id.wikipedia.org/wiki/Penaklukan_Konstantinopel"
+    },
+    "year_suffix": "{year} H"
+  },
+  "hijri_month_starts": {
+    "summary_template": "Awal {month}",
+    "description_template": "Hari pertama {month} dalam kalender Hijriah.",
+    "reference_url": "https://id.wikipedia.org/wiki/Kalender_Hijriah"
+  }
+}

@@ -1,0 +1,174 @@
+ui:
+  config_user_title: Hijri-kalender instellen
+  config_user_description: Stel de taal en het begin van de Hijri-dag in.
+  config_user_language: Taal
+  config_user_day_boundary: Dagbegrenzing
+  config_reconfigure_title: Hijri-kalender opnieuw configureren
+  config_abort_already_configured: De Hijri-kalender is al geconfigureerd.
+  options_title: Opties voor Hijri-kalender
+  options_offset_days: Dagenverschuiving
+  options_observances_calendar_language: Taal feestdagenkalender
+  options_islamic_history_calendar_language: Taal islamitische geschiedeniskalender
+  selector_midnight: Lokale middernacht
+  selector_sunset: Na zonsondergang
+  selector_integration_language: Integratietaal
+  selector_arabic_label: Arabisch
+  entity_hijri_date: Hijri-datum
+  entity_holiday: Feestdag
+  entity_days_in_month: Dagen in Hijri-maand
+  entity_days_in_year: Dagen in Hijri-jaar
+  entity_days_until_ramadan: Dagen tot Ramadan
+  entity_days_until_eid_al_fitr: Dagen tot Eid al-Fitr
+  entity_calendar_observances: Feestdagen
+  entity_calendar_history: Islamitische geschiedenis
+  entity_ramadan: Ramadan
+  entity_eid_al_fitr: Eid al-Fitr
+  entity_eid_al_adha: Eid al-Adha
+  entity_hajj_season: Hadj-seizoen
+  issue_sunset_title: Grens bij zonsondergang niet beschikbaar
+  issue_sunset_description: Home Assistant kon de zonsondergang voor je locatie niet berekenen. Configureer de Hijri-kalender op lokale middernacht of stel een geldige locatie in via Instellingen → Systeem → Algemeen.
+  service_calibrate_name: Datum kalibreren
+  service_calibrate_description: Past de dagenverschuiving van de integratie voor vandaag aan met een kleine relatieve wijziging of de aangekondigde Hijri-datum.
+  service_calibrate_offset_name: Verschuivingsaanpassing
+  service_calibrate_offset_description: Voegt dit aantal dagen toe aan de huidige integratieverschuiving (−2 tot +2).
+  service_calibrate_hijri_name: Hijri-datum
+  service_calibrate_hijri_description: Aangekondigde Hijri-datum voor vandaag (ISO, bijv. 1446-10-15). Berekent en slaat de benodigde verschuiving op.
+  service_calibrate_language_name: Taal
+  service_calibrate_language_description: Taal voor opgemaakte velden in het antwoord.
+  exception_date_out_of_range: De datum valt buiten het ondersteunde Umm al-Qura-bereik.
+  exception_sunset_unavailable: Zonsondergang kon niet worden berekend. Controleer de locatie-instellingen van Home Assistant.
+  exception_calibrate_no_config_entry: De Hijri-kalender moet worden geconfigureerd voordat de datum kan worden gekalibreerd.
+  exception_calibrate_offset_out_of_range: Vereiste verschuiving {offset} valt buiten het ondersteunde bereik ({min} tot {max}).
+  options_hijri_month_starts_calendar_language: Taal maandstartkalender
+  entity_calendar_month_starts: Maandstart
+holidays:
+  none: Geen
+  ramadan: Ramadan
+  last_day_of_ramadan: Laatste dag van Ramadan
+  eid_al_fitr_eve: Avond voor Eid al-Fitr
+  eid_al_fitr: Eid al-Fitr
+  day_of_arafah: Dag van Arafat
+  eid_al_adha: Eid al-Adha
+  hajj: Hadj
+  ashura: Ashura
+  type_ramadan: Ramadan
+  type_eid: Eid
+  type_hajj: Hadj
+  type_other: Andere feestdag
+  hijri_new_year: Islamitisch nieuwjaar
+  first_day_of_ramadan: Eerste dag van Ramadan
+  laylat_al_qadr: Laylat al-Qadr
+  isra_and_miraj: Isra en Mi'raj
+  eid_al_fitr_day_2: Eid al-Fitr (dag 2)
+  eid_al_fitr_day_3: Eid al-Fitr (dag 3)
+  eid_al_adha_day_2: Eid al-Adha (dag 2)
+  eid_al_adha_day_3: Eid al-Adha (dag 3)
+  eid_al_adha_day_4: Eid al-Adha (dag 4)
+calendar:
+  reference_label: Meer informatie
+  year_suffix: '{year} AH'
+  observances:
+    ramadan:
+      description: De negende Hijri-maand van vasten, gebed en bezinning voor moslims.
+      reference_url: https://nl.wikipedia.org/wiki/Ramadan
+    hajj_season:
+      description: Het jaarlijkse pelgrimseizoen in Dhu al-Hijjah, inclusief de dagen van de Hadj-riten.
+      reference_url: https://nl.wikipedia.org/wiki/Hadj
+    hijri_new_year:
+      description: De eerste dag van Muharram markeert het begin van het islamitische Hijri-jaar.
+      reference_url: https://nl.wikipedia.org/wiki/Islamitische_kalender
+    first_day_of_ramadan:
+      description: De eerste dag van Ramadan wanneer de vastenmaand begint.
+      reference_url: https://nl.wikipedia.org/wiki/Ramadan
+    laylat_al_qadr:
+      description: De Nacht van het Besluit, veelal gevierd op de 27e van Ramadan.
+      reference_url: https://nl.wikipedia.org/wiki/Laylat_al-Qadr
+    isra_and_miraj:
+      description: Herdenkt de nachtelijke reis en hemelvaart, gevierd op 27 Rajab.
+      reference_url: https://nl.wikipedia.org/wiki/Isra_en_Mi%27raj
+    last_day_of_ramadan:
+      description: De laatste dag van Ramadan vóór Eid al-Fitr.
+      reference_url: https://nl.wikipedia.org/wiki/Ramadan
+    eid_al_fitr_eve:
+      description: De avond vóór Eid al-Fitr aan het einde van Ramadan.
+      reference_url: https://nl.wikipedia.org/wiki/Suikerfeest
+    eid_al_fitr:
+      description: Feest dat het einde van Ramadan markeert op 1 Shawwal.
+      reference_url: https://nl.wikipedia.org/wiki/Suikerfeest
+    eid_al_fitr_day_2:
+      description: De tweede dag van de Eid al-Fitr-vieringen.
+      reference_url: https://nl.wikipedia.org/wiki/Suikerfeest
+    eid_al_fitr_day_3:
+      description: De derde dag van de Eid al-Fitr-vieringen.
+      reference_url: https://nl.wikipedia.org/wiki/Suikerfeest
+    day_of_arafah:
+      description: De dag van staan op Arafat tijdens de Hadj op 9 Dhu al-Hijjah.
+      reference_url: https://nl.wikipedia.org/wiki/Ararat_(Saoedi-Arabi%C3%AB)
+    eid_al_adha:
+      description: Offerfeest op 10 Dhu al-Hijjah.
+      reference_url: https://nl.wikipedia.org/wiki/Offerfeest
+    eid_al_adha_day_2:
+      description: De tweede dag van Eid al-Adha.
+      reference_url: https://nl.wikipedia.org/wiki/Offerfeest
+    eid_al_adha_day_3:
+      description: De derde dag van Eid al-Adha.
+      reference_url: https://nl.wikipedia.org/wiki/Offerfeest
+    eid_al_adha_day_4:
+      description: De vierde dag van Eid al-Adha en het einde van de Hadj-riten.
+      reference_url: https://nl.wikipedia.org/wiki/Offerfeest
+    ashura:
+      description: Gevierd op 10 Muharram, vooral belangrijk voor vasten en herdenking.
+      reference_url: https://nl.wikipedia.org/wiki/Ashura
+  history:
+    battle_of_badr:
+      name: Slag bij Badr
+      description: De eerste grote slag tussen moslims en Qoeraisj in 2 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Slag_bij_Badr
+    battle_of_uhud:
+      name: Slag bij Uhud
+      description: Een slag nabij de berg Uhud in 3 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Slag_bij_Uhud
+    battle_of_khandaq:
+      name: Slag bij de Gracht
+      description: Het beleg van Medina door de confederatie in 5 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Slag_bij_de_Gracht
+    treaty_of_hudaybiyyah:
+      name: Verdrag van Hudaybiyya
+      description: Een vredesovereenkomst tussen moslims en Qoeraisj in 6 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Verdrag_van_Hudaybiyya
+    conquest_of_khaybar:
+      name: Verovering van Khaybar
+      description: Moslimveldtocht tegen de forten van Khaybar in 7 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Khaybar
+    conquest_of_mecca:
+      name: Verovering van Mekka
+      description: De vreedzame opening van Mekka in 8 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Verovering_van_Mekka
+    battle_of_hunayn:
+      name: Slag bij Hunayn
+      description: Een slag na de verovering van Mekka in 8 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Slag_bij_Hunayn
+    expedition_to_tabuk:
+      name: Expeditie naar Tabuk
+      description: De Tabuk-veldtocht in 9 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Expeditie_naar_Tabuk
+    battle_of_yarmouk:
+      name: Slag bij Yarmuk
+      description: Een beslissende slag tegen Byzantijnse troepen in 15 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Slag_bij_Yarmuk
+    battle_of_qadisiyyah:
+      name: Slag bij al-Qadisiyya
+      description: Een belangrijke slag die Irak opende voor moslimtroepen in 15 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Slag_bij_al-Qadisiyya
+    conquest_of_jerusalem:
+      name: Verovering van Jeruzalem
+      description: De moslimintocht in Jeruzalem in 17 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Jeruzalem
+    conquest_of_egypt:
+      name: Verovering van Egypte
+      description: De moslimuitbreiding naar Egypte in 21 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Egypte
+    fall_of_constantinople:
+      name: Val van Constantinopel
+      description: De Ottomaanse verovering van Constantinopel in 857 AH.
+      reference_url: https://nl.wikipedia.org/wiki/Val_van_Constantinopel

@@ -12,8 +12,8 @@
       "reconfigure": {
         "title": "Hicri Takvimi yeniden yapılandır",
         "data": {
-          "language": "Dil",
-          "day_boundary": "Gün başlangıcı"
+          "language": "Language",
+          "day_boundary": "Day boundary"
         }
       }
     },
@@ -26,7 +26,10 @@
       "init": {
         "title": "Hicri Takvim seçenekleri",
         "data": {
-          "offset_days": "Gün kayması"
+          "offset_days": "Gün kayması",
+          "observances_calendar_language": "Gözlem takvimi dili",
+          "islamic_history_calendar_language": "İslam tarihi takvimi dili",
+          "hijri_month_starts_calendar_language": "Ay başlangıçları takvimi dili"
         }
       }
     }
@@ -36,6 +39,43 @@
       "options": {
         "midnight": "Yerel gece yarısı",
         "sunset": "Gün batımından sonra"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "Entegrasyon dili",
+        "ar": "Arapça"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "Entegrasyon dili",
+        "ar": "Arapça"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Entegrasyon dili",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
       }
     }
   },
@@ -56,11 +96,19 @@
           "eid_al_adha": "Kurban Bayramı",
           "hajj": "Hac",
           "ashura": "Aşure",
-          "mawlid": "Mevlid",
           "type_ramadan": "Ramazan",
           "type_eid": "Bayram",
           "type_hajj": "Hac",
-          "type_other": "Diğer"
+          "type_other": "Diğer",
+          "hijri_new_year": "Hicri yılbaşı",
+          "first_day_of_ramadan": "Ramazan'ın ilk günü",
+          "laylat_al_qadr": "Kadir Gecesi",
+          "isra_and_miraj": "İsra ve Miraç",
+          "eid_al_fitr_day_2": "Ramazan Bayramı (2. gün)",
+          "eid_al_fitr_day_3": "Ramazan Bayramı (3. gün)",
+          "eid_al_adha_day_2": "Kurban Bayramı (2. gün)",
+          "eid_al_adha_day_3": "Kurban Bayramı (3. gün)",
+          "eid_al_adha_day_4": "Kurban Bayramı (4. gün)"
         }
       },
       "days_in_month": {
@@ -78,7 +126,13 @@
     },
     "calendar": {
       "hijri_events": {
-        "name": "Hicri gözlemler"
+        "name": "Gözlemler"
+      },
+      "islamic_history": {
+        "name": "İslam tarihi"
+      },
+      "hijri_month_starts": {
+        "name": "Ay başlangıçları"
       }
     },
     "binary_sensor": {

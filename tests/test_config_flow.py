@@ -24,6 +24,8 @@ from custom_components.hijri_calendar.const import (
     [
         ("en", DAY_BOUNDARY_MIDNIGHT),
         ("ar", DAY_BOUNDARY_SUNSET),
+        ("de", DAY_BOUNDARY_MIDNIGHT),
+        ("bn", DAY_BOUNDARY_MIDNIGHT),
     ],
 )
 async def test_user_flow(hass: HomeAssistant, language: str, day_boundary: str) -> None:

@@ -1,0 +1,174 @@
+ui:
+  config_user_title: הגדרת לוח השנה ההיג'רי
+  config_user_description: הגדרת השפה ומתי מתחיל היום ההיג'רי.
+  config_user_language: שפה
+  config_user_day_boundary: תחילת יום
+  config_reconfigure_title: הגדרה מחדש של לוח השנה ההיג'רי
+  config_abort_already_configured: לוח השנה ההיג'רי כבר מוגדר.
+  options_title: אפשרויות לוח השנה ההיג'רי
+  options_offset_days: היסט ימים
+  options_observances_calendar_language: שפת לוח החגים
+  options_islamic_history_calendar_language: שפת לוח ההיסטוריה האסלאמית
+  selector_midnight: חצות מקומית
+  selector_sunset: אחרי השקיעה
+  selector_integration_language: שפת האינטגרציה
+  selector_arabic_label: ערבית
+  entity_hijri_date: תאריך היג'רי
+  entity_holiday: חג
+  entity_days_in_month: ימים בחודש ההיג'רי
+  entity_days_in_year: ימים בשנה ההיג'רית
+  entity_days_until_ramadan: ימים עד רמדאן
+  entity_days_until_eid_al_fitr: ימים עד עיד אל-פיטר
+  entity_calendar_observances: מועדים
+  entity_calendar_history: היסטוריה אסלאמית
+  entity_ramadan: רמדאן
+  entity_eid_al_fitr: עיד אל-פיטר
+  entity_eid_al_adha: עיד אל-אדחא
+  entity_hajj_season: עונת החג'
+  issue_sunset_title: גבול השקיעה אינו זמין
+  issue_sunset_description: Home Assistant לא הצליח לחשב את השקיעה עבור המיקום שלך. הגדר מחדש את לוח השנה ההיג'רי לחצות מקומית, או הגדר מיקום תקף תחת הגדרות → מערכת → כללי.
+  service_calibrate_name: כיול תאריך
+  service_calibrate_description: מתאים את היסט הימים של האינטגרציה להיום באמצעות שינוי יחסי קטן או התאריך ההיג'רי המוכרז.
+  service_calibrate_offset_name: התאמת היסט
+  service_calibrate_offset_description: מוסיף מספר ימים זה להיסט הנוכחי של האינטגרציה (−2 עד +2).
+  service_calibrate_hijri_name: תאריך היג'רי
+  service_calibrate_hijri_description: תאריך היג'רי מוכרז להיום (ISO, למשל 1446-10-15). מחשב ושומר את ההיסט הנדרש.
+  service_calibrate_language_name: שפה
+  service_calibrate_language_description: שפה לשדות המעוצבים בתגובה.
+  exception_date_out_of_range: התאריך מחוץ לטווח אום אל-קורא הנתמך.
+  exception_sunset_unavailable: לא ניתן לחשב את השקיעה. בדוק את הגדרות המיקום ב-Home Assistant.
+  exception_calibrate_no_config_entry: יש להגדיר את לוח השנה ההיג'רי לפני כיול התאריך.
+  exception_calibrate_offset_out_of_range: ההיסט הנדרש {offset} מחוץ לטווח הנתמך ({min} עד {max}).
+  options_hijri_month_starts_calendar_language: שפת לוח תחילות החודש
+  entity_calendar_month_starts: תחילות חודש
+holidays:
+  none: אין
+  ramadan: רמדאן
+  last_day_of_ramadan: היום האחרון של רמדאן
+  eid_al_fitr_eve: ערב עיד אל-פיטר
+  eid_al_fitr: עיד אל-פיטר
+  day_of_arafah: יום ערפה
+  eid_al_adha: עיד אל-אדחא
+  hajj: חג'
+  ashura: עאשורא
+  type_ramadan: רמדאן
+  type_eid: עיד
+  type_hajj: חג'
+  type_other: מועד אחר
+  hijri_new_year: ראש השנה האסלאמי
+  first_day_of_ramadan: היום הראשון של רמדאן
+  laylat_al_qadr: לילת אל-קדר
+  isra_and_miraj: איסרא ומע'ראג'
+  eid_al_fitr_day_2: עיד אל-פיטר (יום 2)
+  eid_al_fitr_day_3: עיד אל-פיטר (יום 3)
+  eid_al_adha_day_2: עיד אל-אדחא (יום 2)
+  eid_al_adha_day_3: עיד אל-אדחא (יום 3)
+  eid_al_adha_day_4: עיד אל-אדחא (יום 4)
+calendar:
+  reference_label: מידע נוסף
+  year_suffix: '{year} לספירה ההיג''רית'
+  observances:
+    ramadan:
+      description: החודש התשיעי בהיג'רי של צום, תפילה והתבוננות למוסלמים.
+      reference_url: https://he.wikipedia.org/wiki/רמדאן
+    hajj_season:
+      description: עונת העלייה לרגל השנתית בד'ו אל-חיג'ה, כולל ימי מנהגי החג'.
+      reference_url: https://he.wikipedia.org/wiki/חג%27
+    hijri_new_year:
+      description: היום הראשון במוחרם מסמן את תחילת השנה ההיג'רית האסלאמית.
+      reference_url: https://he.wikipedia.org/wiki/לוח_שנה_היג%27רי
+    first_day_of_ramadan:
+      description: היום הראשון של רמדאן, כשמתחיל חודש הצום.
+      reference_url: https://he.wikipedia.org/wiki/רמדאן
+    laylat_al_qadr:
+      description: לילת אל-קדר, נצפה לרוב ב-27 לרמדאן.
+      reference_url: https://he.wikipedia.org/wiki/לילת_אל-קדר
+    isra_and_miraj:
+      description: מציין את המסע הלילי והעלייה לשמיים, ב-27 לרג'ב.
+      reference_url: https://he.wikipedia.org/wiki/איסרא_ומע%27ראג%27
+    last_day_of_ramadan:
+      description: היום האחרון של רמדאן לפני עיד אל-פיטר.
+      reference_url: https://he.wikipedia.org/wiki/רמדאן
+    eid_al_fitr_eve:
+      description: ערב עיד אל-פיטר בסוף רמדאן.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-פיטר
+    eid_al_fitr:
+      description: חג המסמן את סיום רמדאן ב-1 בשוואל.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-פיטר
+    eid_al_fitr_day_2:
+      description: היום השני של חגיגות עיד אל-פיטר.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-פיטר
+    eid_al_fitr_day_3:
+      description: היום השלישי של חגיגות עיד אל-פיטר.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-פיטר
+    day_of_arafah:
+      description: יום העמידה בערפה במהלך החג' ב-9 לד'ו אל-חיג'ה.
+      reference_url: https://he.wikipedia.org/wiki/ערפה
+    eid_al_adha:
+      description: חג הזבח ב-10 לד'ו אל-חיג'ה.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-אדחא
+    eid_al_adha_day_2:
+      description: היום השני של עיד אל-אדחא.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-אדחא
+    eid_al_adha_day_3:
+      description: היום השלישי של עיד אל-אדחא.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-אדחא
+    eid_al_adha_day_4:
+      description: היום הרביעי של עיד אל-אדחא וסיום מנהגי עונת החג'.
+      reference_url: https://he.wikipedia.org/wiki/עיד_אל-אדחא
+    ashura:
+      description: נצפה ב-10 למוחרם, בעל משמעות מיוחדת לצום ולזיכרון.
+      reference_url: https://he.wikipedia.org/wiki/עאשורא
+  history:
+    battle_of_badr:
+      name: קרב בדר
+      description: הקרב הגדול הראשון בין מוסלמים לקורייש ב-2 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/קרב_בדר
+    battle_of_uhud:
+      name: קרב אוחד
+      description: קרב ליד הר אוחד ב-3 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/קרב_אוחד
+    battle_of_khandaq:
+      name: קרב החפירה
+      description: המצור על אל-מדינה על ידי הקואליציה ב-5 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/קרב_החפירה
+    treaty_of_hudaybiyyah:
+      name: הסכם חודיביה
+      description: הסכם שלום בין מוסלמים לקורייש ב-6 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/הסכם_חודיביה
+    conquest_of_khaybar:
+      name: כיבוש ח'ibar
+      description: המערכה המוסלמית נגד מבצרי ח'ibar ב-7 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/ח%27ibar
+    conquest_of_mecca:
+      name: כיבוש מכה
+      description: הפתיחה השלווה של מכה ב-8 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/כיבוש_מכה
+    battle_of_hunayn:
+      name: קרב ח'נין
+      description: קרב לאחר כיבוש מכה ב-8 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/קרב_ח%27unayn
+    expedition_to_tabuk:
+      name: המסע לתבוק
+      description: המסע לתבוק ב-9 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/מסע_תבוק
+    battle_of_yarmouk:
+      name: קרב הירמוך
+      description: קרב מכריע נגד כוחות ביזנטיים ב-15 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/קרב_הירמוך
+    battle_of_qadisiyyah:
+      name: קרב אל-קדסייה
+      description: קרב מרכזי שפתח את עיראק בפני הכוחות המוסלמיים ב-15 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/קרב_אל-קadsiyah
+    conquest_of_jerusalem:
+      name: כיבוש ירושלים
+      description: הכניסה המוסלמית לירושלים ב-17 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/ירושלים
+    conquest_of_egypt:
+      name: כיבוש מצרים
+      description: ההתפשטות המוסלמית למצרים ב-21 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/מצרים
+    fall_of_constantinople:
+      name: כיבוש קונסטנטינופל
+      description: הכיבוש העות'מאני של קונסטנטינופל ב-857 לספירה ההיג'רית.
+      reference_url: https://he.wikipedia.org/wiki/כיבוש_קונסטנטינופל

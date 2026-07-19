@@ -1,0 +1,174 @@
+ui:
+  config_user_title: Hijri-Kalender einrichten
+  config_user_description: Sprache und Beginn des Hijri-Tages festlegen.
+  config_user_language: Sprache
+  config_user_day_boundary: Tagesgrenze
+  config_reconfigure_title: Hijri-Kalender neu konfigurieren
+  config_abort_already_configured: Der Hijri-Kalender ist bereits konfiguriert.
+  options_title: Hijri-Kalender-Optionen
+  options_offset_days: Tagesversatz
+  options_observances_calendar_language: Sprache des Feiertagskalenders
+  options_islamic_history_calendar_language: Sprache des Islamgeschichte-Kalenders
+  selector_midnight: Lokale Mitternacht
+  selector_sunset: Nach Sonnenuntergang
+  selector_integration_language: Integrationssprache
+  selector_arabic_label: Arabisch
+  entity_hijri_date: Hijri-Datum
+  entity_holiday: Feiertag
+  entity_days_in_month: Tage im Hijri-Monat
+  entity_days_in_year: Tage im Hijri-Jahr
+  entity_days_until_ramadan: Tage bis Ramadan
+  entity_days_until_eid_al_fitr: Tage bis Eid al-Fitr
+  entity_calendar_observances: Feiertage
+  entity_calendar_history: Islamische Geschichte
+  entity_ramadan: Ramadan
+  entity_eid_al_fitr: Eid al-Fitr
+  entity_eid_al_adha: Eid al-Adha
+  entity_hajj_season: Hadsch-Saison
+  issue_sunset_title: Sonnenuntergangsgrenze nicht verfügbar
+  issue_sunset_description: Home Assistant konnte den Sonnenuntergang für Ihren Standort nicht berechnen. Konfigurieren Sie den Hijri-Kalender auf lokale Mitternacht um oder legen Sie unter Einstellungen → System → Allgemein einen gültigen Standort fest.
+  service_calibrate_name: Datum kalibrieren
+  service_calibrate_description: Passt den Tagesversatz der Integration für heute mit einer kleinen relativen Änderung oder dem bekannt gegebenen Hijri-Datum an.
+  service_calibrate_offset_name: Versatzanpassung
+  service_calibrate_offset_description: Addiert diese Anzahl Tage zum aktuellen Integrationsversatz (−2 bis +2).
+  service_calibrate_hijri_name: Hijri-Datum
+  service_calibrate_hijri_description: Bekannt gegebenes Hijri-Datum für heute (ISO, z. B. 1446-10-15). Berechnet und speichert den erforderlichen Versatz.
+  service_calibrate_language_name: Sprache
+  service_calibrate_language_description: Sprache für formatierte Felder in der Antwort.
+  exception_date_out_of_range: Das Datum liegt außerhalb des unterstützten Umm-al-Qura-Bereichs.
+  exception_sunset_unavailable: Sonnenuntergang konnte nicht berechnet werden. Überprüfen Sie die Standorteinstellungen in Home Assistant.
+  exception_calibrate_no_config_entry: Der Hijri-Kalender muss vor der Kalibrierung konfiguriert werden.
+  exception_calibrate_offset_out_of_range: Erforderlicher Versatz {offset} liegt außerhalb des unterstützten Bereichs ({min} bis {max}).
+  options_hijri_month_starts_calendar_language: Sprache des Monatsbeginn-Kalenders
+  entity_calendar_month_starts: Monatsbeginn
+holidays:
+  none: Keiner
+  ramadan: Ramadan
+  last_day_of_ramadan: Letzter Tag des Ramadan
+  eid_al_fitr_eve: Vorabend von Eid al-Fitr
+  eid_al_fitr: Eid al-Fitr
+  day_of_arafah: Tag von Arafat
+  eid_al_adha: Eid al-Adha
+  hajj: Hadsch
+  ashura: Aschura
+  type_ramadan: Ramadan
+  type_eid: Eid
+  type_hajj: Hadsch
+  type_other: Sonstiger Feiertag
+  hijri_new_year: Islamisches Neujahr
+  first_day_of_ramadan: Erster Tag des Ramadan
+  laylat_al_qadr: Laylat al-Qadr
+  isra_and_miraj: Isra und Mi'radsch
+  eid_al_fitr_day_2: Eid al-Fitr (Tag 2)
+  eid_al_fitr_day_3: Eid al-Fitr (Tag 3)
+  eid_al_adha_day_2: Eid al-Adha (Tag 2)
+  eid_al_adha_day_3: Eid al-Adha (Tag 3)
+  eid_al_adha_day_4: Eid al-Adha (Tag 4)
+calendar:
+  reference_label: Mehr erfahren
+  year_suffix: '{year} n. H.'
+  observances:
+    ramadan:
+      description: Der neunte Hijri-Monat des Fastens, Gebets und der Besinnung für Muslime.
+      reference_url: https://de.wikipedia.org/wiki/Ramadan
+    hajj_season:
+      description: Die jährliche Hadsch-Saison im Dhul Hijjah mit den Tagen der Hadsch-Riten.
+      reference_url: https://de.wikipedia.org/wiki/Hadsch
+    hijri_new_year:
+      description: Der erste Tag des Muharram markiert den Beginn des islamischen Hijri-Jahres.
+      reference_url: https://de.wikipedia.org/wiki/Islamischer_Kalender
+    first_day_of_ramadan:
+      description: Der erste Tag des Ramadan, an dem der Fastenmonat beginnt.
+      reference_url: https://de.wikipedia.org/wiki/Ramadan
+    laylat_al_qadr:
+      description: Die Nacht der Bestimmung, weit verbreitet am 27. Ramadan begangen.
+      reference_url: https://de.wikipedia.org/wiki/Lailat_al-Qadr
+    isra_and_miraj:
+      description: Gedenkt die Nachtreise und Himmelfahrt, begangen am 27. Rajab.
+      reference_url: https://de.wikipedia.org/wiki/Isra_und_Mi%CA%BFradsch
+    last_day_of_ramadan:
+      description: Der letzte Tag des Ramadan vor Eid al-Fitr.
+      reference_url: https://de.wikipedia.org/wiki/Ramadan
+    eid_al_fitr_eve:
+      description: Der Vorabend von Eid al-Fitr am Ende des Ramadan.
+      reference_url: https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens
+    eid_al_fitr:
+      description: Fest zum Ende des Ramadan am 1. Shawwal.
+      reference_url: https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens
+    eid_al_fitr_day_2:
+      description: Der zweite Tag der Eid-al-Fitr-Feierlichkeiten.
+      reference_url: https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens
+    eid_al_fitr_day_3:
+      description: Der dritte Tag der Eid-al-Fitr-Feierlichkeiten.
+      reference_url: https://de.wikipedia.org/wiki/Fest_des_Fastenbrechens
+    day_of_arafah:
+      description: Der Tag des Stehens in Arafat während des Hadsch am 9. Dhul Hijjah.
+      reference_url: https://de.wikipedia.org/wiki/Berg_Arafat
+    eid_al_adha:
+      description: Opferfest am 10. Dhul Hijjah.
+      reference_url: https://de.wikipedia.org/wiki/Opferfest
+    eid_al_adha_day_2:
+      description: Der zweite Tag von Eid al-Adha.
+      reference_url: https://de.wikipedia.org/wiki/Opferfest
+    eid_al_adha_day_3:
+      description: Der dritte Tag von Eid al-Adha.
+      reference_url: https://de.wikipedia.org/wiki/Opferfest
+    eid_al_adha_day_4:
+      description: Der vierte Tag von Eid al-Adha und das Ende der Hadsch-Riten.
+      reference_url: https://de.wikipedia.org/wiki/Opferfest
+    ashura:
+      description: Begangen am 10. Muharram, besonders bedeutsam für Fasten und Gedenken.
+      reference_url: https://de.wikipedia.org/wiki/Aschura
+  history:
+    battle_of_badr:
+      name: Schlacht am Badr
+      description: Die erste große Schlacht zwischen Muslimen und Quraisch im 2. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Schlacht_am_Badr
+    battle_of_uhud:
+      name: Schlacht am Uhud
+      description: Eine Schlacht nahe dem Berg Uhud im 3. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Schlacht_am_Uhud
+    battle_of_khandaq:
+      name: Schlacht am Graben
+      description: Die Belagerung Medinas durch die Konföderierten im 5. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Schlacht_am_Graben
+    treaty_of_hudaybiyyah:
+      name: Vertrag von Hudaibiya
+      description: Ein Friedensabkommen zwischen Muslimen und Quraisch im 6. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Vertrag_von_Hudaibiya
+    conquest_of_khaybar:
+      name: Eroberung von Chaybar
+      description: Muslimischer Feldzug gegen die Festungen von Chaybar im 7. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Chaybar
+    conquest_of_mecca:
+      name: Eroberung Mekkas
+      description: Die friedliche Öffnung Mekkas im 8. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Eroberung_Mekkas
+    battle_of_hunayn:
+      name: Schlacht von Hunain
+      description: Eine Schlacht nach der Eroberung Mekkas im 8. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Schlacht_von_Hunain
+    expedition_to_tabuk:
+      name: Feldzug nach Tabuk
+      description: Der Tabuk-Feldzug im 9. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Feldzug_nach_Tabuk
+    battle_of_yarmouk:
+      name: Schlacht am Jarmuk
+      description: Eine entscheidende Schlacht gegen byzantinische Truppen im 15. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Schlacht_am_Jarmuk
+    battle_of_qadisiyyah:
+      name: Schlacht von al-Qadisiyya
+      description: Eine bedeutende Schlacht, die Irak den muslimischen Truppen öffnete, im 15. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Schlacht_von_al-Qadisiyya
+    conquest_of_jerusalem:
+      name: Eroberung Jerusalems
+      description: Der muslimische Einzug in Jerusalem im 17. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Jerusalem
+    conquest_of_egypt:
+      name: Eroberung Ägyptens
+      description: Die muslimische Expansion nach Ägypten im 21. n. H.
+      reference_url: https://de.wikipedia.org/wiki/%C3%84gypten
+    fall_of_constantinople:
+      name: Eroberung Konstantinopels
+      description: Die osmanische Eroberung Konstantinopels im 857. n. H.
+      reference_url: https://de.wikipedia.org/wiki/Eroberung_Konstantinopels_(1453)

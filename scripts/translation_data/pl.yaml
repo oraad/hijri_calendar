@@ -1,0 +1,174 @@
+ui:
+  config_user_title: Konfiguracja kalendarza hijri
+  config_user_description: Ustaw język i moment rozpoczęcia dnia hijri.
+  config_user_language: Język
+  config_user_day_boundary: Granica dnia
+  config_reconfigure_title: Ponowna konfiguracja kalendarza hijri
+  config_abort_already_configured: Kalendarz hijri jest już skonfigurowany.
+  options_title: Opcje kalendarza hijri
+  options_offset_days: Przesunięcie dni
+  options_observances_calendar_language: Język kalendarza świąt
+  options_islamic_history_calendar_language: Język kalendarza historii islamu
+  selector_midnight: Lokalna północ
+  selector_sunset: Po zachodzie słońca
+  selector_integration_language: Język integracji
+  selector_arabic_label: Arabski
+  entity_hijri_date: Data hijri
+  entity_holiday: Święto
+  entity_days_in_month: Dni w miesiącu hijri
+  entity_days_in_year: Dni w roku hijri
+  entity_days_until_ramadan: Dni do Ramadanu
+  entity_days_until_eid_al_fitr: Dni do Eid al-Fitr
+  entity_calendar_observances: Święta
+  entity_calendar_history: Historia islamu
+  entity_ramadan: Ramadan
+  entity_eid_al_fitr: Eid al-Fitr
+  entity_eid_al_adha: Eid al-Adha
+  entity_hajj_season: Sezon hadżu
+  issue_sunset_title: Granica zachodu słońca niedostępna
+  issue_sunset_description: Home Assistant nie mógł obliczyć zachodu słońca dla Twojej lokalizacji. Skonfiguruj ponownie kalendarz hijri na lokalną północ lub ustaw prawidłową lokalizację w Ustawienia → System → Ogólne.
+  service_calibrate_name: Kalibruj datę
+  service_calibrate_description: Dostosowuje przesunięcie dni integracji na dziś za pomocą niewielkiej zmiany względnej lub ogłoszonej daty hijri.
+  service_calibrate_offset_name: Korekta przesunięcia
+  service_calibrate_offset_description: Dodaje tyle dni do bieżącego przesunięcia integracji (−2 do +2).
+  service_calibrate_hijri_name: Data hijri
+  service_calibrate_hijri_description: Ogłoszona data hijri na dziś (ISO, np. 1446-10-15). Oblicza i zapisuje wymagane przesunięcie.
+  service_calibrate_language_name: Język
+  service_calibrate_language_description: Język sformatowanych pól w odpowiedzi.
+  exception_date_out_of_range: Data jest poza obsługiwanym zakresem Umm al-Qura.
+  exception_sunset_unavailable: Nie można obliczyć zachodu słońca. Sprawdź ustawienia lokalizacji Home Assistant.
+  exception_calibrate_no_config_entry: Kalendarz hijri musi być skonfigurowany przed kalibracją daty.
+  exception_calibrate_offset_out_of_range: Wymagane przesunięcie {offset} jest poza obsługiwanym zakresem ({min} do {max}).
+  options_hijri_month_starts_calendar_language: Język kalendarza początków miesiąca
+  entity_calendar_month_starts: Początki miesiąca
+holidays:
+  none: Brak
+  ramadan: Ramadan
+  last_day_of_ramadan: Ostatni dzień Ramadanu
+  eid_al_fitr_eve: Wigilia Eid al-Fitr
+  eid_al_fitr: Eid al-Fitr
+  day_of_arafah: Dzień Arafat
+  eid_al_adha: Eid al-Adha
+  hajj: Hadż
+  ashura: Aszura
+  type_ramadan: Ramadan
+  type_eid: Eid
+  type_hajj: Hadż
+  type_other: Inne święto
+  hijri_new_year: Nowy rok islamski
+  first_day_of_ramadan: Pierwszy dzień Ramadanu
+  laylat_al_qadr: Laylat al-Qadr
+  isra_and_miraj: Isra i Mi'radż
+  eid_al_fitr_day_2: Eid al-Fitr (dzień 2)
+  eid_al_fitr_day_3: Eid al-Fitr (dzień 3)
+  eid_al_adha_day_2: Eid al-Adha (dzień 2)
+  eid_al_adha_day_3: Eid al-Adha (dzień 3)
+  eid_al_adha_day_4: Eid al-Adha (dzień 4)
+calendar:
+  reference_label: Dowiedz się więcej
+  year_suffix: '{year} AH'
+  observances:
+    ramadan:
+      description: Dziewiąty miesiąc hijri postu, modlitwy i refleksji dla muzułmanów.
+      reference_url: https://pl.wikipedia.org/wiki/Ramadan
+    hajj_season:
+      description: Coroczny sezon pielgrzymki w Dhu al-Hidżdża, obejmujący dni rytuałów hadżu.
+      reference_url: https://pl.wikipedia.org/wiki/Had%C5%BC
+    hijri_new_year:
+      description: Pierwszy dzień Muharram wyznacza początek islamskiego roku hijri.
+      reference_url: https://pl.wikipedia.org/wiki/Kalendarz_muzu%C5%82ma%C5%84ski
+    first_day_of_ramadan:
+      description: Pierwszy dzień Ramadanu, gdy rozpoczyna się miesiąc postu.
+      reference_url: https://pl.wikipedia.org/wiki/Ramadan
+    laylat_al_qadr:
+      description: Noc Przeznaczenia, powszechnie obchodzona 27. dnia Ramadanu.
+      reference_url: https://pl.wikipedia.org/wiki/Lailat_al-Qadr
+    isra_and_miraj:
+      description: Upamiętnia nocną podróż i wniebowstąpienie, obchodzone 27. dnia Radżabu.
+      reference_url: https://pl.wikipedia.org/wiki/Isra_i_Mi%27rad%C5%BC
+    last_day_of_ramadan:
+      description: Ostatni dzień Ramadanu przed Eid al-Fitr.
+      reference_url: https://pl.wikipedia.org/wiki/Ramadan
+    eid_al_fitr_eve:
+      description: Wigilia Eid al-Fitr na koniec Ramadanu.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Fitr
+    eid_al_fitr:
+      description: Święto kończące Ramadan 1. dnia Szawwalu.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Fitr
+    eid_al_fitr_day_2:
+      description: Drugi dzień obchodów Eid al-Fitr.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Fitr
+    eid_al_fitr_day_3:
+      description: Trzeci dzień obchodów Eid al-Fitr.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Fitr
+    day_of_arafah:
+      description: Dzień stania na Arafat podczas hadżu 9. dnia Dhu al-Hidżdża.
+      reference_url: https://pl.wikipedia.org/wiki/Arafat
+    eid_al_adha:
+      description: Święto Ofiary 10. dnia Dhu al-Hidżdża.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Adha
+    eid_al_adha_day_2:
+      description: Drugi dzień Eid al-Adha.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Adha
+    eid_al_adha_day_3:
+      description: Trzeci dzień Eid al-Adha.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Adha
+    eid_al_adha_day_4:
+      description: Czwarty dzień Eid al-Adha i koniec rytuałów sezonu hadżu.
+      reference_url: https://pl.wikipedia.org/wiki/Eid_al-Adha
+    ashura:
+      description: Obchodzone 10. dnia Muharram, szczególnie ważne dla postu i pamięci.
+      reference_url: https://pl.wikipedia.org/wiki/asz-Szura
+  history:
+    battle_of_badr:
+      name: Bitwa pod Badr
+      description: Pierwsza wielka bitwa między muzułmanami a Kurajszami w 2 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Bitwa_pod_Badr
+    battle_of_uhud:
+      name: Bitwa pod Uhud
+      description: Bitwa w pobliżu góry Uhud w 3 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Bitwa_pod_Uhud
+    battle_of_khandaq:
+      name: Bitwa w Okopie
+      description: Oblężenie Medyny przez konfederację w 5 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Bitwa_w_Okopie
+    treaty_of_hudaybiyyah:
+      name: Traktat z Hudaybiyya
+      description: Porozumienie pokojowe między muzułmanami a Kurajszami w 6 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Traktat_z_Hudaybiyya
+    conquest_of_khaybar:
+      name: Podbój Chajbaru
+      description: Muzułmańska wyprawa przeciw twierdzom Chajbaru w 7 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Chajbar
+    conquest_of_mecca:
+      name: Podbój Mekki
+      description: Pokojowe otwarcie Mekki w 8 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Podb%C3%B3j_Mekki
+    battle_of_hunayn:
+      name: Bitwa pod Hunajn
+      description: Bitwa po podboju Mekki w 8 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Bitwa_pod_Hunajn
+    expedition_to_tabuk:
+      name: Wyprawa do Tabuk
+      description: Wyprawa do Tabuk w 9 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Wyprawa_do_Tabuk
+    battle_of_yarmouk:
+      name: Bitwa nad Jarmuk
+      description: Decydująca bitwa z wojskami bizantyjskimi w 15 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Bitwa_nad_Jarmuk
+    battle_of_qadisiyyah:
+      name: Bitwa pod al-Kadisijja
+      description: Ważna bitwa otwierająca Irak przed wojskami muzułmańskimi w 15 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Bitwa_pod_al-Kadisijja
+    conquest_of_jerusalem:
+      name: Podbój Jerozolimy
+      description: Wejście muzułmanów do Jerozolimy w 17 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Jerozolima
+    conquest_of_egypt:
+      name: Podbój Egiptu
+      description: Ekspansja muzułmańska do Egiptu w 21 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Egipt
+    fall_of_constantinople:
+      name: Upadek Konstantynopola
+      description: Osmańskie zdobycie Konstantynopola w 857 AH.
+      reference_url: https://pl.wikipedia.org/wiki/Upadek_Konstantynopola

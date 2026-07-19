@@ -1,0 +1,174 @@
+ui:
+  config_user_title: Konfigurasi Kalender Hijriah
+  config_user_description: Atur bahasa dan kapan hari Hijriah dimulai.
+  config_user_language: Bahasa
+  config_user_day_boundary: Batas hari
+  config_reconfigure_title: Konfigurasi ulang Kalender Hijriah
+  config_abort_already_configured: Kalender Hijriah sudah dikonfigurasi.
+  options_title: Opsi Kalender Hijriah
+  options_offset_days: Offset hari
+  options_observances_calendar_language: Bahasa kalender perayaan
+  options_islamic_history_calendar_language: Bahasa kalender sejarah Islam
+  selector_midnight: Tengah malam lokal
+  selector_sunset: Setelah matahari terbenam
+  selector_integration_language: Bahasa integrasi
+  selector_arabic_label: Arab
+  entity_hijri_date: Tanggal Hijriah
+  entity_holiday: Hari raya
+  entity_days_in_month: Hari dalam bulan Hijriah
+  entity_days_in_year: Hari dalam tahun Hijriah
+  entity_days_until_ramadan: Hari hingga Ramadan
+  entity_days_until_eid_al_fitr: Hari hingga Idul Fitri
+  entity_calendar_observances: Perayaan
+  entity_calendar_history: Sejarah Islam
+  entity_ramadan: Ramadan
+  entity_eid_al_fitr: Idul Fitri
+  entity_eid_al_adha: Idul Adha
+  entity_hajj_season: Musim haji
+  issue_sunset_title: Batas matahari terbenam tidak tersedia
+  issue_sunset_description: Home Assistant tidak dapat menghitung matahari terbenam untuk lokasi Anda. Konfigurasi ulang Kalender Hijriah ke tengah malam lokal, atau atur lokasi yang valid di Pengaturan → Sistem → Umum.
+  service_calibrate_name: Kalibrasi tanggal
+  service_calibrate_description: Menyesuaikan offset hari integrasi untuk hari ini dengan perubahan relatif kecil atau tanggal Hijriah yang diumumkan.
+  service_calibrate_offset_name: Penyesuaian offset
+  service_calibrate_offset_description: Menambahkan jumlah hari ini ke offset integrasi saat ini (−2 hingga +2).
+  service_calibrate_hijri_name: Tanggal Hijriah
+  service_calibrate_hijri_description: Tanggal Hijriah yang diumumkan untuk hari ini (ISO, mis. 1446-10-15). Menghitung dan menyimpan offset yang diperlukan.
+  service_calibrate_language_name: Bahasa
+  service_calibrate_language_description: Bahasa untuk bidang yang diformat dalam respons.
+  exception_date_out_of_range: Tanggal berada di luar rentang Umm al-Qura yang didukung.
+  exception_sunset_unavailable: Matahari terbenam tidak dapat dihitung. Periksa pengaturan lokasi Home Assistant.
+  exception_calibrate_no_config_entry: Kalender Hijriah harus dikonfigurasi sebelum mengkalibrasi tanggal.
+  exception_calibrate_offset_out_of_range: Offset yang diperlukan {offset} berada di luar rentang yang didukung ({min} hingga {max}).
+  options_hijri_month_starts_calendar_language: Bahasa kalender awal bulan
+  entity_calendar_month_starts: Awal bulan
+holidays:
+  none: Tidak ada
+  ramadan: Ramadan
+  last_day_of_ramadan: Hari terakhir Ramadan
+  eid_al_fitr_eve: Malam Idul Fitri
+  eid_al_fitr: Idul Fitri
+  day_of_arafah: Hari Arafah
+  eid_al_adha: Idul Adha
+  hajj: Haji
+  ashura: Asyura
+  type_ramadan: Ramadan
+  type_eid: Id
+  type_hajj: Haji
+  type_other: Perayaan lain
+  hijri_new_year: Tahun baru Hijriah
+  first_day_of_ramadan: Hari pertama Ramadan
+  laylat_al_qadr: Lailatul Qadar
+  isra_and_miraj: Isra dan Mi'raj
+  eid_al_fitr_day_2: Idul Fitri (hari 2)
+  eid_al_fitr_day_3: Idul Fitri (hari 3)
+  eid_al_adha_day_2: Idul Adha (hari 2)
+  eid_al_adha_day_3: Idul Adha (hari 3)
+  eid_al_adha_day_4: Idul Adha (hari 4)
+calendar:
+  reference_label: Pelajari lebih lanjut
+  year_suffix: '{year} H'
+  observances:
+    ramadan:
+      description: Bulan Hijriah kesembilan puasa, shalat, dan refleksi bagi umat Muslim.
+      reference_url: https://id.wikipedia.org/wiki/Ramadhan
+    hajj_season:
+      description: Musim ibadah haji tahunan di Dzulhijjah, termasuk hari-hari manasik haji.
+      reference_url: https://id.wikipedia.org/wiki/Haji
+    hijri_new_year:
+      description: Hari pertama Muharram menandai awal tahun Hijriah Islam.
+      reference_url: https://id.wikipedia.org/wiki/Kalender_Hijriah
+    first_day_of_ramadan:
+      description: Hari pertama Ramadan ketika bulan puasa dimulai.
+      reference_url: https://id.wikipedia.org/wiki/Ramadhan
+    laylat_al_qadr:
+      description: Malam Lailatul Qadar, umumnya diperingati pada tanggal 27 Ramadan.
+      reference_url: https://id.wikipedia.org/wiki/Lailatul_Qadar
+    isra_and_miraj:
+      description: Memperingati perjalanan malam dan mi'raj, diperingati pada 27 Rajab.
+      reference_url: https://id.wikipedia.org/wiki/Isra_dan_Mi%27raj
+    last_day_of_ramadan:
+      description: Hari terakhir Ramadan sebelum Idul Fitri.
+      reference_url: https://id.wikipedia.org/wiki/Ramadhan
+    eid_al_fitr_eve:
+      description: Malam Idul Fitri di akhir Ramadan.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Fitri
+    eid_al_fitr:
+      description: Hari raya penutupan Ramadan pada 1 Syawal.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Fitri
+    eid_al_fitr_day_2:
+      description: Hari kedua perayaan Idul Fitri.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Fitri
+    eid_al_fitr_day_3:
+      description: Hari ketiga perayaan Idul Fitri.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Fitri
+    day_of_arafah:
+      description: Hari wukuf di Arafah selama haji pada 9 Dzulhijjah.
+      reference_url: https://id.wikipedia.org/wiki/Arafah
+    eid_al_adha:
+      description: Hari raya kurban pada 10 Dzulhijjah.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Adha
+    eid_al_adha_day_2:
+      description: Hari kedua Idul Adha.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Adha
+    eid_al_adha_day_3:
+      description: Hari ketiga Idul Adha.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Adha
+    eid_al_adha_day_4:
+      description: Hari keempat Idul Adha dan akhir manasik musim haji.
+      reference_url: https://id.wikipedia.org/wiki/Idul_Adha
+    ashura:
+      description: Diperingati pada 10 Muharram, khususnya penting untuk puasa dan peringatan.
+      reference_url: https://id.wikipedia.org/wiki/Hari_Asyura
+  history:
+    battle_of_badr:
+      name: Perang Badar
+      description: Pertempuran besar pertama antara Muslim dan Quraisy pada 2 H.
+      reference_url: https://id.wikipedia.org/wiki/Perang_Badar
+    battle_of_uhud:
+      name: Perang Uhud
+      description: Pertempuran di dekat Gunung Uhud pada 3 H.
+      reference_url: https://id.wikipedia.org/wiki/Perang_Uhud
+    battle_of_khandaq:
+      name: Perang Khandaq
+      description: Pengepungan Madinah oleh konfederasi pada 5 H.
+      reference_url: https://id.wikipedia.org/wiki/Perang_Khandaq
+    treaty_of_hudaybiyyah:
+      name: Perjanjian Hudaibiyah
+      description: Perjanjian damai antara Muslim dan Quraisy pada 6 H.
+      reference_url: https://id.wikipedia.org/wiki/Perjanjian_Hudaibiyah
+    conquest_of_khaybar:
+      name: Penaklukan Khaibar
+      description: Ekspedisi Muslim melawan benteng Khaibar pada 7 H.
+      reference_url: https://id.wikipedia.org/wiki/Khaibar
+    conquest_of_mecca:
+      name: Penaklukan Mekah
+      description: Pembukaan Mekah secara damai pada 8 H.
+      reference_url: https://id.wikipedia.org/wiki/Penaklukan_Mekah
+    battle_of_hunayn:
+      name: Perang Hunain
+      description: Pertempuran setelah penaklukan Mekah pada 8 H.
+      reference_url: https://id.wikipedia.org/wiki/Perang_Hunain
+    expedition_to_tabuk:
+      name: Ekspedisi Tabuk
+      description: Ekspedisi Tabuk pada 9 H.
+      reference_url: https://id.wikipedia.org/wiki/Ekspedisi_Tabuk
+    battle_of_yarmouk:
+      name: Pertempuran Yarmuk
+      description: Pertempuran penentu melawan pasukan Bizantium pada 15 H.
+      reference_url: https://id.wikipedia.org/wiki/Pertempuran_Yarmuk
+    battle_of_qadisiyyah:
+      name: Pertempuran al-Qadisiyyah
+      description: Pertempuran besar yang membuka Irak bagi pasukan Muslim pada 15 H.
+      reference_url: https://id.wikipedia.org/wiki/Pertempuran_al-Qadisiyyah
+    conquest_of_jerusalem:
+      name: Penaklukan Yerusalem
+      description: Masuknya Muslim ke Yerusalem pada 17 H.
+      reference_url: https://id.wikipedia.org/wiki/Yerusalem
+    conquest_of_egypt:
+      name: Penaklukan Mesir
+      description: Ekspansi Muslim ke Mesir pada 21 H.
+      reference_url: https://id.wikipedia.org/wiki/Mesir
+    fall_of_constantinople:
+      name: Penaklukan Konstantinopel
+      description: Penaklukan Konstantinopel oleh Ottoman pada 857 H.
+      reference_url: https://id.wikipedia.org/wiki/Penaklukan_Konstantinopel

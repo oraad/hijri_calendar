@@ -1,0 +1,96 @@
+{
+  "reference_label": "Докладніше",
+  "hijri_events": {
+    "description": {
+      "ramadan": "Дев'ятий місяць Хіджри — місяць посту, молитви та роздумів для мусульман.",
+      "hajj_season": "Щорічний сезон паломництва в місяці зуль-хиджа, включно з днями обрядів хаджу.",
+      "hijri_new_year": "Перший день мuharram позначає початок ісламського року за Хіджрою.",
+      "first_day_of_ramadan": "Перший день Рамадану, коли починається місяць посту.",
+      "laylat_al_qadr": "Ніч приречення, широко відзначається 27-го числа Рамадану.",
+      "isra_and_miraj": "Пам'ять нічної подорожі та вознесіння, відзначається 27 раjab.",
+      "last_day_of_ramadan": "Останній день Рамадану перед Ід аль-Фітр.",
+      "eid_al_fitr_eve": "Переддень Ід аль-Фітр наприкінці Рамадану.",
+      "eid_al_fitr": "Свято завершення Рамадану 1 шаввал.",
+      "eid_al_fitr_day_2": "Другий день святкування Ід аль-Фітр.",
+      "eid_al_fitr_day_3": "Третій день святкування Ід аль-Фітр.",
+      "day_of_arafah": "День стояння на Арафат під час хаджу 9 зуль-хиджа.",
+      "eid_al_adha": "Свято жертвопринесення 10 зуль-хиджа.",
+      "eid_al_adha_day_2": "Другий день Ід аль-Адха.",
+      "eid_al_adha_day_3": "Третій день Ід аль-Адха.",
+      "eid_al_adha_day_4": "Четвертий день Ід аль-Адха та завершення обрядів сезону хаджу.",
+      "ashura": "Відзначається 10 мухаррам, особливо важливе для посту та поминання."
+    },
+    "reference_url": {
+      "ramadan": "https://uk.wikipedia.org/wiki/Рамадан",
+      "hajj_season": "https://uk.wikipedia.org/wiki/Хадж",
+      "hijri_new_year": "https://uk.wikipedia.org/wiki/Хіджра_(календар)",
+      "first_day_of_ramadan": "https://uk.wikipedia.org/wiki/Рамадан",
+      "laylat_al_qadr": "https://uk.wikipedia.org/wiki/Лайлат_аль-Кадр",
+      "isra_and_miraj": "https://uk.wikipedia.org/wiki/Ісра_та_Міраж",
+      "last_day_of_ramadan": "https://uk.wikipedia.org/wiki/Рамадан",
+      "eid_al_fitr_eve": "https://uk.wikipedia.org/wiki/Ід_аль-Фітр",
+      "eid_al_fitr": "https://uk.wikipedia.org/wiki/Ід_аль-Фітр",
+      "eid_al_fitr_day_2": "https://uk.wikipedia.org/wiki/Ід_аль-Фітр",
+      "eid_al_fitr_day_3": "https://uk.wikipedia.org/wiki/Ід_аль-Фітр",
+      "day_of_arafah": "https://uk.wikipedia.org/wiki/Арафат",
+      "eid_al_adha": "https://uk.wikipedia.org/wiki/Ід_аль-Адха",
+      "eid_al_adha_day_2": "https://uk.wikipedia.org/wiki/Ід_аль-Адха",
+      "eid_al_adha_day_3": "https://uk.wikipedia.org/wiki/Ід_аль-Адха",
+      "eid_al_adha_day_4": "https://uk.wikipedia.org/wiki/Ід_аль-Адха",
+      "ashura": "https://uk.wikipedia.org/wiki/Ашура"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "Битва при Бadr",
+      "battle_of_uhud": "Битва при Ухуд",
+      "battle_of_khandaq": "Битва при рові",
+      "treaty_of_hudaybiyyah": "Худайбійська угода",
+      "conquest_of_khaybar": "Завоювання Хайбар",
+      "conquest_of_mecca": "Завоювання Мекки",
+      "battle_of_hunayn": "Битва при Хунейн",
+      "expedition_to_tabuk": "Похід на Табук",
+      "battle_of_yarmouk": "Битва на Ярмук",
+      "battle_of_qadisiyyah": "Битва при аль-Кадисії",
+      "conquest_of_jerusalem": "Завоювання Єрусалима",
+      "conquest_of_egypt": "Завоювання Єгипту",
+      "fall_of_constantinople": "Падіння Константинополя"
+    },
+    "description": {
+      "battle_of_badr": "Перша велика битва між мусульманами та курайшитами у 2 р. х.",
+      "battle_of_uhud": "Битва біля гори Ухуд у 3 р. х.",
+      "battle_of_khandaq": "Облога Медини конфедератами у 5 р. х.",
+      "treaty_of_hudaybiyyah": "Мирна угода між мусульманами та курайшитами у 6 р. х.",
+      "conquest_of_khaybar": "Похід мусульман проти фортець Хайбар у 7 р. х.",
+      "conquest_of_mecca": "Мирне входження в Мекку у 8 р. х.",
+      "battle_of_hunayn": "Битва після завоювання Мекки у 8 р. х.",
+      "expedition_to_tabuk": "Похід на Табук у 9 р. х.",
+      "battle_of_yarmouk": "Вирішальна битва з візантійськими силами у 15 р. х.",
+      "battle_of_qadisiyyah": "Велика битва, що відкрила Ірак мусульманським силам у 15 р. х.",
+      "conquest_of_jerusalem": "Вступ мусульман до Єрусалима у 17 р. х.",
+      "conquest_of_egypt": "Розширення мусульман до Єгипту у 21 р. х.",
+      "fall_of_constantinople": "Османське завоювання Константинополя у 857 р. х."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://uk.wikipedia.org/wiki/Битва_при_Бadrі",
+      "battle_of_uhud": "https://uk.wikipedia.org/wiki/Битва_при_Ухуді",
+      "battle_of_khandaq": "https://uk.wikipedia.org/wiki/Битва_при_рові",
+      "treaty_of_hudaybiyyah": "https://uk.wikipedia.org/wiki/Худайбійський_мирний_договір",
+      "conquest_of_khaybar": "https://uk.wikipedia.org/wiki/Хайбар",
+      "conquest_of_mecca": "https://uk.wikipedia.org/wiki/Завоювання_Мекки",
+      "battle_of_hunayn": "https://uk.wikipedia.org/wiki/Битва_при_Хунейні",
+      "expedition_to_tabuk": "https://uk.wikipedia.org/wiki/Похід_на_Табук",
+      "battle_of_yarmouk": "https://uk.wikipedia.org/wiki/Битва_на_Ярмуці",
+      "battle_of_qadisiyyah": "https://uk.wikipedia.org/wiki/Битва_при_аль-Кадисії",
+      "conquest_of_jerusalem": "https://uk.wikipedia.org/wiki/Єрусалим",
+      "conquest_of_egypt": "https://uk.wikipedia.org/wiki/Єгипет",
+      "fall_of_constantinople": "https://uk.wikipedia.org/wiki/Падіння_Константинополя"
+    },
+    "year_suffix": "{year} р. х."
+  },
+  "hijri_month_starts": {
+    "summary_template": "Початок {month}",
+    "description_template": "Перший день {month} у календарі хіджри.",
+    "reference_url": "https://uk.wikipedia.org/wiki/Хіджра_(календар)"
+  }
+}

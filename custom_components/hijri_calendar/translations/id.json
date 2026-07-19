@@ -1,0 +1,193 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konfigurasi Kalender Hijriah",
+        "description": "Atur bahasa dan kapan hari Hijriah dimulai.",
+        "data": {
+          "language": "Bahasa",
+          "day_boundary": "Batas hari"
+        }
+      },
+      "reconfigure": {
+        "title": "Konfigurasi ulang Kalender Hijriah",
+        "data": {
+          "language": "Language",
+          "day_boundary": "Day boundary"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Kalender Hijriah sudah dikonfigurasi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opsi Kalender Hijriah",
+        "data": {
+          "offset_days": "Offset hari",
+          "observances_calendar_language": "Bahasa kalender perayaan",
+          "islamic_history_calendar_language": "Bahasa kalender sejarah Islam",
+          "hijri_month_starts_calendar_language": "Bahasa kalender awal bulan"
+        }
+      }
+    }
+  },
+  "selector": {
+    "day_boundary": {
+      "options": {
+        "midnight": "Tengah malam lokal",
+        "sunset": "Setelah matahari terbenam"
+      }
+    },
+    "observances_calendar_language": {
+      "options": {
+        "default": "Bahasa integrasi",
+        "ar": "Arab"
+      }
+    },
+    "islamic_history_calendar_language": {
+      "options": {
+        "default": "Bahasa integrasi",
+        "ar": "Arab"
+      }
+    },
+    "hijri_month_starts_calendar_language": {
+      "options": {
+        "default": "Bahasa integrasi",
+        "en": "English",
+        "ar": "العربية",
+        "bn": "বাংলা",
+        "de": "Deutsch",
+        "es": "Español",
+        "fa": "فارسی",
+        "fr": "Français",
+        "he": "עברית",
+        "id": "Bahasa Indonesia",
+        "it": "Italiano",
+        "ja": "日本語",
+        "ko": "한국어",
+        "nl": "Nederlands",
+        "pl": "Polski",
+        "pt": "Português",
+        "pt-br": "Português (Brasil)",
+        "ru": "Русский",
+        "tr": "Türkçe",
+        "uk": "Українська",
+        "zh-hans": "简体中文"
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "hijri_date": {
+        "name": "Tanggal Hijriah"
+      },
+      "holiday": {
+        "name": "Hari raya",
+        "state": {
+          "none": "Tidak ada",
+          "ramadan": "Ramadan",
+          "last_day_of_ramadan": "Hari terakhir Ramadan",
+          "eid_al_fitr_eve": "Malam Idul Fitri",
+          "eid_al_fitr": "Idul Fitri",
+          "day_of_arafah": "Hari Arafah",
+          "eid_al_adha": "Idul Adha",
+          "hajj": "Haji",
+          "ashura": "Asyura",
+          "type_ramadan": "Ramadan",
+          "type_eid": "Id",
+          "type_hajj": "Haji",
+          "type_other": "Perayaan lain",
+          "hijri_new_year": "Tahun baru Hijriah",
+          "first_day_of_ramadan": "Hari pertama Ramadan",
+          "laylat_al_qadr": "Lailatul Qadar",
+          "isra_and_miraj": "Isra dan Mi'raj",
+          "eid_al_fitr_day_2": "Idul Fitri (hari 2)",
+          "eid_al_fitr_day_3": "Idul Fitri (hari 3)",
+          "eid_al_adha_day_2": "Idul Adha (hari 2)",
+          "eid_al_adha_day_3": "Idul Adha (hari 3)",
+          "eid_al_adha_day_4": "Idul Adha (hari 4)"
+        }
+      },
+      "days_in_month": {
+        "name": "Hari dalam bulan Hijriah"
+      },
+      "days_in_year": {
+        "name": "Hari dalam tahun Hijriah"
+      },
+      "days_until_ramadan": {
+        "name": "Hari hingga Ramadan"
+      },
+      "days_until_eid_al_fitr": {
+        "name": "Hari hingga Idul Fitri"
+      }
+    },
+    "calendar": {
+      "hijri_events": {
+        "name": "Perayaan"
+      },
+      "islamic_history": {
+        "name": "Sejarah Islam"
+      },
+      "hijri_month_starts": {
+        "name": "Awal bulan"
+      }
+    },
+    "binary_sensor": {
+      "ramadan": {
+        "name": "Ramadan"
+      },
+      "eid_al_fitr": {
+        "name": "Idul Fitri"
+      },
+      "eid_al_adha": {
+        "name": "Idul Adha"
+      },
+      "hajj_season": {
+        "name": "Musim haji"
+      }
+    }
+  },
+  "issues": {
+    "sunset_unavailable": {
+      "title": "Batas matahari terbenam tidak tersedia",
+      "description": "Home Assistant tidak dapat menghitung matahari terbenam untuk lokasi Anda. Konfigurasi ulang Kalender Hijriah ke tengah malam lokal, atau atur lokasi yang valid di Pengaturan → Sistem → Umum."
+    }
+  },
+  "services": {
+    "calibrate_date": {
+      "name": "Kalibrasi tanggal",
+      "description": "Menyesuaikan offset hari integrasi untuk hari ini dengan perubahan relatif kecil atau tanggal Hijriah yang diumumkan.",
+      "fields": {
+        "offset": {
+          "name": "Penyesuaian offset",
+          "description": "Menambahkan jumlah hari ini ke offset integrasi saat ini (−2 hingga +2)."
+        },
+        "hijri": {
+          "name": "Tanggal Hijriah",
+          "description": "Tanggal Hijriah yang diumumkan untuk hari ini (ISO, mis. 1446-10-15). Menghitung dan menyimpan offset yang diperlukan."
+        },
+        "language": {
+          "name": "Bahasa",
+          "description": "Bahasa untuk bidang yang diformat dalam respons."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "date_out_of_range": {
+      "message": "Tanggal berada di luar rentang Umm al-Qura yang didukung."
+    },
+    "sunset_unavailable": {
+      "message": "Matahari terbenam tidak dapat dihitung. Periksa pengaturan lokasi Home Assistant."
+    },
+    "calibrate_no_config_entry": {
+      "message": "Kalender Hijriah harus dikonfigurasi sebelum mengkalibrasi tanggal."
+    },
+    "calibrate_offset_out_of_range": {
+      "message": "Offset yang diperlukan {offset} berada di luar rentang yang didukung ({min} hingga {max})."
+    }
+  }
+}

@@ -1,0 +1,174 @@
+ui:
+  config_user_title: Hicri Takvim kurulumu
+  config_user_description: Dil ve Hicri günün ne zaman başlayacağını seçin.
+  config_user_language: Dil
+  config_user_day_boundary: Gün başlangıcı
+  config_reconfigure_title: Hicri Takvimi yeniden yapılandır
+  config_abort_already_configured: Hicri Takvim zaten yapılandırılmış.
+  options_title: Hicri Takvim seçenekleri
+  options_offset_days: Gün kayması
+  options_observances_calendar_language: Gözlem takvimi dili
+  options_islamic_history_calendar_language: İslam tarihi takvimi dili
+  selector_midnight: Yerel gece yarısı
+  selector_sunset: Gün batımından sonra
+  selector_integration_language: Entegrasyon dili
+  selector_arabic_label: Arapça
+  entity_hijri_date: Hicri tarih
+  entity_holiday: Bayram
+  entity_days_in_month: Hicri ay gün sayısı
+  entity_days_in_year: Hicri yıl gün sayısı
+  entity_days_until_ramadan: Ramazan'a kalan gün
+  entity_days_until_eid_al_fitr: Ramazan Bayramı'na kalan gün
+  entity_calendar_observances: Gözlemler
+  entity_calendar_history: İslam tarihi
+  entity_ramadan: Ramazan
+  entity_eid_al_fitr: Ramazan Bayramı
+  entity_eid_al_adha: Kurban Bayramı
+  entity_hajj_season: Hac mevsimi
+  issue_sunset_title: Gün batımı sınırı kullanılamıyor
+  issue_sunset_description: Home Assistant konumunuz için gün batımını hesaplayamadı. Hicri Takvim'i yerel gece yarısına göre yeniden yapılandırın veya Ayarlar → Sistem → Genel altında geçerli bir konum belirleyin.
+  service_calibrate_name: Tarihi kalibre et
+  service_calibrate_description: Bugün için entegrasyon gün kaymasını küçük bir göreli değişiklik veya ilan edilen Hicri tarihle ayarlar.
+  service_calibrate_offset_name: Kayma ayarı
+  service_calibrate_offset_description: Mevcut entegrasyon kaymasına eklenecek gün sayısı (−2 ile +2 arası).
+  service_calibrate_hijri_name: Hicri tarih
+  service_calibrate_hijri_description: Bugün için ilan edilen Hicri tarih (ISO, örn. 1446-10-15). Gerekli kaymayı hesaplar ve kaydeder.
+  service_calibrate_language_name: Dil
+  service_calibrate_language_description: Yanıttaki biçimlendirilmiş alanlar için dil.
+  exception_date_out_of_range: Tarih desteklenen Ümmü'l-Kura aralığının dışında.
+  exception_sunset_unavailable: Gün batımı hesaplanamadı. Home Assistant konum ayarlarını kontrol edin.
+  exception_calibrate_no_config_entry: Tarihi kalibre etmeden önce Hicri Takvim yapılandırılmalıdır.
+  exception_calibrate_offset_out_of_range: Gerekli kayma {offset}, desteklenen aralığın ({min} – {max}) dışında.
+  options_hijri_month_starts_calendar_language: Ay başlangıçları takvimi dili
+  entity_calendar_month_starts: Ay başlangıçları
+holidays:
+  none: Yok
+  ramadan: Ramazan
+  last_day_of_ramadan: Ramazan'ın son günü
+  eid_al_fitr_eve: Ramazan Bayramı arifesi
+  eid_al_fitr: Ramazan Bayramı
+  day_of_arafah: Arefe Günü
+  eid_al_adha: Kurban Bayramı
+  hajj: Hac
+  ashura: Aşure
+  type_ramadan: Ramazan
+  type_eid: Bayram
+  type_hajj: Hac
+  type_other: Diğer
+  hijri_new_year: Hicri yılbaşı
+  first_day_of_ramadan: Ramazan'ın ilk günü
+  laylat_al_qadr: Kadir Gecesi
+  isra_and_miraj: İsra ve Miraç
+  eid_al_fitr_day_2: Ramazan Bayramı (2. gün)
+  eid_al_fitr_day_3: Ramazan Bayramı (3. gün)
+  eid_al_adha_day_2: Kurban Bayramı (2. gün)
+  eid_al_adha_day_3: Kurban Bayramı (3. gün)
+  eid_al_adha_day_4: Kurban Bayramı (4. gün)
+calendar:
+  reference_label: Daha fazla bilgi
+  year_suffix: '{year} H'
+  observances:
+    ramadan:
+      description: Müslümanlar için oruç, ibadet ve tefekkür ayı olan Hicri dokuzuncu ay.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan
+    hajj_season:
+      description: Zilhicce ayında yıllık hac ibadeti ve hac menasik günleri.
+      reference_url: https://tr.wikipedia.org/wiki/Hac
+    hijri_new_year:
+      description: Muharrem'in birinci günü Hicri yılın başlangıcıdır.
+      reference_url: https://tr.wikipedia.org/wiki/Hicri_takvim
+    first_day_of_ramadan:
+      description: Ramazan orucunun başladığı ilk gün.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan
+    laylat_al_qadr:
+      description: Kadir Gecesi; genellikle Ramazan'ın 27. gecesi anılır.
+      reference_url: https://tr.wikipedia.org/wiki/Kadir_Gecesi
+    isra_and_miraj:
+      description: Receb'in 27'sinde anılan İsra ve Miraç miracı.
+      reference_url: https://tr.wikipedia.org/wiki/İsra_ve_Miraç
+    last_day_of_ramadan:
+      description: Ramazan Bayramı'ndan önceki Ramazan'ın son günü.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan
+    eid_al_fitr_eve:
+      description: Ramazan Bayramı'nın arefesi.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan_Bayramı
+    eid_al_fitr:
+      description: Şevval'in birinde kutlanan Ramazan Bayramı.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan_Bayramı
+    eid_al_fitr_day_2:
+      description: Ramazan Bayramı'nın ikinci günü.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan_Bayramı
+    eid_al_fitr_day_3:
+      description: Ramazan Bayramı'nın üçüncü günü.
+      reference_url: https://tr.wikipedia.org/wiki/Ramazan_Bayramı
+    day_of_arafah:
+      description: Hac'da Arafat vakfesi günü (9 Zilhicce).
+      reference_url: https://tr.wikipedia.org/wiki/Arafat
+    eid_al_adha:
+      description: 10 Zilhicce'de kutlanan Kurban Bayramı.
+      reference_url: https://tr.wikipedia.org/wiki/Kurban_Bayramı
+    eid_al_adha_day_2:
+      description: Kurban Bayramı'nın ikinci günü.
+      reference_url: https://tr.wikipedia.org/wiki/Kurban_Bayramı
+    eid_al_adha_day_3:
+      description: Kurban Bayramı'nın üçüncü günü.
+      reference_url: https://tr.wikipedia.org/wiki/Kurban_Bayramı
+    eid_al_adha_day_4:
+      description: Kurban Bayramı'nın dördüncü günü ve hac menasik sonu.
+      reference_url: https://tr.wikipedia.org/wiki/Kurban_Bayramı
+    ashura:
+      description: Muharrem'in 10'unda anılan Aşure günü.
+      reference_url: https://tr.wikipedia.org/wiki/Aşure_Günü
+  history:
+    battle_of_badr:
+      name: Bedir Savaşı
+      description: 2. yılda Müslümanlar ile Kureyş arasındaki ilk büyük savaş.
+      reference_url: https://tr.wikipedia.org/wiki/Bedir_Savaşı
+    battle_of_uhud:
+      name: Uhud Savaşı
+      description: 3. yılda Uhud Dağı yakınında yapılan savaş.
+      reference_url: https://tr.wikipedia.org/wiki/Uhud_Savaşı
+    battle_of_khandaq:
+      name: Hendek Savaşı
+      description: 5. yılda Medine kuşatması (Hendek).
+      reference_url: https://tr.wikipedia.org/wiki/Hendek_Savaşı
+    treaty_of_hudaybiyyah:
+      name: Hudeybiye Antlaşması
+      description: 6. yılda Müslümanlar ile Kureyş arasındaki barış antlaşması.
+      reference_url: https://tr.wikipedia.org/wiki/Hudeybiye_Antlaşması
+    conquest_of_khaybar:
+      name: Hayber'in Fethi
+      description: 7. yılda Hayber kalelerinin fethi.
+      reference_url: https://tr.wikipedia.org/wiki/Hayber
+    conquest_of_mecca:
+      name: Mekke'nin Fethi
+      description: 8. yılda Mekke'nin fethedilmesi.
+      reference_url: https://tr.wikipedia.org/wiki/Mekke%27nin_Fethi
+    battle_of_hunayn:
+      name: Huneyn Savaşı
+      description: Mekke fethinden sonra 8. yılda Huneyn Savaşı.
+      reference_url: https://tr.wikipedia.org/wiki/Huneyn_Savaşı
+    expedition_to_tabuk:
+      name: Tebük Seferi
+      description: 9. yıldaki Tebük seferi.
+      reference_url: https://tr.wikipedia.org/wiki/Tebük_Seferi
+    battle_of_yarmouk:
+      name: Yermük Savaşı
+      description: 15. yılda Bizans'a karşı Yermük Savaşı.
+      reference_url: https://tr.wikipedia.org/wiki/Yermük_Savaşı
+    battle_of_qadisiyyah:
+      name: Kadisiye Savaşı
+      description: 15. yılda Kadisiye Savaşı.
+      reference_url: https://tr.wikipedia.org/wiki/Kadisiye_Savaşı
+    conquest_of_jerusalem:
+      name: Kudüs'ün Fethi
+      description: 17. yılda Kudüs'ün fethi.
+      reference_url: https://tr.wikipedia.org/wiki/Kudüs
+    conquest_of_egypt:
+      name: Mısır'ın Fethi
+      description: 21. yılda Mısır'ın fethi.
+      reference_url: https://tr.wikipedia.org/wiki/Mısır
+    fall_of_constantinople:
+      name: İstanbul'un Fethi
+      description: 857. yılda İstanbul'un fethi.
+      reference_url: https://tr.wikipedia.org/wiki/İstanbul%27un_Fethi

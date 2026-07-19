@@ -46,12 +46,25 @@ def test_format_hijri_display_arabic_eastern() -> None:
     assert "15" not in result
 
 
+def test_format_hijri_display_bengali() -> None:
+    """Test formatted display uses hijridate Bengali month names."""
+    hijri = Hijri(1446, 10, 15)
+    result = format_hijri_display(hijri, "bn", eastern_digits=False)
+    assert "রমজান" not in result  # month 10 is Shawwal
+    assert "শাওয়াল" in result
+    assert "1446" in result
+
+
 @pytest.mark.parametrize(
     ("language", "expected"),
     [
         ("en", "Ramadan"),
         ("ar", "رمضان"),
         ("tr", "Ramazan"),
+        ("de", "Ramadan"),
+        ("fr", "Ramadan"),
+        ("fa", "رمضان"),
+        ("zh-Hans", "斋月"),
     ],
 )
 async def test_holiday_display_name(hass, language: str, expected: str) -> None:

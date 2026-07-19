@@ -1,0 +1,96 @@
+{
+  "reference_label": "了解更多",
+  "hijri_events": {
+    "description": {
+      "ramadan": "回历第九月，穆斯林禁食、祈祷与反省之月。",
+      "hajj_season": "都尔黑哲月的年度朝觐季，包括朝觐仪式各日。",
+      "hijri_new_year": "穆哈兰姆月第一日记为伊斯兰回历新年之始。",
+      "first_day_of_ramadan": "斋月第一天，禁食月开始。",
+      "laylat_al_qadr": "命运之夜，通常在斋月 27 日夜纪念。",
+      "isra_and_miraj": "纪念夜行与登霄，在赖哲卜月 27 日。",
+      "last_day_of_ramadan": "开斋节前的斋月最后一天。",
+      "eid_al_fitr_eve": "斋月结束时的开斋节前夜。",
+      "eid_al_fitr": "闪瓦鲁月 1 日庆祝斋月结束的节日。",
+      "eid_al_fitr_day_2": "开斋节庆祝的第二天。",
+      "eid_al_fitr_day_3": "开斋节庆祝的第三天。",
+      "day_of_arafah": "朝觐期间都尔黑哲月 9 日在阿拉法特站立之日。",
+      "eid_al_adha": "都尔黑哲月 10 日的宰牲节。",
+      "eid_al_adha_day_2": "古尔邦节第二天。",
+      "eid_al_adha_day_3": "古尔邦节第三天。",
+      "eid_al_adha_day_4": "古尔邦节第四天，朝觐季仪式结束。",
+      "ashura": "在穆哈兰姆月 10 日纪念，对禁食与追思尤为重要。"
+    },
+    "reference_url": {
+      "ramadan": "https://zh.wikipedia.org/wiki/斋月",
+      "hajj_season": "https://zh.wikipedia.org/wiki/朝觐",
+      "hijri_new_year": "https://zh.wikipedia.org/wiki/伊斯兰历",
+      "first_day_of_ramadan": "https://zh.wikipedia.org/wiki/斋月",
+      "laylat_al_qadr": "https://zh.wikipedia.org/wiki/盖德尔夜",
+      "isra_and_miraj": "https://zh.wikipedia.org/wiki/夜行登霄",
+      "last_day_of_ramadan": "https://zh.wikipedia.org/wiki/斋月",
+      "eid_al_fitr_eve": "https://zh.wikipedia.org/wiki/开斋节",
+      "eid_al_fitr": "https://zh.wikipedia.org/wiki/开斋节",
+      "eid_al_fitr_day_2": "https://zh.wikipedia.org/wiki/开斋节",
+      "eid_al_fitr_day_3": "https://zh.wikipedia.org/wiki/开斋节",
+      "day_of_arafah": "https://zh.wikipedia.org/wiki/阿拉法特山",
+      "eid_al_adha": "https://zh.wikipedia.org/wiki/古尔邦节",
+      "eid_al_adha_day_2": "https://zh.wikipedia.org/wiki/古尔邦节",
+      "eid_al_adha_day_3": "https://zh.wikipedia.org/wiki/古尔邦节",
+      "eid_al_adha_day_4": "https://zh.wikipedia.org/wiki/古尔邦节",
+      "ashura": "https://zh.wikipedia.org/wiki/阿舒拉节"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "白德尔战役",
+      "battle_of_uhud": "乌侯德战役",
+      "battle_of_khandaq": "堑壕之战",
+      "treaty_of_hudaybiyyah": "胡代比亚和约",
+      "conquest_of_khaybar": "攻克海巴尔",
+      "conquest_of_mecca": "麦加解放",
+      "battle_of_hunayn": "侯奈因战役",
+      "expedition_to_tabuk": "塔布克远征",
+      "battle_of_yarmouk": "雅尔穆克战役",
+      "battle_of_qadisiyyah": "卡迪西亚战役",
+      "conquest_of_jerusalem": "攻克耶路撒冷",
+      "conquest_of_egypt": "征服埃及",
+      "fall_of_constantinople": "君士坦丁堡陷落"
+    },
+    "description": {
+      "battle_of_badr": "回历 2 年穆斯林与古莱什的首次大战。",
+      "battle_of_uhud": "回历 3 年在乌侯德山附近进行的战役。",
+      "battle_of_khandaq": "回历 5 年联军对麦地那的围攻。",
+      "treaty_of_hudaybiyyah": "回历 6 年穆斯林与古莱什的和平协议。",
+      "conquest_of_khaybar": "回历 7 年穆斯林对海巴尔要塞的征讨。",
+      "conquest_of_mecca": "回历 8 年和平进入麦加。",
+      "battle_of_hunayn": "麦加解放后回历 8 年进行的战役。",
+      "expedition_to_tabuk": "回历 9 年的塔布克远征。",
+      "battle_of_yarmouk": "回历 15 年对拜占庭的决定性战役。",
+      "battle_of_qadisiyyah": "回历 15 年使伊拉克向穆斯林军队敞开的大战。",
+      "conquest_of_jerusalem": "回历 17 年穆斯林进入耶路撒冷。",
+      "conquest_of_egypt": "回历 21 年穆斯林向埃及扩张。",
+      "fall_of_constantinople": "回历 857 年奥斯曼征服君士坦丁堡。"
+    },
+    "reference_url": {
+      "battle_of_badr": "https://zh.wikipedia.org/wiki/白德尔战役",
+      "battle_of_uhud": "https://zh.wikipedia.org/wiki/乌侯德战役",
+      "battle_of_khandaq": "https://zh.wikipedia.org/wiki/堑壕之战",
+      "treaty_of_hudaybiyyah": "https://zh.wikipedia.org/wiki/胡代比亚和约",
+      "conquest_of_khaybar": "https://zh.wikipedia.org/wiki/海巴尔",
+      "conquest_of_mecca": "https://zh.wikipedia.org/wiki/麦加解放",
+      "battle_of_hunayn": "https://zh.wikipedia.org/wiki/侯奈因战役",
+      "expedition_to_tabuk": "https://zh.wikipedia.org/wiki/塔布克远征",
+      "battle_of_yarmouk": "https://zh.wikipedia.org/wiki/雅尔穆克战役",
+      "battle_of_qadisiyyah": "https://zh.wikipedia.org/wiki/卡迪西亚战役",
+      "conquest_of_jerusalem": "https://zh.wikipedia.org/wiki/耶路撒冷",
+      "conquest_of_egypt": "https://zh.wikipedia.org/wiki/埃及",
+      "fall_of_constantinople": "https://zh.wikipedia.org/wiki/君士坦丁堡陷落"
+    },
+    "year_suffix": "{year} 年"
+  },
+  "hijri_month_starts": {
+    "summary_template": "{month}开始",
+    "description_template": "希吉来历{month}的第一天。",
+    "reference_url": "https://zh.wikipedia.org/wiki/伊斯兰历"
+  }
+}

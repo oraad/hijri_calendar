@@ -18,6 +18,7 @@ from .const import (
     DOMAIN,
     HijriLanguage,
 )
+from .hijridate_locale import hijridate_language
 from .locale import format_hijri_display
 
 if TYPE_CHECKING:
@@ -95,14 +96,15 @@ async def async_resolve_effective_gregorian_date(
 
 def format_hijri_dict(hijri: Hijri, language: HijriLanguage) -> dict[str, str | int]:
     """Return a dictionary of formatted Hijri date fields."""
+    hijridate_lang = hijridate_language(language)
     return {
         "hijri": hijri.isoformat(),
         "year": hijri.year,
         "month": hijri.month,
         "day": hijri.day,
-        "month_name": hijri.month_name(language),
-        "day_name": hijri.day_name(language),
-        "notation": Hijri.notation(language),
+        "month_name": hijri.month_name(hijridate_lang),
+        "day_name": hijri.day_name(hijridate_lang),
+        "notation": Hijri.notation(hijridate_lang),
         "formatted": format_hijri_display(hijri, language, eastern_digits=False),
         "formatted_eastern": format_hijri_display(hijri, language, eastern_digits=True),
     }
@@ -112,14 +114,15 @@ def format_gregorian_dict(
     gregorian: Gregorian, language: HijriLanguage
 ) -> dict[str, str | int]:
     """Return a dictionary of formatted Gregorian date fields."""
+    hijridate_lang = hijridate_language(language)
     return {
         "gregorian": gregorian.isoformat(),
         "year": gregorian.year,
         "month": gregorian.month,
         "day": gregorian.day,
-        "month_name": gregorian.month_name(language),
-        "day_name": gregorian.day_name(language),
-        "notation": Gregorian.notation(language),
+        "month_name": gregorian.month_name(hijridate_lang),
+        "day_name": gregorian.day_name(hijridate_lang),
+        "notation": Gregorian.notation(hijridate_lang),
     }
 
 

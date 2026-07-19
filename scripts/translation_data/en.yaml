@@ -1,0 +1,177 @@
+ui:
+  config_user_title: Set up Hijri Calendar
+  config_user_description: Configure language and when the Hijri day changes.
+  config_user_language: Language
+  config_user_day_boundary: Day boundary
+  config_reconfigure_title: Reconfigure Hijri Calendar
+  config_abort_already_configured: Hijri Calendar is already configured.
+  options_title: Hijri Calendar options
+  options_offset_days: Day offset
+  options_observances_calendar_language: Observances calendar language
+  options_islamic_history_calendar_language: Islamic history calendar language
+  options_hijri_month_starts_calendar_language: Month starts calendar language
+  selector_midnight: Local midnight
+  selector_sunset: After sunset
+  selector_integration_language: Integration language
+  selector_arabic_label: العربية
+  entity_hijri_date: Hijri date
+  entity_holiday: Holiday
+  entity_days_in_month: Days in Hijri month
+  entity_days_in_year: Days in Hijri year
+  entity_days_until_ramadan: Days until Ramadan
+  entity_days_until_eid_al_fitr: Days until Eid al-Fitr
+  entity_calendar_observances: Observances
+  entity_calendar_history: Islamic history
+  entity_calendar_month_starts: Month starts
+  entity_ramadan: Ramadan
+  entity_eid_al_fitr: Eid al-Fitr
+  entity_eid_al_adha: Eid al-Adha
+  entity_hajj_season: Hajj season
+  issue_sunset_title: Sunset boundary unavailable
+  issue_sunset_description: Home Assistant could not calculate sunset for your location. Reconfigure Hijri Calendar to use
+    local midnight, or set a valid location under Settings → System → General.
+  service_calibrate_name: Calibrate date
+  service_calibrate_description: Adjust the integration day offset for today using a small relative change or the announced
+    Hijri date.
+  service_calibrate_offset_name: Offset adjustment
+  service_calibrate_offset_description: Add this many days to the current integration offset (-2 to +2).
+  service_calibrate_hijri_name: Hijri date
+  service_calibrate_hijri_description: Announced Hijri date for today (ISO, e.g. 1446-10-15). Computes and saves the required
+    offset.
+  service_calibrate_language_name: Language
+  service_calibrate_language_description: Language for formatted fields in the response.
+  exception_date_out_of_range: The date is outside the supported Umm al-Qura range.
+  exception_sunset_unavailable: Sunset could not be calculated. Check Home Assistant location settings.
+  exception_calibrate_no_config_entry: Hijri Calendar must be configured before calibrating the date.
+  exception_calibrate_offset_out_of_range: Required offset {offset} is outside the supported range ({min} to {max}).
+holidays:
+  none: None
+  ramadan: Ramadan
+  last_day_of_ramadan: Last day of Ramadan
+  eid_al_fitr_eve: Eid al-Fitr eve
+  eid_al_fitr: Eid al-Fitr
+  day_of_arafah: Day of Arafah
+  eid_al_adha: Eid al-Adha
+  hajj: Hajj
+  ashura: Ashura
+  type_ramadan: Ramadan
+  type_eid: Eid
+  type_hajj: Hajj
+  type_other: Other observance
+  hijri_new_year: Islamic New Year
+  first_day_of_ramadan: First day of Ramadan
+  laylat_al_qadr: Laylat al-Qadr
+  isra_and_miraj: Isra and Mi'raj
+  eid_al_fitr_day_2: Eid al-Fitr (day 2)
+  eid_al_fitr_day_3: Eid al-Fitr (day 3)
+  eid_al_adha_day_2: Eid al-Adha (day 2)
+  eid_al_adha_day_3: Eid al-Adha (day 3)
+  eid_al_adha_day_4: Eid al-Adha (day 4)
+calendar:
+  reference_label: Learn more
+  year_suffix: '{year} AH'
+  observances:
+    ramadan:
+      description: The ninth Hijri month of fasting, prayer, and reflection for Muslims.
+      reference_url: https://www.britannica.com/topic/Ramadan
+    hajj_season:
+      description: The annual pilgrimage season in Dhul Hijjah, including the days of Hajj rites.
+      reference_url: https://www.britannica.com/topic/hajj
+    hijri_new_year:
+      description: The first day of Muharram marks the beginning of the Islamic Hijri year.
+      reference_url: https://www.britannica.com/topic/Islamic-calendar
+    first_day_of_ramadan:
+      description: The first day of Ramadan when the month of fasting begins.
+      reference_url: https://www.britannica.com/topic/Ramadan
+    laylat_al_qadr:
+      description: The Night of Decree, widely observed on the 27th of Ramadan.
+      reference_url: https://www.britannica.com/topic/Laylat-al-Qadr
+    isra_and_miraj:
+      description: Commemorates the night journey and ascension, observed on 27 Rajab.
+      reference_url: https://www.britannica.com/topic/Isra-and-Miraj
+    last_day_of_ramadan:
+      description: The final day of Ramadan before Eid al-Fitr.
+      reference_url: https://www.britannica.com/topic/Ramadan
+    eid_al_fitr_eve:
+      description: The eve of Eid al-Fitr at the end of Ramadan.
+      reference_url: https://www.britannica.com/topic/Eid-al-Fitr
+    eid_al_fitr:
+      description: Festival marking the end of Ramadan on 1 Shawwal.
+      reference_url: https://www.britannica.com/topic/Eid-al-Fitr
+    eid_al_fitr_day_2:
+      description: The second day of Eid al-Fitr celebrations.
+      reference_url: https://www.britannica.com/topic/Eid-al-Fitr
+    eid_al_fitr_day_3:
+      description: The third day of Eid al-Fitr celebrations.
+      reference_url: https://www.britannica.com/topic/Eid-al-Fitr
+    day_of_arafah:
+      description: The day of standing at Arafah during Hajj on 9 Dhul Hijjah.
+      reference_url: https://www.britannica.com/topic/hajj
+    eid_al_adha:
+      description: Festival of Sacrifice on 10 Dhul Hijjah.
+      reference_url: https://www.britannica.com/topic/Eid-al-Adha
+    eid_al_adha_day_2:
+      description: The second day of Eid al-Adha.
+      reference_url: https://www.britannica.com/topic/Eid-al-Adha
+    eid_al_adha_day_3:
+      description: The third day of Eid al-Adha.
+      reference_url: https://www.britannica.com/topic/Eid-al-Adha
+    eid_al_adha_day_4:
+      description: The fourth day of Eid al-Adha and the end of the Hajj season rites.
+      reference_url: https://www.britannica.com/topic/Eid-al-Adha
+    ashura:
+      description: Observed on 10 Muharram, especially significant for fasting and remembrance.
+      reference_url: https://www.britannica.com/topic/Ashura
+  history:
+    battle_of_badr:
+      name: Battle of Badr
+      description: The first major battle between Muslims and Quraysh in 2 AH.
+      reference_url: https://www.britannica.com/event/Battle-of-Badr
+    battle_of_uhud:
+      name: Battle of Uhud
+      description: A battle fought near Mount Uhud in 3 AH.
+      reference_url: https://www.britannica.com/event/Battle-of-Uhud
+    battle_of_khandaq:
+      name: Battle of the Trench
+      description: The confederates' siege of Medina in 5 AH.
+      reference_url: https://www.britannica.com/event/Battle-of-the-Ditch
+    treaty_of_hudaybiyyah:
+      name: Treaty of Hudaybiyyah
+      description: A peace agreement between Muslims and Quraysh in 6 AH.
+      reference_url: https://www.britannica.com/topic/Treaty-of-al-Hudaybiyah
+    conquest_of_khaybar:
+      name: Conquest of Khaybar
+      description: Muslim campaign against Khaybar fortresses in 7 AH.
+      reference_url: https://www.britannica.com/place/Khaybar
+    conquest_of_mecca:
+      name: Conquest of Mecca
+      description: The peaceful opening of Mecca in 8 AH.
+      reference_url: https://www.britannica.com/event/Conquest-of-Mecca
+    battle_of_hunayn:
+      name: Battle of Hunayn
+      description: A battle fought after the conquest of Mecca in 8 AH.
+      reference_url: https://www.britannica.com/event/Battle-of-Hunayn
+    expedition_to_tabuk:
+      name: Expedition to Tabuk
+      description: The Tabuk campaign in 9 AH.
+      reference_url: https://www.britannica.com/place/Tabuk-Saudi-Arabia
+    battle_of_yarmouk:
+      name: Battle of Yarmouk
+      description: A decisive battle against Byzantine forces in 15 AH.
+      reference_url: https://www.britannica.com/event/Battle-of-Yarmuk
+    battle_of_qadisiyyah:
+      name: Battle of al-Qadisiyyah
+      description: A major battle opening Iraq to Muslim forces in 15 AH.
+      reference_url: https://www.britannica.com/event/Battle-of-Al-Qadisiyyah
+    conquest_of_jerusalem:
+      name: Conquest of Jerusalem
+      description: The Muslim entry into Jerusalem in 17 AH.
+      reference_url: https://www.britannica.com/place/Jerusalem
+    conquest_of_egypt:
+      name: Conquest of Egypt
+      description: The Muslim expansion into Egypt in 21 AH.
+      reference_url: https://www.britannica.com/place/Egypt
+    fall_of_constantinople:
+      name: Fall of Constantinople
+      description: The Ottoman conquest of Constantinople in 857 AH.
+      reference_url: https://www.britannica.com/event/Fall-of-Constantinople-1453

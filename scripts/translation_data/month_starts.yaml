@@ -1,0 +1,60 @@
+en:
+  summary_template: Start of {month}
+  description_template: The first day of {month} in the Hijri calendar.
+ar:
+  summary_template: بداية {month}
+  description_template: أول يوم من {month} في التقويم الهجري.
+bn:
+  summary_template: '{month} এর শুরু'
+  description_template: হিজরি ক্যালেন্ডারে {month} এর প্রথম দিন।
+de:
+  summary_template: Beginn von {month}
+  description_template: Der erste Tag von {month} im Hijri-Kalender.
+es:
+  summary_template: Inicio de {month}
+  description_template: El primer día de {month} en el calendario hijri.
+fa:
+  summary_template: آغاز {month}
+  description_template: اولین روز {month} در تقویم هجری.
+fr:
+  summary_template: Début de {month}
+  description_template: Le premier jour de {month} dans le calendrier hijri.
+he:
+  summary_template: תחילת {month}
+  description_template: היום הראשון של {month} בלוח השנה ההג'רי.
+id:
+  summary_template: Awal {month}
+  description_template: Hari pertama {month} dalam kalender Hijriah.
+it:
+  summary_template: Inizio di {month}
+  description_template: Il primo giorno di {month} nel calendario hijri.
+ja:
+  summary_template: '{month}の始まり'
+  description_template: ヒジュラ暦における{month}の初日。
+ko:
+  summary_template: '{month} 시작'
+  description_template: 히즈라력 {month}의 첫째 날.
+nl:
+  summary_template: Begin van {month}
+  description_template: De eerste dag van {month} in de Hijri-kalender.
+pl:
+  summary_template: Początek {month}
+  description_template: Pierwszy dzień {month} w kalendarzu hidżry.
+pt:
+  summary_template: Início de {month}
+  description_template: O primeiro dia de {month} no calendário hijri.
+pt-BR:
+  summary_template: Início de {month}
+  description_template: O primeiro dia de {month} no calendário hijri.
+ru:
+  summary_template: Начало {month}
+  description_template: Первый день {month} в календаре хиджры.
+tr:
+  summary_template: '{month} başlangıcı'
+  description_template: Hicri takvimde {month} ayının ilk günü.
+uk:
+  summary_template: Початок {month}
+  description_template: Перший день {month} у календарі хіджри.
+zh-Hans:
+  summary_template: '{month}开始'
+  description_template: 希吉来历{month}的第一天。

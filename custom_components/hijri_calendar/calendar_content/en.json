@@ -1,0 +1,96 @@
+{
+  "reference_label": "Learn more",
+  "hijri_events": {
+    "description": {
+      "ramadan": "The ninth Hijri month of fasting, prayer, and reflection for Muslims.",
+      "hajj_season": "The annual pilgrimage season in Dhul Hijjah, including the days of Hajj rites.",
+      "hijri_new_year": "The first day of Muharram marks the beginning of the Islamic Hijri year.",
+      "first_day_of_ramadan": "The first day of Ramadan when the month of fasting begins.",
+      "laylat_al_qadr": "The Night of Decree, widely observed on the 27th of Ramadan.",
+      "isra_and_miraj": "Commemorates the night journey and ascension, observed on 27 Rajab.",
+      "last_day_of_ramadan": "The final day of Ramadan before Eid al-Fitr.",
+      "eid_al_fitr_eve": "The eve of Eid al-Fitr at the end of Ramadan.",
+      "eid_al_fitr": "Festival marking the end of Ramadan on 1 Shawwal.",
+      "eid_al_fitr_day_2": "The second day of Eid al-Fitr celebrations.",
+      "eid_al_fitr_day_3": "The third day of Eid al-Fitr celebrations.",
+      "day_of_arafah": "The day of standing at Arafah during Hajj on 9 Dhul Hijjah.",
+      "eid_al_adha": "Festival of Sacrifice on 10 Dhul Hijjah.",
+      "eid_al_adha_day_2": "The second day of Eid al-Adha.",
+      "eid_al_adha_day_3": "The third day of Eid al-Adha.",
+      "eid_al_adha_day_4": "The fourth day of Eid al-Adha and the end of the Hajj season rites.",
+      "ashura": "Observed on 10 Muharram, especially significant for fasting and remembrance."
+    },
+    "reference_url": {
+      "ramadan": "https://www.britannica.com/topic/Ramadan",
+      "hajj_season": "https://www.britannica.com/topic/hajj",
+      "hijri_new_year": "https://www.britannica.com/topic/Islamic-calendar",
+      "first_day_of_ramadan": "https://www.britannica.com/topic/Ramadan",
+      "laylat_al_qadr": "https://www.britannica.com/topic/Laylat-al-Qadr",
+      "isra_and_miraj": "https://www.britannica.com/topic/Isra-and-Miraj",
+      "last_day_of_ramadan": "https://www.britannica.com/topic/Ramadan",
+      "eid_al_fitr_eve": "https://www.britannica.com/topic/Eid-al-Fitr",
+      "eid_al_fitr": "https://www.britannica.com/topic/Eid-al-Fitr",
+      "eid_al_fitr_day_2": "https://www.britannica.com/topic/Eid-al-Fitr",
+      "eid_al_fitr_day_3": "https://www.britannica.com/topic/Eid-al-Fitr",
+      "day_of_arafah": "https://www.britannica.com/topic/hajj",
+      "eid_al_adha": "https://www.britannica.com/topic/Eid-al-Adha",
+      "eid_al_adha_day_2": "https://www.britannica.com/topic/Eid-al-Adha",
+      "eid_al_adha_day_3": "https://www.britannica.com/topic/Eid-al-Adha",
+      "eid_al_adha_day_4": "https://www.britannica.com/topic/Eid-al-Adha",
+      "ashura": "https://www.britannica.com/topic/Ashura"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "Battle of Badr",
+      "battle_of_uhud": "Battle of Uhud",
+      "battle_of_khandaq": "Battle of the Trench",
+      "treaty_of_hudaybiyyah": "Treaty of Hudaybiyyah",
+      "conquest_of_khaybar": "Conquest of Khaybar",
+      "conquest_of_mecca": "Conquest of Mecca",
+      "battle_of_hunayn": "Battle of Hunayn",
+      "expedition_to_tabuk": "Expedition to Tabuk",
+      "battle_of_yarmouk": "Battle of Yarmouk",
+      "battle_of_qadisiyyah": "Battle of al-Qadisiyyah",
+      "conquest_of_jerusalem": "Conquest of Jerusalem",
+      "conquest_of_egypt": "Conquest of Egypt",
+      "fall_of_constantinople": "Fall of Constantinople"
+    },
+    "description": {
+      "battle_of_badr": "The first major battle between Muslims and Quraysh in 2 AH.",
+      "battle_of_uhud": "A battle fought near Mount Uhud in 3 AH.",
+      "battle_of_khandaq": "The confederates' siege of Medina in 5 AH.",
+      "treaty_of_hudaybiyyah": "A peace agreement between Muslims and Quraysh in 6 AH.",
+      "conquest_of_khaybar": "Muslim campaign against Khaybar fortresses in 7 AH.",
+      "conquest_of_mecca": "The peaceful opening of Mecca in 8 AH.",
+      "battle_of_hunayn": "A battle fought after the conquest of Mecca in 8 AH.",
+      "expedition_to_tabuk": "The Tabuk campaign in 9 AH.",
+      "battle_of_yarmouk": "A decisive battle against Byzantine forces in 15 AH.",
+      "battle_of_qadisiyyah": "A major battle opening Iraq to Muslim forces in 15 AH.",
+      "conquest_of_jerusalem": "The Muslim entry into Jerusalem in 17 AH.",
+      "conquest_of_egypt": "The Muslim expansion into Egypt in 21 AH.",
+      "fall_of_constantinople": "The Ottoman conquest of Constantinople in 857 AH."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://www.britannica.com/event/Battle-of-Badr",
+      "battle_of_uhud": "https://www.britannica.com/event/Battle-of-Uhud",
+      "battle_of_khandaq": "https://www.britannica.com/event/Battle-of-the-Ditch",
+      "treaty_of_hudaybiyyah": "https://www.britannica.com/topic/Treaty-of-al-Hudaybiyah",
+      "conquest_of_khaybar": "https://www.britannica.com/place/Khaybar",
+      "conquest_of_mecca": "https://www.britannica.com/event/Conquest-of-Mecca",
+      "battle_of_hunayn": "https://www.britannica.com/event/Battle-of-Hunayn",
+      "expedition_to_tabuk": "https://www.britannica.com/place/Tabuk-Saudi-Arabia",
+      "battle_of_yarmouk": "https://www.britannica.com/event/Battle-of-Yarmuk",
+      "battle_of_qadisiyyah": "https://www.britannica.com/event/Battle-of-Al-Qadisiyyah",
+      "conquest_of_jerusalem": "https://www.britannica.com/place/Jerusalem",
+      "conquest_of_egypt": "https://www.britannica.com/place/Egypt",
+      "fall_of_constantinople": "https://www.britannica.com/event/Fall-of-Constantinople-1453"
+    },
+    "year_suffix": "{year} AH"
+  },
+  "hijri_month_starts": {
+    "summary_template": "Start of {month}",
+    "description_template": "The first day of {month} in the Hijri calendar.",
+    "reference_url": "https://www.britannica.com/topic/Islamic-calendar"
+  }
+}

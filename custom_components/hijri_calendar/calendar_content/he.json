@@ -1,0 +1,96 @@
+{
+  "reference_label": "מידע נוסף",
+  "hijri_events": {
+    "description": {
+      "ramadan": "החודש התשיעי בהיג'רי של צום, תפילה והתבוננות למוסלמים.",
+      "hajj_season": "עונת העלייה לרגל השנתית בד'ו אל-חיג'ה, כולל ימי מנהגי החג'.",
+      "hijri_new_year": "היום הראשון במוחרם מסמן את תחילת השנה ההיג'רית האסלאמית.",
+      "first_day_of_ramadan": "היום הראשון של רמדאן, כשמתחיל חודש הצום.",
+      "laylat_al_qadr": "לילת אל-קדר, נצפה לרוב ב-27 לרמדאן.",
+      "isra_and_miraj": "מציין את המסע הלילי והעלייה לשמיים, ב-27 לרג'ב.",
+      "last_day_of_ramadan": "היום האחרון של רמדאן לפני עיד אל-פיטר.",
+      "eid_al_fitr_eve": "ערב עיד אל-פיטר בסוף רמדאן.",
+      "eid_al_fitr": "חג המסמן את סיום רמדאן ב-1 בשוואל.",
+      "eid_al_fitr_day_2": "היום השני של חגיגות עיד אל-פיטר.",
+      "eid_al_fitr_day_3": "היום השלישי של חגיגות עיד אל-פיטר.",
+      "day_of_arafah": "יום העמידה בערפה במהלך החג' ב-9 לד'ו אל-חיג'ה.",
+      "eid_al_adha": "חג הזבח ב-10 לד'ו אל-חיג'ה.",
+      "eid_al_adha_day_2": "היום השני של עיד אל-אדחא.",
+      "eid_al_adha_day_3": "היום השלישי של עיד אל-אדחא.",
+      "eid_al_adha_day_4": "היום הרביעי של עיד אל-אדחא וסיום מנהגי עונת החג'.",
+      "ashura": "נצפה ב-10 למוחרם, בעל משמעות מיוחדת לצום ולזיכרון."
+    },
+    "reference_url": {
+      "ramadan": "https://he.wikipedia.org/wiki/רמדאן",
+      "hajj_season": "https://he.wikipedia.org/wiki/חג%27",
+      "hijri_new_year": "https://he.wikipedia.org/wiki/לוח_שנה_היג%27רי",
+      "first_day_of_ramadan": "https://he.wikipedia.org/wiki/רמדאן",
+      "laylat_al_qadr": "https://he.wikipedia.org/wiki/לילת_אל-קדר",
+      "isra_and_miraj": "https://he.wikipedia.org/wiki/איסרא_ומע%27ראג%27",
+      "last_day_of_ramadan": "https://he.wikipedia.org/wiki/רמדאן",
+      "eid_al_fitr_eve": "https://he.wikipedia.org/wiki/עיד_אל-פיטר",
+      "eid_al_fitr": "https://he.wikipedia.org/wiki/עיד_אל-פיטר",
+      "eid_al_fitr_day_2": "https://he.wikipedia.org/wiki/עיד_אל-פיטר",
+      "eid_al_fitr_day_3": "https://he.wikipedia.org/wiki/עיד_אל-פיטר",
+      "day_of_arafah": "https://he.wikipedia.org/wiki/ערפה",
+      "eid_al_adha": "https://he.wikipedia.org/wiki/עיד_אל-אדחא",
+      "eid_al_adha_day_2": "https://he.wikipedia.org/wiki/עיד_אל-אדחא",
+      "eid_al_adha_day_3": "https://he.wikipedia.org/wiki/עיד_אל-אדחא",
+      "eid_al_adha_day_4": "https://he.wikipedia.org/wiki/עיד_אל-אדחא",
+      "ashura": "https://he.wikipedia.org/wiki/עאשורא"
+    }
+  },
+  "islamic_history": {
+    "event_name": {
+      "battle_of_badr": "קרב בדר",
+      "battle_of_uhud": "קרב אוחד",
+      "battle_of_khandaq": "קרב החפירה",
+      "treaty_of_hudaybiyyah": "הסכם חודיביה",
+      "conquest_of_khaybar": "כיבוש ח'ibar",
+      "conquest_of_mecca": "כיבוש מכה",
+      "battle_of_hunayn": "קרב ח'נין",
+      "expedition_to_tabuk": "המסע לתבוק",
+      "battle_of_yarmouk": "קרב הירמוך",
+      "battle_of_qadisiyyah": "קרב אל-קדסייה",
+      "conquest_of_jerusalem": "כיבוש ירושלים",
+      "conquest_of_egypt": "כיבוש מצרים",
+      "fall_of_constantinople": "כיבוש קונסטנטינופל"
+    },
+    "description": {
+      "battle_of_badr": "הקרב הגדול הראשון בין מוסלמים לקורייש ב-2 לספירה ההיג'רית.",
+      "battle_of_uhud": "קרב ליד הר אוחד ב-3 לספירה ההיג'רית.",
+      "battle_of_khandaq": "המצור על אל-מדינה על ידי הקואליציה ב-5 לספירה ההיג'רית.",
+      "treaty_of_hudaybiyyah": "הסכם שלום בין מוסלמים לקורייש ב-6 לספירה ההיג'רית.",
+      "conquest_of_khaybar": "המערכה המוסלמית נגד מבצרי ח'ibar ב-7 לספירה ההיג'רית.",
+      "conquest_of_mecca": "הפתיחה השלווה של מכה ב-8 לספירה ההיג'רית.",
+      "battle_of_hunayn": "קרב לאחר כיבוש מכה ב-8 לספירה ההיג'רית.",
+      "expedition_to_tabuk": "המסע לתבוק ב-9 לספירה ההיג'רית.",
+      "battle_of_yarmouk": "קרב מכריע נגד כוחות ביזנטיים ב-15 לספירה ההיג'רית.",
+      "battle_of_qadisiyyah": "קרב מרכזי שפתח את עיראק בפני הכוחות המוסלמיים ב-15 לספירה ההיג'רית.",
+      "conquest_of_jerusalem": "הכניסה המוסלמית לירושלים ב-17 לספירה ההיג'רית.",
+      "conquest_of_egypt": "ההתפשטות המוסלמית למצרים ב-21 לספירה ההיג'רית.",
+      "fall_of_constantinople": "הכיבוש העות'מאני של קונסטנטינופל ב-857 לספירה ההיג'רית."
+    },
+    "reference_url": {
+      "battle_of_badr": "https://he.wikipedia.org/wiki/קרב_בדר",
+      "battle_of_uhud": "https://he.wikipedia.org/wiki/קרב_אוחד",
+      "battle_of_khandaq": "https://he.wikipedia.org/wiki/קרב_החפירה",
+      "treaty_of_hudaybiyyah": "https://he.wikipedia.org/wiki/הסכם_חודיביה",
+      "conquest_of_khaybar": "https://he.wikipedia.org/wiki/ח%27ibar",
+      "conquest_of_mecca": "https://he.wikipedia.org/wiki/כיבוש_מכה",
+      "battle_of_hunayn": "https://he.wikipedia.org/wiki/קרב_ח%27unayn",
+      "expedition_to_tabuk": "https://he.wikipedia.org/wiki/מסע_תבוק",
+      "battle_of_yarmouk": "https://he.wikipedia.org/wiki/קרב_הירמוך",
+      "battle_of_qadisiyyah": "https://he.wikipedia.org/wiki/קרב_אל-קadsiyah",
+      "conquest_of_jerusalem": "https://he.wikipedia.org/wiki/ירושלים",
+      "conquest_of_egypt": "https://he.wikipedia.org/wiki/מצרים",
+      "fall_of_constantinople": "https://he.wikipedia.org/wiki/כיבוש_קונסטנטינופל"
+    },
+    "year_suffix": "{year} לספירה ההיג'רית"
+  },
+  "hijri_month_starts": {
+    "summary_template": "תחילת {month}",
+    "description_template": "היום הראשון של {month} בלוח השנה ההג'רי.",
+    "reference_url": "https://he.wikipedia.org/wiki/לוח_שנה_היג%27רי"
+  }
+}
