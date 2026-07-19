@@ -162,10 +162,10 @@ async def test_month_start_entity_async_get_events(hass, setup_integration) -> N
 
 
 async def test_month_start_offset(hass, setup_integration) -> None:
-    """Test a positive day offset shifts month-start events."""
+    """Test a positive day offset shifts month-start events one day earlier."""
     ramadan_day = Hijri(1447, 9, 1).to_gregorian()
     day = dt.date(ramadan_day.year, ramadan_day.month, ramadan_day.day)
-    shifted = day + dt.timedelta(days=1)
+    shifted = day - dt.timedelta(days=1)
 
     base_events = _events_in_range(hass, day, day)
     offset_events = _events_in_range(
