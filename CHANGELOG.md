@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+- Hassfest translation validation: month-starts calendar language selector option keys are now lowercase (`pt-br`, `zh-hans`) to satisfy translation key rules; previously stored mixed-case option values continue to resolve.
+- Month-starts offset test asserted the wrong shift direction for a positive day offset.
+
+### Changed
+
+- Bumped ruff to 0.15.22 and applied its formatting.
+
 ## [0.3.0] - 2026-06-20
 
 ### Added

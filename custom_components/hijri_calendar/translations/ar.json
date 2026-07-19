@@ -71,11 +71,11 @@
         "nl": "Nederlands",
         "pl": "Polski",
         "pt": "Português",
-        "pt-BR": "Português (Brasil)",
+        "pt-br": "Português (Brasil)",
         "ru": "Русский",
         "tr": "Türkçe",
         "uk": "Українська",
-        "zh-Hans": "简体中文"
+        "zh-hans": "简体中文"
       }
     }
   },

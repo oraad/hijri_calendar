@@ -54,7 +54,10 @@ def _build_translation_file(
         (("config", "step", "user", "title"), "config_user_title"),
         (("config", "step", "user", "description"), "config_user_description"),
         (("config", "step", "user", "data", "language"), "config_user_language"),
-        (("config", "step", "user", "data", "day_boundary"), "config_user_day_boundary"),
+        (
+            ("config", "step", "user", "data", "day_boundary"),
+            "config_user_day_boundary",
+        ),
         (("config", "step", "reconfigure", "title"), "config_reconfigure_title"),
         (("config", "abort", "already_configured"), "config_abort_already_configured"),
         (("options", "step", "init", "title"), "options_title"),
@@ -85,7 +88,10 @@ def _build_translation_file(
         (("entity", "sensor", "holiday", "name"), "entity_holiday"),
         (("entity", "sensor", "days_in_month", "name"), "entity_days_in_month"),
         (("entity", "sensor", "days_in_year", "name"), "entity_days_in_year"),
-        (("entity", "sensor", "days_until_ramadan", "name"), "entity_days_until_ramadan"),
+        (
+            ("entity", "sensor", "days_until_ramadan", "name"),
+            "entity_days_until_ramadan",
+        ),
         (
             ("entity", "sensor", "days_until_eid_al_fitr", "name"),
             "entity_days_until_eid_al_fitr",
@@ -103,7 +109,10 @@ def _build_translation_file(
         (("issues", "sunset_unavailable", "title"), "issue_sunset_title"),
         (("issues", "sunset_unavailable", "description"), "issue_sunset_description"),
         (("services", "calibrate_date", "name"), "service_calibrate_name"),
-        (("services", "calibrate_date", "description"), "service_calibrate_description"),
+        (
+            ("services", "calibrate_date", "description"),
+            "service_calibrate_description",
+        ),
         (
             ("services", "calibrate_date", "fields", "offset", "name"),
             "service_calibrate_offset_name",
@@ -129,7 +138,10 @@ def _build_translation_file(
             "service_calibrate_language_description",
         ),
         (("exceptions", "date_out_of_range", "message"), "exception_date_out_of_range"),
-        (("exceptions", "sunset_unavailable", "message"), "exception_sunset_unavailable"),
+        (
+            ("exceptions", "sunset_unavailable", "message"),
+            "exception_sunset_unavailable",
+        ),
         (
             ("exceptions", "calibrate_no_config_entry", "message"),
             "exception_calibrate_no_config_entry",
@@ -147,9 +159,11 @@ def _build_translation_file(
         template["selector"]["observances_calendar_language"]
     )
 
+    # Selector option keys must satisfy hassfest's [a-z0-9-_]+ translation key
+    # rule, so mixed-case language codes (pt-BR, zh-Hans) are lowercased here.
     month_starts_selector: dict[str, str] = {
         "default": ui["selector_integration_language"],
-        **language_labels,
+        **{code.lower(): label for code, label in language_labels.items()},
     }
     template["selector"]["hijri_month_starts_calendar_language"] = {
         "options": month_starts_selector,
