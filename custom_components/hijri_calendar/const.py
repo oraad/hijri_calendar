@@ -56,10 +56,16 @@ SUPPORTED_LANGUAGES: Final[tuple[str, ...]] = (
     "zh-Hans",
 )
 
+# Selector option values must match hassfest's translation key rules
+# ([a-z0-9-_]+), so mixed-case language codes are lowercased in the UI options.
 CALENDAR_LANGUAGE_OPTIONS: Final[tuple[str, ...]] = (
     CALENDAR_LANGUAGE_DEFAULT,
-    *SUPPORTED_LANGUAGES,
+    *(language.lower() for language in SUPPORTED_LANGUAGES),
 )
+
+_LANGUAGE_BY_OPTION: Final[dict[str, str]] = {
+    language.lower(): language for language in SUPPORTED_LANGUAGES
+}
 
 HIJRI_DATE_NATIVE_LANGUAGES: Final[tuple[str, ...]] = ("en", "ar", "bn", "tr")
 
@@ -69,6 +75,14 @@ HijriLanguage = str
 def is_supported_language(language: str) -> bool:
     """Return True when language is a supported integration language code."""
     return language in SUPPORTED_LANGUAGES
+
+
+def canonical_language(language: str) -> str | None:
+    """Return the canonical language code for a value or selector option key."""
+    if language in SUPPORTED_LANGUAGES:
+        return language
+    return _LANGUAGE_BY_OPTION.get(language.lower())
+
 
 SERVICE_CALIBRATE_DATE = "calibrate_date"
 SERVICE_CONVERT_TO_HIJRI = "convert_to_hijri"

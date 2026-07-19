@@ -38,9 +38,7 @@ def build_month_start_calendar_events(
             CalendarEvent(
                 start=day.gregorian_date,
                 end=day.gregorian_date + dt.timedelta(days=1),
-                summary=calendar_month_start_summary(
-                    hass, month_name, language
-                ),
+                summary=calendar_month_start_summary(hass, month_name, language),
                 description=build_month_start_description(
                     hass, month_name, day.hijri_year, language
                 ),
