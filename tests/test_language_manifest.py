@@ -2,11 +2,18 @@
 
 from __future__ import annotations
 
+import json
+import re
 from pathlib import Path
 
 import yaml
 
-from custom_components.hijri_calendar.const import SUPPORTED_LANGUAGES
+from custom_components.hijri_calendar.const import (
+    CALENDAR_LANGUAGE_DEFAULT,
+    CALENDAR_LANGUAGE_OPTIONS,
+    SUPPORTED_LANGUAGES,
+    canonical_language,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 COMPONENT = ROOT / "custom_components" / "hijri_calendar"
@@ -72,10 +79,23 @@ def test_services_yaml_languages_match_supported() -> None:
         assert languages == expected
 
 
+def test_calendar_language_options_are_valid_translation_keys() -> None:
+    """Selector options satisfy hassfest's key rule and resolve to languages."""
+    valid_key = re.compile(r"^[a-z0-9-_]+$")
+    for option in CALENDAR_LANGUAGE_OPTIONS:
+        assert valid_key.match(option), f"Invalid selector option key: {option}"
+        if option != CALENDAR_LANGUAGE_DEFAULT:
+            assert canonical_language(option) in SUPPORTED_LANGUAGES
+
+    strings = json.loads((COMPONENT / "strings.json").read_text(encoding="utf-8"))
+    options = strings["selector"]["hijri_month_starts_calendar_language"]["options"]
+    assert set(options) == set(CALENDAR_LANGUAGE_OPTIONS)
+
+
 def test_blueprint_languages_match_supported() -> None:
     """Blueprint language selector lists every supported integration language."""
     blueprint = _load_blueprint_metadata(BLUEPRINT_YAML)
-    languages = (
-        blueprint["blueprint"]["input"]["language"]["selector"]["language"]["languages"]
-    )
+    languages = blueprint["blueprint"]["input"]["language"]["selector"]["language"][
+        "languages"
+    ]
     assert languages == list(SUPPORTED_LANGUAGES)
