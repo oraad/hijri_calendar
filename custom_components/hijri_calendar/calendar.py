@@ -1,7 +1,5 @@
 """Calendar platform for hijri_calendar."""
 
-from __future__ import annotations
-
 import datetime as dt
 
 from homeassistant.components.calendar import (
@@ -15,10 +13,16 @@ from homeassistant.util import dt as dt_util
 
 from .calendar_common import CalendarEventConfig
 from .calendar_events import build_calendar_events
+from .const import CALENDAR_TYPE_HIJRI
 from .data import HijriCalendarConfigEntry
 from .entity import HijriCalendarEntity
 from .history_calendar_events import build_history_calendar_events
 from .month_start_calendar_events import build_month_start_calendar_events
+
+try:
+    from .alternate_calendar import HijriAlternateCalendarProvider
+except ImportError:  # Home Assistant without the alternate calendar API
+    HijriAlternateCalendarProvider = None  # type: ignore[assignment, misc]
 
 PARALLEL_UPDATES = 0
 
@@ -57,6 +61,22 @@ class _HijriCalendarBase(HijriCalendarEntity, CalendarEntity):
     """Shared calendar behavior."""
 
     _attr_entity_category = None
+
+    @property
+    def supported_alternate_calendars(self) -> list[str]:
+        """Return the alternate calendar types this entity can provide."""
+        return [] if HijriAlternateCalendarProvider is None else [CALENDAR_TYPE_HIJRI]
+
+    def _with_alternate_dates(self, events: list[CalendarEvent]) -> list[CalendarEvent]:
+        """Add the Hijri date of each event start day to the event."""
+        if HijriAlternateCalendarProvider is None:
+            return events
+        provider = HijriAlternateCalendarProvider(self._event_config().display_language)
+        for event in events:
+            start = event.start
+            day = start.date() if isinstance(start, dt.datetime) else start
+            event.alternate_dates = [provider.convert_date(day)]
+        return events
 
     def _update_times(self) -> list[dt.datetime | None]:
         """Return update times; calendar refreshes via coordinator."""
@@ -98,7 +118,9 @@ class HijriObservancesCalendarEntity(_HijriCalendarBase):
         end_date: dt.datetime,
     ) -> list[CalendarEvent]:
         """Return calendar events within a datetime range."""
-        return build_calendar_events(hass, self._event_config(), start_date, end_date)
+        return self._with_alternate_dates(
+            build_calendar_events(hass, self._event_config(), start_date, end_date)
+        )
 
 
 class IslamicHistoryCalendarEntity(_HijriCalendarBase):
@@ -138,8 +160,10 @@ class IslamicHistoryCalendarEntity(_HijriCalendarBase):
         end_date: dt.datetime,
     ) -> list[CalendarEvent]:
         """Return history calendar events within a datetime range."""
-        return build_history_calendar_events(
-            hass, self._event_config(), start_date, end_date
+        return self._with_alternate_dates(
+            build_history_calendar_events(
+                hass, self._event_config(), start_date, end_date
+            )
         )
 
 
@@ -180,6 +204,8 @@ class HijriMonthStartsCalendarEntity(_HijriCalendarBase):
         end_date: dt.datetime,
     ) -> list[CalendarEvent]:
         """Return month-start calendar events within a datetime range."""
-        return build_month_start_calendar_events(
-            hass, self._event_config(), start_date, end_date
+        return self._with_alternate_dates(
+            build_month_start_calendar_events(
+                hass, self._event_config(), start_date, end_date
+            )
         )

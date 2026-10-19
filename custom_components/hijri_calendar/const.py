@@ -9,6 +9,9 @@ DOMAIN: Final = "hijri_calendar"
 ATTRIBUTION: Final = "Umm al-Qura calendar via hijridate"
 DEFAULT_NAME: Final = "Hijri Calendar"
 
+CALENDAR_TYPE_HIJRI: Final = "hijri"
+"""Identifier this integration registers with the core alternate calendar registry."""
+
 ATTR_DATE = "date"
 ATTR_HIJRI = "hijri"
 ATTR_OFFSET = "offset"

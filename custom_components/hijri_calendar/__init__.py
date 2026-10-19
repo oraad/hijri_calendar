@@ -1,7 +1,6 @@
 """Hijri Calendar integration for Home Assistant."""
 
-from __future__ import annotations
-
+from importlib import import_module
 from typing import TYPE_CHECKING
 
 from homeassistant.const import CONF_LANGUAGE, Platform
@@ -17,6 +16,7 @@ from .const import (
     DEFAULT_CALENDAR_LANGUAGE,
     DEFAULT_LANGUAGE,
     DOMAIN,
+    LOGGER,
     HijriLanguage,
 )
 from .coordinator import HijriCalendarUpdateCoordinator
@@ -62,8 +62,17 @@ async def _preload_calendar_languages(
         )
 
 
+def _register_alternate_calendar_provider() -> None:
+    """Register the provider when core ships the alternate calendar API."""
+    try:
+        import_module(f"{__package__}.alternate_calendar")
+    except ImportError:
+        LOGGER.debug("No alternate calendar support; Hijri alternate dates disabled")
+
+
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up Hijri Calendar services."""
+    _register_alternate_calendar_provider()
     async_setup_services(hass)
     return True
 
